@@ -41,7 +41,7 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
   - type: StaticPrice
-    price: 70
+    price: 10
 
 - type: entity
   abstract: true

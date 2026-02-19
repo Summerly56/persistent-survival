@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: StationAnchorBase
   abstract: true
   name: station anchor
@@ -94,7 +94,7 @@
           sound:
             collection: MetalBreak
     - type: StaticPrice
-      price: 10000
+      price: 300
     - type: Machine
       board: StationAnchorCircuitboard
     - type: ContainerContainer

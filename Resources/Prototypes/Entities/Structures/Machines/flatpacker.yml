@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: MachineFlatpacker
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: Flatpacker 1001
@@ -80,7 +80,7 @@
     - machine_board
     - board_slot
   - type: StaticPrice
-    price: 500
+    price: 184
 
 - type: entity
   id: FlatpackerNoBoardEffect

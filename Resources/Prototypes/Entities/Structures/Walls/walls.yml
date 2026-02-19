@@ -1508,6 +1508,9 @@
   id: WallMining
   name: mining wall
   components:
+  - type: Construction
+    graph: Girder
+    node: miningWall
   - type: Sprite
     sprite: Structures/Walls/mining.rsi
   - type: Icon
@@ -1516,10 +1519,24 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 700
+        damage: 500
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   - type: IconSmooth
     key: walls
     base: mining
@@ -1532,7 +1549,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallMiningDiagonal
-  name: mining wall
+  name: diagonal mining wall
   components:
   - type: Sprite
     drawdepth: Walls
@@ -1541,6 +1558,9 @@
   - type: Icon
     sprite: Structures/Walls/mining_diagonal.rsi
     state: state0
+  - type: Construction
+    graph: GirderDiagonal
+    node: miningWallDiagonal
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -1548,7 +1568,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600
+        damage: 400
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]

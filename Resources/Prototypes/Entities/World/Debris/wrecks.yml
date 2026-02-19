@@ -85,8 +85,8 @@
   components:
     - type: MapGrid
     - type: BlobFloorPlanBuilder
-      radius: 9
-      floorPlacements: 24
+      radius: 15
+      floorPlacements: 60
 
 - type: entity
   id: ScrapDebrisLarge
@@ -96,8 +96,8 @@
   components:
     - type: MapGrid
     - type: BlobFloorPlanBuilder
-      radius: 11
-      floorPlacements: 36
+      radius: 25
+      floorPlacements: 80
 
 - type: entity
   id: BaseBrassWreck
@@ -198,8 +198,8 @@
   components:
     - type: MapGrid
     - type: BlobFloorPlanBuilder
-      radius: 9
-      floorPlacements: 32
+      radius: 15
+      floorPlacements: 75
 
 - type: entity
   id: BrassWreckLarge
@@ -209,5 +209,5 @@
   components:
     - type: MapGrid
     - type: BlobFloorPlanBuilder
-      radius: 15
-      floorPlacements: 86
+      radius: 30
+      floorPlacements: 120

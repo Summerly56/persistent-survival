@@ -18,7 +18,7 @@
   - type: CombatMode
   - type: NoSlip
   - type: StaticPrice
-    price: 500
+    price: 200
   - type: Fixtures
     fixtures:
       fix1:

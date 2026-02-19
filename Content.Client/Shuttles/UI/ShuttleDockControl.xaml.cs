@@ -108,11 +108,6 @@ public sealed partial class ShuttleDockControl : BaseShuttleControl
 
         DrawCircles(handle);
         var gridNent = EntManager.GetNetEntity(GridEntity);
-
-        // Update NorthRotation to the world rotation of the grid plus the relative angle of the viewed dock
-        // to ensure it points to world North correctly in the dock view.
-        NorthRotation = _xformSystem.GetWorldRotation(GridEntity.Value) + _angle.Value;
-
         var mapPos = _xformSystem.ToMapCoordinates(_coordinates.Value);
         var ourGridToWorld = _xformSystem.GetWorldMatrix(GridEntity.Value);
         var selectedDockToOurGrid = Matrix3Helpers.CreateTransform(_coordinates.Value.Position, Angle.Zero);

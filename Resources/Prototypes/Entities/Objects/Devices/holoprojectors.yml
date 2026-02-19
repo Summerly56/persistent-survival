@@ -165,7 +165,7 @@
         - HolofanProjector
         - SecBeltEquip
     - type: StaticPrice
-      price: 50
+      price: 20
 
 - type: entity
   parent: HoloprojectorSecurity

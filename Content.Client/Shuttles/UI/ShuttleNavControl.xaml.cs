@@ -155,10 +155,6 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         var ourEntRot = RotateWithEntity ? _transform.GetWorldRotation(xform) : _rotation.Value;
         var ourEntMatrix = Matrix3Helpers.CreateTransform(_transform.GetWorldPosition(xform), ourEntRot);
 
-        // Update NorthRotation to the world rotation of the grid plus the relative angle of the viewed dock
-        // to ensure it points to world North correctly in the Nav view.
-        NorthRotation = ourEntRot;
-
         var shuttleToWorld = Matrix3x2.Multiply(posMatrix, ourEntMatrix);
         Matrix3x2.Invert(shuttleToWorld, out var worldToShuttle);
         var shuttleToView = Matrix3x2.CreateScale(new Vector2(MinimapScale, -MinimapScale)) * Matrix3x2.CreateTranslation(MidPointVector);
@@ -201,6 +197,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         var rot = ourEntRot + _rotation.Value;
         var viewBounds = new Box2Rotated(new Box2(-WorldRange, -WorldRange, WorldRange, WorldRange).Translated(mapPos.Position), rot, mapPos.Position);
         var viewAABB = viewBounds.CalcBoundingBox();
+
+        DrawNorthLine(handle, rot);
 
         _grids.Clear();
         _mapManager.FindGridsIntersecting(xform.MapID, new Box2(mapPos.Position - MaxRadarRangeVector, mapPos.Position + MaxRadarRangeVector), ref _grids, approx: true, includeMap: false);

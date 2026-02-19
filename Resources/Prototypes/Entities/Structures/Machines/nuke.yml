@@ -184,4 +184,4 @@
   - type: ReagentTank
     transferAmount: 100
   - type: StaticPrice
-    price: 5000 # That's a pretty fancy keg you got there.
+    price: 1000 # That's a pretty fancy keg you got there.

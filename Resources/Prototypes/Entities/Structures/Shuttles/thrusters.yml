@@ -54,7 +54,7 @@
             sound:
               collection: MetalBreak
     - type: StaticPrice
-      price: 300
+      price: 80
     - type: GuideHelp
       guides:
       - ShuttleCraft
@@ -170,7 +170,7 @@
   - type: Anchorable
     flags: None
   - type: StaticPrice
-    price: 1500
+    price: 90
 
 - type: entity
   id: ThrusterUnanchored
@@ -269,7 +269,7 @@
     damageContainer: StructuralInorganic
     damageModifierSet: Electronic
   - type: StaticPrice
-    price: 2000
+    price: 150
 
 - type: entity
   id: GyroscopeUnanchored

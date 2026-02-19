@@ -16,7 +16,7 @@
   - type: Physics
     bodyType: Static
   - type: StaticPrice
-    price: 35
+    price: 10
 
 - type: entity
   id: BenchColorfulComfy

@@ -1258,7 +1258,7 @@
       - state: base-stripes-inhand-right
         color: "#7B0F12"
   - type: StaticPrice
-    price: 2500
+    price: 100
 
 - type: entity
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
@@ -1381,7 +1381,7 @@
         - state: base-stripes-inhand-right
           color: "#7B0F12"
     - type: StaticPrice
-      price: 2000
+      price: 100
 
 # mothership module
 - type: entity

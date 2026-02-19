@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: GravityGenerator
   parent: BaseMachinePowered
   name: gravity generator
@@ -78,7 +78,7 @@
     castShadows: false
     color: "#a8ffd9"
   - type: StaticPrice
-    price: 5000
+    price: 200
 
 - type: entity
   id: GravityGeneratorMini
@@ -138,4 +138,4 @@
     lightRadiusMin: 0.75
     lightRadiusMax: 2.5
   - type: StaticPrice
-    price: 2000
+    price: 350

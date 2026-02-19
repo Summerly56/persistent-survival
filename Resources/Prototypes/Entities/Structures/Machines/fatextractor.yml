@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: FatExtractor
   parent: BaseMachinePowered
   name: lipid extractor
@@ -107,7 +107,7 @@
   - type: DatasetVocalizer
     dataset: FatExtractorFacts
   - type: StaticPrice
-    price: 1000
+    price: 160
   - type: ResistLocker
   - type: EntityStorage
     capacity: 1

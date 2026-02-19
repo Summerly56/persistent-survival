@@ -54,6 +54,12 @@
               amount: 2
               doAfter: 4
 
+        - to: miningWindowDiagonal
+          steps:
+            - material: ReinforcedGlass
+              amount: 2
+              doAfter: 2
+
     - node: windowDiagonal
       entity: WindowDiagonal
       edges:
@@ -71,6 +77,29 @@
 
     - node: reinforcedWindowDiagonal
       entity: ReinforcedWindowDiagonal
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetRGlass1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Prying
+              doAfter: 2
+            - tool: Welding
+              doAfter: 5
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: miningWindowDiagonal
+      entity: MiningWindowDiagonal
       edges:
         - to: start
           completed:

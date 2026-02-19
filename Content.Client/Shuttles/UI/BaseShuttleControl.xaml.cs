@@ -115,12 +115,13 @@ public partial class BaseShuttleControl : MapGridControl
             var lineColor = Color.MediumSpringGreen.WithAlpha(0.02f);
             handle.DrawLine(origin - aExtent, origin + aExtent, lineColor);
         }
+    }
 
-        // Draw North pointer
-        var northVec = (Angle.FromDegrees(90) - NorthRotation).ToVec();
-        // Using ScaledMinimapRadius directly ensures the line always hits the UI edge regardless of zoom.
-        var endPos = MidPointVector + new Vector2(northVec.X, -northVec.Y) * Math.Max(ScaledMinimapRadius, 2000f);
-        handle.DrawLine(MidPointVector, endPos, Color.Red.WithAlpha(0.5f));
+    protected void DrawNorthLine(DrawingHandleScreen handle, Angle angle)
+    {
+        var origin = ScalePosition(-new Vector2(Offset.X, -Offset.Y)); // center of the screen
+        var northVec = (angle - Math.PI / 2).ToVec() * ScaledMinimapRadius * 1.42f; // a far away point north of the center
+        handle.DrawLine(origin, origin + northVec, Color.Red.WithAlpha(0.5f));
     }
 
     protected void DrawGrid(DrawingHandleScreen handle, Matrix3x2 gridToView, Entity<MapGridComponent> grid, Color color, float alpha = 0.01f)

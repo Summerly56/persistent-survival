@@ -36,7 +36,7 @@
     - Recyclable
     - WhitelistChameleon
   - type: StaticPrice
-    price: 50
+    price: 10
 
 - type: entity
   parent: ClothingOuterWinterCoat

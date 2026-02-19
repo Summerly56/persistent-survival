@@ -129,7 +129,7 @@
   - type: VisionCorrection
   - type: IdentityBlocker
   - type: StaticPrice
-    price: 500
+    price: 10
 
 - type: entity
   parent: ClothingEyesBase

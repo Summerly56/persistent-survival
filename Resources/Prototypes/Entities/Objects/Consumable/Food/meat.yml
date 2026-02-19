@@ -769,7 +769,7 @@
     count: 3
     slice: FoodMeatTomatoCutlet
   - type: StaticPrice
-    price: 100
+    price: 90
   - type: Item
     storedOffset: 0,-2
     inhandVisuals:

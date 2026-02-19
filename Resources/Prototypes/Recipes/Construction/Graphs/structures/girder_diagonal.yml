@@ -32,6 +32,17 @@
               amount: 2
               doAfter: 1
 
+        - to: miningWallDiagonal
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - material: Steel
+              amount: 2
+              doAfter: 1
+            - material: Plastic
+              amount: 2
+              doAfter: 1
+
         - to: reinforcedGirder
           completed:
             - !type:SnapToGrid
@@ -50,6 +61,21 @@
           completed:
             - !type:GivePrototype
               prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: miningWallDiagonal
+      entity: WallMiningDiagonal
+      edges:
+        - to: girder
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:GivePrototype
+              prototype: SheetPlastic1
               amount: 2
           steps:
             - tool: Welding

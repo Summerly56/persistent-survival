@@ -14,7 +14,7 @@
     - type: Physics
       bodyType: Dynamic
     - type: StaticPrice
-      price: 500
+      price: 200
     - type: AmbientSound
       range: 5
       volume: -5
@@ -168,7 +168,7 @@
       fuelMaterial: Plasma
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 3000
+      storageLimit: 5000
       materialWhiteList: [Plasma]
     - type: PortableGenerator
       startChance: 0.8
@@ -229,7 +229,7 @@
       fuelMaterial: Uranium
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 3000
+      storageLimit: 5000
       materialWhiteList: [Uranium]
     - type: PortableGenerator
     - type: PowerMonitoringDevice
@@ -398,7 +398,7 @@
       fuelMaterial: Coal
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 3000
+      storageLimit: 5000
       materialWhiteList: [Coal]
     - type: PortableGenerator
       startChance: 0.5
@@ -472,7 +472,7 @@
       fuelMaterial: Phoron
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 3000
+      storageLimit: 5000
       materialWhiteList: [Phoron]
     - type: PortableGenerator
       startChance: 0.95

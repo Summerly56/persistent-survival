@@ -72,6 +72,22 @@
             - tool: Welding
               doAfter: 10
 
+        - to: miningWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored
+          steps:
+            - tool: Screwing 
+              doAfter: 2
+            - material: Steel
+              amount: 4
+              doAfter: 1
+            - material: Plastic
+              amount: 2
+              doAfter: 1
+
         - to: silverWall
           completed:
             - !type:SnapToGrid
@@ -203,6 +219,21 @@
             - tool: Welding
               doAfter: 10
             - tool: Prying
+              doAfter: 10
+
+    - node: miningWall
+      entity: WallMining
+      edges:
+        - to: girder
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:GivePrototype
+              prototype: SheetPlastic1
+              amount: 2
+          steps:
+            - tool: Welding
               doAfter: 10
 
     - node: silverWall

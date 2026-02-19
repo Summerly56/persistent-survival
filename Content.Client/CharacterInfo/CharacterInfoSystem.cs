@@ -29,10 +29,15 @@ public sealed class CharacterInfoSystem : EntitySystem
         RaiseNetworkEvent(new RequestCharacterInfoEvent(GetNetEntity(entity.Value)));
     }
 
+    public void UpdateDetailExaminable(string content)
+    {
+        RaiseNetworkEvent(new UpdateDetailExaminableEvent(content));
+    }
+
     private void OnCharacterInfoEvent(CharacterInfoEvent msg, EntitySessionEventArgs args)
     {
         var entity = GetEntity(msg.NetEntity);
-        var data = new CharacterData(entity, msg.JobTitle, msg.Objectives, msg.Briefing, Name(entity));
+        var data = new CharacterData(entity, msg.JobTitle, msg.Faction, msg.BankBal, msg.Objectives, msg.Briefing, msg.DetailExaminable, Name(entity));
 
         OnCharacterUpdate?.Invoke(data);
     }
@@ -47,8 +52,11 @@ public sealed class CharacterInfoSystem : EntitySystem
     public readonly record struct CharacterData(
         EntityUid Entity,
         string Job,
+        string? Faction,
+        string BankBal,
         Dictionary<string, List<ObjectiveInfo>> Objectives,
         string? Briefing,
+        string? DetailExaminable,
         string EntityName
     );
 

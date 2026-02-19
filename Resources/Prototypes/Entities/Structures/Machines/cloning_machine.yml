@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: CloningPod
   parent: BaseMachinePowered
   name: cloning pod
@@ -65,7 +65,7 @@
           Idle: { state: pod_0 }
   - type: Climbable
   - type: StaticPrice
-    price: 1000
+    price: 200
   - type: ContainerContainer
     containers:
       machine_board: !type:Container

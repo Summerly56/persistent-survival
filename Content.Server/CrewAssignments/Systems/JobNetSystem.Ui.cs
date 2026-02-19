@@ -19,6 +19,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Shared.Implants.Components;
 
 namespace Content.Server.CrewAssignments.Systems;
 
@@ -41,7 +42,7 @@ public sealed partial class JobNetSystem
         SubscribeLocalEvent<JobNetComponent, JobNetRequestUpdateInterfaceMessage>(OnRequestUpdate);
     }
 
-    
+
 
 
     public void ToggleUi(EntityUid user, EntityUid jobnetEnt, JobNetComponent? component = null)
@@ -65,6 +66,54 @@ public sealed partial class JobNetSystem
             return;
 
         _ui.CloseUi(uid, JobNetUiKey.Key);
+    }
+
+    public (string? jobTitle, string? factionName) GetJobNetStrings(EntityUid? user)
+    {
+        if(!TryComp<ImplantedComponent>(user, out var implanted)) return (null, null);
+
+        EntityUid? jobNet = null;
+        JobNetComponent? component = null;
+
+        foreach (var implant in implanted.ImplantContainer.ContainedEntities)
+        {
+            if (TryComp<JobNetComponent>(implant, out var comp))
+            {
+                jobNet = implant;
+                component = comp;
+            }
+        }
+
+        if (component == null || jobNet == null)
+            return (null, null);
+
+        var stations = _station.GetStationsSet();
+        string? jobTitle = null;
+        string? factionName = null;
+        foreach (var station in stations)
+        {
+            if (!TryComp<CrewRecordsComponent>(station, out var crewRecord)
+                || (!crewRecord.TryGetRecord(Name(user.Value), out var record)
+                || record == null)
+                || !TryComp<StationDataComponent>(station, out var stationData)
+                || stationData.StationName == null
+                || (component.WorkingFor == null || component.WorkingFor == 0)
+                || !TryComp<CrewAssignmentsComponent>(station, out var crewAssignments))
+                continue;
+
+            if (stationData.UID == component.WorkingFor)
+            {
+                factionName = stationData.StationName;
+            }
+
+            if (crewAssignments.TryGetAssignment(record.AssignmentID, out var assignment) &&
+                assignment != null)
+            {
+                jobTitle = assignment.Name;
+            }
+        }
+
+        return (jobTitle, factionName);
     }
 
     public void UpdateUserInterface(EntityUid? user, EntityUid jobnet, JobNetComponent? component = null)

@@ -10,7 +10,16 @@
   - type: Sprite
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch.rsi
-    state: on
+    layers:
+    - state: off
+      map: [ "base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SignalSwitchVisuals.State:
+        base:
+          True: { state: on }
+          False: { state: off }
   - type: SignalSwitch
   - type: UseDelay
     delay: 0.5 # prevent light-toggling auto-clickers.

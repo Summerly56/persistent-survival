@@ -64,6 +64,19 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: MiningWall
+  graph: Girder
+  startNode: start
+  targetNode: miningWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: GirderDiagonal
   name: construction-recipe-diagonal-girder
   graph: GirderDiagonal
@@ -97,6 +110,20 @@
   graph: GirderDiagonal
   startNode: start
   targetNode: wallDiagonal
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DiagonalMiningWall
+  graph: GirderDiagonal
+  name: construction-recipe-diagonal-mining-wall
+  startNode: start
+  targetNode: miningWallDiagonal
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -408,11 +435,39 @@
   canRotate: false
 
 - type: construction
+  id: MiningWindow
+  graph: Window
+  startNode: start
+  targetNode: miningWindow
+  category: construction-category-structures
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
   id: ReinforcedWindowDiagonal
   name: construction-recipe-reinforced-window-diagonal
   graph: WindowDiagonal
   startNode: start
   targetNode: reinforcedWindowDiagonal
+  category: construction-category-structures
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  id: MiningWindowDiagonal
+  name: construction-recipe-mining-window-diagonal
+  graph: WindowDiagonal
+  startNode: start
+  targetNode: miningWindowDiagonal
   category: construction-category-structures
   canBuildInImpassable: true
   conditions:
@@ -1168,6 +1223,32 @@
 - type: construction
   id: AirlockExternalGlass
   graph: AirlockExternal
+  startNode: start
+  targetNode: glassAirlock
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: AirlockMining
+  graph: AirlockMining
+  name: construction-recipe-mining-airlock
+  startNode: start
+  targetNode: airlock
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: AirlockMiningGlass
+  graph: AirlockMining
+  name: construction-recipe-glass-mining-airlock
   startNode: start
   targetNode: glassAirlock
   category: construction-category-structures

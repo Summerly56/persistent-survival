@@ -95,7 +95,7 @@
       types:
         Blunt: 5
   - type: StaticPrice
-    price: 30
+    price: 10
   - type: DnaSubstanceTrace
 
 - type: entity
@@ -161,7 +161,7 @@
     damageContainer: Inorganic
     damageModifierSet: Glass
   - type: StaticPrice
-    price: 30
+    price: 10
   - type: DnaSubstanceTrace
 
 - type: entity
