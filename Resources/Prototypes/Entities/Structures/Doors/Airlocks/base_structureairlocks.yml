@@ -122,6 +122,7 @@
       - Toggle
       - AutoClose
       - DoorBolt
+      - DirectDrive
   - type: DeviceLinkSource
     ports:
       - DoorStatus

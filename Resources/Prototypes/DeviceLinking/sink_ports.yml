@@ -44,6 +44,11 @@
   description: signal-port-description-doorbolt
 
 - type: sinkPort
+  id: DirectDrive
+  name: signal-port-name-direct-drive
+  description: signal-port-description-direct-drive
+
+- type: sinkPort
   id: Trigger
   name: signal-port-name-trigger-receiver
   description: signal-port-description-trigger-receiver

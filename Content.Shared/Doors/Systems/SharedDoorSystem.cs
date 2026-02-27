@@ -179,7 +179,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
                 door.NextStateChange = GameTiming.CurTime + door.EmagDuration;
                 break;
 
-            case DoorState.Open:
+            case DoorState.Open or DoorState.boltingOpen:
                 door.Partial = false;
                 if (door.NextStateChange == null)
                     _activeDoors.Remove((uid, door));
@@ -321,6 +321,27 @@ public abstract partial class SharedDoorSystem : EntitySystem
         return true;
     }
 
+    public bool DirectDriveOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false, bool quiet = false)
+    {
+        if (!Resolve(uid, ref door))
+            return false;
+
+        if (TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
+        {
+            SetBoltsDown((uid, doorBoltComponent), false, null, true);
+        }
+
+        if (!CanOpen(uid, door, user, quiet))
+            return false;
+
+        if (!SetState(uid, DoorState.boltingOpen, door))
+            return false;
+
+        StartOpening(uid, door, user, predicted);
+
+        return true;
+    }
+
     public bool CanOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool quiet = true)
     {
         if (!Resolve(uid, ref door))
@@ -367,7 +388,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         else if (_net.IsServer)
             Audio.PlayPvs(door.OpenSound, uid, AudioParams.Default.WithVolume(-5));
 
-        if (lastState == DoorState.Emagging && TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
+        if ((lastState == DoorState.Emagging || lastState == DoorState.boltingOpen) && TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
             SetBoltsDown((uid, doorBoltComponent), true, user, true);
     }
 
@@ -412,6 +433,26 @@ public abstract partial class SharedDoorSystem : EntitySystem
     {
         if (!Resolve(uid, ref door))
             return false;
+
+        if (!CanClose(uid, door, user))
+            return false;
+
+        StartClosing(uid, door, user, predicted);
+        return true;
+    }
+
+    public bool DirectDriveClose(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false)
+    {
+        if (!Resolve(uid, ref door))
+            return false;
+
+        if (TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
+        {
+            SetBoltsDown((uid, doorBoltComponent), false, null, true);
+        }
+
+        door.BoltingOnShut = true;
+        Dirty(uid, door);
 
         if (!CanClose(uid, door, user))
             return false;
@@ -483,6 +524,11 @@ public abstract partial class SharedDoorSystem : EntitySystem
         door.Partial = true;
         SetCollidable(uid, true, door, physics);
         door.NextStateChange = GameTiming.CurTime + door.CloseTimeTwo;
+        if (door.BoltingOnShut && TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
+        {
+            door.BoltingOnShut = false;
+            SetBoltsDown((uid, doorBoltComponent), true, null, true);
+        }
         Dirty(uid, door);
         _activeDoors.Add((uid, door));
 

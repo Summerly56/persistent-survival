@@ -25,6 +25,9 @@ signal-port-description-close = Closes a device.
 signal-port-name-doorbolt = Door bolt
 signal-port-description-doorbolt = Bolts door when HIGH.
 
+signal-port-name-direct-drive = Direct drive
+signal-port-description-direct-drive = Switches the door to be directly driven by signals, and remains bolted otherwise. HIGH opens the door, LOW closes it.
+
 signal-port-name-trigger-receiver = Trigger
 signal-port-description-trigger-receiver = Triggers some mechanism on the device.
 
