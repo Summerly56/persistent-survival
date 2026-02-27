@@ -145,7 +145,7 @@
       params:
         volume: 2.25
   - type: StaticPrice
-    price: 1500 # Botany can shit these out like candy, but let's see how it goes
+    price: 3 # Persistence, was 1500
 
 - type: entity
   parent: WeaponRevolverPython

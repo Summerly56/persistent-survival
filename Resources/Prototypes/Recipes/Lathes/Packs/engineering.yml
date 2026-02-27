@@ -74,6 +74,8 @@
 - type: latheRecipePack
   id: AdvancedTools
   recipes:
+  - RCD
+  - HCD
   - PowerDrill
   - WelderExperimental
   - JawsOfLife

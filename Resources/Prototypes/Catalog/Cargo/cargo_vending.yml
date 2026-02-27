@@ -265,3 +265,287 @@
   cost: 1200
   category: cargoproduct-category-name-service
   group: market
+
+## PERSISTENCE - The vendors themselves
+
+## Arbitrarily increased cost by 300 more than the restocks because you're paying for the vendor itself too
+
+- type: cargoProduct
+  id: VendingMachineBooze
+  icon:
+    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    state: off #make a new folder with icons if you ever do bother to update these sprites
+  product: VendingMachineBooze
+  cost: 3800
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineChefvend
+  icon:
+    sprite: Structures/Machines/VendingMachines/chefvend.rsi
+    state: off
+  product: VendingMachineChefvend
+  cost: 980
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineClothing
+  icon:
+    sprite: Structures/Machines/VendingMachines/clothing.rsi
+    state: off
+  product: VendingMachineClothing
+  cost: 2800
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineTheater
+  icon:
+    sprite: Structures/Machines/VendingMachines/theater.rsi
+    state: off
+  product: VendingMachineTheater
+  cost: 2800
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineDinnerware
+  icon:
+    sprite: Structures/Machines/VendingMachines/dinnerware.rsi
+    state: off
+  product: VendingMachineDinnerware
+  cost: 2300
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineCondiments
+  icon:
+    sprite: Structures/Machines/VendingMachines/condiments.rsi
+    state: off
+  product: VendingMachineCondiments
+  cost: 600
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineEngivend
+  icon:
+    sprite: Structures/Machines/VendingMachines/engivend.rsi
+    state: off
+  product: VendingMachineEngivend
+  cost: 3500
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineGames
+  icon:
+    sprite: Structures/Machines/VendingMachines/games.rsi
+    state: off
+  product: VendingMachineGames
+  cost: 1050
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineCoffee
+  icon:
+    sprite: Structures/Machines/VendingMachines/coffee.rsi
+    state: off
+  product: VendingMachineCoffee
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineMedical
+  icon:
+    sprite: Structures/Machines/VendingMachines/medical.rsi
+    state: off
+  product: VendingMachineMedical
+  cost: 2050
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineChemicals
+  icon:
+    sprite: Structures/Machines/VendingMachines/chemvend.rsi
+    state: off
+  product: VendingMachineChemicals
+  cost: 4120
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineNutri
+  icon:
+    sprite: Structures/Machines/VendingMachines/nutri.rsi
+    state: off
+  product: VendingMachineNutri
+  cost: 2400
+  category: cargoproduct-category-name-hydroponics
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineCart
+  icon:
+    sprite: Structures/Machines/VendingMachines/cart.rsi
+    state: off
+  product: VendingMachineCart
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineCola
+  icon:
+    sprite: Structures/Machines/VendingMachines/cola.rsi
+    state: off
+  product: VendingMachineCola
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSalvage
+  icon:
+    sprite: Structures/Machines/VendingMachines/mining.rsi
+    state: off
+  product: VendingMachineSalvage
+  cost: 1800
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSec
+  icon:
+    sprite: Structures/Machines/VendingMachines/sec.rsi
+    state: off
+  product: VendingMachineSec
+  cost: 2500
+  category: cargoproduct-category-name-security
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSeedsUnlocked
+  icon:
+    sprite: Structures/Machines/VendingMachines/seeds.rsi
+    state: off
+  product: VendingMachineSeedsUnlocked
+  cost: 3900
+  category: cargoproduct-category-name-hydroponics
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineCigs
+  icon:
+    sprite: Structures/Machines/VendingMachines/cigs.rsi
+    state: off
+  product: VendingMachineCigs
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineVendomat
+  icon:
+    sprite: Structures/Machines/VendingMachines/vendomat.rsi
+    state: off
+  product: VendingMachineVendomat
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineRobotics
+  icon:
+    sprite: Structures/Machines/VendingMachines/robotics.rsi
+    state: off
+  product: VendingMachineRobotics
+  cost: 1900
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineTankDispenserEVA
+  icon:
+    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi
+    state: dispenser
+  product: VendingMachineTankDispenserEVA
+  cost: 1300
+  category: cargoproduct-category-name-atmospherics
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineHappyHonk
+  icon:
+    sprite: Structures/Machines/VendingMachines/happyhonk.rsi
+    state: off
+  product: VendingMachineHappyHonk
+  cost: 2400
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSnack
+  icon:
+    sprite: Structures/Machines/VendingMachines/snack.rsi
+    state: off
+  product: VendingMachineSnack
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineChang
+  icon:
+    sprite: Structures/Machines/VendingMachines/changs.rsi
+    state: off
+  product: VendingMachineChang
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineDiscount
+  icon:
+    sprite: Structures/Machines/VendingMachines/discount.rsi
+    state: off
+  product: VendingMachineDiscount
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineDonut
+  icon:
+    sprite: Structures/Machines/VendingMachines/donut.rsi
+    state: off
+  product: VendingMachineDonut
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSovietSoda
+  icon:
+    sprite: Structures/Machines/VendingMachines/sovietsoda.rsi
+    state: off
+  product: VendingMachineSovietSoda
+  cost: 1500
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: VendingMachineSustenance
+  icon:
+    sprite: Structures/Machines/VendingMachines/sustenance.rsi
+    state: off
+  product: VendingMachineSustenance
+  cost: 980
+  category: cargoproduct-category-name-service
+  group: market

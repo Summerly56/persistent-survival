@@ -54,7 +54,7 @@
   - type: GuideHelp
     guides:
     - Security
-    - Antagonists
+    #- Antagonists, Persistence Station
   - type: Tag
     tags:
     - HandGrenade

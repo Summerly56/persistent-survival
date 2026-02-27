@@ -99,6 +99,16 @@ public sealed partial class MapScreen : BoxContainer
         {
             MapRadar.ShowBeacons = args.Pressed;
         };
+
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-none"), (int) IFFSortMode.None);
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-station"), (int) IFFSortMode.Station);
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-ship"), (int) IFFSortMode.Ship);
+        SortModeButton.OnItemSelected += args =>
+        {
+            SortModeButton.SelectId(args.Id);
+            MapRadar.SortMode = (IFFSortMode) args.Id;
+        };
+        SortModeButton.SelectId((int) IFFSortMode.None);
     }
 
     public void UpdateState(ShuttleMapInterfaceState state)

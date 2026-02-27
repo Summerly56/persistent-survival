@@ -8,6 +8,7 @@ using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.CrewMetaRecords;
 using Content.Shared.Database;
@@ -48,7 +49,7 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IEntityManager _ent = default!;
         [Dependency] private readonly BankSystem _bankSystem = default!;
         [Dependency] private readonly CrewMetaRecordsSystem _crewMetaRecords = default!;
-
+        [Dependency] private readonly StationSystem _stationSystem = default!;
         public static readonly EntProtoId ObserverPrototypeName = "MobObserver";
         public static readonly EntProtoId AdminObserverPrototypeName = "AdminObserver";
 
@@ -178,13 +179,9 @@ namespace Content.Server.GameTicking
             var silent = true;
             var lateJoin = true;
             HumanoidCharacterProfile? character = GetPlayerProfile(player);
-            EntityUid station;
-            var stations = GetSpawnableStations();
-            _robustRandom.Shuffle(stations);
-            if (stations.Count == 0)
-                station = EntityUid.Invalid;
-            else
-                station = stations[0];
+            EntityUid? station;
+            station = _stationSystem.GetStationByID(1);
+            if (station == null) return;
             string speciesId;
 
             PlayerJoinGame(player);
@@ -203,7 +200,7 @@ namespace Content.Server.GameTicking
             _bankSystem.EnsureAccount(character.Name, 50);
             if (_crewMetaRecords.MetaRecords != null)
                 _crewMetaRecords.MetaRecords.CreateRecord(character!.Name, out _);
-            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character);
+            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station.Value, jobId, character);
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
             
@@ -215,12 +212,12 @@ namespace Content.Server.GameTicking
             var jobName = _jobs.MindTryGetJobName(newMind);
             _admin.UpdatePlayerList(player);
 
-            _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
+            _stationJobs.TryAssignJob(station.Value, jobPrototype, player.UserId);
 
 
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Medium,
-                $"Player {player.Name} late joined as {character.Name:characterName} on station {Name(station):stationName} with {ToPrettyString(mob):entity} as a {jobName:jobName}.");
+                $"Player {player.Name} late joined as {character.Name:characterName} on station {Name(station.Value):stationName} with {ToPrettyString(mob):entity} as a {jobName:jobName}.");
 
 
             if (!silent && TryComp(station, out MetaDataComponent? metaData))
@@ -240,7 +237,7 @@ namespace Content.Server.GameTicking
                 lateJoin,
                 silent,
                 PlayersJoinedRoundNormally,
-                station,
+                station.Value,
                 character);
             RaiseLocalEvent(mob, aev, true);
             var saveFilePath = new ResPath($"{data!.UserId}]{character.Name}");
@@ -249,6 +246,11 @@ namespace Content.Server.GameTicking
                 EntityUid mobSure = (EntityUid)mobMaybe;
                 _loader.TrySaveGeneric(mobSure, saveFilePath, out var category);
             }
+            _chatSystem.DispatchStationAnnouncement(station.Value,
+            $"{MetaData(mob).EntityName} has arrived into the Threshold.",
+            "Arrival",
+            playDefaultSound: false,
+            colorOverride: Color.Gold);
         }
 
         private void SpawnPlayerPersistentLoad(ICommonSession player)

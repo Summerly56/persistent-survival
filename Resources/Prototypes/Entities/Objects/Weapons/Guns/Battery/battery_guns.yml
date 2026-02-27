@@ -561,7 +561,7 @@
   - type: GuideHelp
     guides:
     - Security
-    - Antagonists
+    #- Antagonists Persistence Station
   - type: PacifismAllowedGun
 
 - type: entity

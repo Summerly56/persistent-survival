@@ -527,7 +527,7 @@
     guides:
     - Cyborgs
     - Robotics
-    - Xenoborgs
+    #- Xenoborgs, Persistence Station
   - type: Access
     tags:
     - Xenoborg

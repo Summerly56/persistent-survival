@@ -222,6 +222,10 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 {
                     component.PrivRecord = TryEnsureRecord(uid, privIdComponent.FullName);
                 }
+                else
+                {
+                    component.PrivRecord = null;
+                }
                 
             }
             if (component.PrivRecord != null)
@@ -232,6 +236,10 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             {
                 if (privIdComponent != null && privIdComponent.FullName != null && sD.Owners.Contains(privIdComponent.FullName)) owner = true;
             }
+        }
+        else
+        {
+            component.PrivRecord = null;
         }
         if (component.SelectedRecord == null)
         {

@@ -274,7 +274,7 @@
   - type: GuideHelp
     guides:
     - Security
-    - Antagonists
+    #- Antagonists, Persistence Station
 
 - type: entity
   id: BookHowToKeepStationClean

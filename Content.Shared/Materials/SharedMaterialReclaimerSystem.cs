@@ -74,6 +74,8 @@ public abstract class SharedMaterialReclaimerSystem : EntitySystem
     {
         if (args.OurFixtureId != component.FixtureId)
             return;
+        if (TerminatingOrDeleted(args.OtherEntity) || EntityManager.IsQueuedForDeletion(args.OtherEntity))
+            return;
         if (!TryComp<MaterialReclaimerComponent>(uid, out var reclaimer))
             return;
         TryStartProcessItem(uid, args.OtherEntity, reclaimer);

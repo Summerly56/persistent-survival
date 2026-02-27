@@ -11,4 +11,16 @@ public sealed partial class IFFConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("allowedFlags")]
     public IFFFlags AllowedFlags = IFFFlags.HideLabel;
+
+    /// <summary>
+    /// Whether this console can edit the grid IFF signature color.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("allowColorChange")]
+    public bool AllowColorChange = true;
+
+    /// <summary>
+    /// Whether this console can edit the grid IFF designation.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("allowDesignationChange")]
+    public bool AllowDesignationChange = true;
 }

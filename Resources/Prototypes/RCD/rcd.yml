@@ -273,3 +273,85 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
+
+# Holo Walls
+
+- type: rcd
+  id: HoloWallBlue
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/solid_wall.png
+  mode: ConstructObject
+  prototype: HoloWallBlue
+  collisionMask: FullTileMask
+  cost: 0
+  delay: 1
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: HoloWallRed
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/solid_wall.png
+  mode: ConstructObject
+  prototype: HoloWallRed
+  collisionMask: FullTileMask
+  cost: 0
+  delay: 1
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: HoloGrille
+  category: WindowsAndGrilles
+  sprite: /Textures/Interface/Radial/RCD/grille.png
+  mode: ConstructObject
+  prototype: HoloGrille
+  cost: 0
+  delay: 1
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+# Holo Windows
+- type: rcd
+  id: HoloWindow
+  category: WindowsAndGrilles
+  sprite: /Textures/Interface/Radial/RCD/window.png
+  mode: ConstructObject
+  prototype: HoloWindow
+  cost: 0
+  delay: 1
+  collisionMask: Impassable
+  rules:
+    - IsWindow
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: HoloWindowDirectional
+  category: WindowsAndGrilles
+  sprite: /Textures/Interface/Radial/RCD/directional.png
+  mode: ConstructObject
+  prototype: HoloWindowDirectional
+  cost: 0
+  delay: 1
+  collisionMask: Impassable
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rules:
+    - IsWindow
+  rotation: User
+  fx: EffectRCDConstruct1
+
+# Holo airlock
+
+- type: rcd
+  id: HoloAirlock
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/airlock.png
+  mode: ConstructObject
+  prototype: HoloAirlock
+  collisionMask: FullTileMask
+  cost: 0
+  delay: 1
+  rotation: Fixed
+  fx: EffectRCDConstruct2

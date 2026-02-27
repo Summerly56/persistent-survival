@@ -106,6 +106,35 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             return false;
         if (TryComp<ApcPowerReceiverComponent>(receiver, out var power) && !power.Powered)
             return false;
+        
+        if (TryComp<StackComponent>(toInsert, out var stackComponent)
+            && storage.StorageLimit != null
+            && composition.MaterialComposition.Count > 0)
+        {
+            var unitVolume = 0;
+            foreach (var (_, volume) in composition.MaterialComposition)
+            {
+                unitVolume += volume;
+            }
+
+            if (unitVolume > 0)
+            {
+                var currentTotal = GetTotalMaterialAmount(receiver, storage, localOnly: true);
+                var available = storage.StorageLimit.Value - currentTotal;
+                var maxInsertCount = Math.Min(stackComponent.Count, available / unitVolume);
+
+                if (maxInsertCount <= 0)
+                    return false;
+
+                if (maxInsertCount < stackComponent.Count)
+                {
+                    var split = _stackSystem.Split((toInsert, stackComponent), maxInsertCount, Transform(receiver).Coordinates);
+                    if (split is { } splitEntity)
+                        toInsert = splitEntity;
+                }
+            }
+        }
+
         if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, material, composition))
             return false;
         _audio.PlayPvs(storage.InsertingSound, receiver);

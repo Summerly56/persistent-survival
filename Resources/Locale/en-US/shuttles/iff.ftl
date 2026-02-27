@@ -1,5 +1,16 @@
 iff-console-window-title = IFF console
 iff-console-show-iff-label = Show IFF
 iff-console-show-vessel-label = Show vessel
+iff-console-designation-label = Designation
+iff-console-designation-ship = Ship
+iff-console-designation-station = Station
+iff-console-signature-color-label = IFF color
+iff-console-signature-color-placeholder = RRGGBB
+iff-console-signature-color-apply = Apply
+iff-console-status-iff-label = IFF label status
+iff-console-status-vessel-label = Vessel visibility status
+iff-console-status-signature-color-label = Current signature color
+iff-console-status-value-visible = Visible
+iff-console-status-value-hidden = Hidden
 iff-console-on = On
 iff-console-off = Off

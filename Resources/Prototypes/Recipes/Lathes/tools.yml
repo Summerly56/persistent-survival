@@ -166,6 +166,15 @@
     Plastic: 250
 
 - type: latheRecipe
+  parent: BaseToolRecipe
+  id: HCD
+  result: HCD
+  completetime: 4
+  materials:
+    Steel: 600
+    Plastic: 200
+
+- type: latheRecipe
   parent: BaseBigToolRecipe
   id: HandHeldMassScanner
   result: HandHeldMassScannerEmpty

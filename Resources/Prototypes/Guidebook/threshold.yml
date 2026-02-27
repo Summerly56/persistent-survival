@@ -1,23 +1,4 @@
 - type: guideEntry
-  id: Factions
-  name: Factions
-  text: "/ServerInfo/Guidebook/Persistence/Factions.xml"
-  children:
-  - FactionCreation
-  - FactionModification
-
-- type: guideEntry
-  id: FactionCreation
-  name: Faction Creation
-  text: "/ServerInfo/Guidebook/Persistence/FactionCreation.xml"
-
-- type: guideEntry
-  id: FactionModification
-  name: Faction Modification
-  text: "/ServerInfo/Guidebook/Persistence/FactionModification.xml"
-
-
-- type: guideEntry
   id: Threshold
   name: The Threshold
   text: "/ServerInfo/Guidebook/Persistence/Threshold.xml"
@@ -30,6 +11,7 @@
   - Achievements
   - GridControl
   - AccessControl
+  - Factions
 
 - type: guideEntry
   id: MakingMoney
@@ -70,3 +52,21 @@
   id: AccessControl
   name: Access Control
   text: "/ServerInfo/Guidebook/Persistence/AccessControl.xml"
+
+- type: guideEntry
+  id: Factions
+  name: Factions
+  text: "/ServerInfo/Guidebook/Persistence/Factions.xml"
+  children:
+  - FactionCreation
+  - FactionModification
+
+- type: guideEntry
+  id: FactionCreation
+  name: Faction Creation
+  text: "/ServerInfo/Guidebook/Persistence/FactionCreation.xml"
+
+- type: guideEntry
+  id: FactionModification
+  name: Faction Modification
+  text: "/ServerInfo/Guidebook/Persistence/FactionModification.xml"

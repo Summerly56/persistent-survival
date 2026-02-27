@@ -10,6 +10,7 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
+using Content.Shared.PowerCell;
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
 using Robust.Shared.Audio.Systems;
@@ -33,6 +34,7 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly FloorTileSystem _floors = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
@@ -291,7 +293,18 @@ public sealed class RCDSystem : EntitySystem
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
-        _sharedCharges.AddCharges(uid, -args.Cost);
+        if (args.Cost > 0)
+        {
+            _sharedCharges.AddCharges(uid, -args.Cost);
+        }
+        else if (args.Cost == 0)
+        {
+            if (!_powerCell.TryUseCharge(uid, component.ChargeUse))
+            {
+                return;
+            }
+        }
+
     }
 
     private void OnRCDconstructionGhostRotationEvent(RCDConstructionGhostRotationEvent ev, EntitySessionEventArgs session)
@@ -321,24 +334,39 @@ public sealed class RCDSystem : EntitySystem
     {
         var prototype = _protoManager.Index(component.ProtoId);
 
-        // Check that the RCD has enough ammo to get the job done
-        var charges = _sharedCharges.GetCurrentCharges(uid);
-
         // Both of these were messages were suppose to be predicted, but HasInsufficientCharges wasn't being checked on the client for some reason?
-        if (charges == 0)
+        if (prototype.Cost > 0)
         {
-            if (popMsgs)
-                _popup.PopupClient(Loc.GetString("rcd-component-no-ammo-message"), uid, user);
 
-            return false;
-        }
+            // Check that the RCD has enough ammo to get the job done
+            var charges = _sharedCharges.GetCurrentCharges(uid);
 
-        if (prototype.Cost > charges)
+            if (charges == 0)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-no-ammo-message"), uid, user);
+
+                return false;
+            }
+
+            if (prototype.Cost > charges)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-insufficient-ammo-message"), uid, user);
+
+                return false;
+            }}
+        if (prototype.Cost == 0)
         {
-            if (popMsgs)
-                _popup.PopupClient(Loc.GetString("rcd-component-insufficient-ammo-message"), uid, user);
+            // Check that the HCD has enough energy in the cell to get the job done
+            var charges = _powerCell.GetRemainingUses(uid, component.ChargeUse);
+            if (!_powerCell.HasCharge(uid, component.ChargeUse))
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-insufficient-ammo-message"), uid, user);
 
-            return false;
+                return false;
+            }
         }
 
         // Exit if the target / target location is obstructed

@@ -183,9 +183,9 @@
   - type: ActionGun
     action: ActionDragonsBreath
     gunProto: DragonsBreathGun
-  - type: GuideHelp
-    guides:
-    - MinorAntagonists
+#  - type: GuideHelp Persistence Station start
+#    guides:
+#    - MinorAntagonists Persistence Station end
 
 - type: entity
   categories: [ HideSpawnMenu ]

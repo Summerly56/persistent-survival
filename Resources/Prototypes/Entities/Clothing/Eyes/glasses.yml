@@ -189,7 +189,7 @@
   - type: GuideHelp
     guides:
     - Security
-    - Antagonists
+    #- Antagonists, Persistence Station
   - type: IdentityBlocker
     coverage: EYES
 

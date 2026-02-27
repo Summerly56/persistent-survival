@@ -32,6 +32,9 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 
     public bool ShowBeacons = true;
     public MapId ViewingMap = MapId.Nullspace;
+    public IFFSortMode SortMode { get; set; } = IFFSortMode.None;
+
+    private const float SortFadeMultiplier = 0.1f;
 
     private EntityUid? _shuttleEntity;
 
@@ -67,7 +70,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
     private readonly List<IMapObject> _mapObjects = new();
     private readonly Dictionary<Color, List<Vector2>> _verts = new();
     private readonly Dictionary<Color, List<Vector2>> _edges = new();
-    private readonly Dictionary<Color, List<(Vector2, string)>> _strings = new();
+    private readonly Dictionary<Color, List<(Vector2 Position, string Text, float Scale)>> _strings = new();
     private readonly List<ShuttleExclusionObject> _viewportExclusions = new();
 
     public ShuttleMapControl() : base(256f, 512f, 512f)
@@ -332,7 +335,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
                 _beacons.Add(mapO);
 
                 var existingStrings = _strings.GetOrNew(beaconColor);
-                existingStrings.Add((beaconUiPos, beaconName));
+                existingStrings.Add((beaconUiPos, beaconName, 1f));
             }
         }
 
@@ -353,6 +356,9 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
             }
 
             var gridColor = _shuttles.GetIFFColor(grid, self: _shuttleEntity == grid.Owner, component: iffComp);
+
+            if (ShouldFade(iffComp))
+                gridColor = gridColor.WithAlpha(gridColor.A * SortFadeMultiplier);
 
             var existingVerts = _verts.GetOrNew(gridColor);
             var existingEdges = _edges.GetOrNew(gridColor);
@@ -378,8 +384,10 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
             if (string.IsNullOrEmpty(iffText))
                 continue;
 
+            var designation = iffComp?.Designation ?? IFFDesignation.Ship;
+            var labelScale = designation == IFFDesignation.Station ? 1.3f : 1f;
             var existingStrings = _strings.GetOrNew(gridColor);
-            existingStrings.Add((gridUiPos, iffText));
+            existingStrings.Add((gridUiPos, iffText, labelScale));
         }
 
         // Batch the colors whoopie
@@ -398,10 +406,10 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
         {
             var adjustedColor = Color.FromSrgb(color);
 
-            foreach (var (gridUiPos, iffText) in sendStrings)
+            foreach (var (gridUiPos, iffText, labelScale) in sendStrings)
             {
-                var textWidth = handle.GetDimensions(_font, iffText, 1f);
-                handle.DrawString(_font, gridUiPos + textWidth with { X = -textWidth.X / 2f, Y = textWidth.Y * UIScale }, iffText, adjustedColor);
+                var textWidth = handle.GetDimensions(_font, iffText, labelScale);
+                handle.DrawString(_font, gridUiPos + textWidth with { X = -textWidth.X / 2f, Y = textWidth.Y * UIScale }, iffText, labelScale, adjustedColor);
             }
         }
 
@@ -481,6 +489,11 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
         mapOffset = InverseMapPosition(mapOffset);
         var coordsText = $"{mapOffset.X:0.0}, {mapOffset.Y:0.0}";
         DrawData(handle, coordsText);
+    }
+
+    private bool ShouldFade(IFFComponent? iff)
+    {
+        return !_shuttles.MatchesSortTag(iff, SortMode);
     }
 
     private void AddMapObject(List<Vector2> edges, List<Vector2> verts, ValueList<Vector2> mapObject)

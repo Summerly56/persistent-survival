@@ -28,6 +28,10 @@
                                  TextAlign="Center"
                                  ToggleMode="True"
                                  Pressed="True"/>
+                <controls:BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <controls:Label Text="{controls:Loc 'shuttle-console-sort-label'}" HorizontalExpand="True"/>
+                    <controls:OptionButton HorizontalAlignment="Right" Name="SortModeButton" MinWidth="120"/>
+                </controls:BoxContainer>
                 <controls:Button Name="MapRebuildButton"
                         Text="{controls:Loc 'shuttle-console-map-rebuild'}"
                         TextAlign="Center"/>

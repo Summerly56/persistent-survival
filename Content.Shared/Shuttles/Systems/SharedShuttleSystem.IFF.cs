@@ -50,6 +50,7 @@ public abstract partial class SharedShuttleSystem
     public void SetIFFColor(EntityUid gridUid, Color color, IFFComponent? component = null)
     {
         component ??= EnsureComp<IFFComponent>(gridUid);
+        color = IFFComponent.NormalizeSignatureColor(color);
 
         if (component.Color.Equals(color))
             return;
@@ -84,5 +85,20 @@ public abstract partial class SharedShuttleSystem
         component.Flags &= ~flags;
         Dirty(gridUid, component);
         UpdateIFFInterfaces(gridUid, component);
+    }
+
+    public bool MatchesSortTag(IFFComponent? component, IFFSortMode sortMode)
+    {
+        if (sortMode == IFFSortMode.None)
+            return true;
+
+        if (component == null)
+            return sortMode == IFFSortMode.Ship;
+
+        var tag = sortMode == IFFSortMode.Station
+            ? IFFComponent.SortTagStation
+            : IFFComponent.SortTagShip;
+
+        return component.HasSortTag(tag);
     }
 }
