@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "by Mango_Joule (discord)",
+  "size": {
+    "x": 40,
+    "y": 40
+  },
+  "states": [
+    {
+      "name": "straight_court",
+      "directions": 4
+    },
+    {
+      "name": "end_court",
+      "directions": 4
+    },
+    {
+      "name": "corner_court",
+      "directions": 4
+    },
+    {
+      "name": "door_closed_court",
+      "directions": 4
+    },
+    {
+      "name": "door_opened_court",
+      "directions": 4
+    },
+    {
+      "name": "tjunction_court",
+      "directions": 4
+    }
+  ]
+}

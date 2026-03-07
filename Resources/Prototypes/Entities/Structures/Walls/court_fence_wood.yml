@@ -1,0 +1,274 @@
+
+- type: entity
+  parent: BaseStructure
+  id: BaseCourtFenceWood
+  name: Court wooden fence
+  description: A law enforcement officer would probably say that this is not a real fence, but it looks like one and that's good enough for you. It can be used to fence off a small area, but don't expect it to hold back anything more than a determined toddler.
+  abstract: true
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Weapons/boxingpunch1.ogg"
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Sprite
+    sprite: Structures/Walls/court_wooden_fence.rsi
+    drawdepth: 15
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
+  - type: RCDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Climbable
+    delay: 5.0
+  - type: Appearance
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: BaseCourtFenceWoods
+  name: wooden fence
+  description: Wooden piece of small fence. The best protection for the fencing of a private territory!
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 0
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Climbable
+    delay: 2.5
+  - type: RequireProjectileTarget
+
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: CourtFenceWoodStraight
+  suffix: Straight
+  components:
+  - type: Icon
+    sprite: Structures/Walls/court_wooden_fence.rsi
+    state: straight_court
+  - type: Sprite
+    layers:
+    - state: straight_court
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-.45,0.15,0.45"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Construction
+    graph: CourtFenceWood
+    node: straight_court
+
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: CourtFenceWoodEnd
+  suffix: End
+  components:
+  - type: Icon
+    sprite: Structures/Walls/court_wooden_fence.rsi
+    state: end_court
+  - type: Sprite
+    layers:
+    - state: end_court
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.5,0.15,0.0"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Construction
+    graph: CourtFenceWood
+    node: end_court
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: CourtFenceWoodCorner
+  suffix: Corner
+  components:
+  - type: Icon
+    sprite: Structures/Walls/court_wooden_fence.rsi
+    state: corner_court
+  - type: Sprite
+    layers:
+    - state: corner_court
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.1,0.15,0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.15,-0.1,0.15"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Construction
+    graph: CourtFenceWood
+    node: corner_court
+
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: CourtFenceWoodTJunction
+  suffix: T-Junction
+  components:
+  - type: Icon
+    sprite: Structures/Walls/court_wooden_fence.rsi
+    state: tjunction_court
+  - type: Sprite
+    layers:
+    - state: tjunction_court
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.5,0.15,0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.15,-0.1,0.15"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Construction
+    graph: CourtFenceWood
+    node: tjunction_court
+
+- type: entity
+  parent: BaseCourtFenceWood
+  id: CourtFenceWoodGate
+  name: wooden fence gate
+  description: Looking at this gate, a familiar image pops up in your head. Where's my piggy?
+  components:
+  - type: Sprite
+    layers:
+    - state: door_closed_court
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.15,0.5,0.15"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: InteractionOutline
+  - type: Door
+    openSpriteState: door_opened_court
+    closedSpriteState: door_closed_court
+    canPry: false
+    occludes: false
+    changeAirtight: false
+    bumpOpen: false
+    clickOpen: true
+    canCrush: false
+    closeTimeOne: 0
+    closeTimeTwo: 0
+    openTimeOne: 0
+    openTimeTwo: 0
+    openingAnimationTime: 0
+    closingAnimationTime: 0
+    openSound:
+      path: /Audio/Effects/door_open.ogg
+    closeSound:
+      path: /Audio/Effects/door_close.ogg
+  - type: Construction
+    graph: CourtFenceWood
+    node: gate_court
