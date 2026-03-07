@@ -121,41 +121,6 @@
       - OreBananium
 
 - type: cargoBounty
-  id: BountyGoliathPlates
-  reward: 12500
-  description: bounty-description-plates
-  group: HunterBounty
-  sprite:
-    sprite: Mobs/Aliens/Asteroid/goliath.rsi
-    state: goliath
-  entries:
-  - name: bounty-item-plates
-    amount: 4
-    whitelist:
-      tags:
-      - GoliathPlate
-  - name: bounty-item-goliathmeat
-    amount: 6
-    whitelist:
-      tags:
-      - GoliathMeat
-
-- type: cargoBounty
-  id: BountyHivelordRemains
-  reward: 17500
-  description: bounty-description-remains
-  group: HunterBounty
-  sprite:
-    sprite: Mobs/Aliens/Asteroid/hivelord.rsi
-    state: hivelord
-  entries:
-  - name: bounty-item-remains
-    amount: 3
-    whitelist:
-      tags:
-      - HivelordRemains
-
-- type: cargoBounty
   id: BountyBear
   reward: 7500
   description: bounty-description-bear
@@ -174,7 +139,7 @@
 
 - type: cargoBounty
   id: BountySpider
-  reward: 7500
+  reward: 8000
   description: bounty-description-spider
   entries:
     - name: bounty-item-spidermeat
@@ -182,6 +147,11 @@
       whitelist:
         tags:
         - SpiderMeat
+    - name: bounty-item-egg-spider
+      amount: 1
+      whitelist:
+        tags:
+        - EggSpider
   group: HunterBounty
 
 - type: cargoBounty

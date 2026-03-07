@@ -92,6 +92,15 @@ public partial class SharedBodySystem
     {
         // Setup the initial container.
         ent.Comp.RootContainer = Containers.EnsureContainer<ContainerSlot>(ent, BodyRootContainerId);
+        if (ent.Comp.Prototype is null)
+            return;
+
+        var prototype = Prototypes.Index(ent.Comp.Prototype.Value);
+        if (ent.Comp.RootContainer.ContainedEntity == null) return;
+        var rootPart = Comp<BodyPartComponent>(ent.Comp.RootContainer.ContainedEntity.Value);
+        var protoRoot = prototype.Slots[prototype.Root];
+        // Setup the rest of the body entities.
+        SetupOrgans((ent.Comp.RootContainer.ContainedEntity.Value, rootPart), protoRoot.Organs);
     }
 
     private void OnBodyMapInit(Entity<BodyComponent> ent, ref MapInitEvent args)
@@ -190,6 +199,16 @@ public partial class SharedBodySystem
     {
         foreach (var (organSlotId, organProto) in organs)
         {
+            if(ent.Comp.Organs.ContainsKey(organSlotId))
+            {
+                var container = GetOrganContainerId(organSlotId);
+                var cont = Containers.GetContainer(ent, GetOrganContainerId(organSlotId));
+                if (cont.Count <= 0)
+                {
+                    SpawnInContainerOrDrop(organProto, ent, GetOrganContainerId(organSlotId));
+                }
+                continue;
+            }
             var slot = CreateOrganSlot((ent, ent), organSlotId);
             SpawnInContainerOrDrop(organProto, ent, GetOrganContainerId(organSlotId));
 
