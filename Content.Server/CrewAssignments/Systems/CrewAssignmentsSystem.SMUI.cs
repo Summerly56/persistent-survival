@@ -48,7 +48,7 @@ public sealed partial class CrewAssignmentSystem
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationEnableChannel>(OnEnableChannel);
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationDisableChannel>(OnDisableChannel);
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationToggleClaim>(OnToggleClaim);
-        SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationToggleSpend>(OnToggleSpend);
+        SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationToggleGenRec>(OnToggleGenRec);
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationToggleAssign>(OnToggleAssign);
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationChangeAssignmentCLevel>(OnChangeCLevel);
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationChangeAssignmentWage>(OnChangeWage);
@@ -578,29 +578,7 @@ public sealed partial class CrewAssignmentSystem
         Dirty((EntityUid)station, crewAssignments);
         UpdateOrders(station.Value);
     }
-    private void OnToggleSpend(EntityUid uid, StationModificationConsoleComponent component, StationModificationToggleSpend args)
-    {
-        if (args.Actor is not { Valid: true } player)
-            return;
 
-        var station = _station.GetOwningStation(uid);
-        if (station == null) return;
-
-        if (!Validate(uid, component, player, out var stationData)) return;
-        if (!TryComp(station, out CrewAssignmentsComponent? crewAssignments))
-        {
-            ConsolePopup(player, "No CrewAssignment Component!");
-            return;
-        }
-        if (!crewAssignments.CrewAssignments.TryGetValue(args.AccessID, out var crewAssignment))
-        {
-            ConsolePopup(player, "Invalid Assignment!");
-            return;
-        }
-        crewAssignment.CanSpend = !crewAssignment.CanSpend;
-        Dirty((EntityUid)station, crewAssignments);
-        UpdateOrders(station.Value);
-    }
     private void OnToggleClaim(EntityUid uid, StationModificationConsoleComponent component, StationModificationToggleClaim args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -624,6 +602,31 @@ public sealed partial class CrewAssignmentSystem
         Dirty((EntityUid)station, crewAssignments);
         UpdateOrders(station.Value);
     }
+
+    private void OnToggleGenRec(EntityUid uid, StationModificationConsoleComponent component, StationModificationToggleGenRec args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+
+        if (!Validate(uid, component, player, out var stationData)) return;
+        if (!TryComp(station, out CrewAssignmentsComponent? crewAssignments))
+        {
+            ConsolePopup(player, "No CrewAssignment Component!");
+            return;
+        }
+        if (!crewAssignments.CrewAssignments.TryGetValue(args.AccessID, out var crewAssignment))
+        {
+            ConsolePopup(player, "Invalid Assignment!");
+            return;
+        }
+        crewAssignment.CanEditGeneralRecord = !crewAssignment.CanEditGeneralRecord;
+        Dirty((EntityUid)station, crewAssignments);
+        UpdateOrders(station.Value);
+    }
+
 
     private void OnChangeName(EntityUid uid, StationModificationConsoleComponent component, StationModificationChangeName args)
     {

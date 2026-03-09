@@ -248,13 +248,13 @@ namespace Content.Client.CrewAssignments.UI
                 {
                     ReassignmentBtn.Pressed = false;
                 }
-                if (assignment.CanSpend)
+                if(assignment.CanEditGeneralRecord)
                 {
-                    SpendingBtn.Pressed = true;
+                    GenRecBtn.Pressed = true;
                 }
                 else
                 {
-                    SpendingBtn.Pressed = false;
+                    GenRecBtn.Pressed = false;
                 }
                 foreach (Button button in AssignmentAccessesBC.Children)
                 {

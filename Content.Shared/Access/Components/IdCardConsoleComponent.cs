@@ -49,6 +49,57 @@ public sealed partial class IdCardConsoleComponent : Component
     }
 
     [Serializable, NetSerializable]
+    public sealed class PrintGeneralRecord : BoundUserInterfaceMessage
+    {
+    }
+
+    [Serializable, NetSerializable]
+    public sealed class SaveGeneralRecord : BoundUserInterfaceMessage
+    {
+        public readonly string Content;
+
+        public SaveGeneralRecord(string content)
+        {
+            Content = content;
+        }
+    }
+
+
+    [Serializable, NetSerializable]
+    public sealed class PrintCriminalRecord : BoundUserInterfaceMessage
+    {
+    }
+
+    [Serializable, NetSerializable]
+    public sealed class SaveCriminalRecord : BoundUserInterfaceMessage
+    {
+        public readonly string Content;
+
+        public SaveCriminalRecord(string content)
+        {
+            Content = content;
+        }
+    }
+
+
+    [Serializable, NetSerializable]
+    public sealed class PrintMedicalRecord : BoundUserInterfaceMessage
+    {
+    }
+
+    [Serializable, NetSerializable]
+    public sealed class SaveMedicalRecord : BoundUserInterfaceMessage
+    {
+        public readonly string Content;
+
+        public SaveMedicalRecord(string content)
+        {
+            Content = content;
+        }
+    }
+
+
+    [Serializable, NetSerializable]
     public sealed class SearchRecord : BoundUserInterfaceMessage
     {
         public readonly string FullName;
@@ -124,6 +175,7 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly Dictionary<int, CrewAssignment>? AllAssignments;
         public readonly bool IsOwner = false;
         public readonly int SpentFunds;
+        public readonly CrewRecord? CrewRecord;
 
         public IdCardConsoleBoundUserInterfaceState(bool isPrivilegedIdPresent,
             bool isPrivilegedIdAuthorized,
@@ -136,7 +188,8 @@ public sealed partial class IdCardConsoleComponent : Component
             CrewAssignment? privCrewAssignment,
             Dictionary<int, CrewAssignment>? allAssignments,
             bool isOwner,
-            int spentFunds)
+            int spentFunds,
+            CrewRecord? crewRecord)
         {
             IsPrivilegedIdPresent = isPrivilegedIdPresent;
             IsPrivilegedIdAuthorized = isPrivilegedIdAuthorized;
@@ -150,6 +203,8 @@ public sealed partial class IdCardConsoleComponent : Component
             AllAssignments = allAssignments;
             this.IsOwner = isOwner;
             SpentFunds = spentFunds;
+            CrewRecord = crewRecord;
+
         }
     }
 

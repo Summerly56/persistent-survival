@@ -14,6 +14,9 @@ using Content.Shared.CrewRecords.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.Fax.Components;
+using Content.Shared.Labels.EntitySystems;
+using Content.Shared.Paper;
 using Content.Shared.Roles;
 using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
@@ -44,6 +47,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly PaperSystem _paperSystem = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
 
     public override void Initialize()
     {
@@ -53,6 +58,12 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         SubscribeLocalEvent<IdCardConsoleComponent, SearchRecord>(OnSearchRecord);
         SubscribeLocalEvent<IdCardConsoleComponent, ChangeAssignment>(OnChangeAssignment);
         SubscribeLocalEvent<IdCardConsoleComponent, AccountModResetSpending>(OnResetSpending);
+        SubscribeLocalEvent<IdCardConsoleComponent, SaveGeneralRecord>(OnSaveGeneralRecord);
+        SubscribeLocalEvent<IdCardConsoleComponent, PrintGeneralRecord>(OnPrintGeneralRecord);
+        SubscribeLocalEvent<IdCardConsoleComponent, SaveMedicalRecord>(OnSaveMedicalRecord);
+        SubscribeLocalEvent<IdCardConsoleComponent, PrintMedicalRecord>(OnPrintMedicalRecord);
+        SubscribeLocalEvent<IdCardConsoleComponent, SaveCriminalRecord>(OnSaveCriminalRecord);
+        SubscribeLocalEvent<IdCardConsoleComponent, PrintCriminalRecord>(OnPrintCriminalRecord);
         // one day, maybe bound user interfaces can be shared too.
         SubscribeLocalEvent<IdCardConsoleComponent, ComponentStartup>(UpdateUserInterface);
         SubscribeLocalEvent<IdCardConsoleComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
@@ -92,6 +103,89 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
 
         UpdateUserInterface(uid, component, args);
     }
+
+    private void OnSaveGeneralRecord(EntityUid uid, IdCardConsoleComponent component, SaveGeneralRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        if (!_station.CanEditGeneralRecord(component.PrivRecord.Name, station.Value)) return;
+
+
+        component.SelectedRecord.GeneralRecord = args.Content;
+
+        UpdateUserInterface(uid, component, args);
+    }
+
+    private void OnPrintGeneralRecord(EntityUid uid, IdCardConsoleComponent component, PrintGeneralRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        SpawnPaper(uid, component.SelectedRecord.GeneralRecord, $"{component.SelectedRecord.Name} General Record");
+    }
+
+    private void OnSaveMedicalRecord(EntityUid uid, IdCardConsoleComponent component, SaveMedicalRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        if (!_station.CanEditGeneralRecord(component.PrivRecord.Name, station.Value)) return;
+
+
+        component.SelectedRecord.MedicalRecord = args.Content;
+
+        UpdateUserInterface(uid, component, args);
+    }
+
+    private void OnPrintMedicalRecord(EntityUid uid, IdCardConsoleComponent component, PrintMedicalRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        SpawnPaper(uid, component.SelectedRecord.MedicalRecord, $"{component.SelectedRecord.Name} Medical Record");
+    }
+
+    private void OnSaveCriminalRecord(EntityUid uid, IdCardConsoleComponent component, SaveCriminalRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        if (!_station.CanEditGeneralRecord(component.PrivRecord.Name, station.Value)) return;
+
+
+        component.SelectedRecord.CriminalRecord = args.Content;
+
+        UpdateUserInterface(uid, component, args);
+    }
+
+    private void OnPrintCriminalRecord(EntityUid uid, IdCardConsoleComponent component, PrintCriminalRecord args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+        if (component.SelectedRecord == null) return;
+        if (component.PrivRecord == null) return;
+        var station = _station.GetOwningStation(uid);
+        if (station == null) return;
+        SpawnPaper(uid, component.SelectedRecord.CriminalRecord, $"{component.SelectedRecord.Name} Criminal Record");
+    }
+
+
     private void OnSearchRecord(EntityUid uid, IdCardConsoleComponent component, SearchRecord args)
     {
         if (args.Actor is not { Valid: true } player)
@@ -257,7 +351,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 privassignment,
                 possibleAssignments,
                 owner,
-                0);
+                0,
+                null);
                 
                 
         }
@@ -278,7 +373,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 privassignment,
                 possibleAssignments,
                 owner,
-                component.SelectedRecord.Spent);
+                component.SelectedRecord.Spent,
+                component.SelectedRecord);
 
         }
 
@@ -396,6 +492,23 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         if (TryDropAndThrowIds(entity.AsNullable()))
             _chat.TrySendInGameICMessage(entity, Loc.GetString("id-card-console-damaged"), InGameICChatType.Speak, true);
     }
+
+
+    private void SpawnPaper(EntityUid uid, string content, string title)
+    {
+
+        var entityToSpawn = "Paper";
+        var printed = Spawn(entityToSpawn, Transform(uid).Coordinates);
+
+        if (TryComp<PaperComponent>(printed, out var paper))
+        {
+            _paperSystem.SetContent((printed, paper), content);
+            paper.EditingDisabled = true;
+        }
+
+        _metaData.SetEntityName(printed, title);
+    }
+
 
     #region PublicAPI
 

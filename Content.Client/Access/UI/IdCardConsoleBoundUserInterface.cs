@@ -79,6 +79,40 @@ namespace Content.Client.Access.UI
                 newFullName));
         }
 
+        public void PrintGeneralRecord()
+        {
+
+            SendMessage(new PrintGeneralRecord());
+        }
+        public void SaveGeneralRecord(string content)
+        {
+
+            SendMessage(new SaveGeneralRecord(content));
+        }
+
+
+        public void PrintMedicalRecord()
+        {
+
+            SendMessage(new PrintMedicalRecord());
+        }
+        public void SaveMedicalRecord(string content)
+        {
+
+            SendMessage(new SaveMedicalRecord(content));
+        }
+
+        public void PrintCriminalRecord()
+        {
+
+            SendMessage(new PrintCriminalRecord());
+        }
+        public void SaveCriminalRecord(string content)
+        {
+
+            SendMessage(new SaveCriminalRecord(content));
+        }
+
         public void ResetSpending()
         {
             SendMessage(new AccountModResetSpending());

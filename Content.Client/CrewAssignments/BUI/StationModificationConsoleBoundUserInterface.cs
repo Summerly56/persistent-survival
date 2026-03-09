@@ -73,7 +73,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
         _menu.DeleteAssignment.OnPressed += DeleteAssignment;
         _menu.DefaultAccessCreate.OnPressed += DefaultAccessCreate;
         _menu.ClaimBtn.OnPressed += ToggleClaim;
-        _menu.SpendingBtn.OnPressed += ToggleSpend;
+        _menu.GenRecBtn.OnPressed += ToggleGenRec;
         _menu.ReassignmentBtn.OnPressed += ToggleAssign;
         _menu.ITaxConfirm.OnPressed += ChangeITax;
         _menu.ETaxConfirm.OnPressed += ChangeETax;
@@ -250,12 +250,13 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
         SendMessage(new StationModificationToggleClaim(assignment));
     }
 
-    private void ToggleSpend(ButtonEventArgs args)
+    private void ToggleGenRec(ButtonEventArgs args)
     {
         if (_menu == null) return;
         var assignment = _menu.PossibleAssignments.SelectedId;
-        SendMessage(new StationModificationToggleSpend(assignment));
+        SendMessage(new StationModificationToggleGenRec(assignment));
     }
+
 
     private void ToggleAssign(ButtonEventArgs args)
     {

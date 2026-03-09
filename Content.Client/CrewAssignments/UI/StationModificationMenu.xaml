@@ -189,8 +189,8 @@
                             StyleClasses="LabelKeyText" />
                         <Control HorizontalExpand="True"/>
                         <Button Name="ReassignmentBtn" Access="Public" Text="REASSIGN" ToggleMode="True"/>
-                        <Button Name="SpendingBtn" Access="Public" Text="SPEND"  ToggleMode="True"/>
                         <Button Name="ClaimBtn" Access="Public" Text="CLAIM"  ToggleMode="True"/>
+                        <Button Name="GenRecBtn" Access="Public" Text="GEN RECORD"  ToggleMode="True"/>
                     </BoxContainer>
                     <Control MinHeight="15"/>
                     <BoxContainer Orientation="Vertical">

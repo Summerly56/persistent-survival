@@ -1,4 +1,5 @@
 using Content.Client.CrewAssignments.UI;
+using Content.Client.Message;
 using Content.Shared.Access;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
@@ -9,6 +10,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 using System.Linq;
 using static Content.Shared.Access.Components.IdCardConsoleComponent;
 
@@ -57,6 +59,29 @@ namespace Content.Client.Access.UI
             };
             FullNameSaveButton.OnPressed += _ => SubmitData();
             SpendingReset.OnPressed += _ => ResetSpending();
+
+            SaveGeneralRecordBtn.OnPressed += _ => SaveGeneralRecord();
+            PrintGeneralRecordBtn.OnPressed += _ => PrintGeneralRecord();
+
+            SaveCriminalRecordBtn.OnPressed += _ => SaveCriminalRecord();
+            PrintCriminalRecordBtn.OnPressed += _ => PrintCriminalRecord();
+
+            SaveMedicalRecordBtn.OnPressed += _ => SaveMedicalRecord();
+            PrintMedicalRecordBtn.OnPressed += _ => PrintMedicalRecord();
+
+            MainTabs.SetTabTitle(0, "Assignment");
+            MainTabs.SetTabTitle(1, "General Record");
+            MainTabs.SetTabTitle(2, "Criminal Record");
+            MainTabs.SetTabTitle(3, "Medical Record");
+
+            GeneralTabs.SetTabTitle(0, "View");
+            GeneralTabs.SetTabTitle(1, "Edit");
+
+            CriminalTabs.SetTabTitle(0, "View");
+            CriminalTabs.SetTabTitle(1, "Edit");
+
+            MedicalTabs.SetTabTitle(0, "View");
+            MedicalTabs.SetTabTitle(1, "Edit");
 
 
         }
@@ -140,6 +165,66 @@ namespace Content.Client.Access.UI
                 }
 
             }
+            if(state.CrewRecord != null)
+            {
+                GeneralRecordLabel.SetMarkup(state.CrewRecord.GeneralRecord);
+                GeneralRecordTE.TextRope = new Rope.Leaf(state.CrewRecord.GeneralRecord);
+
+                MedicalRecordLabel.SetMarkup(state.CrewRecord.MedicalRecord);
+                MedicalRecordTE.TextRope = new Rope.Leaf(state.CrewRecord.MedicalRecord);
+
+                CriminalRecordLabel.SetMarkup(state.CrewRecord.CriminalRecord);
+                CriminalRecordTE.TextRope = new Rope.Leaf(state.CrewRecord.CriminalRecord);
+            }
+            if (!state.IsOwner && state.PrivAssignment != null)
+            {
+                if (state.IsOwner || state.PrivAssignment.CanEditGeneralRecord)
+                {
+                    EditGeneralRecord.Visible = true;
+                }
+                else
+                {
+                    EditGeneralRecord.Visible = false;
+                    EditCriminalRecord.Visible = false;
+                    EditMedicalRecord.Visible = false;
+                }
+            }
+            else
+            {
+                EditGeneralRecord.Visible = false;
+                EditMedicalRecord.Visible = false;
+            }
+        }
+
+
+        private void PrintGeneralRecord()
+        {
+            _owner.PrintGeneralRecord();
+            Close();
+        }
+        private void SaveGeneralRecord()
+        {
+            _owner.SaveGeneralRecord(Rope.Collapse(GeneralRecordTE.TextRope));
+        }
+
+        private void PrintCriminalRecord()
+        {
+            _owner.PrintCriminalRecord();
+            Close();
+        }
+        private void SaveCriminalRecord()
+        {
+            _owner.SaveCriminalRecord(Rope.Collapse(CriminalRecordTE.TextRope));
+        }
+
+        private void PrintMedicalRecord()
+        {
+            _owner.PrintMedicalRecord();
+            Close();
+        }
+        private void SaveMedicalRecord()
+        {
+            _owner.SaveMedicalRecord(Rope.Collapse(MedicalRecordTE.TextRope));
         }
 
         private void ResetSpending()

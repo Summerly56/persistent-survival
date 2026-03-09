@@ -77,6 +77,35 @@ public abstract partial class SharedStationSystem : EntitySystem
         }
         return false;
     }
+
+
+    public bool CanEditGeneralRecord(string userName, EntityUid station, int toSpend = 0)
+    {
+        if (TryComp<StationDataComponent>(station, out var sD) && sD != null)
+        {
+            if (sD.Owners.Contains(userName))
+            {
+                return true;
+            }
+        }
+        if (TryComp<CrewRecordsComponent>(station, out var crewRecords) && crewRecords != null)
+        {
+            crewRecords.TryGetRecord(userName, out var crewRecord);
+            if (crewRecord != null)
+            {
+                if (TryComp<CrewAssignmentsComponent>(station, out var crewAssignments) && crewAssignments != null)
+                {
+                    if (crewAssignments.TryGetAssignment(crewRecord.AssignmentID, out var assignment) && assignment != null)
+                    {
+                        return assignment.CanEditGeneralRecord;
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
+
     public bool CanSpend(string userName, EntityUid station, int toSpend = 0)
     {
         if (TryComp<StationDataComponent>(station, out var sD) && sD != null)
@@ -95,15 +124,12 @@ public abstract partial class SharedStationSystem : EntitySystem
                 {
                     if (crewAssignments.TryGetAssignment(crewRecord.AssignmentID, out var assignment) && assignment != null)
                     {
-                        if (assignment.CanSpend)
+                        if (toSpend > 0)
                         {
-                            if (toSpend > 0)
-                            {
-                                var spendable = assignment.SpendingLimit - crewRecord.Spent;
-                                if (spendable >= toSpend) return true;
-                            }
-                            else return true;
+                            var spendable = assignment.SpendingLimit - crewRecord.Spent;
+                            if (spendable >= toSpend) return true;
                         }
+                        else return true;
                     }
                 }
 

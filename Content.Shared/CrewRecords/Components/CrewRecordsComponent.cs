@@ -54,7 +54,12 @@ public partial class CrewRecord
     public int AssignmentID = 0;
     [DataField("_spent")]
     public int Spent = 0;
-
+    [DataField("_generalRecord")]
+    public string GeneralRecord = "";
+    [DataField("_criminalRecord")]
+    public string CriminalRecord = "";
+    [DataField("_medicalRecord")]
+    public string MedicalRecord = "";
     public CrewRecord(string name)
     {
         Name = name;
