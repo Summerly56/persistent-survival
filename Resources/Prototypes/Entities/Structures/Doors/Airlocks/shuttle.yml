@@ -11,6 +11,10 @@
     ports:
       - DoorStatus
       - DockStatus
+  - type: DoorSignalControl
+    openSink: null
+  - type: ApcPowerReceiver
+    needsPower: false
   - type: Fixtures
     fixtures:
       fix1:
@@ -63,6 +67,10 @@
   - type: Door
     closeTimeTwo: 0.4
     openTimeTwo: 0.4
+    bumpOpen: false
+    clickOpen: false
+    canPry: false
+    canCrush: false
     crushDamage:
       types:
         Blunt: 15
@@ -86,6 +94,8 @@
     price: 350
   - type: Paintable
     group: null
+  - type: Airlock
+    safety: false
 
 - type: entity
   id: AirlockGlassShuttle

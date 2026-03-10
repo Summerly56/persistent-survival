@@ -1,0 +1,19 @@
+- type: gameMap
+  id: Survival
+  mapName: 'Survival'
+  mapPath: /Maps/survival.yml
+  minPlayers: 0
+  maxPlayers: 7
+  stations:
+    Survival:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Survival {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'SL2'
+        - type: StationJobs
+          availableJobs: # 15 jobs total w/o latejoins, 19 jobs total w/ latejoins
+            #civilian (1+)
+            Passenger: [ -1, -1 ] #infinite, not counted

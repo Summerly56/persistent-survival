@@ -228,27 +228,51 @@
     supplyRampRate: 500
     supplyRampTolerance: 500
 
-# RTG - no fuel requirement
+# RTG - very high efficiency
 
 - type: entity
   parent: BaseGenerator
   id: GeneratorRTG
   name: RTG
-  description: A Radioisotope Thermoelectric Generator for long term power.
+  description: A Radioisotope Thermoelectric Generator for long term power. Emits dangerous radiation.
   suffix: 10kW
   components:
   - type: PowerSupplier
-    supplyRate: 10000 # supposed to be low power at no fuel cost to power derelicts
+    supplyRampRate: 1000
+    supplyRampTolerance: 750
+  - type: UserInterface
+    interfaces:
+      enum.GeneratorComponentUiKey.Key:
+        type: PortableGeneratorBoundUserInterface
+  - type: ActivatableUI
+    key: enum.GeneratorComponentUiKey.Key
   - type: Sprite
     sprite: Structures/Power/Generation/rtg.rsi
     state: rtg
   - type: PowerMonitoringDevice
     sprite: Structures/Power/Generation/rtg.rsi
     state: rtg
+  - type: MaterialStorage
+    storageLimit: 5000
+    materialWhiteList: [Uranium]
+  - type: PortableGenerator
+  - type: FuelGenerator
+    minTargetPower: 5000
+    maxTargetPower: 15000
+    targetPower: 10000
+    optimalPower: 10000
+    optimalBurnRate: 0.003
+    fuelEfficiencyConstant: 0.1
+  - type: SolidFuelGeneratorAdapter
+    fuelMaterial: Uranium
+    multiplier: 0.01
   - type: AmbientSound
     range: 5
     sound:
       path: /Audio/Ambience/Objects/buzzing.ogg
+    volume: 0
+  - type: RadiationSource # passive radiation
+    intensity: 0.5
   - type: GuideHelp
     guides:
     - RTG

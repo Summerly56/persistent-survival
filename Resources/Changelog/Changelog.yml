@@ -3932,3 +3932,68 @@
   id: 9331
   time: '2025-12-25T19:57:41.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/40076
+- author: Summerly57
+  changes:
+  - message: Ported Camera Map system from upstream.
+    type: Tweak
+  id: 9332
+  time: '2026-02-07T20:20:00.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/39684
+- author: DeusMaldPr
+  changes:
+  - message: lets you purchase most vendors
+    type: Tweak
+  id: 9333
+  time: '2026-02-24T20:20:00.0000000+00:00'
+  url: https://github.com/michaelchessall/SS14-Persistence/pull/267
+- author: Koollan
+  changes:
+  - message: IFF Redux Part 1 Color picking, Identifiers and Filtering
+    type: Tweak
+  id: 9334
+  time: '2026-02-24T20:20:00.0000000+00:00'
+  url: https://github.com/michaelchessall/SS14-Persistence/pull/263
+- author: Rakunoshin
+  changes:
+  - message: Hologram rcd
+    type: Add
+  id: 9335
+  time: '2026-02-20T21:24:00.0000000+00:00'
+  url: https://github.com/michaelchessall/SS14-Persistence/pull/259
+- author: None
+  changes:
+  - message: Removed fun!
+    type: Tweak
+  id: 9336
+  time: '2026-03-01'
+- author: Summerly57
+  changes:
+  - message: Docking airlocks are now exclusively for docking
+    type: Tweak
+  id: 9337
+  time: '2026-03-03'
+- author: Summerly57
+  changes:
+  - message: RTG's now require uranium fuel. They are very efficient. They also release passive radiation.
+    type: Tweak
+  id: 9338
+  time: '2026-03-03'
+- author: Summerly57
+  changes:
+  - message: Atmos fans are no longer obtainable.
+    type: Tweak
+  id: 9339
+  time: '2026-03-03'
+- author: Summerly57
+  changes:
+  - message: You can now purchase sentry turrets.
+    type: Tweak
+  id: 9340
+  time: '2026-03-03'
+- author: SabreML
+  url: https://github.com/space-wizards/space-station-14/pull/41943
+  changes:
+  - message: Colour picker, palettes, & other spraypainter stuff
+    type: Tweak
+  id: 9341
+  time: '2026-01-22'

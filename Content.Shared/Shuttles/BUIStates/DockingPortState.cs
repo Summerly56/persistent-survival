@@ -9,7 +9,7 @@ namespace Content.Shared.Shuttles.BUIStates;
 [Serializable, NetSerializable]
 public sealed class DockingPortState
 {
-    public string Name = string.Empty;
+    //public string Name = string.Empty;
 
     public NetCoordinates Coordinates;
     public Angle Angle;
@@ -27,4 +27,9 @@ public sealed class DockingPortState
     /// The colour used to shade a dock on a radar screen if it is highlighted (hovered over/selected on docking screen/shown in the main ship radar)
     /// </summary>
     public Color HighlightedColor;
+
+    /// <summary>
+    /// The dock name shown on the radar
+    /// </summary>
+    public string? Name;
 }
