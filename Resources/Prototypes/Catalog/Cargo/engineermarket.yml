@@ -274,7 +274,7 @@
     sprite: Structures/Storage/canister.rsi
     state: blue
   product: LiquidOxygenCanister
-  cost: 1500
+  cost: 4000
   category: cargoproduct-category-name-atmospherics
   group: engineermarket
 

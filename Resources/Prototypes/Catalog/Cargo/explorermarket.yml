@@ -65,7 +65,7 @@
     sprite: Structures/Storage/canister.rsi
     state: blue
   product: OxygenCanister
-  cost: 1500
+  cost: 4000
   category: cargoproduct-category-name-atmospherics
   group: explorermarket
 
