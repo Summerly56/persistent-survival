@@ -1,0 +1,101 @@
+# Material cargo bounties rebalance for issue #161
+# REMOVED trivial low-quantity single-material bounties
+# REPLACED with combined multi-material bounties requiring coordinated station effort
+# Context: 2.5-hour refresh timer; bounties should feel like a shift goal, not a sidebar
+
+- type: cargoBounty
+  id: MaterialsMetalSheet
+  label: cargo-bounty-materials-metal-sheet
+  reward: 4000
+  entries:
+    # WHY: merged trivial small-stack metal bounties into one requiring
+    # sustained mining + smelting loop; quantities set so one player can
+    # complete within the refresh window with focused effort but not trivially
+    - id: SheetSteel
+      name: cargo-bounty-entry-sheet-steel
+      amount: 50
+      orGroup: null
+    - id: SheetPlastic
+      name: cargo-bounty-entry-sheet-plastic
+      amount: 30
+      orGroup: null
+    - id: SheetGlass
+      name: cargo-bounty-entry-sheet-glass
+      amount: 40
+      orGroup: null
+
+- type: cargoBounty
+  id: MaterialsExoticAlloy
+  label: cargo-bounty-materials-exotic-alloy
+  reward: 6500
+  entries:
+    # WHY: exotic/refined materials require mining rare ores AND processing
+    # combining them gates completion behind both a mining run and R&D/smelting
+    - id: SheetPlasma
+      name: cargo-bounty-entry-sheet-plasma
+      amount: 20
+      orGroup: null
+    - id: SheetUranium
+      name: cargo-bounty-entry-sheet-uranium
+      amount: 15
+      orGroup: null
+    - id: SheetGold
+      name: cargo-bounty-entry-sheet-gold
+      amount: 10
+      orGroup: null
+
+- type: cargoBounty
+  id: MaterialsClothFiber
+  label: cargo-bounty-materials-cloth-fiber
+  reward: 3000
+  entries:
+    # WHY: cloth production involves botany (cotton/durathread) + processing
+    # multiple cloth types ensures varied production rather than single-source spam
+    - id: ClothingMaterialCloth
+      name: cargo-bounty-entry-cloth
+      amount: 30
+      orGroup: null
+    - id: ClothingMaterialDurathread
+      name: cargo-bounty-entry-durathread
+      amount: 20
+      orGroup: null
+
+- type: cargoBounty
+  id: MaterialsChemReagents
+  label: cargo-bounty-materials-chem-reagents
+  reward: 5000
+  entries:
+    # WHY: chemical reagents require chemistry department involvement
+    # multiple reagents prevent one quick chem-loop from trivializing the bounty
+    - id: ChemistryReagentOmega3
+      name: cargo-bounty-entry-omega3
+      amount: 10
+      orGroup: null
+    - id: ChemistryReagentSodiumChloride
+      name: cargo-bounty-entry-sodium-chloride
+      amount: 15
+      orGroup: null
+    - id: ChemistryReagentSugar
+      name: cargo-bounty-entry-sugar
+      amount: 20
+      orGroup: null
+
+- type: cargoBounty
+  id: MaterialsCircuitBoards
+  label: cargo-bounty-materials-circuit-boards
+  reward: 5500
+  entries:
+    # WHY: circuit boards require science/engineering investment
+    # asking for multiple board types gates completion behind cross-department effort
+    - id: CircuitboardComputer
+      name: cargo-bounty-entry-circuit-computer
+      amount: 5
+      orGroup: null
+    - id: CircuitboardMachineAME
+      name: cargo-bounty-entry-circuit-ame
+      amount: 3
+      orGroup: null
+    - id: CircuitboardMachineAnomalyGenerator
+      name: cargo-bounty-entry-circuit-anomaly
+      amount: 2
+      orGroup: null

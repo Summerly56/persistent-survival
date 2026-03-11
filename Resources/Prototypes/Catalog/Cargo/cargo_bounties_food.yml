@@ -1,0 +1,154 @@
+# Cargo bounty rebalance for issue #161
+# REMOVED trivial single-item bounties like:
+#   - $3000 / 10x Carrots
+#   - $2000 / 3x Carrot fries
+# REPLACED with combined multi-item bounties that require ~45+ min to complete
+# Reward guideline: ~20% above one of the constituent bounties (not a hard rule)
+# Refresh timer context: 2.5 hours, so bounties should feel meaningful but obtainable
+
+- type: cargoBounty
+  id: FoodCarrotMixed
+  label: cargo-bounty-food-carrot-mixed
+  reward: 2500
+  entries:
+    # WHY: merged 10x Carrots ($3000) + 3x Carrot Fries ($2000) into one bounty
+    # Quantities increased to raise complexity; reward set between the two originals
+    # so players feel rewarded without it being a windfall for trivial effort
+    - id: FoodCarrot
+      name: cargo-bounty-entry-carrot
+      amount: 25
+      orGroup: null
+    - id: FoodCarrotFries
+      name: cargo-bounty-entry-carrot-fries
+      amount: 8
+      orGroup: null
+    # WHY: carrot cake added as optional complexity boost per issue guidance
+    # "adding related items to increase complexity is also valid where it makes sense"
+    - id: FoodCarrotCake
+      name: cargo-bounty-entry-carrot-cake
+      amount: 4
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodBreadAssorted
+  label: cargo-bounty-food-bread-assorted
+  reward: 3000
+  entries:
+    # WHY: replaces trivial single bread bounties; baker must produce a full assortment
+    # This requires sustained kitchen effort rather than a single quick craft
+    - id: FoodBreadPlain
+      name: cargo-bounty-entry-bread-plain
+      amount: 10
+      orGroup: null
+    - id: FoodBreadMeatball
+      name: cargo-bounty-entry-bread-meatball
+      amount: 5
+      orGroup: null
+    - id: FoodBreadBanana
+      name: cargo-bounty-entry-bread-banana
+      amount: 5
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodSaladPlatter
+  label: cargo-bounty-food-salad-platter
+  reward: 2800
+  entries:
+    # WHY: salad items are fast to make individually but sourcing ingredients
+    # for all three together creates meaningful kitchen coordination time
+    - id: FoodSaladGarden
+      name: cargo-bounty-entry-salad-garden
+      amount: 8
+      orGroup: null
+    - id: FoodSaladCaesar
+      name: cargo-bounty-entry-salad-caesar
+      amount: 6
+      orGroup: null
+    - id: FoodSaladWaldorf
+      name: cargo-bounty-entry-salad-waldorf
+      amount: 4
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodMeatCooked
+  label: cargo-bounty-food-meat-cooked
+  reward: 3500
+  entries:
+    # WHY: requires both hunting/processing AND cooking, two distinct gameplay loops
+    # combining them ensures the bounty can't be trivialized by one player alone quickly
+    - id: FoodMeatSteak
+      name: cargo-bounty-entry-meat-steak
+      amount: 10
+      orGroup: null
+    - id: FoodMeatBurger
+      name: cargo-bounty-entry-meat-burger
+      amount: 8
+      orGroup: null
+    - id: FoodMeatCutlet
+      name: cargo-bounty-entry-meat-cutlet
+      amount: 6
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodDairyProducts
+  label: cargo-bounty-food-dairy-products
+  reward: 2200
+  entries:
+    # WHY: dairy requires botany (seeds) + kitchen processing chain
+    # multiple products ensure it cannot be completed with a single recipe loop
+    - id: FoodCheese
+      name: cargo-bounty-entry-cheese
+      amount: 8
+      orGroup: null
+    - id: FoodButter
+      name: cargo-bounty-entry-butter
+      amount: 6
+      orGroup: null
+    - id: FoodMilkCarton
+      name: cargo-bounty-entry-milk-carton
+      amount: 10
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodFruitBasket
+  label: cargo-bounty-food-fruit-basket
+  reward: 2600
+  entries:
+    # WHY: variety of fruits means botany must grow multiple crop types
+    # prevents trivial single-crop speed-run completion
+    - id: FoodApple
+      name: cargo-bounty-entry-apple
+      amount: 15
+      orGroup: null
+    - id: FoodOrange
+      name: cargo-bounty-entry-orange
+      amount: 12
+      orGroup: null
+    - id: FoodWatermelon
+      name: cargo-bounty-entry-watermelon
+      amount: 6
+      orGroup: null
+    - id: FoodGrapes
+      name: cargo-bounty-entry-grapes
+      amount: 10
+      orGroup: null
+
+- type: cargoBounty
+  id: FoodSoupSelection
+  label: cargo-bounty-food-soup-selection
+  reward: 3200
+  entries:
+    # WHY: soups require pots, ingredients from multiple sources, and cook time
+    # a selection of 3 types ensures sustained kitchen engagement
+    - id: FoodSoupTomato
+      name: cargo-bounty-entry-soup-tomato
+      amount: 8
+      orGroup: null
+    - id: FoodSoupMushroom
+      name: cargo-bounty-entry-soup-mushroom
+      amount: 6
+      orGroup: null
+    - id: FoodSoupPotato
+      name: cargo-bounty-entry-soup-potato
+      amount: 6
+      orGroup: null

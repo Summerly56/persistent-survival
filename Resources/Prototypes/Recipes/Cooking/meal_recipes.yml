@@ -111,6 +111,63 @@
     FoodBreadBun: 1
     OrganHumanBrain: 1
 
+#Series of organ burger
+- type: microwaveMealRecipe
+  id: RecipeLungBurger
+  name: lung burger recipe
+  result: FoodBurgerLung
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    OrganAnimalLungs: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeLiverBurger
+  name: liver burger recipe
+  result: FoodBurgerLiver
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    OrganAnimalLiver: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeStomachBurger
+  name: stomach burger recipe
+  result: FoodBurgerStomach
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    OrganAnimalStomach: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeKidneyBurger
+  name: kidney burger recipe
+  result: FoodBurgerKidneys
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    OrganAnimalKidneys: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHeartBurger
+  name: heart burger recipe
+  result: FoodBurgerHeart
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    OrganAnimalHeart: 1
+    FoodCheeseSlice: 1
+
+
 - type: microwaveMealRecipe
   id: RecipeCatBurger
   name: cat burger recipe

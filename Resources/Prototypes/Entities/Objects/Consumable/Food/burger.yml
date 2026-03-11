@@ -370,6 +370,178 @@
     - Meat
 # Tastes like bun, brains.
 
+# Series of organ burgers
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerLung
+  name: lung burger
+  description: A strange looking burger.
+  components:
+  - type: Item
+    storedOffset: 0,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - meaty
+  - type: Sprite
+    state: cheese
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerLiver
+  name: liver burger
+  description: A strange looking burger.
+  components:
+  - type: Item
+    storedOffset: 0,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - meaty
+  - type: Sprite
+    state: cheese
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerStomach
+  name: stomach burger
+  description: A strange looking burger.
+  components:
+  - type: Item
+    storedOffset: 0,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - meaty
+  - type: Sprite
+    state: cheese
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerKidneys
+  name: kidneys burger
+  description: A strange looking burger.
+  components:
+  - type: Item
+    storedOffset: 0,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - meaty
+  - type: Sprite
+    state: cheese
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerHeart
+  name: heart burger
+  description: A strange looking burger.
+  components:
+  - type: Item
+    storedOffset: 0,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - meaty
+  - type: Sprite
+    state: cheese
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+
 - type: entity
   parent: FoodBurgerBase
   id: FoodBurgerCat
