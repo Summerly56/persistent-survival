@@ -841,7 +841,7 @@
 
 - type: cargoBounty
   id: BountyPlasteel
-  reward: 8000
+  reward: 2500
   description: bounty-description-plasteel
   entries:
     - name: bounty-item-plasteel
