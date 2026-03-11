@@ -108,6 +108,8 @@
     fiberMaterial: fibers-durathread
     fiberColor: fibers-regal-blue
   - type: FingerprintMask
+  - type: TypingIndicatorClothing
+    proto: regal
 
 - type: entity
   parent: ClothingHandsBase

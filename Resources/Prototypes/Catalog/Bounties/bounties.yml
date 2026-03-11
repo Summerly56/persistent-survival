@@ -795,7 +795,7 @@
 
 - type: cargoBounty
   id: BountySteel
-  reward: 2000
+  reward: 750
   description: bounty-description-steel
   entries:
     - name: bounty-item-steel
