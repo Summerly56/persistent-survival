@@ -4,6 +4,9 @@
   id: BaseMagazineBoxAntiMateriel
   name: ammunition box (.60 anti-materiel)
   components:
+  - type: Tag
+    tags:
+      - Recyclable
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:

@@ -3,6 +3,9 @@
   parent: BaseItem
   id: BaseMagazineBoxRifle
   components:
+  - type: Tag
+    tags:
+      - Recyclable
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:
