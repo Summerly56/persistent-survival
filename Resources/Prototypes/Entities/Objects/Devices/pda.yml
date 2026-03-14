@@ -410,8 +410,8 @@
   - type: Muted # for random sentience event
 
 - type: entity
-  name: chaplain PDA
   parent: BasePDA
+  id: ChaplainPDA
   components:
   - type: Pda
     id: ChaplainIDCard
@@ -437,8 +437,8 @@
     - DoorBumpOpener
 
 - type: entity
-  name: quartermaster PDA
   parent: BasePDA
+  id: QuartermasterPDA
   components:
   - type: Pda
     id: QuartermasterIDCard
