@@ -149,17 +149,46 @@
     addComponents:
       - type: TradeStation
         levels:
-          - ILevelEngineer1
-          - ILevelEngineer2
-          - ILevelEngineer3
-          - ILevelEngineer4
+          - ILevelScience1
+          - ILevelScience2
+          - ILevelScience3
+          - ILevelScience4
         markets:
-        - engineermarket
-        - market3
+        - sciencemarket
       - type: StationCargoBountyDatabase
         groups:
-          EngineeringBounty : 3
-          StationBounty : 2
+          ScienceBounty : 2
+          StationBounty : 1
+          ServiceBounty : 1
+
+- type: entity
+  parent: MarkerBase
+  id: TradeStationScienceSpawnerMarkerCustomSurvival
+  name: Grid Spawner
+  suffix: Science Outpost Trade Station
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+    - sprite: Objects/Materials/Scrap/generic.rsi
+      state: metal-1
+  - type: GridSpawner
+    gridPath: /Maps/Shuttles/POIScienceOutpost.yml
+    stationGrid: True
+    addComponents:
+      - type: TradeStation
+        levels:
+          - ILevelExploration1
+          - ILevelExploration2
+          - ILevelExploration3
+          - ILevelExploration4
+        markets:
+        - explorermarket
+      - type: StationCargoBountyDatabase
+        groups:
+          ExplorationBounty : 3
+          ScienceBounty : 1
+          ServiceBounty : 1
 
 - type: entity
   parent: MarkerBase
