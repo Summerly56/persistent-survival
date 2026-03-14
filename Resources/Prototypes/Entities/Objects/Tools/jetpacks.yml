@@ -93,6 +93,7 @@
     sprite: Objects/Tanks/Jetpacks/blue.rsi
     slots:
       - Back
+      - SuitStorage
 
 # Filled blue
 - type: entity
