@@ -82,7 +82,7 @@
             - tool: Screwing 
               doAfter: 2
             - material: Steel
-              amount: 4
+              amount: 2
               doAfter: 1
             - material: Plastic
               amount: 2
@@ -327,7 +327,7 @@
             - !type:EntityAnchored { }
           steps:
             - material: Plasteel
-              amount: 2
+              amount: 1
               doAfter: 1
 
         - to: titaniumWall

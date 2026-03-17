@@ -195,18 +195,6 @@
   - ClothingBackpackWaterTank
 
 - type: technology
-  id: BluespaceCargoTransport
-  name: research-technology-bluespace-cargo-transport
-  icon:
-    sprite: Structures/cargo_telepad.rsi
-    state: display
-  discipline: CivilianServices
-  tier: 2
-  cost: 15000
-  recipeUnlocks:
-  - CargoTelepadMachineCircuitboard
-
-- type: technology
   id: PushHorn
   name: research-technology-clowning-utilities
   icon:
