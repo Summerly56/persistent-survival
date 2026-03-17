@@ -3997,3 +3997,21 @@
     type: Tweak
   id: 9341
   time: '2026-01-22'
+- author: Summerly57
+  changes:
+  - message: Readded fun!
+    type: Add
+  id: 9342
+  time: '2026-03-16'
+- author: Summerly57
+  changes:
+  - message: Made mining walls and reinforced walls cheaper, reinforced wall comes with slightly less health
+    type: Tweak
+  id: 9343
+  time: '2026-03-16'
+- author: Summerly57
+  changes:
+  - message: Cargo Telepad REMOVED!!
+    type: Remove
+  id: 9344
+  time: '2026-03-16'
