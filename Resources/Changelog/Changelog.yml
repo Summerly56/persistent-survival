@@ -4022,6 +4022,7 @@
   id: 9345
   time: '2026-03-17'
 - author: Princess-Cheeseballs
+  url: https://github.com/space-wizards/space-station-14/pull/40121
   changes:
   - message: The Chemmaster 4000 can now switch between making pills from the internal buffer or from an inserted beaker.
     type: Tweak
