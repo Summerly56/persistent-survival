@@ -4011,7 +4011,19 @@
   time: '2026-03-16'
 - author: Summerly57
   changes:
-  - message: Cargo Telepad REMOVED!!
+  - message: Cargo Telepad Removed!!
     type: Remove
   id: 9344
   time: '2026-03-16'
+- author: Summerly57
+  changes:
+  - message: Lowered amount XP goes down by on trade stations
+    type: Tweak
+  id: 9345
+  time: '2026-03-17'
+- author: Princess-Cheeseballs
+  changes:
+  - message: The Chemmaster 4000 can now switch between making pills from the internal buffer or from an inserted beaker.
+    type: Tweak
+  id: 9346
+  time: '2026-03-17'
