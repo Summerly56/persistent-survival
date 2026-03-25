@@ -1348,10 +1348,58 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: PlasmaWindoor
+  graph: Windoor
+  startNode: start
+  targetNode: pwindoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: UraniumWindoor
+  graph: Windoor
+  startNode: start
+  targetNode: uwindoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: SecureWindoor
   graph: Windoor
   startNode: start
   targetNode: windoorSecure
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SecureWindoorPlasma
+  graph: Windoor
+  startNode: start
+  targetNode: pwindoorSecure
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SecureWindoorUranium
+  graph: Windoor
+  startNode: start
+  targetNode: uwindoorSecure
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
