@@ -280,4 +280,5 @@
   cost: 20000
   recipeUnlocks:
   - CloningPodMachineCircuitboard
+  - MedicalScannerMachineCircuitboard
 
