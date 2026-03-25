@@ -268,3 +268,16 @@
   cost: 10000
   recipeUnlocks:
   - TelecomServer1kCircuitboard
+  
+- type: technology
+  id: CloningPod
+  name: research-technology-cloning-technology
+  icon:
+    sprite: Structures/Machines/cloning.rsi
+    state: pod_0
+  discipline: CivilianServices
+  tier: 3
+  cost: 20000
+  recipeUnlocks:
+  - CloningPodMachineCircuitboard
+
