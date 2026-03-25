@@ -169,8 +169,8 @@
     itemIconStyle: BigAction
     priority: -20
     icon:
-      sprite: Objects/Devices/communication.rsi
-      state: old-radio
+      sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+      state: icon
   - type: InstantAction
     event: !type:OpenJobNetImplantEvent
 
