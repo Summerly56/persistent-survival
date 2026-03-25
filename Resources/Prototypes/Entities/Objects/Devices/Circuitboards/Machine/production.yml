@@ -476,8 +476,10 @@
       prototype: CloningPod
       stackRequirements:
         Manipulator: 4
-        Glass: 1
-        Cable: 1
+        Glass: 5
+        Cable: 3
+        Steel: 10
+        Phoron: 10
 
 - type: entity
   id: MedicalScannerMachineCircuitboard
