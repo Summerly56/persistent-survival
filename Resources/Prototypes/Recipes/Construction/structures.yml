@@ -885,6 +885,16 @@
   canBuildInImpassable: true
 
 - type: construction
+  id: RollingGate
+  graph: RollingGate
+  startNode: start
+  targetNode: final
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+- type: construction
   id: BlastDoor
   graph: BlastDoor
   startNode: start

@@ -115,3 +115,51 @@
     closeTime: 1.45
   - type: Appearance
   - type: DoorVisuals
+  - type: Construction
+    graph: RollingGate
+    node: final
+    containers:
+    - board
+
+- type: entity
+  id: RollingGateFrame
+  parent: BaseStructureDynamic
+  name: rolling gate frame
+  description: A frame for constructing a rolling gate.
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Shutters/Rolling_gate.rsi
+    state: frame
+  - type: Construction
+    graph: RollingGate
+    node: frame1
+    containers:
+    - board
+  - type: InteractionOutline
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - Impassable
+        - HighImpassable
+        layer:
+        - HighImpassable
+  - type: Transform
+    noRot: false
