@@ -266,6 +266,12 @@
   result: CloningPodMachineCircuitboard
   unlockUses: 1
 
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: MedicalScannerMachineCircuitboard
+  result: MedicalScannerMachineCircuitboard
+  unlockUses: 1
+
 ## Science
 
 - type: latheRecipe
