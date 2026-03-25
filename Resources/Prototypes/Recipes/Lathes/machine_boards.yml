@@ -259,6 +259,12 @@
   id: StasisBedMachineCircuitboard
   result: StasisBedMachineCircuitboard
   unlockUses: 4
+  
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: CloningPodMachineCircuitboard
+  result: CloningPodMachineCircuitboard
+  unlockUses: 1
 
 ## Science
 
