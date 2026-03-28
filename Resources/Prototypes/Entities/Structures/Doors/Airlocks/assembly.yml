@@ -391,3 +391,28 @@
   - type: Construction
     graph: VaultDoor
     node: assembly
+
+#Airtight Hatches
+- type: entity
+  parent: AirlockAssembly
+  id: AirlockAssemblyAirtightHatch
+  suffix: Hatch
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
+    state: "assembly"
+  - type: Construction
+    graph: AirlockHatch
+    node: assembly
+
+- type: entity
+  parent: AirlockAssembly
+  id: AirlockAssemblyAirtightHatchMaintenance
+  suffix: Hatch, Maintenance
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
+    state: "assembly"
+  - type: Construction
+    graph: AirlockHatchMaintenance
+    node: assembly

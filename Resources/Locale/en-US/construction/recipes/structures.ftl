@@ -41,3 +41,5 @@ construction-recipe-button-frame-janitor = button frame (janitor)
 construction-recipe-storagecanister = storage canister
 construction-recipe-generictank = storage tank
 construction-recipe-airlock-vault = vault door
+construction-recipe-airlock-hatch = airtight hatch
+construction-recipe-airlock-hatch-maintenance = maintenance hatch

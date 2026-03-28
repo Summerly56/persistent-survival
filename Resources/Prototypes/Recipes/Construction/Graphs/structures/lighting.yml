@@ -32,6 +32,14 @@
             - material: Glass
               amount: 1
               doAfter: 1.0
+        - to: janitorialServiceLight
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1.0
+            - material: Glass
+              amount: 1
+              doAfter: 1.0
     - node: tubeLight
       entity: PoweredlightEmpty
       edges:
@@ -103,6 +111,21 @@
             - !type:SpawnPrototype
               prototype: SheetSteel1
               amount: 1
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 1
+            - !type:DeleteEntity {}
+    - node: janitorialServiceLight
+      entity: JanitorServiceLight
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
             - !type:SpawnPrototype
               prototype: SheetGlass1
               amount: 1

@@ -162,6 +162,9 @@
     sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
   - type: Paintable
     group: null
+  - type: Construction
+    graph: AirlockHatch
+    node: airlock
 
 - type: entity
   parent: Airlock
@@ -182,6 +185,9 @@
     sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
   - type: Paintable
     group: null
+  - type: Construction
+    graph: AirlockHatchMaintenance
+    node: airlock
 
 - type: entity
   parent: Airlock

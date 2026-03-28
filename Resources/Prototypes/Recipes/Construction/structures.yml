@@ -1269,6 +1269,32 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: AirlockHatch
+  graph: AirlockHatch
+  name: construction-recipe-airlock-hatch
+  startNode: start
+  targetNode: airlock
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: AirlockHatchMaintenance
+  graph: AirlockHatchMaintenance
+  name: construction-recipe-airlock-hatch-maintenance
+  startNode: start
+  targetNode: airlock
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: PinionAirlock
   name: construction-recipe-pinion-airlock
   graph: PinionAirlock
@@ -1480,6 +1506,19 @@
   graph: LightFixture
   startNode: start
   targetNode: strobeLight
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: LightServiceFixture
+  graph: LightFixture
+  startNode: start
+  targetNode: janitorialServiceLight
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
