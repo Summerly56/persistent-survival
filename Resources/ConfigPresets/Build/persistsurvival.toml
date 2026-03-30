@@ -67,7 +67,6 @@ enabled = false
 loginlocal = false
 
 [infolinks]
-discord    = "https://discord.gg/MSTr7f9DHW"
 
 [movement]
 mob_pushing = false
