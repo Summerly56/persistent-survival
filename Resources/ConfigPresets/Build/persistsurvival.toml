@@ -72,23 +72,7 @@ discord    = "https://discord.gg/MSTr7f9DHW"
 [movement]
 mob_pushing = false
 
-
-[discord]
-# discord.watchlist_connection_webhook = "https://discord.com/api/webhooks/1477145801284255930/KgoE0e0mebOo-jRQE7zt5v8A7YQ9Vkj_Mn81tN5PVXul78wHzN4uAZBDjk9k6Qugnm2n"
-# round_update_webhook = "https://discord.com/api/webhooks/1477185816827793510/Rz7-R_9_f93zye3E1Ncs9K4VT9SKrwj02JDdhT05_9IFknPbyqT1bzFnYIWiAyB_EfZg"
-# ahelp_webhook = "https://discord.com/api/webhooks/1477145801284255930/KgoE0e0mebOo-jRQE7zt5v8A7YQ9Vkj_Mn81tN5PVXul78wHzN4uAZBDjk9k6Qugnm2n"
-# The bot token you copied earlier.
-# token = "MTQ3NjgyMDg2ODQxNTA5ODk4NQ.GzcDpC.yMPbl7q6PQlqo1DIoL5jRHevRK1Iu0WZU--yy8"
-# The ID of your Discord server. Right-click your server to be able to copy the ID.
-# guild_id = 1475538796681367565
-# A prefix that must be added to all commands interpreted by the bot.
-# This should be unique between game servers (and any other bots you may have on your Discord).
-# Note that commands are not currently used, but they will likely be added in the future.
-# prefix = "!"
-
 [admin]
-# The ID of the channel on Discord. Copy this by right clicking the channel.
-# chat_discord_channel_id = 1476823135176233010
 new_player_threshold = 1
 
 [ic]
@@ -105,7 +89,7 @@ tags = "lang:en, rp:med"
 # URL of your server. Fill this in if you have a domain name,
 # want to use HTTPS (with a reverse proxy), or other advanced scenarios.
 # Must be in the form of an ss14:// or ss14s:// URI pointing to the status API.
-server_url = "ss14://persistence14sandbox.2bd.net"
+server_url = ""
 # Comma-separated list of URLs of hub servers to advertise to.
 hub_urls = "https://hub.spacestation14.com/"
 
