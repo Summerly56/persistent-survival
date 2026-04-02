@@ -865,6 +865,11 @@
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: Paintable
     group: null
+  - type: Construction
+    graph: CrateTrashCart
+    node: cratetrashcart
+    containers:
+    - entity_storage
 
 - type: entity
   parent: CrateBaseSecure
@@ -893,6 +898,11 @@
     access: [["Janitor"]]
   - type: Paintable
     group: null
+  - type: Construction
+    graph: CrateTrashCart
+    node: cratetrashcartjani
+    containers:
+    - entity_storage
 
 - type: entity
   parent: CrateBaseWeldable

@@ -1,142 +1,76 @@
 ﻿- type: constructionGraph
-  id: LightFixture
+  id: WarningSign
   start: start
   graph:
     - node: start
       edges:
-        - to: bulbLight
-          steps:
-            - material: Steel
-              amount: 1
-              doAfter: 2.0
-        - to: tubeLight
+        - to: o2
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.0
-        - to: groundLight
-          steps:
-            - material: Steel
-              amount: 5
-              doAfter: 2.0
-        - to: strobeLight
-          steps:
-            - material: Steel
-              amount: 1
-              doAfter: 2.0
-        - to: strobeLightAlarm
-          steps:
-            - material: Steel
-              amount: 1
-              doAfter: 2.0
-        - to: emergencyLight
-          steps:
-            - material: Steel
-              amount: 1
-              doAfter: 1.0
-            - material: Glass
-              amount: 1
-              doAfter: 1.0
-        - to: janitorialServiceLight
+              doAfter: 2
+        - to: air
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
           steps:
             - material: Steel
               amount: 2
-              doAfter: 1.0
-            - material: Glass
-              amount: 1
-              doAfter: 1.0
-    - node: tubeLight
-      entity: PoweredlightEmpty
-      edges:
-        - to: start
-          conditions:
-            - !type:ContainerEmpty
-              container: "light_bulb"
-          steps:
-            - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
+        - to: n2o
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
               amount: 2
-            - !type:DeleteEntity {}
-    - node: bulbLight
-      entity: PoweredSmallLightEmpty
-      edges:
-        - to: start
-          conditions:
-            - !type:ContainerEmpty
-              container: "light_bulb"
-          steps:
-            - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
+        - to: n2
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 1
-            - !type:DeleteEntity {}
-    - node: groundLight
-      entity: PoweredLightPostSmallEmpty
-      edges:
-        - to: start
-          conditions:
-            - !type:ContainerEmpty
-              container: "light_bulb"
+            - !type:SnapToGrid
+              southRotation: true
           steps:
-            - tool: Screwing
-              doAfter: 4.0
+            - material: Steel
+              amount: 2
+              doAfter: 2
+        - to: co2
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 5
-            - !type:DeleteEntity {}
-    - node: strobeLight
-      entity: PoweredStrobeLightEmpty
-      edges:
-        - to: start
-          conditions:
-            - !type:ContainerEmpty
-              container: "light_bulb"
+            - !type:SnapToGrid
+              southRotation: true
           steps:
-            - tool: Screwing
-              doAfter: 2.0
+            - material: Steel
+              amount: 2
+              doAfter: 2
+        - to: plasma
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 1
-            - !type:DeleteEntity {}
-    - node: strobeLightAlarm
-      entity: PoweredStrobeLightAlarm
-      edges:
-        - to: start
-          conditions:
-            - !type:ContainerEmpty
-              container: "light_bulb"
+            - !type:SnapToGrid
+              southRotation: true
           steps:
-            - tool: Screwing
-              doAfter: 2.0
+            - material: Steel
+              amount: 2
+              doAfter: 2
+        - to: tritium
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 1
-            - !type:DeleteEntity {}
-    - node: emergencyLight
-      entity: EmergencyLight
-      edges:
-        - to: start
+            - !type:SnapToGrid
+              southRotation: true
           steps:
-            - tool: Screwing
-              doAfter: 2.0
+            - material: Steel
+              amount: 2
+              doAfter: 2
+        - to: waste
           completed:
-            - !type:SpawnPrototype
-              prototype: SheetSteel1
-              amount: 1
-            - !type:SpawnPrototype
-              prototype: SheetGlass1
-              amount: 1
-            - !type:DeleteEntity {}
-    - node: janitorialServiceLight
-      entity: JanitorServiceLight
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 2
+
+    - node: o2
+      entity: WarningO2
       edges:
         - to: start
           steps:
@@ -146,7 +80,95 @@
             - !type:SpawnPrototype
               prototype: SheetSteel1
               amount: 2
+            - !type:DeleteEntity {}
+
+    - node: air
+      entity: WarningAir
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
             - !type:SpawnPrototype
-              prototype: SheetGlass1
-              amount: 1
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: n2o
+      entity: WarningN2O
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: n2
+      entity: WarningN2
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: co2
+      entity: WarningCO2
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: plasma
+      entity: WarningPlasma
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: tritium
+      entity: WarningTritium
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+
+    - node: waste
+      entity: WarningWaste
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 2.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
             - !type:DeleteEntity {}

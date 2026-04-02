@@ -5,3 +5,11 @@
   targetNode: done
   category: construction-category-misc
   objectType: Item
+
+- type: construction
+  id: HandheldArtifactContainer
+  graph: ArtifactStorage
+  startNode: start
+  targetNode: handheld
+  category: construction-category-misc
+  objectType: Item

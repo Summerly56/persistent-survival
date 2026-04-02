@@ -1,0 +1,14 @@
+- type: constructionGraph
+  id: ArtifactStorage
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: handheld
+      steps:
+      - material: Steel
+        amount: 4
+        doAfter: 5
+
+  - node: handheld
+    entity: HandheldArtifactContainer

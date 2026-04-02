@@ -40,6 +40,22 @@
   objectType: Structure
 
 - type: construction
+  id: CrateTrashCart
+  graph: CrateTrashCart
+  startNode: start
+  targetNode: cratetrashcart
+  category: construction-category-storage
+  objectType: Structure
+
+- type: construction
+  id: CrateTrashCartJani
+  graph: CrateTrashCart
+  startNode: start
+  targetNode: cratetrashcartjani
+  category: construction-category-storage
+  objectType: Structure
+
+- type: construction
   id: BigBox
   name: construction-recipe-big-box
   graph: BaseBigBox

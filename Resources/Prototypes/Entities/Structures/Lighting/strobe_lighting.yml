@@ -152,6 +152,20 @@
       path: "/Audio/Misc/gamma.ogg"
 
 - type: entity
+  id: PoweredStrobeLightAlarm
+  suffix: "Empty, alarm"
+  parent: PoweredStrobeLightEmpty
+  components:
+  - type: AmbientSound
+    volume: 0
+    range: 20
+    sound:
+      path: "/Audio/Misc/emergency_alarm.ogg"
+  - type: Construction
+    graph: LightFixture
+    node: strobeLightAlarm
+
+- type: entity
   id: PoweredStrobeLightEpsilon
   suffix: "Empty, epsilon"
   parent: PoweredStrobeLightEmpty

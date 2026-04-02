@@ -182,3 +182,6 @@
     delay: 0.3
   - type: StaticPrice
     price: 250
+  - type: Construction
+    graph: ArtifactStorage
+    node: handheld
