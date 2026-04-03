@@ -119,7 +119,7 @@
   parent: CrateGenericSteel
   id: CrateMaterialCardboard
   name: cardboard crate
-  description: 150 pieces of cardboard.
+  description: 90 pieces of cardboard.
   components:
   - type: EntityTableContainerFill
     containers:
