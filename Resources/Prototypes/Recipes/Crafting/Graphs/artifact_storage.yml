@@ -12,3 +12,17 @@
 
   - node: handheld
     entity: HandheldArtifactContainer
+    edges:
+      - to: start
+        steps:
+          - tool: Screwing
+            doAfter: 2
+        conditions:
+          - !type:Locked
+              locked: false
+        completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
