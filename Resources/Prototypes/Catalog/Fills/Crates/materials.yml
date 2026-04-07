@@ -26,7 +26,7 @@
   parent: CrateGenericSteel
   id: CrateMaterialTextiles
   name: textiles crate
-  description: 100 pieces of cloth and 50 pieces of durathread.
+  description: 60 pieces of cloth and 30 pieces of durathread.
   components:
   - type: EntityTableContainerFill
     containers:
@@ -97,7 +97,7 @@
   parent: CrateGenericSteel
   id: CrateMaterialGold
   name: gold crate
-  description: 50 bars of gold.
+  description: 30 bars of gold.
   components:
   - type: EntityTableContainerFill
     containers:
@@ -108,7 +108,7 @@
   parent: CrateGenericSteel
   id: CrateMaterialSilver
   name: silver crate
-  description: 50 bars of silver.
+  description: 30 bars of silver.
   components:
   - type: EntityTableContainerFill
     containers:
