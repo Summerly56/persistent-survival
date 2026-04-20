@@ -1,17 +1,14 @@
 <div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
+<img alt="Persistence Wilds - Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
 </div>
 
-Persistent Survival is a fork of Space Station 14 Persistence, which is a fork of Space Station 14.
+Persistence Wilds is a fork of Persistent Survival which is a fork of Space Station 14 Persistence, which is a fork of Space Station 14.
 
 ## Links
 
 <div class="header" align="center">  
 
-[Discord](https://discord.ss14.io/) 
-
 </div>
-
 
 
 ## License
