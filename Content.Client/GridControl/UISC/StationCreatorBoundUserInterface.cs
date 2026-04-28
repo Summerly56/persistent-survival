@@ -41,7 +41,7 @@ namespace Content.Client.GridControl.UISC
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (StationCreatorBoundUserInterfaceState) state;
+            var castState = (StationCreatorBoundUserInterfaceState)state;
             _window?.UpdateState(_prototypeManager, castState);
         }
 

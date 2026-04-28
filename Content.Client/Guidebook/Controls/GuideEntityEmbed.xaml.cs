@@ -1,7 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Examine;
 using Content.Client.Guidebook.Richtext;
@@ -16,6 +12,10 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Input;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.Guidebook.Controls;
 

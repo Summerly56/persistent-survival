@@ -35,6 +35,6 @@ public sealed partial class AmbientMusicPrototype : IPrototype
     [ViewVariables(VVAccess.ReadWrite), DataField("sound", required: true)]
     public SoundSpecifier Sound = default!;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("rules", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<RulesPrototype>))]
+    [ViewVariables(VVAccess.ReadWrite), DataField("rules", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<RulesPrototype>))]
     public string Rules = string.Empty;
 }

@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Clothing;
 using Content.Shared.Implants;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Chameleon;
 

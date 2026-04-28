@@ -1,6 +1,6 @@
-using System.Linq;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
+using System.Linq;
 
 namespace Content.Shared.Clock;
 

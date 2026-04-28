@@ -1,12 +1,10 @@
-using System.Linq;
 using Content.Server.Power.Components;
 using Content.Server.Solar.Components;
-using Content.Shared.GameTicking;
 using Content.Shared.Physics;
 using JetBrains.Annotations;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Solar.EntitySystems
 {
@@ -149,7 +147,7 @@ namespace Content.Server.Solar.EntitySystems
             if (coverage > 0)
             {
                 // Determine if the solar panel is occluded, and zero out coverage if so.
-                var ray = new CollisionRay(_transformSystem.GetWorldPosition(xform), towardsSun.ToWorldVec(), (int) CollisionGroup.Opaque);
+                var ray = new CollisionRay(_transformSystem.GetWorldPosition(xform), towardsSun.ToWorldVec(), (int)CollisionGroup.Opaque);
                 var rayCastResults = _physicsSystem.IntersectRayWithPredicate(
                     xform.MapID,
                     ray,
@@ -172,7 +170,7 @@ namespace Content.Server.Solar.EntitySystems
             if (!Resolve(uid, ref solar, ref supplier, false))
                 return;
 
-            supplier.MaxSupply = (int) (solar.MaxSupply * solar.Coverage);
+            supplier.MaxSupply = (int)(solar.MaxSupply * solar.Coverage);
         }
 
         private void SyncPanelToExisting(EntityUid gridUid, EntityUid owner, SolarPanelComponent comp)

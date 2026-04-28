@@ -1,10 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Server.NodeContainer;
-using Content.Server.NodeContainer.NodeGroups;
 using Content.Shared.NodeContainer;
 using Content.Shared.NodeContainer.NodeGroups;
 using Content.Shared.Power;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Power.Components
 {
@@ -62,7 +60,7 @@ namespace Content.Server.Power.Components
             if (_entMan.TryGetComponent(Owner, out NodeContainerComponent? container))
             {
                 var compatibleNet = container.Nodes.Values
-                    .Where(node => (NodeId == null || NodeId == node.Name) && node.NodeGroupID == (NodeGroupID) Voltage)
+                    .Where(node => (NodeId == null || NodeId == node.Name) && node.NodeGroupID == (NodeGroupID)Voltage)
                     .Select(node => node.NodeGroup)
                     .OfType<TNetType>()
                     .FirstOrDefault();

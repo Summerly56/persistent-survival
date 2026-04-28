@@ -1,6 +1,4 @@
-using Content.Shared._NF.Bank.Events;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.CrewAssignments.Components;
 
@@ -13,7 +11,7 @@ public sealed partial class CrewAssignmentsComponent : Component
     public Dictionary<int, CrewAssignment> CrewAssignments { get; set; } = new();
     [DataField]
     [AutoNetworkedField]
-    public int nextID = 1;
+    public int NextID = 1;
     public bool TryGetAssignment(int id, out CrewAssignment? assignment)
     {
         if (id == 0)
@@ -34,8 +32,8 @@ public sealed partial class CrewAssignmentsComponent : Component
     }
     public void CreateAssignment(string assignmentname, int wage = 0, int clevel = 0)
     {
-        var id = nextID;
-        nextID++;
+        var id = NextID;
+        NextID++;
         CrewAssignment newAssignment = new CrewAssignment(id, assignmentname, wage, clevel);
         CrewAssignments.Add(id, newAssignment);
     }
@@ -44,6 +42,7 @@ public sealed partial class CrewAssignmentsComponent : Component
 
 [DataDefinition]
 [Serializable]
+[Virtual]
 public partial class CrewAssignment
 {
     [DataField("_id")]

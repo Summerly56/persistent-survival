@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -17,6 +16,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Shared.Blocking;
 

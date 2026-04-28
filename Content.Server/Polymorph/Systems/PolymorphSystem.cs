@@ -1,7 +1,7 @@
 using Content.Server.Actions;
-using Content.Server.Humanoid;
 using Content.Server.Inventory;
 using Content.Server.Polymorph.Components;
+using Content.Shared.Body;
 using Content.Shared.Buckle;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage.Components;
@@ -34,13 +34,13 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private readonly SharedBuckleSystem _buckle = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly ServerInventorySystem _inventory = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
 
@@ -262,7 +262,7 @@ public sealed partial class PolymorphSystem : EntitySystem
 
         if (configuration.TransferHumanoidAppearance)
         {
-            _humanoid.CloneAppearance(uid, child);
+            _visualBody.CopyAppearanceFrom(uid, child);
         }
 
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
@@ -405,7 +405,7 @@ public sealed partial class PolymorphSystem : EntitySystem
         _metaData.SetEntityName(actionId.Value, Loc.GetString("polymorph-self-action-name", ("target", entProto.Name)), metaDataCache);
         _metaData.SetEntityDescription(actionId.Value, Loc.GetString("polymorph-self-action-description", ("target", entProto.Name)), metaDataCache);
 
-        if (_actions.GetAction(actionId) is not {} action)
+        if (_actions.GetAction(actionId) is not { } action)
             return;
 
         _actions.SetIcon((action, action.Comp), new SpriteSpecifier.EntityPrototype(polyProto.Configuration.Entity));
@@ -414,7 +414,7 @@ public sealed partial class PolymorphSystem : EntitySystem
 
     public void RemovePolymorphAction(ProtoId<PolymorphPrototype> id, Entity<PolymorphableComponent> target)
     {
-        if (target.Comp.PolymorphActions is not {} actions)
+        if (target.Comp.PolymorphActions is not { } actions)
             return;
 
         if (actions.TryGetValue(id, out var action))

@@ -57,7 +57,7 @@ public sealed class XATTimerSystem : BaseQueryUpdateXATSystem<XATTimerComponent>
 
         args.PushMarkup(
             Loc.GetString("xenoarch-trigger-examine-timer",
-            ("time", MathF.Ceiling((float) (node.Comp1.NextActivation - Timing.CurTime).TotalSeconds)))
+            ("time", MathF.Ceiling((float)(node.Comp1.NextActivation - Timing.CurTime).TotalSeconds)))
         );
     }
 

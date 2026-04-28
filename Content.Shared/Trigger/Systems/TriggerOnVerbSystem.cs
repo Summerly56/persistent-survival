@@ -1,5 +1,5 @@
-using Content.Shared.Verbs;
 using Content.Shared.Trigger.Components.Triggers;
+using Content.Shared.Verbs;
 
 namespace Content.Shared.Trigger.Systems;
 

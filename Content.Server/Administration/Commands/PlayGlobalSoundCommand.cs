@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Audio;
 using Content.Shared.Administration;
 using Robust.Server.Player;
@@ -7,6 +6,7 @@ using Robust.Shared.Console;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Administration.Commands;
 

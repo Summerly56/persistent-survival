@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Client.LateJoin;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.ContentPack;
 using Robust.Shared.IoC;
 using Robust.Shared.Reflection;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.UserInterface;
 

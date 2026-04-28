@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Nutrition.Prototypes;
 using Content.Shared.Tag;
@@ -6,6 +5,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Shared.Nutrition.Components;
 

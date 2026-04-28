@@ -1,5 +1,5 @@
-using System.Numerics;
 using Content.Shared.Shuttles.Components;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Components
 {
@@ -82,5 +82,11 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadOnly)]
         public bool InFTL = false;
+        /// <summary>
+        /// Optional override for the FTL cooldown for this shuttle.
+        /// If not null, then the value will be used instead of the shuttle.cooldown CCVar.
+        /// </summary>
+        [DataField]
+        public TimeSpan? FTLCooldownOverride = null;
     }
 }

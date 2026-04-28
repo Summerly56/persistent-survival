@@ -1,8 +1,8 @@
-using System.Linq;
+using Content.Server.MCTN.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
-using Content.Server.MCTN.Components;
 using Content.Shared.NodeContainer;
+using System.Linq;
 
 namespace Content.Server.MCTN.Systems;
 

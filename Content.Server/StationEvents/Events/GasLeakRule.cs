@@ -1,5 +1,4 @@
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Robust.Shared.Audio;
@@ -31,7 +30,7 @@ namespace Content.Server.StationEvents.Events
                 var totalGas = RobustRandom.Next(component.MinimumGas, component.MaximumGas);
                 component.MolesPerSecond = RobustRandom.Next(component.MinimumMolesPerSecond, component.MaximumMolesPerSecond);
 
-                if (gameRule.Delay is {} startAfter)
+                if (gameRule.Delay is { } startAfter)
                     stationEvent.EndTime = _timing.CurTime + TimeSpan.FromSeconds(totalGas / component.MolesPerSecond + startAfter.Next(RobustRandom));
             }
 

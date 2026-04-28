@@ -20,8 +20,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Nuke;
 
@@ -334,7 +334,7 @@ public sealed class NukeSystem : EntitySystem
         // play alert sound if time is running out
         if (nuke.RemainingTime <= nuke.AlertSoundTime && !nuke.PlayedAlertSound)
         {
-            _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(nuke.AlertSound), new AudioParams{Volume = -5f});
+            _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(nuke.AlertSound), new AudioParams { Volume = -5f });
             _sound.StopStationEventMusic(uid, StationEventMusicType.Nuke);
             nuke.PlayedAlertSound = true;
             UpdateAppearance(uid, nuke);
@@ -414,13 +414,13 @@ public sealed class NukeSystem : EntitySystem
         var state = new NukeUiState
         {
             Status = component.Status,
-            RemainingTime = (int) component.RemainingTime,
+            RemainingTime = (int)component.RemainingTime,
             DiskInserted = component.DiskSlot.HasItem,
             IsAnchored = anchored,
             AllowArm = allowArm,
             EnteredCodeLength = component.EnteredCode.Length,
             MaxCodeLength = component.CodeLength,
-            CooldownTime = (int) component.CooldownTime,
+            CooldownTime = (int)component.CooldownTime,
         };
 
         _ui.SetUiState(uid, NukeUiKey.Key, state);
@@ -463,7 +463,7 @@ public sealed class NukeSystem : EntitySystem
         var ret = "";
         for (var i = 0; i < length; i++)
         {
-            var c = (char) _random.Next('0', '9' + 1);
+            var c = (char)_random.Next('0', '9' + 1);
             ret += c;
         }
 
@@ -492,8 +492,8 @@ public sealed class NukeSystem : EntitySystem
             _alertLevel.SetLevel(stationUid.Value, component.AlertLevelOnActivate, true, true, true, true);
 
         var pos = _transform.GetMapCoordinates(uid, xform: nukeXform);
-        var x = (int) pos.X;
-        var y = (int) pos.Y;
+        var x = (int)pos.X;
+        var y = (int)pos.Y;
         var posText = $"({x}, {y})";
 
         // We are collapsing the randomness here, otherwise we would get separate random song picks for checking duration and when actually playing the song afterwards
@@ -501,13 +501,13 @@ public sealed class NukeSystem : EntitySystem
 
         // warn a crew
         var announcement = Loc.GetString("nuke-component-announcement-armed",
-            ("time", (int) component.RemainingTime),
+            ("time", (int)component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
         var sender = Loc.GetString("nuke-component-announcement-sender");
         _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Red);
 
         _sound.PlayGlobalOnStation(uid, _audio.ResolveSound(component.ArmSound));
-        _nukeSongLength = (float) _audio.GetAudioLength(_selectedNukeSong).TotalSeconds;
+        _nukeSongLength = (float)_audio.GetAudioLength(_selectedNukeSong).TotalSeconds;
 
         // turn on the spinny light
         _pointLight.SetEnabled(uid, true);

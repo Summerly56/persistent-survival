@@ -1,9 +1,9 @@
-﻿using System.Text;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Utility;
+using System.Text;
 
 namespace Content.Server.Administration.Commands;
 

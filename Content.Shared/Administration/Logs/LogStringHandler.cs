@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Robust.Shared.Player;
 using Robust.Shared.Toolshed.TypeParsers;
@@ -42,7 +42,7 @@ public ref struct LogStringHandler
 
         format = Logger.ConvertName(format);
         if (Values.TryAdd(format, value)
-            || Values[format] is T val && val.Equals(value) )
+            || Values[format] is T val && val.Equals(value))
         {
             return;
         }
@@ -279,7 +279,7 @@ public readonly struct SerializablePlayer
     public SerializablePlayer(ICommonSession player, IEntityManager entityManager)
     {
         UserId = player.UserId.UserId;
-        if (player.AttachedEntity is not {} uid)
+        if (player.AttachedEntity is not { } uid)
             return;
 
         Uid = uid;

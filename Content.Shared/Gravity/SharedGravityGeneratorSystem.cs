@@ -1,5 +1,5 @@
-using Content.Shared.Popups;
 using Content.Shared.Construction.Components;
+using Content.Shared.Popups;
 
 namespace Content.Shared.Gravity;
 

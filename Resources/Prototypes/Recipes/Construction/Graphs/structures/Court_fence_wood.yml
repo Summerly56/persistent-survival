@@ -1,0 +1,91 @@
+- type: constructionGraph
+  id: CourtFenceWood
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: straight_court
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1.0
+        - to: end_court
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1.0
+        - to: corner_court
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1.0
+        - to: tjunction_court
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1.0
+        - to: gate_court
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1.0
+    - node: straight_court
+      entity: CourtFenceWoodStraight
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: end_court
+      entity: CourtFenceWoodEnd
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: corner_court
+      entity: CourtFenceWoodCorner
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: tjunction_court
+      entity: CourtFenceWoodTJunction
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: gate_court
+      entity: CourtFenceWoodGate
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}

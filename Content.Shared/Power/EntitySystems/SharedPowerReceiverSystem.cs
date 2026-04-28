@@ -1,10 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Power.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Power.EntitySystems;
 

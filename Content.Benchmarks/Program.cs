@@ -1,7 +1,7 @@
-﻿using System;
-using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Running;
 using Robust.Benchmarks.Configs;
+using System;
 
 namespace Content.Benchmarks
 {

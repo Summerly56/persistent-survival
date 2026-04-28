@@ -19,7 +19,7 @@ public sealed class PaperSheetlet : Sheetlet<NanotrasenStylesheet>
         var paperBackground = ResCache.GetTexture("/Textures/Interface/Paper/paper_background_default.svg.96dpi.png")
             .IntoPatch(StyleBox.Margin.All, 16);
         var paperBox = new StyleBoxTexture
-            { Texture = sheet.GetTexture(windowCfg.TransparentWindowBackgroundBorderedPath) };
+        { Texture = sheet.GetTexture(windowCfg.TransparentWindowBackgroundBorderedPath) };
         paperBox.SetPatchMargin(StyleBox.Margin.All, 2);
 
         var borderedTransparentTex = ResCache.GetTexture("/Textures/Interface/Nano/transparent_window_background_bordered.png");

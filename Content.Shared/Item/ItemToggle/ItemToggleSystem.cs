@@ -6,9 +6,9 @@ using Content.Shared.Temperature;
 using Content.Shared.Toggleable;
 using Content.Shared.Verbs;
 using Content.Shared.Wieldable;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Item.ItemToggle;
 /// <summary>
@@ -23,6 +23,7 @@ public sealed class ItemToggleSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private EntityQuery<ItemToggleComponent> _query;
 
@@ -315,8 +316,7 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void TurnOnOnWielded(Entity<ItemToggleComponent> ent, ref ItemWieldedEvent args)
     {
-        // FIXME: for some reason both client and server play sound
-        TryActivate((ent, ent.Comp));
+        TryActivate((ent, ent.Comp), args.User);
     }
 
     public bool IsActivated(Entity<ItemToggleComponent?> ent)
@@ -340,6 +340,9 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void UpdateActiveSound(Entity<ItemToggleActiveSoundComponent> ent, ref ItemToggledEvent args)
     {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return;
+
         var (uid, comp) = ent;
         if (!args.Activated)
         {
@@ -353,7 +356,7 @@ public sealed class ItemToggleSystem : EntitySystem
             var stream = args.Predicted
                 ? _audio.PlayPredicted(comp.ActiveSound, uid, args.User, loop)
                 : _audio.PlayPvs(comp.ActiveSound, uid, loop);
-            if (stream?.Entity is {} entity)
+            if (stream?.Entity is { } entity)
                 comp.PlayingStream = entity;
         }
     }

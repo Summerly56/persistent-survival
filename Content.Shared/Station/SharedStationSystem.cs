@@ -32,7 +32,7 @@ public abstract partial class SharedStationSystem : EntitySystem
     public List<string> GetValidAccesses(List<string> baseAccess, EntityUid station)
     {
         List<string> final = new();
-        if(TryComp<CrewAccessesComponent>(station, out var accessComp) && accessComp != null)
+        if (TryComp<CrewAccessesComponent>(station, out var accessComp) && accessComp != null)
         {
             foreach (var access in baseAccess)
             {
@@ -374,7 +374,7 @@ public abstract partial class SharedStationSystem : EntitySystem
         var stations = GetStations();
         foreach (var station in stations)
         {
-            if(TryComp<StationDataComponent>(station, out var stationData))
+            if (TryComp<StationDataComponent>(station, out var stationData))
             {
                 if (stationData.UID == uid) return station;
             }

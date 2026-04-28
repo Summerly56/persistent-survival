@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Preferences.Loadouts.Effects;
 

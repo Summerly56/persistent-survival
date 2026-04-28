@@ -1,7 +1,3 @@
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
@@ -13,7 +9,6 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.ObjectPool;
 using Robust.Server.Player;
 using Robust.Shared;
-using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -21,6 +16,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Threading;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Runtime.CompilerServices;
 
 // ReSharper disable once RedundantUsingDirective
 
@@ -32,7 +28,6 @@ namespace Content.Server.Atmos.EntitySystems
         [Robust.Shared.IoC.Dependency] private readonly IGameTiming _gameTiming = default!;
         [Robust.Shared.IoC.Dependency] private readonly IPlayerManager _playerManager = default!;
         [Robust.Shared.IoC.Dependency] private readonly IMapManager _mapManager = default!;
-        [Robust.Shared.IoC.Dependency] private readonly IConfigurationManager _confMan = default!;
         [Robust.Shared.IoC.Dependency] private readonly IParallelManager _parMan = default!;
         [Robust.Shared.IoC.Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
         [Robust.Shared.IoC.Dependency] private readonly ChunkingSystem _chunkingSys = default!;
@@ -85,9 +80,8 @@ namespace Content.Server.Atmos.EntitySystems
             };
 
             _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
-            Subs.CVar(_confMan, CCVars.NetGasOverlayTickRate, UpdateTickRate, true);
-            Subs.CVar(_confMan, CCVars.GasOverlayThresholds, UpdateThresholds, true);
-            Subs.CVar(_confMan, CVars.NetPVS, OnPvsToggle, true);
+
+            InitializeCVars();
 
             SubscribeLocalEvent<RoundRestartCleanupEvent>(Reset);
             SubscribeLocalEvent<GasTileOverlayComponent, ComponentStartup>(OnStartup);
@@ -167,7 +161,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         private byte GetOpacity(float moles, float molesVisible, float molesVisibleMax)
         {
-            return (byte) (ContentHelpers.RoundToLevels(
+            return (byte)(ContentHelpers.RoundToLevels(
                 MathHelper.Clamp01((moles - molesVisible) /
                                    (molesVisibleMax - molesVisible)) * 255, byte.MaxValue,
                 _thresholds) * 255 / (_thresholds - 1));
@@ -175,7 +169,16 @@ namespace Content.Server.Atmos.EntitySystems
 
         public GasOverlayData GetOverlayData(GasMixture? mixture)
         {
-            var data = new GasOverlayData(0, new byte[VisibleGasId.Length]);
+            ThermalByte byteTemp;
+            if (mixture == null)
+            {
+                byteTemp = new();
+                byteTemp.SetVacuum();
+            }
+            else
+                byteTemp = new(mixture.Temperature);
+
+            var data = new GasOverlayData(0, new byte[VisibleGasId.Length], byteTemp);
 
             for (var i = 0; i < VisibleGasId.Length; i++)
             {
@@ -189,7 +192,7 @@ namespace Content.Server.Atmos.EntitySystems
                     continue;
                 }
 
-                opacity = (byte) (ContentHelpers.RoundToLevels(
+                opacity = (byte)(ContentHelpers.RoundToLevels(
                     MathHelper.Clamp01((moles - gas.GasMolesVisible) /
                                        (gas.GasMolesVisibleMax - gas.GasMolesVisible)) * 255, byte.MaxValue,
                     _thresholds) * 255 / (_thresholds - 1));
@@ -215,18 +218,37 @@ namespace Content.Server.Atmos.EntitySystems
             }
 
             var changed = false;
+
+            ThermalByte newByteTemp = new();
+
+            // Extract fire color as bytes from the hotspot's computed blended color.
+            var fireColorR = (byte)(tile.Hotspot.FireColor.R * 255);
+            var fireColorG = (byte)(tile.Hotspot.FireColor.G * 255);
+            var fireColorB = (byte)(tile.Hotspot.FireColor.B * 255);
+            var fireColorA = (byte)(tile.Hotspot.FireColor.A * 255);
+
+            if (tile.Hotspot.Valid)
+                newByteTemp.SetTemperature(tile.Hotspot.Temperature);
+            else if (!tile.Space && tile.Air?.TotalMoles <= 5f)
+                newByteTemp.SetVacuum();
+            else if (!tile.Space && tile.Air != null)
+                newByteTemp = new(tile.Air.Temperature);
+
             if (oldData.Equals(default))
             {
                 changed = true;
-                oldData = new GasOverlayData(tile.Hotspot.State, new byte[VisibleGasId.Length], tile.Hotspot.PrimaryFuel);
+                oldData = new GasOverlayData(tile.Hotspot.State, new byte[VisibleGasId.Length], newByteTemp, fireColorR, fireColorG, fireColorB, fireColorA);
             }
-            else if (oldData.FireState != tile.Hotspot.State || oldData.FireGas != tile.Hotspot.PrimaryFuel)
+            else if (oldData.FireState != tile.Hotspot.State ||
+                     oldData.FireColorR != fireColorR || oldData.FireColorG != fireColorG || oldData.FireColorB != fireColorB || oldData.FireColorA != fireColorA ||
+                     Math.Abs(oldData.ByteGasTemperature.Value - newByteTemp.Value) > 1 || // Dirty Temperature when there is more then 1 byte difference. That should measure up to minimum 4 degreese difference, 6 degreese on average.
+                     (oldData.ByteGasTemperature.Value != newByteTemp.Value && newByteTemp.Value > ThermalByte.TempResolution)) // change of special ThermalByte value
             {
                 changed = true;
-                oldData = new GasOverlayData(tile.Hotspot.State, oldData.Opacity, tile.Hotspot.PrimaryFuel);
+                oldData = new GasOverlayData(tile.Hotspot.State, oldData.Opacity, newByteTemp, fireColorR, fireColorG, fireColorB, fireColorA);
             }
 
-            if (tile is {Air: not null, NoGridTile: false})
+            if (tile is { Air: not null, NoGridTile: false })
             {
                 for (var i = 0; i < VisibleGasId.Length; i++)
                 {
@@ -465,5 +487,12 @@ namespace Content.Server.Atmos.EntitySystems
         }
 
         #endregion
+
+        private void InitializeCVars()
+        {
+            Subs.CVar(ConfMan, CCVars.NetGasOverlayTickRate, UpdateTickRate, true);
+            Subs.CVar(ConfMan, CCVars.GasOverlayThresholds, UpdateThresholds, true);
+            Subs.CVar(ConfMan, CVars.NetPVS, OnPvsToggle, true);
+        }
     }
 }

@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client.Movement.Components;
 using Content.Client.Movement.Systems;
 using Content.Shared.Camera;
@@ -7,6 +6,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Wieldable;
 using Content.Shared.Wieldable.Components;
 using Robust.Client.Timing;
+using System.Numerics;
 
 namespace Content.Client.Wieldable;
 

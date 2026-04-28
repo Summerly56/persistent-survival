@@ -1,10 +1,3 @@
-using System.Collections.Immutable;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Connection;
 using Content.Server.Database;
 using Content.Shared.Database;
@@ -14,6 +7,13 @@ using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using System.Collections.Immutable;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.Administration
 {

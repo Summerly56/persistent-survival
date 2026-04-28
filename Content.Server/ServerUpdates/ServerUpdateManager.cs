@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Shared.CCVar;
 using Robust.Server;
@@ -8,6 +7,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Server.ServerUpdates;
 

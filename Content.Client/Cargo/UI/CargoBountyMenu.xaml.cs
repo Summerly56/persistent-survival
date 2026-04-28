@@ -43,7 +43,7 @@ public sealed partial class CargoBountyMenu : FancyWindow
         UntilNextSkip = untilNextSkip;
         var historyTab = MasterTabContainer.GetChild(0);
         MasterTabContainer.RemoveAllChildren();
-        if(historyTab != null) MasterTabContainer.AddChild(historyTab);
+        if (historyTab != null) MasterTabContainer.AddChild(historyTab);
         foreach (var kv in bounties)
         {
             _protoManager.Resolve(kv.Key, out var groupProto);

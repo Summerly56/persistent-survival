@@ -1,4 +1,4 @@
-﻿using Content.Shared.Standing;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Robust.Shared.Prototypes;
 
@@ -32,7 +32,7 @@ public sealed partial class ModifyKnockdownEntityEffectSystem : EntityEffectSyst
                     _stun.TryKnockdown(entity.Owner, time, false, drop: args.Effect.Drop);
                 break;
             case StatusEffectMetabolismType.Remove:
-                _stun.AddKnockdownTime(entity.Owner, - time ?? TimeSpan.Zero);
+                _stun.AddKnockdownTime(entity.Owner, -time ?? TimeSpan.Zero);
                 break;
             case StatusEffectMetabolismType.Set:
                 if (args.Effect.Crawling)

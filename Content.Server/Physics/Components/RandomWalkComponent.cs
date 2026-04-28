@@ -1,5 +1,5 @@
-using System.Numerics;
 using Content.Server.Physics.Controllers;
+using System.Numerics;
 
 namespace Content.Server.Physics.Components;
 

@@ -1,5 +1,4 @@
-﻿using Content.Server.GameTicking.Rules.VariationPass.Components;
-using Content.Server.Light.Components;
+using Content.Server.GameTicking.Rules.VariationPass.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Shared.Light.Components;
 using Robust.Shared.Random;
@@ -39,7 +38,7 @@ public sealed class PoweredLightVariationPassSystem : VariationPassSystem<Powere
                 // some aging fluorescents (tubes) start to flicker
                 // its also way too annoying right now so we wrap it in another prob lol
                 if (Random.Prob(ent.Comp.AgedLightTubeFlickerChance))
-                    _poweredLight.ToggleBlinkingLight(uid, comp, true);
+                    EnsureComp<BlinkingPoweredLightComponent>(uid);
                 _poweredLight.ReplaceSpawnedPrototype((uid, comp), ent.Comp.AgedLightTubePrototype);
             }
             else

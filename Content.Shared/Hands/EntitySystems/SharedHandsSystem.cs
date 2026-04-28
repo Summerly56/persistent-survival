@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Hands.Components;
@@ -12,6 +10,8 @@ using Robust.Shared.Containers;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Shared.Hands.EntitySystems;
 
@@ -91,6 +91,8 @@ public abstract partial class SharedHandsSystem
 
         ent.Comp.Hands.Add(handName, hand);
         ent.Comp.SortedHands.Add(handName);
+        // we use LINQ + ToList instead of the list sort because it's a stable sort vs the list sort
+        ent.Comp.SortedHands = ent.Comp.SortedHands.OrderBy(handId => ent.Comp.Hands[handId].Location).ToList();
         Dirty(ent);
 
         OnPlayerAddHand?.Invoke((ent, ent.Comp), handName, hand.Location);

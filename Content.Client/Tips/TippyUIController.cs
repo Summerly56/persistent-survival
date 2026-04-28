@@ -1,18 +1,18 @@
-using System.Numerics;
 using Content.Client.Message;
 using Content.Client.Paper.UI;
 using Content.Shared.CCVar;
 using Content.Shared.Movement.Components;
 using Content.Shared.Tips;
+using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using System.Numerics;
 using static Content.Client.Tips.TippyUI;
 
 namespace Content.Client.Tips;
@@ -127,18 +127,16 @@ public sealed class TippyUIController : UIController
                 if (!_queuedMessages.TryDequeue(out var next))
                     return;
 
-                if (next.Proto != null)
-                {
-                    _entity = EntityManager.SpawnEntity(next.Proto, MapCoordinates.Nullspace);
-                    tippy.ModifyLayers = false;
-                }
-                else
-                {
-                    _entity = EntityManager.SpawnEntity(_cfg.GetCVar(CCVars.TippyEntity), MapCoordinates.Nullspace);
-                    tippy.ModifyLayers = true;
-                }
+                _entity = next.Proto is null
+                    ? EntityManager.SpawnEntity(_cfg.GetCVar(CCVars.TippyEntity), MapCoordinates.Nullspace)
+                    : EntityManager.SpawnEntity(next.Proto, MapCoordinates.Nullspace);
+
                 if (!EntityManager.TryGetComponent(_entity, out sprite))
                     return;
+                // Only modify layers if they have all of the required ones.
+                tippy.ModifyLayers = _sprite.TryGetLayer(_entity, "revealing", out _, false) &&
+                                     _sprite.TryGetLayer(_entity, "speaking", out _, false) &&
+                                     _sprite.TryGetLayer(_entity, "hiding", out _, false);
                 if (!EntityManager.HasComponent<PaperVisualsComponent>(_entity))
                 {
                     var paper = EntityManager.AddComponent<PaperVisualsComponent>(_entity);

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Administration.UI;
 using Content.Client.Administration.UI.CustomControls;
 using Content.Client.Administration.UI.Logs;
@@ -8,6 +7,7 @@ using Content.IntegrationTests.Tests.Interaction;
 using Content.Server.Administration.Commands;
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Administration.Logs;
 

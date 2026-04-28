@@ -1,10 +1,10 @@
-﻿using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.GameTicking.Events;
 using Content.Shared.Database;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Codewords;
 
@@ -36,7 +36,7 @@ public sealed class CodewordSystem : EntitySystem
     public string[] GetCodewords(ProtoId<CodewordFactionPrototype> faction)
     {
         var query = EntityQueryEnumerator<CodewordManagerComponent>();
-        while (query.MoveNext(out  _, out var manager))
+        while (query.MoveNext(out _, out var manager))
         {
             if (!manager.Codewords.TryGetValue(faction, out var codewordEntity))
                 return GenerateForFaction(faction, ref manager);

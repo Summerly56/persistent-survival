@@ -1,4 +1,4 @@
-﻿using Content.Server.Administration;
+using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
@@ -19,7 +19,7 @@ namespace Content.Server.Objectives.Commands
         {
             if (args.Length != 2)
             {
-                shell.WriteError(Loc.GetString(Loc.GetString("cmd-rmobjective-invalid-args")));
+                shell.WriteError(Loc.GetString("cmd-rmobjective-invalid-args"));
                 return;
             }
 

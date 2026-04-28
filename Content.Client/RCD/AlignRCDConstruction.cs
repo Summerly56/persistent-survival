@@ -1,7 +1,5 @@
-using System.Numerics;
 using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;
-using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
@@ -10,6 +8,7 @@ using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using System.Numerics;
 
 namespace Content.Client.RCD;
 

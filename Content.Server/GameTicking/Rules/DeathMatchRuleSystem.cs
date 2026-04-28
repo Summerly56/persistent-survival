@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Clothing.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.KillTracking;
@@ -13,6 +12,7 @@ using Content.Shared.Storage;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.GameTicking.Rules;
 

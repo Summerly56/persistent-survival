@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
@@ -11,6 +10,7 @@ using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Threading;
+using System.Linq;
 
 namespace Content.Server.Power.EntitySystems
 {

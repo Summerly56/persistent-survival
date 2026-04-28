@@ -1,10 +1,10 @@
-using System.Text;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Toolshed;
+using System.Text;
 
 namespace Content.Server.Xenoarchaeology.Artifact;
 
@@ -105,7 +105,7 @@ public sealed class XenoArtifactCommand : ToolshedCommand
             Del(ent);
         }
 
-        return (float) sum / n;
+        return (float)sum / n;
     }
 
     /// <summary> Unlocks all nodes of artifact. </summary>

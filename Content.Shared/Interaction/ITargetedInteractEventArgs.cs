@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.Interaction
+namespace Content.Shared.Interaction
 {
     public interface ITargetedInteractEventArgs
     {

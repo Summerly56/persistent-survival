@@ -1,6 +1,7 @@
-﻿using Content.Shared.Actions;
+using Content.Shared.Actions;
 
 namespace Content.Shared.Jaunt;
+
 public sealed class JauntSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;

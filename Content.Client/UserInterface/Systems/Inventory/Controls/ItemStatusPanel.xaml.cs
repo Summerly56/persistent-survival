@@ -20,7 +20,7 @@ public sealed partial class ItemStatusPanel : Control
     [ViewVariables] private Hand? _hand;
 
     // Tracked so we can re-run SetSide() if the theme changes.
-    private HandUILocation _side;
+    private HandLocation _side;
 
     public ItemStatusPanel()
     {
@@ -28,7 +28,7 @@ public sealed partial class ItemStatusPanel : Control
         IoCManager.InjectDependencies(this);
     }
 
-    public void SetSide(HandUILocation location)
+    public void SetSide(HandLocation location)
     {
         // AN IMPORTANT REMINDER ABOUT THIS CODE:
         // In the UI, the RIGHT hand is on the LEFT on the screen.
@@ -43,14 +43,14 @@ public sealed partial class ItemStatusPanel : Control
 
         switch (location)
         {
-            case HandUILocation.Right:
+            case HandLocation.Right or HandLocation.Middle:
                 texture = Theme.ResolveTexture("item_status_right");
                 textureHighlight = Theme.ResolveTexture("item_status_right_highlight");
                 cutOut = StyleBox.Margin.Left;
                 flat = StyleBox.Margin.Right;
                 contentMargin = MarginFromThemeColor("_itemstatus_content_margin_right");
                 break;
-            case HandUILocation.Left:
+            case HandLocation.Left:
                 texture = Theme.ResolveTexture("item_status_left");
                 textureHighlight = Theme.ResolveTexture("item_status_left_highlight");
                 cutOut = StyleBox.Margin.Right;
@@ -67,14 +67,14 @@ public sealed partial class ItemStatusPanel : Control
         //Because of hand ui flipping, left and right instead correspond to outside and inside respectively.
         patchMargin = MarginFromThemeColor("_itemstatus_patch_margin");
 
-        var panel = (StyleBoxTexture) Panel.PanelOverride!;
+        var panel = (StyleBoxTexture)Panel.PanelOverride!;
         panel.Texture = texture;
         panel.SetPatchMargin(cutOut, patchMargin.Left);
         panel.SetPatchMargin(flat, patchMargin.Right);
         panel.SetPatchMargin(StyleBox.Margin.Top, patchMargin.Top);
         panel.SetPatchMargin(StyleBox.Margin.Bottom, patchMargin.Bottom);
 
-        var panelHighlight = (StyleBoxTexture) HighlightPanel.PanelOverride!;
+        var panelHighlight = (StyleBoxTexture)HighlightPanel.PanelOverride!;
         panelHighlight.Texture = textureHighlight;
         panelHighlight.SetPatchMargin(cutOut, patchMargin.Left);
         panelHighlight.SetPatchMargin(flat, patchMargin.Right);

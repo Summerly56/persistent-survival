@@ -76,39 +76,14 @@ public abstract class SharedHandLabelerSystem : EntitySystem
 
         _popupSystem.PopupClient(Loc.GetString("hand-labeler-successfully-applied"), user, user);
     }
-    private void OnUtilityVerb(EntityUid uid, HandLabelerComponent handLabeler, GetVerbsEvent<UtilityVerb> args)
-    {
-        if (args.Target is not { Valid: true } target || _whitelistSystem.IsWhitelistFail(handLabeler.Whitelist, target) || !args.CanAccess)
-            return;
 
-        var labelerText = handLabeler.AssignedLabel == string.Empty ? Loc.GetString("hand-labeler-remove-label-text") : Loc.GetString("hand-labeler-add-label-text");
-
-        var verb = new UtilityVerb()
-        {
-            Act = () =>
-            {
-                Labeling(uid, target, args.User, handLabeler);
-            },
-            Text = labelerText
-        };
-
-        args.Verbs.Add(verb);
-    }
-
-    private void AfterInteractOn(EntityUid uid, HandLabelerComponent handLabeler, AfterInteractEvent args)
-    {
-        if (args.Target is not { Valid: true } target || _whitelistSystem.IsWhitelistFail(handLabeler.Whitelist, target) || !args.CanReach)
-            return;
-
-        Labeling(uid, target, args.User, handLabeler);
-    }
-
-    private void Labeling(EntityUid uid, EntityUid target, EntityUid User, HandLabelerComponent handLabeler)
+    private void Labeling(EntityUid uid, EntityUid target, EntityUid user, HandLabelerComponent handLabeler)
     {
         string? result;
+#pragma warning disable RA0030 // Consider using the non-generic variant of this method
         if (TryComp<DoorComponent>(target, out var door) && door != null && TryComp<MetaDataComponent>(target, out var meta) && meta != null && meta.EntityPrototype != null)
         {
-            if (!_accessReader.IsAllowed(User, target))
+            if (!_accessReader.IsAllowed(user, target))
                 return;
 
             if (handLabeler.AssignedLabel == string.Empty)
@@ -126,12 +101,13 @@ public abstract class SharedHandLabelerSystem : EntitySystem
         }
         else
         {
-            AddLabelTo((uid, handLabeler), User, target);
+            AddLabelTo((uid, handLabeler), user, target);
         }
+#pragma warning restore RA0030 // Consider using the non-generic variant of this method
 
         // Log labeling
         _adminLogger.Add(LogType.Action, LogImpact.Low,
-            $"{ToPrettyString(User):user} labeled {ToPrettyString(target):target} with {ToPrettyString(uid):labeler}");
+            $"{ToPrettyString(user):user} labeled {ToPrettyString(target):target} with {ToPrettyString(uid):labeler}");
     }
 
     private void RemoveLabelFrom(EntityUid uid, EntityUid user, EntityUid target)
@@ -144,6 +120,49 @@ public abstract class SharedHandLabelerSystem : EntitySystem
         // Log labeling
         _adminLogger.Add(LogType.Action, LogImpact.Low,
             $"{ToPrettyString(user):user} removed label from {ToPrettyString(target):target} with {ToPrettyString(uid):labeler}");
+    }
+
+    private void OnUtilityVerb(Entity<HandLabelerComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
+    {
+        if (args.Target is not { Valid: true } target || !_whitelistSystem.CheckBoth(target, ent.Comp.Blacklist, ent.Comp.Whitelist) || !args.CanAccess)
+            return;
+
+        var user = args.User;   // can't use ref parameter in lambdas
+
+        if (ent.Comp.AssignedLabel != string.Empty)
+        {
+            var labelVerb = new UtilityVerb()
+            {
+                Act = () =>
+                {
+                    AddLabelTo(ent, user, target);
+                },
+                Text = Loc.GetString("hand-labeler-add-label-text")
+            };
+
+            args.Verbs.Add(labelVerb);
+        }
+
+        // add the unlabel verb to the menu even when the labeler has text
+        var unLabelVerb = new UtilityVerb()
+        {
+            Act = () =>
+            {
+                RemoveLabelFrom(ent, user, target);
+            },
+            Text = Loc.GetString("hand-labeler-remove-label-text"),
+            Priority = -1,
+        };
+
+        args.Verbs.Add(unLabelVerb);
+    }
+
+    private void AfterInteractOn(Entity<HandLabelerComponent> ent, ref AfterInteractEvent args)
+    {
+        if (args.Target is not { Valid: true } target || !_whitelistSystem.CheckBoth(target, ent.Comp.Blacklist, ent.Comp.Whitelist) || !args.CanReach)
+            return;
+
+        AddLabelTo(ent, args.User, target);
     }
 
     private void OnHandLabelerLabelChanged(EntityUid uid, HandLabelerComponent handLabeler, HandLabelerLabelChangedMessage args)

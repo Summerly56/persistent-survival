@@ -1,6 +1,4 @@
-using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.CrewAssignments.Prototypes;
-using Content.Shared.CrewAssignments.Systems;
 using Content.Shared.Radio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -86,6 +84,7 @@ public sealed partial class StationDataComponent : Component
 
 [DataDefinition]
 [Serializable]
+[Virtual]
 public partial class FactionRadioData
 {
     [DataField("_enabled")]

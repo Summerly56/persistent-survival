@@ -1,7 +1,3 @@
-using Content.Shared.CrewAssignments.Prototypes;
-using Content.Shared.CrewAssignments.Systems;
-using Content.Shared.FixedPoint;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.AcceptDeath;
@@ -11,7 +7,7 @@ public enum AcceptDeathUiKey : byte
 {
     Key
 }
- 
+
 [Serializable, NetSerializable]
 public sealed class AcceptDeathUpdateState : BoundUserInterfaceState
 {

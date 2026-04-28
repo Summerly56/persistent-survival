@@ -3,14 +3,12 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.CrewRecords.Systems;
 using Content.Server.GameTicking.Events;
-using Content.Server.Ghost;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.CCVar;
-using Content.Shared.CrewMetaRecords;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -24,7 +22,6 @@ using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Containers;
-using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -32,7 +29,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using System;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
@@ -182,7 +178,6 @@ namespace Content.Server.GameTicking
             EntityUid? station;
             station = _stationSystem.GetStationByID(1);
             if (station == null) return;
-            string speciesId;
 
             PlayerJoinGame(player);
 
@@ -203,7 +198,7 @@ namespace Content.Server.GameTicking
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station.Value, jobId, character);
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
-            
+
 
 
             _mind.TransferTo(newMind, mob);
@@ -270,7 +265,6 @@ namespace Content.Server.GameTicking
                 station = EntityUid.Invalid;
             else
                 station = stations[0];
-            string speciesId;
 
             PlayerJoinGame(player);
 
@@ -278,7 +272,7 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
             var jobId = "Passenger";
-            
+
 
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
 
@@ -290,10 +284,10 @@ namespace Content.Server.GameTicking
             var saveFilePath = new ResPath($"{data!.UserId}]{character!.Name}");
             _loader.TryLoadEntity(saveFilePath, out var mobMaybe);
             DebugTools.AssertNotNull(mobMaybe);
-            Entity<TransformComponent> EC = (Entity<TransformComponent>)mobMaybe!;
-            EntityUid? pe = EC.Owner;
+            Entity<TransformComponent> eC = (Entity<TransformComponent>)mobMaybe!;
+            EntityUid? pe = eC.Owner;
             var mob = (EntityUid)pe;
-           
+
             if (_ent.TryGetComponent<MindContainerComponent>(mob, out var container))
             {
                 if (container != null)
@@ -305,7 +299,7 @@ namespace Content.Server.GameTicking
             _mind.SetUserId(newMind, data.UserId);
             _mind.TransferTo(newMind, mob);
             _playerManager.SetAttachedEntity(player, mob, true);
-            
+
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Medium,
                 $"Player {player.Name} late joined as {character.Name:characterName}. Loaded char");
@@ -353,7 +347,7 @@ namespace Content.Server.GameTicking
 
 
 
-            
+
 
 
             if (!silent && TryComp(station, out MetaDataComponent? metaData))
@@ -391,7 +385,7 @@ namespace Content.Server.GameTicking
             {
                 if (spawnPoint.SpawnType != SpawnPointType.LateJoin) continue;
                 possibleContainers.Add((uid, spawnPoint, container, xform));
-               
+
             }
             return possibleContainers;
         }
@@ -445,7 +439,7 @@ namespace Content.Server.GameTicking
                     }
 
                     speciesId = roundStart.Count == 0
-                        ? SharedHumanoidAppearanceSystem.DefaultSpecies
+                        ? HumanoidCharacterProfile.DefaultSpecies
                         : _robustRandom.Pick(roundStart);
                 }
                 else
@@ -455,6 +449,7 @@ namespace Content.Server.GameTicking
                 }
 
                 character = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
+                character.Appearance = HumanoidCharacterAppearance.EnsureValid(character.Appearance, character.Species, character.Sex);
             }
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)

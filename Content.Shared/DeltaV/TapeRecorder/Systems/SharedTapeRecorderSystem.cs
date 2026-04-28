@@ -1,13 +1,11 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DeltaV.TapeRecorder.Components;
-using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Labels.Components;
 using Content.Shared.Popups;
-using Content.Shared.Tag;
 using Content.Shared.Toggleable;
 using Content.Shared.UserInterface;
 using Content.Shared.Whitelist;
@@ -30,7 +28,6 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly ItemSlotsSystem _slots = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
     protected const string SlotName = "cassette_tape";
@@ -120,7 +117,7 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
         tape.Comp.Buffer.Clear();
 
         //Update the tape's current time
-        tape.Comp.CurrentPosition = (float) Math.Min(currentTime, tape.Comp.MaxCapacity.TotalSeconds);
+        tape.Comp.CurrentPosition = (float)Math.Min(currentTime, tape.Comp.MaxCapacity.TotalSeconds);
 
         //If we have reached the end of the tape - stop
         return tape.Comp.CurrentPosition < tape.Comp.MaxCapacity.TotalSeconds;
@@ -144,7 +141,7 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
         ReplayMessagesInSegment(ent, tape.Comp, tape.Comp.CurrentPosition, currentTime);
 
         //Update the tape's position
-        tape.Comp.CurrentPosition = (float) Math.Min(currentTime, tape.Comp.MaxCapacity.TotalSeconds);
+        tape.Comp.CurrentPosition = (float)Math.Min(currentTime, tape.Comp.MaxCapacity.TotalSeconds);
 
         //Stop when we reach the end of the tape
         return tape.Comp.CurrentPosition < tape.Comp.MaxCapacity.TotalSeconds;
@@ -365,7 +362,7 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
 
     protected bool TryGetTapeCassette(EntityUid ent, [NotNullWhen(true)] out Entity<TapeCassetteComponent> tape)
     {
-        if (_slots.GetItemOrNull(ent, SlotName) is not {} cassette)
+        if (_slots.GetItemOrNull(ent, SlotName) is not { } cassette)
         {
             tape = default!;
             return false;
@@ -398,7 +395,7 @@ public abstract class SharedTapeRecorderSystem : EntitySystem
         {
             hasData = tape.Comp.RecordedData.Count > 0;
             currentTime = tape.Comp.CurrentPosition;
-            maxTime = (float) tape.Comp.MaxCapacity.TotalSeconds;
+            maxTime = (float)tape.Comp.MaxCapacity.TotalSeconds;
 
             if (TryComp<LabelComponent>(tape, out var labelComp))
                 if (labelComp.CurrentLabel != null)

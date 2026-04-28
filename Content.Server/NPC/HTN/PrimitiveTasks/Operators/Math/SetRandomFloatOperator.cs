@@ -1,6 +1,6 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
 using Robust.Shared.Random;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Math;
 

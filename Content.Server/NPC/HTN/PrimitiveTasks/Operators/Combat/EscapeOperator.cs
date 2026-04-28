@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.CombatMode;
 using Robust.Server.Containers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat.Melee;
 

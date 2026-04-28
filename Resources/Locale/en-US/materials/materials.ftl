@@ -18,6 +18,7 @@ materials-aluminium = aluminum
 materials-copper = copper
 materials-tin = tin
 materials-bronze = bronze
+materials-brass = brass
 
 # Other
 materials-biomass = biomass

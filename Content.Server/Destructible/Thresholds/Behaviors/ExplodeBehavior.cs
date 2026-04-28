@@ -1,4 +1,3 @@
-using Content.Server.Explosion.Components;
 using JetBrains.Annotations;
 
 namespace Content.Server.Destructible.Thresholds.Behaviors
@@ -12,7 +11,7 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
     {
         public void Execute(EntityUid owner, DestructibleSystem system, EntityUid? cause = null)
         {
-            system.ExplosionSystem.TriggerExplosive(owner, user:cause);
+            system.ExplosionSystem.TriggerExplosive(owner, user: cause);
         }
     }
 }

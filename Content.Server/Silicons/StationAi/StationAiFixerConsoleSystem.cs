@@ -1,10 +1,10 @@
-using Content.Shared.Silicons.StationAi;
 using Content.Server.EUI;
 using Content.Server.Ghost;
 using Content.Server.Mind;
-using Robust.Shared.Audio.Systems;
-using Robust.Server.Player;
 using Content.Shared.Popups;
+using Content.Shared.Silicons.StationAi;
+using Robust.Server.Player;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Silicons.StationAi;
 

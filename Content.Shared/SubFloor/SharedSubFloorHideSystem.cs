@@ -158,7 +158,7 @@ namespace Content.Shared.SubFloor
         private void SetUnderCover(Entity<SubFloorHideComponent> entity, bool value)
         {
             // If it's not undercover or it always has visible layers then normal visibility.
-            _visibility.SetLayer(entity.Owner, value && entity.Comp.VisibleLayers.Count == 0 ? (ushort) VisibilityFlags.Subfloor : (ushort) VisibilityFlags.Normal);
+            _visibility.SetLayer(entity.Owner, value && entity.Comp.VisibleLayers.Count == 0 ? (ushort)VisibilityFlags.Subfloor : (ushort)VisibilityFlags.Normal);
 
             if (entity.Comp.IsUnderCover == value)
                 return;
@@ -169,7 +169,7 @@ namespace Content.Shared.SubFloor
         public bool HasFloorCover(EntityUid gridUid, MapGridComponent grid, Vector2i position)
         {
             // TODO Redo this function. Currently wires on an asteroid are always "below the floor"
-            var tileDef = (ContentTileDefinition) _tileDefinitionManager[Map.GetTileRef(gridUid, grid, position).Tile.TypeId];
+            var tileDef = (ContentTileDefinition)_tileDefinitionManager[Map.GetTileRef(gridUid, grid, position).Tile.TypeId];
             return !tileDef.IsSubFloor;
         }
 

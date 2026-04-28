@@ -1,21 +1,19 @@
+using Content.Server.Administration.Logs;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Unary.EntitySystems;
+using Content.Server.Audio;
+using Content.Server.NodeContainer.EntitySystems;
+using Content.Server.NodeContainer.NodeGroups;
+using Content.Server.NodeContainer.Nodes;
+using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Visuals;
-using Content.Shared.Examine;
-using Content.Shared.Destructible;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Power.Components;
-using Content.Server.NodeContainer;
-using Robust.Server.GameObjects;
-using Content.Server.NodeContainer.Nodes;
-using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.Audio;
-using Content.Server.Administration.Logs;
-using Content.Server.NodeContainer.EntitySystems;
-using Content.Shared.Atmos;
 using Content.Shared.Database;
+using Content.Shared.Destructible;
+using Content.Shared.Examine;
 using Content.Shared.Power;
+using Robust.Server.GameObjects;
 
 namespace Content.Server.Atmos.Portable
 {
@@ -59,7 +57,7 @@ namespace Content.Server.Atmos.Portable
                 && portableNode.ConnectionsEnabled)
             {
                 _atmosphereSystem.React(component.Air, portableNode);
-                if (portableNode.NodeGroup is PipeNet {NodeCount: > 1} net)
+                if (portableNode.NodeGroup is PipeNet { NodeCount: > 1 } net)
                     _canisterSystem.MixContainerWithPipeNet(component.Air, net.Air);
             }
 
@@ -69,7 +67,7 @@ namespace Content.Server.Atmos.Portable
                 return;
             }
 
-            if (args.Grid is not {} grid)
+            if (args.Grid is not { } grid)
                 return;
 
             var position = _transformSystem.GetGridTilePositionOrDefault(uid);

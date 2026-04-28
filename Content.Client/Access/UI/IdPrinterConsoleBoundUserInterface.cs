@@ -16,18 +16,11 @@ namespace Content.Client.Access.UI
     public sealed class IdPrinterConsoleBoundUserInterface : BoundUserInterface
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-        private readonly SharedIdPrinterConsoleSystem _idPrinterConsoleSystem = default!;
-
         private IdPrinterConsoleWindow? _window;
 
-        // CCVar.
-        private int _maxNameLength;
-        private int _maxIdJobLength;
 
         public IdPrinterConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
-            _idPrinterConsoleSystem = EntMan.System<SharedIdPrinterConsoleSystem>();
 
         }
 
@@ -35,7 +28,7 @@ namespace Content.Client.Access.UI
         {
             base.Open();
 
-         
+
 
             _window = new IdPrinterConsoleWindow(this, _prototypeManager)
             {
@@ -59,7 +52,7 @@ namespace Content.Client.Access.UI
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (IdPrinterConsoleBoundUserInterfaceState) state;
+            var castState = (IdPrinterConsoleBoundUserInterfaceState)state;
             _window?.UpdateState(castState);
         }
 

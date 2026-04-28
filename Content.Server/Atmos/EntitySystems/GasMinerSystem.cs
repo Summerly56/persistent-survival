@@ -1,10 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
-using Content.Server.Atmos.Piping.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -81,7 +80,8 @@ public sealed class GasMinerSystem : SharedGasMinerSystem
 
         var toSpawnReal = Math.Clamp(allowableMoles, 0f, toSpawnTarget);
 
-        if (toSpawnReal < Atmospherics.GasMinMoles) {
+        if (toSpawnReal < Atmospherics.GasMinMoles)
+        {
             return 0f;
         }
 

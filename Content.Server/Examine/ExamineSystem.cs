@@ -1,10 +1,10 @@
-using System.Linq;
 using Content.Server.Verbs;
 using Content.Shared.Examine;
 using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Examine
 {
@@ -50,7 +50,7 @@ namespace Content.Server.Examine
             var channel = player.Channel;
             var entity = GetEntity(request.NetEntity);
 
-            if (session.AttachedEntity is not {Valid: true} playerEnt
+            if (session.AttachedEntity is not { Valid: true } playerEnt
                 || !Exists(entity))
             {
                 RaiseNetworkEvent(new ExamineSystemMessages.ExamineInfoResponseMessage(

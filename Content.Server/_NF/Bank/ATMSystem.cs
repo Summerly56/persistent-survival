@@ -94,7 +94,7 @@ public sealed partial class BankSystem
             _transform.SetLocalRotation(cashStack, Angle.Zero); // Orient these to grid north instead of map north
 
         _uiSystem.SetUiState(uid, args.UiKey,
-            new BankATMMenuInterfaceState(balance-args.Amount, true, deposit));
+            new BankATMMenuInterfaceState(balance - args.Amount, true, deposit));
     }
 
     private void OnDeposit(EntityUid uid, BankATMComponent component, BankDepositMessage args)

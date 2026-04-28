@@ -1,14 +1,14 @@
-﻿using Content.Shared.Explosion.Components;
+using Content.Shared.Explosion.Components;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Throwing;
 using Content.Shared.Trigger;
-using Content.Shared.Trigger.Systems;
 using Content.Shared.Trigger.Components;
+using Content.Shared.Trigger.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 using System.Numerics;
-using Content.Shared.Explosion.EntitySystems;
 
 namespace Content.Server.Explosion.EntitySystems;
 

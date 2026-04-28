@@ -1,5 +1,5 @@
-using Robust.Shared.Containers;
 using Content.Shared.Singularity.Components;
+using Robust.Shared.Containers;
 
 namespace Content.Shared.Singularity.EntitySystems;
 

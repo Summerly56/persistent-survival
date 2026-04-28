@@ -51,7 +51,7 @@ public sealed class PlayerPanelLogsMessage : EuiMessageBase;
 public sealed class PlayerPanelDeleteMessage : EuiMessageBase;
 
 [Serializable, NetSerializable]
-public sealed class PlayerPanelRejuvenationMessage: EuiMessageBase;
+public sealed class PlayerPanelRejuvenationMessage : EuiMessageBase;
 
 [Serializable, NetSerializable]
-public sealed class PlayerPanelFollowMessage: EuiMessageBase;
+public sealed class PlayerPanelFollowMessage : EuiMessageBase;

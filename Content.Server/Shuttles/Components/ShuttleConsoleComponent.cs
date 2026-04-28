@@ -1,5 +1,5 @@
-using System.Numerics;
 using Content.Shared.Shuttles.Components;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Components
 {

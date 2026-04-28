@@ -301,7 +301,7 @@
   id: ChefPilot # Tagged entity can control someone wearing a Chef's hat if inside their hat.
 
 - type: Tag
-  id: ChemDispensable # Storage whitelist: ChemDispenserEmpty, SmartFridge, BorgModuleAdvancedChemical
+  id: ChemDispensable # Storage whitelist: ChemDispenserEmpty, SmartFridge, BorgModuleChemical
 
 - type: Tag
   id: Chicken # Reproductive partner key. MetamorphRecipe: FoodBurgerChicken
@@ -328,13 +328,13 @@
   id: ClothMade # SpecialDigestible: OrganMothStomach. Storage whitelist: FoodBoxCloth
 
 - type: Tag
-  id: ClownMask # CargoBounty: BountyClownCostume. ConstructionGraph: Honker, BananaClownMask
+  id: ClownMask # ConstructionGraph: Honker, BananaClownMask
 
 - type: Tag
   id: ClownRecorder # ConstructionGraph: ClownHardsuit
 
 - type: Tag
-  id: ClownShoes # CargoBounty: BountyClownCostume. ConstructionGraph: Honker, BananaClownShoes
+  id: ClownShoes # ConstructionGraph: Honker, BananaClownShoes
 
 - type: Tag
   id: ClownSuit # ConstructionGraph: BananaClownJumpsuit
@@ -445,7 +445,7 @@
   id: CrystalPink # ConstructionGraph: PinkLight, PinkLightBulb
 
 - type: Tag
-  id: CrystalRed # ConstructionGraph: RedLight, RedLightBulb
+  id: CrystalRed # ConstructionGraph: RedLight, RedLightBulb, AltarHeaven
 
 - type: Tag
   id: CrystalYellow # ConstructionGraph: YellowLight, YellowLightBulb
@@ -466,6 +466,9 @@
 
 - type: Tag
   id: Dice # Storage whitelist: BorgModuleService, DiceBag, BooksBag
+
+- type: Tag
+  id: DiceD20 # ConstructionGraph: AltarChaos
 
 - type: Tag
   id: DiscreteHealthAnalyzer # Storage whitelist: ClothingBeltMedical. ConstructionGraph: MediBot
@@ -497,6 +500,9 @@
 
 - type: Tag
   id: DoorElectronicsConfigurator # Used by ActivatableUIComponent on entity DoorElectronics to whitelist a tagged tool to open the UI.
+
+- type: Tag
+  id: DoorRemoteWhitelist # Doors with this tag can be interacted with door remotes
 
 - type: Tag
   id: DrinkBottle # Storage whitelist: BoozeDispenserEmpty, SodaDispenserEmpty
@@ -553,6 +559,9 @@
 
 - type: Tag
   id: ExCable # Placement blacklist on CableDetStack. Placement whitelist on WiredDetonator
+
+- type: Tag
+  id: ExecutiveSpatha # Persi14. Executive spatha
 
 ## F ##
 
@@ -876,6 +885,12 @@
   id: LightBulb # Storage whitelist: BoxLightbulb. ConstructionGraph: HelmetJustice
 
 - type: Tag
+  id: LightTubeCyan # ConstructionGraph: AltarTechnology
+
+- type: Tag
+  id: LightTubeRed # ConstructionGraph: AltarSatana
+
+- type: Tag
   id: Lime # CargoBounty: BountyLime
 
 ## M ##
@@ -994,6 +1009,9 @@
 
 - type: Tag
   id: MothershipModule # Cyborg module category for evil xenoborg core
+
+- type: Tag
+  id: MothershipPinpointerPiece # ConstructionGraph: RepairMothershipPinpointer
 
 - type: Tag
   id: Mouse # CargoBounty: BountyMouse
@@ -1172,6 +1190,9 @@
 
 - type: Tag
   id: PlushieSharkPink # Storage whitelist: MopBucket. ItemMapper: MopBucket
+
+- type: Tag
+  id: PlushieSlime # ConstructionGraph: AltarConvertFestival
 
 - type: Tag
   id: Potato # ConstructionGraph: PowerCellPotato
@@ -1468,6 +1489,12 @@
 
 - type: Tag
   id: Tourniquet # Storage whitelist: ClothingBeltMedical
+
+- type: Tag
+  id: TowelNanotrasen # ConstructionGraph: AltarNanotrasen
+
+- type: Tag
+  id: TowelYellow # ConstructionGraph: AltarConvertYellow
 
 - type: Tag
   id: ToyRubberDuck # ConstructionGraph: ClothingShoeSlippersDuck

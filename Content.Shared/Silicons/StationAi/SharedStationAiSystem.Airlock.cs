@@ -1,8 +1,8 @@
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
-using Robust.Shared.Serialization;
 using Content.Shared.Electrocution;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Silicons.StationAi;
 
@@ -101,8 +101,8 @@ public abstract partial class SharedStationAiSystem
         _adminLogger.Add(LogType.Action, $"{args.User} set electrified status on {ent} to [{args.Electrified}] using the Station AI radial.");
         _electrify.SetElectrified((ent, component), args.Electrified);
         var soundToPlay = component.Enabled
-            ? component.AirlockElectrifyDisabled
-            : component.AirlockElectrifyEnabled;
+            ? component.AirlockElectrifyEnabled
+            : component.AirlockElectrifyDisabled;
         _audio.PlayLocal(soundToPlay, ent, args.User);
     }
 }

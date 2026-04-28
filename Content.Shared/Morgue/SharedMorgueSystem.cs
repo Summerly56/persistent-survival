@@ -1,7 +1,7 @@
-using Content.Shared.Mobs.Components;
-using Content.Shared.Storage.Components;
 using Content.Shared.Examine;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Morgue.Components;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Player;
 
 namespace Content.Shared.Morgue;

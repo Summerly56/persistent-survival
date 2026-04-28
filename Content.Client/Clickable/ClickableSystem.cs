@@ -1,9 +1,9 @@
-using System.Numerics;
 using Content.Client.Sprite;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Utility;
 using Robust.Shared.Graphics;
+using System.Numerics;
 
 namespace Content.Client.Clickable;
 

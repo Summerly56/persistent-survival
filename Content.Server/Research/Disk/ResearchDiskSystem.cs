@@ -1,10 +1,10 @@
-using System.Linq;
-using Content.Shared.Interaction;
 using Content.Server.Popups;
-using Content.Shared.Research.Prototypes;
 using Content.Server.Research.Systems;
+using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
+using Content.Shared.Research.Prototypes;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Research.Disk
 {

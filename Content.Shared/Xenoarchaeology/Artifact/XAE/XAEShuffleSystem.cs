@@ -18,7 +18,7 @@ public sealed class XAEShuffleSystem : BaseXAESystem<XAEShuffleComponent>
     private EntityQuery<MobStateComponent> _mobState;
 
     /// <summary> Pre-allocated and re-used collection.</summary>
-    private readonly HashSet<EntityUid> _entities= new();
+    private readonly HashSet<EntityUid> _entities = new();
 
     /// <inheritdoc />
     public override void Initialize()
@@ -31,7 +31,7 @@ public sealed class XAEShuffleSystem : BaseXAESystem<XAEShuffleComponent>
     /// <inheritdoc />
     protected override void OnActivated(Entity<XAEShuffleComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
-        if(!_timing.IsFirstTimePredicted)
+        if (!_timing.IsFirstTimePredicted)
             return;
 
         List<Entity<TransformComponent>> toShuffle = new();

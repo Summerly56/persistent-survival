@@ -21,10 +21,10 @@ public sealed partial class CargoPalletMenu : FancyWindow
         SellButton.OnPressed += OnSellPressed;
         AppraiseButton.OnPressed += OnAppraisePressed;
         PaymentType.OnPressed += OnChangeMoneyMode;
-        
+
     }
 
-    
+
 
     public void SetAppraisal(int amount, int tax, CargoSaleMode moneyMode, string taxName)
     {
@@ -43,13 +43,13 @@ public sealed partial class CargoPalletMenu : FancyWindow
             ConnectedBC.Visible = true;
         }
 
-            AppraisalLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", amount.ToString()));
-        
+        AppraisalLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", amount.ToString()));
+
     }
 
     public void SetMoneyMode(CargoSaleMode CashEnabled)
     {
-        if(CashEnabled == CargoSaleMode.Cash)
+        if (CashEnabled == CargoSaleMode.Cash)
         {
             PaymentType.Text = "Cash (Spesos)";
         }
@@ -61,7 +61,7 @@ public sealed partial class CargoPalletMenu : FancyWindow
         {
             PaymentType.Text = "Payslip";
         }
-        
+
     }
     public void SetCount(int count)
     {
@@ -70,7 +70,7 @@ public sealed partial class CargoPalletMenu : FancyWindow
 
     public void SetStation(string selectedName, int taxingStation, int selectedStation, Dictionary<int, string> stations, CargoSaleMode moneyMode)
     {
-        
+
         if (moneyMode == CargoSaleMode.Deposit && taxingStation == selectedStation)
         {
             TaxContainer.Visible = false;

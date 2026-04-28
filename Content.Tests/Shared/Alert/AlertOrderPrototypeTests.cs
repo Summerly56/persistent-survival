@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Content.Shared.Alert;
 using NUnit.Framework;
 using Robust.Shared.IoC;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Content.Tests.Shared.Alert
 {

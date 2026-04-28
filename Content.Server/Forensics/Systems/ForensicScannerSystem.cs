@@ -1,22 +1,19 @@
-using System.Linq;
-using System.Text;
 using Content.Server.Popups;
-using Content.Shared.UserInterface;
 using Content.Shared.DoAfter;
-using Content.Shared.Fluids.Components;
 using Content.Shared.Forensics;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Paper;
-using Content.Shared.Verbs;
 using Content.Shared.Tag;
-using Robust.Shared.Audio.Systems;
+using Content.Shared.UserInterface;
+using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Player;
-using Robust.Shared.Timing;
-using Content.Server.Chemistry.Containers.EntitySystems;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+using System.Linq;
+using System.Text;
 // todo: remove this stinky LINQy
 
 namespace Content.Server.Forensics
@@ -98,7 +95,8 @@ namespace Content.Server.Forensics
                 if (_tag.HasTag(args.Args.Target.Value, DNASolutionScannableTag))
                 {
                     scanner.SolutionDNAs = _forensicsSystem.GetSolutionsDNA(args.Args.Target.Value).ToArray();
-                } else
+                }
+                else
                 {
                     scanner.SolutionDNAs = [];
                 }

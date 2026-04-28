@@ -1,16 +1,13 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
-using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
-using Content.Shared.Paper;
-using Content.Shared.Speech;
 using Content.Shared.DeltaV.TapeRecorder;
 using Content.Shared.DeltaV.TapeRecorder.Components;
 using Content.Shared.DeltaV.TapeRecorder.Systems;
-using Robust.Server.Audio;
+using Content.Shared.Paper;
+using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 using System.Text;
 
 namespace Content.Server.DeltaV.TapeRecorder;
@@ -94,7 +91,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
 
         // Sorting list by time for overwrite order
         var data = cassette.Comp.RecordedData;
-        data.Sort((x,y) => x.Timestamp.CompareTo(y.Timestamp));
+        data.Sort((x, y) => x.Timestamp.CompareTo(y.Timestamp));
 
         // Looking if player's entity exists to give paper in its hand
         var player = args.Actor;
@@ -111,7 +108,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         foreach (var message in cassette.Comp.RecordedData)
         {
             var name = message.Name ?? ent.Comp.DefaultName;
-            var time = TimeSpan.FromSeconds((double) message.Timestamp);
+            var time = TimeSpan.FromSeconds((double)message.Timestamp);
 
             text.AppendLine(Loc.GetString("tape-recorder-print-message-text",
                 ("time", time.ToString(@"hh\:mm\:ss")),

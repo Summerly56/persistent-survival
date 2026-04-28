@@ -70,7 +70,7 @@ namespace Content.Client.CrewAssignments.UI
             {
                 WhitelistedNames.AddItem(name);
             }
-            if(visible)
+            if (visible)
             {
                 Reveal.Text = "Hide for Everyone";
             }

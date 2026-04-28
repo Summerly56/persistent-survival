@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 using System.Linq;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
@@ -182,7 +182,7 @@ public sealed class GhostRoleTests
             Assert.That(ghostTwo, Is.Not.EqualTo(ghostRole));
             Assert.That(session.ContentData()?.Mind, Is.EqualTo(ghostRoleMindId));
 
-            if(adminGhost)
+            if (adminGhost)
             {
                 // aghost case, the ghost role mind should be owned by the ghost role entity,
                 // the ghost role mind is visiting the new ghost

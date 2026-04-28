@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Numerics;
 using Content.Shared.Decals;
 using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
 using Robust.Client.Utility;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
@@ -13,6 +8,10 @@ using Robust.Shared.Utility;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Numerics;
 using static Robust.UnitTesting.RobustIntegrationTest;
 
 namespace Content.MapRenderer.Painters;
@@ -51,7 +50,7 @@ public sealed class DecalPainter
             Run(canvas, decal, customOffset);
         }
 
-        Console.WriteLine($"{nameof(DecalPainter)} painted {decals.Length} decals in {(int) stopwatch.Elapsed.TotalMilliseconds} ms");
+        Console.WriteLine($"{nameof(DecalPainter)} painted {decals.Length} decals in {(int)stopwatch.Elapsed.TotalMilliseconds} ms");
     }
 
     private void Run(Image canvas, DecalData data, Vector2 customOffset = default)
@@ -86,7 +85,7 @@ public sealed class DecalPainter
 
         var image = Image.Load<Rgba32>(stream);
 
-        image.Mutate(o => o.Rotate((float) -decal.Angle.Degrees));
+        image.Mutate(o => o.Rotate((float)-decal.Angle.Degrees));
         var coloredImage = new Image<Rgba32>(image.Width, image.Height);
         Color color = decal.Color?.WithAlpha(byte.MaxValue).ConvertImgSharp() ?? Color.White; // remove the encoded color alpha here
         var alpha = decal.Color?.A ?? 1; // get the alpha separately so we can use it in DrawImage
@@ -96,8 +95,8 @@ public sealed class DecalPainter
             .DrawImage(coloredImage, PixelColorBlendingMode.Multiply, PixelAlphaCompositionMode.SrcAtop, 1.0f)
             .Flip(FlipMode.Vertical));
 
-        var pointX = (int) data.X + (int) (customOffset.X * EyeManager.PixelsPerMeter);
-        var pointY = (int) data.Y + (int) (customOffset.Y * EyeManager.PixelsPerMeter);
+        var pointX = (int)data.X + (int)(customOffset.X * EyeManager.PixelsPerMeter);
+        var pointY = (int)data.Y + (int)(customOffset.Y * EyeManager.PixelsPerMeter);
 
         // Woohoo!
         canvas.Mutate(o => o.DrawImage(image, new Point(pointX, pointY), alpha));

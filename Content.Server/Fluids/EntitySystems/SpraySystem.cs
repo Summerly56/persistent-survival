@@ -6,19 +6,19 @@ using Content.Shared.CCVar;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
+using Content.Shared.Fluids.Components;
+using Content.Shared.Fluids.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Timing;
 using Content.Shared.Vapor;
+using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using System.Numerics;
-using Content.Shared.Fluids.EntitySystems;
-using Content.Shared.Fluids.Components;
-using Robust.Server.Containers;
-using Robust.Shared.Map;
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -88,7 +88,7 @@ public sealed class SpraySystem : SharedSpraySystem
 
     public override void Spray(Entity<SprayComponent> entity, MapCoordinates mapcoord, EntityUid? user = null)
     {
-        if (!_solutionContainer.TryGetSolution(entity.Owner, SprayComponent.SolutionName, out var soln, out var solution))
+        if (!_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out var soln, out var solution))
             return;
 
         var ev = new SprayAttemptEvent(user);

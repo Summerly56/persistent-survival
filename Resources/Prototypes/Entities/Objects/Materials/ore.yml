@@ -309,12 +309,8 @@
     solutions:
       bananiumore:
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Honk
-          Quantity: 5
+        - ReagentId: Bananium
+          Quantity: 6.5
   - type: Item
     heldPrefix: bananium
   - type: Tag

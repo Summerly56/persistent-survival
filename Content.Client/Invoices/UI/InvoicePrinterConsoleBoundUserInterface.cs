@@ -18,18 +18,11 @@ namespace Content.Client.Invoices.UI
     public sealed class InvoicePrinterConsoleBoundUserInterface : BoundUserInterface
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-        private readonly SharedInvoicePrinterConsoleSystem _invoicePrinterConsoleSystem = default!;
-
         private InvoicePrinterConsoleWindow? _window;
 
-        // CCVar.
-        private int _maxNameLength;
-        private int _maxIdJobLength;
 
         public InvoicePrinterConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
-            _invoicePrinterConsoleSystem = EntMan.System<SharedInvoicePrinterConsoleSystem>();
 
         }
 
@@ -37,7 +30,7 @@ namespace Content.Client.Invoices.UI
         {
             base.Open();
 
-         
+
 
             _window = new InvoicePrinterConsoleWindow(this, _prototypeManager)
             {
@@ -70,7 +63,7 @@ namespace Content.Client.Invoices.UI
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (InvoicePrinterConsoleBoundUserInterfaceState) state;
+            var castState = (InvoicePrinterConsoleBoundUserInterfaceState)state;
             _window?.UpdateState(castState);
         }
 

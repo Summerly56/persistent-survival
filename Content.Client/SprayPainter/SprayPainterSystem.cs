@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Items;
 using Content.Client.Message;
 using Content.Client.Stylesheets;
@@ -12,6 +11,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.SprayPainter;
 

@@ -1,14 +1,12 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
-using Content.Shared.Popups;
 using Content.Shared.Plunger.Components;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Timing;
+using Content.Shared.Popups;
+using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
-using Robust.Shared.Network;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Random;
 
 namespace Content.Shared.Plunger.Systems;
 

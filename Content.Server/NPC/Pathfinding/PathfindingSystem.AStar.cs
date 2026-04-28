@@ -1,5 +1,3 @@
-using System.Numerics;
-using Content.Shared.NPC;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 

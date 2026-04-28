@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Numerics;
-using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration;
@@ -9,7 +6,6 @@ using Content.Shared.Database;
 using Content.Shared.Decals;
 using Content.Shared.Maps;
 using Microsoft.Extensions.ObjectPool;
-using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared;
 using Robust.Shared.Configuration;
@@ -20,6 +16,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Threading;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Numerics;
 using static Content.Shared.Decals.DecalGridComponent;
 using ChunkIndicesEnumerator = Robust.Shared.Map.Enumerators.ChunkIndicesEnumerator;
 
@@ -114,7 +111,7 @@ namespace Content.Server.Decals
 
             while (enumerator.MoveNext(out var tile))
             {
-                var tilePos = (Vector2) tile.Value.GridIndices;
+                var tilePos = (Vector2)tile.Value.GridIndices;
                 var chunkIndices = GetChunkIndices(tilePos);
 
                 if (!oldChunkCollection.TryGetValue(chunkIndices, out var oldChunk))
@@ -284,7 +281,7 @@ namespace Content.Server.Decals
         {
             var id = GetNetEntity(uid);
             chunk.LastModified = _timing.CurTick;
-            if(!_dirtyChunks.ContainsKey(id))
+            if (!_dirtyChunks.ContainsKey(id))
                 _dirtyChunks[id] = new HashSet<Vector2i>();
             _dirtyChunks[id].Add(chunkIndices);
         }
@@ -586,7 +583,7 @@ namespace Content.Server.Decals
             }
 
             if (updatedDecals.Count != 0 || staleChunks.Count != 0)
-                RaiseNetworkEvent(new DecalChunkUpdateEvent{Data = updatedDecals, RemovedChunks = staleChunks}, session);
+                RaiseNetworkEvent(new DecalChunkUpdateEvent { Data = updatedDecals, RemovedChunks = staleChunks }, session);
 
             ReturnToPool(updatedChunks);
             ReturnToPool(staleChunks);

@@ -1,6 +1,6 @@
-using System.Text;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using System.Text;
 
 namespace Content.Server.Speech.EntitySystems;
 

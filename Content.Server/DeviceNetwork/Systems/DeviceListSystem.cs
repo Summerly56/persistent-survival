@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.DeviceNetwork.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Events;
+using System.Linq;
 
 namespace Content.Server.DeviceNetwork.Systems;
 

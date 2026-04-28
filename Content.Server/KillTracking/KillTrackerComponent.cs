@@ -1,4 +1,3 @@
-using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Robust.Shared.Network;
 
@@ -19,8 +18,8 @@ public sealed partial class KillTrackerComponent : Component
     /// <summary>
     /// A dictionary of sources and how much damage they've done to this entity over time.
     /// </summary>
-  //  [DataField("lifetimeDamage")]
-  //  public Dictionary<KillSource, FixedPoint2> LifetimeDamage = new();
+    //  [DataField("lifetimeDamage")]
+    //  public Dictionary<KillSource, FixedPoint2> LifetimeDamage = new();
 }
 
 public abstract record KillSource;

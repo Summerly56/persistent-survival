@@ -1,10 +1,10 @@
-﻿using System.Text;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Console;
+using System.Text;
 
 namespace Content.Server.Mind.Commands
 {

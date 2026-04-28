@@ -1,6 +1,6 @@
+using Content.Shared.Gravity;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
-using Content.Shared.Gravity;
 using Content.Shared.Slippery;
 using Content.Shared.Whitelist;
 using Robust.Shared.Physics.Components;

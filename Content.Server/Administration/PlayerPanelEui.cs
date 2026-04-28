@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Notes;
@@ -11,6 +10,7 @@ using Content.Shared.Eui;
 using Content.Shared.Follower;
 using Robust.Server.Player;
 using Robust.Shared.Player;
+using System.Linq;
 
 namespace Content.Server.Administration;
 
@@ -95,7 +95,7 @@ public sealed class PlayerPanelEui : BaseEui
 
                 if (_entity.HasComponent<AdminFrozenComponent>(session.AttachedEntity))
                 {
-                    _adminLog.Add(LogType.Action,$"{Player:actor} unfroze {_entity.ToPrettyString(session.AttachedEntity):subject}");
+                    _adminLog.Add(LogType.Action, $"{Player:actor} unfroze {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     _entity.RemoveComponent<AdminFrozenComponent>(session.AttachedEntity.Value);
                     SetPlayerState();
                     return;
@@ -103,12 +103,12 @@ public sealed class PlayerPanelEui : BaseEui
 
                 if (freezeMsg.Mute)
                 {
-                    _adminLog.Add(LogType.Action,$"{Player:actor} froze and muted {_entity.ToPrettyString(session.AttachedEntity):subject}");
+                    _adminLog.Add(LogType.Action, $"{Player:actor} froze and muted {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     frozenSystem.FreezeAndMute(session.AttachedEntity.Value);
                 }
                 else
                 {
-                    _adminLog.Add(LogType.Action,$"{Player:actor} froze {_entity.ToPrettyString(session.AttachedEntity):subject}");
+                    _adminLog.Add(LogType.Action, $"{Player:actor} froze {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     _entity.EnsureComponent<AdminFrozenComponent>(session.AttachedEntity.Value);
                 }
                 SetPlayerState();
@@ -132,7 +132,7 @@ public sealed class PlayerPanelEui : BaseEui
 
                 if (msg is PlayerPanelRejuvenationMessage)
                 {
-                    _adminLog.Add(LogType.Action,$"{Player:actor} rejuvenated {_entity.ToPrettyString(session.AttachedEntity):subject}");
+                    _adminLog.Add(LogType.Action, $"{Player:actor} rejuvenated {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     if (!_entity.TrySystem<RejuvenateSystem>(out var rejuvenate))
                         return;
 
@@ -140,7 +140,7 @@ public sealed class PlayerPanelEui : BaseEui
                 }
                 else
                 {
-                    _adminLog.Add(LogType.Action,$"{Player:actor} deleted {_entity.ToPrettyString(session.AttachedEntity):subject}");
+                    _adminLog.Add(LogType.Action, $"{Player:actor} deleted {_entity.ToPrettyString(session.AttachedEntity):subject}");
                     _entity.DeleteEntity(session.AttachedEntity);
                 }
                 break;
@@ -181,16 +181,13 @@ public sealed class PlayerPanelEui : BaseEui
 
         _sharedConnections = _player.Sessions.Count(s => s.Channel.RemoteEndPoint.Address.Equals(_targetPlayer.LastAddress) && s.UserId != _targetPlayer.UserId);
 
-    // Apparently the Bans flag is also used for whitelists
-    if (_admins.HasAdminFlag(Player, AdminFlags.Ban))
+        // Apparently the Bans flag is also used for whitelists
+        if (_admins.HasAdminFlag(Player, AdminFlags.Ban))
         {
             _whitelisted = await _db.GetWhitelistStatusAsync(_targetPlayer.UserId);
             // This won't get associated ip or hwid bans but they were not placed on this account anyways
-            _bans = (await _db.GetServerBansAsync(null, _targetPlayer.UserId, null, null)).Count;
-            // Unfortunately role bans for departments and stuff are issued individually. This means that a single role ban can have many individual role bans internally
-            // The only way to distinguish whether a role ban is the same is to compare the ban time.
-            // This is horrible and I would love to just erase the database and start from scratch instead but that's what I can do for now.
-            _roleBans = (await _db.GetServerRoleBansAsync(null, _targetPlayer.UserId, null, null)).DistinctBy(rb => rb.BanTime).Count();
+            _bans = (await _db.GetBansAsync(null, _targetPlayer.UserId, null, null)).Count;
+            _roleBans = (await _db.GetBansAsync(null, _targetPlayer.UserId, null, null, type: BanType.Role)).Count();
         }
         else
         {

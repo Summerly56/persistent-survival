@@ -30,7 +30,7 @@ public sealed class CargoPalletConsoleBoundUserInterface : BoundUserInterface
     private void OnStationSelected(OptionButton.ItemSelectedEventArgs args)
     {
         SendMessage(new CargoPalletStationSelectMessage(args.Id));
- 
+
     }
 
     private void OnAppraisal()

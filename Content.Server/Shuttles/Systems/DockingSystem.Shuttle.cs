@@ -1,11 +1,10 @@
-using System.Linq;
-using System.Numerics;
 using Content.Server.Shuttles.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
-using Robust.Shared.Physics.Components;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Systems;
 

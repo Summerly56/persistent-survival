@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.Construction;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
+using System.Linq;
 
 namespace Content.Server.Construction.Completions
 {

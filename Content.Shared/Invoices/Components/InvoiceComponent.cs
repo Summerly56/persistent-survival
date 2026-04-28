@@ -1,12 +1,5 @@
-using Content.Shared.Access.Systems;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.CrewAssignments.Components;
-using Content.Shared.CrewRecords.Components;
-using Content.Shared.Invoices.Systems;
-using Content.Shared.Roles;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Invoices.Components;
@@ -58,7 +51,7 @@ public sealed class InvoiceBoundUserInterfaceState : BoundUserInterfaceState
     public bool PayslipMode;
     public DateTime? PaidTime;
 
-    public InvoiceBoundUserInterfaceState(Dictionary<int,string> possiblestations, int invoicecost, string invoicereason, string paidTo, string paidBy, bool paid, string userName, bool payslipMode, DateTime? paidTime)
+    public InvoiceBoundUserInterfaceState(Dictionary<int, string> possiblestations, int invoicecost, string invoicereason, string paidTo, string paidBy, bool paid, string userName, bool payslipMode, DateTime? paidTime)
     {
         PossibleStations = possiblestations;
         InvoiceCost = invoicecost;

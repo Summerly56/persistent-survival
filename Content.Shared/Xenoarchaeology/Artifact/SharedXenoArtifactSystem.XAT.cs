@@ -1,6 +1,4 @@
-using System.Linq;
 using Content.Shared.Chemistry;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -9,6 +7,7 @@ using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.XAT.Components;
+using System.Linq;
 
 namespace Content.Shared.Xenoarchaeology.Artifact;
 

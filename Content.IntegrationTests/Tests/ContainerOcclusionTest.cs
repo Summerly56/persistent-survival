@@ -1,9 +1,8 @@
-using System.Numerics;
 using Content.Server.Storage.EntitySystems;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Maths;
+using System.Numerics;
 
 namespace Content.IntegrationTests.Tests
 {

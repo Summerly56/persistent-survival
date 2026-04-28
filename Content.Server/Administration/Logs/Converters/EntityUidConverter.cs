@@ -1,5 +1,5 @@
-using System.Text.Json;
 using Robust.Shared.Player;
+using System.Text.Json;
 
 namespace Content.Server.Administration.Logs.Converters;
 
@@ -19,7 +19,7 @@ public sealed class EntityUidConverter : AdminLogConverter<EntityUid>
     {
         writer.WriteStartObject();
 
-        writer.WriteNumber("id", (int) value);
+        writer.WriteNumber("id", (int)value);
 
         if (entities.TryGetComponent(value, out MetaDataComponent? metaData))
         {

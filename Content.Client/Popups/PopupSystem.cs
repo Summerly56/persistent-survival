@@ -1,5 +1,3 @@
-using System.Linq;
-using Content.Shared.Containers;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
@@ -15,6 +13,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Client.Popups
 {

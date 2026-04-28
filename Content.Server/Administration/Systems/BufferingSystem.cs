@@ -1,9 +1,9 @@
-﻿using System.Numerics;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Components;
 using Content.Shared.Administration.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.Administration.Systems;
 

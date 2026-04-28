@@ -1,5 +1,5 @@
-using Content.Shared.Trigger.Components.Effects;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 

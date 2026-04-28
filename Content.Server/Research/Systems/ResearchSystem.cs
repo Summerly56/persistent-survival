@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Access.Systems;
@@ -9,6 +7,8 @@ using Content.Shared.Research.Systems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Research.Systems
 {
@@ -97,7 +97,7 @@ namespace Content.Server.Research.Systems
                     continue;
                 server.NextUpdateTime = _timing.CurTime + server.ResearchConsoleUpdateTime;
 
-                UpdateServer(uid, (int) server.ResearchConsoleUpdateTime.TotalSeconds, server);
+                UpdateServer(uid, (int)server.ResearchConsoleUpdateTime.TotalSeconds, server);
             }
         }
     }

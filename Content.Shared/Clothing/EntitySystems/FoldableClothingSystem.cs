@@ -37,7 +37,7 @@ public sealed class FoldableClothingSystem : EntitySystem
         }
 
         // Setting hidden layers while equipped is not currently supported.
-        if (ent.Comp.FoldedHideLayers.Count != 0|| ent.Comp.UnfoldedHideLayers.Count != 0)
+        if (ent.Comp.FoldedHideLayers.Count != 0 || ent.Comp.UnfoldedHideLayers.Count != 0)
             args.Cancelled = true;
     }
 

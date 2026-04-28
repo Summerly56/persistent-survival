@@ -1,8 +1,7 @@
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Robust.Shared.Random;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Test;
 

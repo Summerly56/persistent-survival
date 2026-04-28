@@ -1,7 +1,5 @@
 using JetBrains.Annotations;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Tabletop
 {
@@ -26,10 +24,10 @@ namespace Content.Server.Tabletop
 
             // Spawn all black pieces
             SpawnPiecesRow(session, entityManager, "Black", topLeft, separation);
-            SpawnPawns(session, entityManager, "Black", new MapCoordinates(x, y - separation, mapId) , separation);
+            SpawnPawns(session, entityManager, "Black", new MapCoordinates(x, y - separation, mapId), separation);
 
             // Spawn all white pieces
-            SpawnPawns(session, entityManager, "White", new MapCoordinates(x, y - 6 * separation, mapId) , separation);
+            SpawnPawns(session, entityManager, "White", new MapCoordinates(x, y - 6 * separation, mapId), separation);
             SpawnPiecesRow(session, entityManager, "White", new MapCoordinates(x, y - 7 * separation, mapId), separation);
 
             // Extra queens

@@ -1,6 +1,5 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Monitor.Systems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.NodeContainer.EntitySystems;
@@ -8,6 +7,7 @@ using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Monitor;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
@@ -63,7 +63,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
             if (!scrubber.Enabled || !_nodeContainer.TryGetNode(uid, scrubber.OutletName, out PipeNode? outlet))
                 return;
 
-            if (args.Grid is not {} grid)
+            if (args.Grid is not { } grid)
                 return;
 
             var position = _transformSystem.GetGridTilePositionOrDefault(uid);
@@ -90,7 +90,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
         private void Scrub(float timeDelta, GasVentScrubberComponent scrubber, GasMixture? tile, PipeNode outlet)
         {
-            Scrub(timeDelta, scrubber.TransferRate*_atmosphereSystem.PumpSpeedup(), scrubber.PumpDirection, scrubber.FilterGases, tile, outlet.Air);
+            Scrub(timeDelta, scrubber.TransferRate * _atmosphereSystem.PumpSpeedup(), scrubber.PumpDirection, scrubber.FilterGases, tile, outlet.Air);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
                     if (previous.Enabled != setData.Enabled)
                     {
-                        string enabled = setData.Enabled ? "enabled" : "disabled" ;
+                        string enabled = setData.Enabled ? "enabled" : "disabled";
                         _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(uid)} {enabled}");
                     }
 
@@ -200,7 +200,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
                     if (previous.WideNet != setData.WideNet)
                     {
-                        string enabled = setData.WideNet ? "enabled" : "disabled" ;
+                        string enabled = setData.WideNet ? "enabled" : "disabled";
                         _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(uid)} WideNet {enabled}");
                     }
 

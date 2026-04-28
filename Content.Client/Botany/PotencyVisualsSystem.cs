@@ -1,7 +1,7 @@
-using System.Numerics;
-using Content.Shared.Botany;
 using Content.Client.Botany.Components;
+using Content.Shared.Botany;
 using Robust.Client.GameObjects;
+using System.Numerics;
 
 namespace Content.Client.Botany;
 

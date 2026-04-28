@@ -1,6 +1,6 @@
-using System.Linq;
 using Content.Shared.Inventory;
 using Content.Shared.NameModifier.Components;
+using System.Linq;
 
 namespace Content.Shared.NameModifier.EntitySystems;
 

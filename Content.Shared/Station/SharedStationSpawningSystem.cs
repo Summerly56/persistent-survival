@@ -1,16 +1,13 @@
-using System.Linq;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Shared.Station;
 
@@ -87,7 +84,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     public void EquipStartingGear(EntityUid entity, LoadoutPrototype loadout, bool raiseEvent = true)
     {
         EquipStartingGear(entity, loadout.StartingGear, raiseEvent);
-        EquipStartingGear(entity, (IEquipmentLoadout) loadout, raiseEvent);
+        EquipStartingGear(entity, (IEquipmentLoadout)loadout, raiseEvent);
     }
 
     /// <summary>
@@ -104,7 +101,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     /// </summary>
     public void EquipStartingGear(EntityUid entity, StartingGearPrototype? startingGear, bool raiseEvent = true)
     {
-        EquipStartingGear(entity, (IEquipmentLoadout?) startingGear, raiseEvent);
+        EquipStartingGear(entity, (IEquipmentLoadout?)startingGear, raiseEvent);
     }
 
     /// <summary>
@@ -201,7 +198,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                 if (!PrototypeManager.Resolve(items.Prototype, out var loadoutPrototype))
                     return null;
 
-                var gear = ((IEquipmentLoadout) loadoutPrototype).GetGear(slot);
+                var gear = ((IEquipmentLoadout)loadoutPrototype).GetGear(slot);
                 if (gear != string.Empty)
                     return gear;
             }

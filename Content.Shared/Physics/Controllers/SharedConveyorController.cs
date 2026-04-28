@@ -1,10 +1,8 @@
-using System.Numerics;
 using Content.Shared.Conveyor;
 using Content.Shared.Gravity;
-using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
-using Robust.Shared.Collections;
+using Content.Shared.Stacks;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -12,18 +10,20 @@ using Robust.Shared.Physics.Controllers;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Threading;
+using System.Numerics;
 
 namespace Content.Shared.Physics.Controllers;
 
 public abstract class SharedConveyorController : VirtualController
 {
     [Dependency] protected readonly IMapManager MapManager = default!;
-    [Dependency] private   readonly IParallelManager _parallel = default!;
-    [Dependency] private   readonly CollisionWakeSystem _wake = default!;
+    [Dependency] private readonly IParallelManager _parallel = default!;
+    [Dependency] private readonly CollisionWakeSystem _wake = default!;
     [Dependency] protected readonly EntityLookupSystem Lookup = default!;
-    [Dependency] private   readonly FixtureSystem _fixtures = default!;
-    [Dependency] private   readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private   readonly SharedMoverController _mover = default!;
+    [Dependency] private readonly FixtureSystem _fixtures = default!;
+    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private readonly SharedMoverController _mover = default!;
+    [Dependency] private readonly SharedStackSystem _stack = default!;
 
     protected const string ConveyorFixture = "conveyor";
 
@@ -58,7 +58,7 @@ public abstract class SharedConveyorController : VirtualController
 
     private void OnConveyedFriction(Entity<ConveyedComponent> ent, ref TileFrictionEvent args)
     {
-        if(!ent.Comp.Conveying)
+        if (!ent.Comp.Conveying)
             return;
 
         // Conveyed entities don't get friction, they just get wishdir applied so will inherently slowdown anyway.
@@ -164,7 +164,15 @@ public abstract class SharedConveyorController : VirtualController
 
             if (ent.Result)
             {
-                SetConveying(ent.Entity.Owner, ent.Entity.Comp1, targetDir.LengthSquared() > 0f);
+                if (targetDir.LengthSquared() > 0f)
+                {
+                    SetConveying(ent.Entity.Owner, ent.Entity.Comp1, true);
+                }
+                else if (ent.Entity.Comp1.Conveying)
+                {
+                    SetConveying(ent.Entity.Owner, ent.Entity.Comp1, false);
+                    _stack.TryMergeToContacts(ent.Entity.Owner);
+                }
 
                 // We apply friction here so when we push items towards the center of the conveyor they don't go overspeed.
                 // We also don't want this to apply to mobs as they apply their own friction and otherwise

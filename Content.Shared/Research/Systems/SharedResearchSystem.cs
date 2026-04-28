@@ -38,7 +38,7 @@ public abstract class SharedResearchSystem : EntitySystem
         component.CurrentTechnologyCards.Clear();
         foreach (var discipline in component.SupportedDisciplines)
         {
-            for(var i = 0; i<3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 var selected = availableTechnology.FirstOrDefault(p => p.Discipline == discipline);
                 if (selected == null)
@@ -80,8 +80,8 @@ public abstract class SharedResearchSystem : EntitySystem
         if (tech.Tier > disciplineTiers[tech.Discipline])
             return false;
 
- //       if (component.UnlockedTechnologies.Contains(tech.ID))
- //           return false;
+        //       if (component.UnlockedTechnologies.Contains(tech.ID))
+        //           return false;
 
         foreach (var prereq in tech.TechnologyPrerequisites)
         {
@@ -136,7 +136,7 @@ public abstract class SharedResearchSystem : EntitySystem
             if (allTierTech.Count == 0)
                 break;
 
-            var percent = (float) unlockedTierTech.Count / allTierTech.Count;
+            var percent = (float)unlockedTierTech.Count / allTierTech.Count;
             if (percent < techDiscipline.TierPrerequisites[tier])
                 break;
 
@@ -230,11 +230,11 @@ public abstract class SharedResearchSystem : EntitySystem
         if (prototype.Tier < discipline.LockoutTier)
             return;
         return;
-        component.MainDiscipline = prototype.Discipline;
-        Dirty(uid, component);
+        //component.MainDiscipline = prototype.Discipline;
+        //Dirty(uid, component);
 
-        var ev = new TechnologyDatabaseModifiedEvent();
-        RaiseLocalEvent(uid, ref ev);
+        //var ev = new TechnologyDatabaseModifiedEvent();
+        //RaiseLocalEvent(uid, ref ev);
     }
 
     /// <summary>
@@ -303,7 +303,7 @@ public abstract class SharedResearchSystem : EntitySystem
         var uses = 1;
         PrototypeManager.Resolve<LatheRecipePrototype>(recipe, out var recipeProto);
 
-        if(recipeProto != null)
+        if (recipeProto != null)
         {
             uses = recipeProto.UnlockUses;
         }

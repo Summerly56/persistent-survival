@@ -14,8 +14,21 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Goblin] # Doom approaches
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Vomit
+        probability: 0.5
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [Goblin]  # Goblins vomit when eating sugar
       - !type:SatiateThirst
         factor: 2
       - !type:ModifyStatusEffect
@@ -38,8 +51,21 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Goblin] # Doom approaches
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Vomit
+        probability: 0.5
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [Goblin]  # Goblins vomit when eating sugar
       - !type:SatiateThirst
         factor: 4
 
@@ -76,7 +102,9 @@
   flavor: energydrink
   color: "#ffffbf"
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Theobromine: 0.2
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -84,9 +112,6 @@
         effectProto: StatusEffectDrowsiness
         time: 2
         type: Remove
-      - !type:AdjustReagent
-        reagent: Theobromine
-        amount: 0.1
   fizziness: 0.4
 
 - type: reagent
@@ -114,6 +139,22 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
   fizziness: 0
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Goblin] # Doom approaches
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Vomit
+        probability: 0.5
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [Goblin]  # Goblins vomit when eating sugar
 
 - type: reagent
   id: LemonLime
@@ -204,7 +245,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 4
@@ -247,6 +288,22 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: starkistsoda
   color: "#9F3400"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Goblin] # Doom approaches
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Vomit
+        probability: 0.5
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [Goblin]  # Goblins vomit when eating sugar
 
 - type: reagent
   id: FourteenLoko
@@ -263,15 +320,25 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Theobromine: 0.2
       effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Goblin] # Doom approaches
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Vomit
+        probability: 0.5
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [Goblin]  # Goblins vomit when eating sugar
       - !type:SatiateThirst
         factor: 2
-      - !type:AdjustReagent
-        reagent: Theobromine
-        amount: 0.1
-    Poison:
-      effects:
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition

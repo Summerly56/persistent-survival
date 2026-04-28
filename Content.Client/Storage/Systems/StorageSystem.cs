@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Client.Animations;
 using Content.Shared.Hands;
 using Content.Shared.Storage;
@@ -8,6 +6,8 @@ using Robust.Client.Player;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.Storage.Systems;
 

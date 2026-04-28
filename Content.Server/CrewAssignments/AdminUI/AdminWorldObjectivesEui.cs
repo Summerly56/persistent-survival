@@ -1,29 +1,19 @@
-using Content.Server.Construction.Conditions;
-using Content.Server.DeviceNetwork.Components;
-using Content.Server.EUI;
-using Content.Shared.Eui;
-using Content.Shared.Fax.Components;
-using Content.Shared.Fax;
-using Content.Shared.Follower;
-using Content.Shared.Ghost;
-using Content.Shared.Paper;
-using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.CrewAssignments.Systems;
-using Content.Server.CrewRecords.Systems;
 using Content.Server.Chat.Systems;
+using Content.Server.CrewRecords.Systems;
+using Content.Server.EUI;
+using Content.Shared.CrewAssignments.Systems;
+using Content.Shared.Eui;
+using Content.Shared.Follower;
 
 namespace Content.Server.CrewAssignments.AdminUI;
 
 public sealed class AdminWorldObjectivesEui : BaseEui
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    private readonly FollowerSystem _followerSystem;
     private readonly CrewMetaRecordsSystem _crewMeta;
-    private readonly ChatSystem _chat; 
+    private readonly ChatSystem _chat;
     public AdminWorldObjectivesEui()
     {
         IoCManager.InjectDependencies(this);
-        _followerSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<FollowerSystem>();
         _crewMeta = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<CrewMetaRecordsSystem>();
         _chat = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ChatSystem>();
     }
@@ -160,7 +150,7 @@ public sealed class AdminWorldObjectivesEui : BaseEui
                     }
                     StateDirty();
                     break;
-               }
+                }
             case AdminWorldObjectivesEuiMsg.SaveChangesCompleted saveData:
                 {
                     if (_crewMeta.MetaRecords == null) return;

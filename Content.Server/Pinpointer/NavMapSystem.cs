@@ -3,16 +3,15 @@ using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Station.Systems;
 using Content.Shared.Database;
-using Content.Shared.Examine;
 using Content.Shared.Localizations;
 using Content.Shared.Maps;
 using Content.Shared.Pinpointer;
+using Content.Shared.Warps;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Warps;
 
 namespace Content.Server.Pinpointer;
 
@@ -286,7 +285,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
                 continue;
 
             var directions = (int)airtight.AirBlockedDirection;
-            tileData |= directions << (int) category;
+            tileData |= directions << (int)category;
         }
 
         // Remove walls that intersect with doors (unless they can both physically fit on the same tile)
@@ -294,7 +293,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         // Is this for blast-doors or something?
 
         // Shift airlock bits over to the wall bits
-        var shiftedAirlockBits = (tileData & AirlockMask) >> ((int) NavMapChunkType.Airlock - (int) NavMapChunkType.Wall);
+        var shiftedAirlockBits = (tileData & AirlockMask) >> ((int)NavMapChunkType.Airlock - (int)NavMapChunkType.Wall);
 
         // And then mask door bits
         tileData &= ~shiftedAirlockBits;

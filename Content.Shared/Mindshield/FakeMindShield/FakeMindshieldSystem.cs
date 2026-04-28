@@ -1,4 +1,4 @@
-﻿using Content.Shared.Actions;
+using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Implants;
 using Content.Shared.Mindshield.Components;
@@ -58,6 +58,7 @@ public sealed class FakeMindShieldSystem : EntitySystem
                 continue;
 
             component.IsEnabled = args.ChameleonOutfit.HasMindShield;
+            _actions.SetToggled(action, args.ChameleonOutfit.HasMindShield);
             Dirty(uid, component);
 
             if (actionComp.UseDelay != null)

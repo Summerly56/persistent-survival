@@ -25,7 +25,7 @@ public sealed class ChargesSystem : SharedChargesSystem
 
         while (query.MoveNext(out var uid, out var recharge, out var charges))
         {
-            if (_actions.GetAction(uid, false) is not {} action)
+            if (_actions.GetAction(uid, false) is not { } action)
                 continue;
 
             var current = GetCurrentCharges((uid, charges, recharge));

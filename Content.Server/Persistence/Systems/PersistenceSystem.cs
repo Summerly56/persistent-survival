@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Chat.Managers;
 using Content.Server.Shuttles.Components;
 using Robust.Shared.EntitySerialization;
@@ -9,6 +8,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Server.Persistence.Systems;
 

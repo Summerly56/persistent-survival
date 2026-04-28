@@ -1,14 +1,21 @@
-using System.Numerics;
 using Content.Server.Audio;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Localizations;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
+using Content.Shared.Power;
+using Content.Shared.Power.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Temperature;
+using Content.Server.Power.Components;
+using Content.Server.Construction; // Frontier
+using Content.Server.Construction.Components; // Frontier
+using Content.Shared.Construction.Components; // Frontier
+using Content.Shared.DeviceLinking.Events; // Frontier
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
@@ -16,8 +23,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Localizations;
-using Content.Shared.Power;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -30,6 +36,8 @@ public sealed class ThrusterSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly ConstructionSystem _construction = default!; // Frontier
+    [Dependency] private readonly SharedTransformSystem _transform = default!; // Frontier
     [Dependency] private readonly TurfSystem _turf = default!;
 
     // Essentially whenever thruster enables we update the shuttle's available impulses which are used for movement.
@@ -54,8 +62,35 @@ public sealed class ThrusterSystem : EntitySystem
         SubscribeLocalEvent<ThrusterComponent, ExaminedEvent>(OnThrusterExamine);
 
         SubscribeLocalEvent<ShuttleComponent, TileChangedEvent>(OnShuttleTileChange);
+        SubscribeLocalEvent<ThrusterComponent, SignalReceivedEvent>(OnSignalReceived); // Frontier
     }
 
+     // Frontier: signal handler
+    private void OnSignalReceived(EntityUid uid, ThrusterComponent component, ref SignalReceivedEvent args)
+    {
+        if (args.Port == component.OffPort)
+            component.Enabled = false;
+        else if (args.Port == component.OnPort)
+            component.Enabled = true;
+        else if (args.Port == component.TogglePort)
+            component.Enabled ^= true;
+        else
+            return; // Invalid port, don't change the thruster.
+
+        if (!component.Enabled)
+        {
+            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1)
+                apcPower.Load = 1;
+            DisableThruster(uid, component);
+        }
+        else if (CanEnable(uid, component))
+        {
+            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != apcPower.Load)
+                apcPower.Load = component.OriginalLoad;
+            EnableThruster(uid, component);
+        }
+    }
+    // End Frontier: signal handler
     private void OnThrusterExamine(EntityUid uid, ThrusterComponent component, ExaminedEvent args)
     {
         // Powered is already handled by other power components
@@ -135,18 +170,22 @@ public sealed class ThrusterSystem : EntitySystem
 
     private void OnActivateThruster(EntityUid uid, ThrusterComponent component, ActivateInWorldEvent args)
     {
-        if (args.Handled || !args.Complex)
+        if (args.Handled || !args.Complex || !component.CanToggle)
             return;
 
         component.Enabled ^= true;
 
         if (!component.Enabled)
         {
+            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != 0 && apcPower.Load != 1) // Frontier
+                apcPower.Load = 1;  // Frontier
             DisableThruster(uid, component);
             args.Handled = true;
         }
         else if (CanEnable(uid, component))
         {
+            if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad != apcPower.Load) // Frontier
+                apcPower.Load = component.OriginalLoad; // Frontier
             EnableThruster(uid, component);
             args.Handled = true;
         }
@@ -235,6 +274,12 @@ public sealed class ThrusterSystem : EntitySystem
 
     private void OnThrusterInit(EntityUid uid, ThrusterComponent component, ComponentInit args)
     {
+        // Frontier: togglable thrusters
+        if (TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && component.OriginalLoad == 0)
+        {
+            component.OriginalLoad = apcPower.Load;
+        }
+        // End Frontier: togglable thrusters
         _ambient.SetAmbience(uid, false);
 
         if (!component.Enabled)
@@ -467,7 +512,7 @@ public sealed class ThrusterSystem : EntitySystem
         var query = EntityQueryEnumerator<ThrusterComponent>();
         var curTime = _timing.CurTime;
 
-        while (query.MoveNext(out var comp))
+        while (query.MoveNext(out var ent, out var comp)) // Frontier: add out var ent
         {
             if (comp.NextFire > curTime)
                 continue;
@@ -597,4 +642,5 @@ public sealed class ThrusterSystem : EntitySystem
     {
         return (int)Math.Log2((int)flag);
     }
+
 }

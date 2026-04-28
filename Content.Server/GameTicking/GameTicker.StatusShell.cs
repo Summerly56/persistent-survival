@@ -1,9 +1,9 @@
-using System.Linq;
-using System.Text.Json.Nodes;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
+using System.Linq;
+using System.Text.Json.Nodes;
 
 namespace Content.Server.GameTicking
 {
@@ -49,7 +49,7 @@ namespace Content.Server.GameTicking
                     : _playerManager.PlayerCount - _adminManager.ActiveAdmins.Count();
                 jObject["soft_max_players"] = _cfg.GetCVar(CCVars.SoftMaxPlayers);
                 jObject["panic_bunker"] = _cfg.GetCVar(CCVars.PanicBunkerEnabled);
-                jObject["run_level"] = (int) _runLevel;
+                jObject["run_level"] = (int)_runLevel;
                 if (preset != null)
                     jObject["preset"] = (Decoy == null) ? Loc.GetString(preset.ModeTitle) : Loc.GetString(Decoy.ModeTitle);
                 if (_runLevel >= GameRunLevel.InRound)

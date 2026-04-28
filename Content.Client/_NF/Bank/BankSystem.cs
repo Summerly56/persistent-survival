@@ -9,16 +9,12 @@ namespace Content.Client.Bank;
 // Shared is abstract.
 public sealed partial class BankSystem : SharedBankSystem
 {
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedGameTicker _gameTicker = default!;
-    private ISawmill _log = default!;
 
     public MoneyAccountsComponent? GetMoneyAccountsComponent()
     {
 
         var personalAccountQuery = AllEntityQuery<MoneyAccountsComponent>();
-        while(personalAccountQuery.MoveNext(out var uid, out var comp))
+        while (personalAccountQuery.MoveNext(out var uid, out var comp))
         {
             return comp;
         }

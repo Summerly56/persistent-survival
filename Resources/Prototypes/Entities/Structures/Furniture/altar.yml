@@ -9,8 +9,32 @@
   - type: Transform
   - type: Prayable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 5
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Tag
+    tags:
+    - Wooden
   - type: PlaceableSurface
   - type: Fixtures
     fixtures:
@@ -39,33 +63,11 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
     state: nanotrasen
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 125
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 5
-          MaterialCloth1:
-            min: 1
-            max: 3
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
   - type: StealTarget
     stealGroup: AltarNanotrasen
+  - type: Construction
+    graph: AltarGraph
+    node: altarNT
 
 - type: entity
   id: AltarChaos
@@ -78,6 +80,9 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
     state: chaos
+  - type: Construction
+    graph: AltarGraph
+    node: altarChaos
 
 - type: entity
   id: AltarDruid
@@ -90,6 +95,9 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
     state: druid
+  - type: Construction
+    graph: AltarGraph
+    node: altarDruid
 
 - type: entity
   id: AltarToolbox
@@ -102,6 +110,12 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
     state: toolbox
+  - type: Construction
+    graph: AltarGraph
+    node: altarToolbox
+  - type: ContainerContainer
+    containers:
+      toolbox: !type:Container
 
 - type: entity
   id: AltarSpaceChristian
@@ -121,6 +135,9 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarChristian
 
 - type: entity
   id: AltarSatana
@@ -140,6 +157,9 @@
     radius: 1.5
     energy: 1
     color: "#ff6347"
+  - type: Construction
+    graph: AltarGraph
+    node: altarSatana
 
 - type: entity
   id: AltarTechnology
@@ -159,6 +179,9 @@
     radius: 1.5
     energy: 1
     color: "#e0ffff"
+  - type: Construction
+    graph: AltarGraph
+    node: altarTechnology
 
 - type: entity
   id: AltarConvertFestival
@@ -171,40 +194,13 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi
     state: festival
-  - type: Damageable
-    damageModifierSet: Wood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 15
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroyHeavy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWoodPlank:
-            min: 1
-            max: 5
-          MaterialCloth1:
-            min: 1
-            max: 3
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: Tag
-    tags:
-    - Wooden
+  - type: Construction
+    graph: AltarGraph
+    node: altarFestival
 
 - type: entity
   id: AltarConvertMaint
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: maint altar
   components:
   - type: Sprite
@@ -223,7 +219,7 @@
 
 - type: entity
   id: AltarConvertBlue
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: blue altar
   components:
   - type: Sprite
@@ -239,10 +235,13 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarBlue
 
 - type: entity
   id: AltarConvertBurden
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: burden altar
   components:
   - type: Sprite
@@ -261,7 +260,7 @@
 
 - type: entity
   id: AltarConvert
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: convert altar
   components:
   - type: Sprite
@@ -277,10 +276,13 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarBlack
 
 - type: entity
   id: AltarConvertOrange
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: orange altar
   components:
   - type: Sprite
@@ -296,10 +298,13 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarOrange
 
 - type: entity
   id: AltarConvertRed
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: red altar
   components:
   - type: Sprite
@@ -315,10 +320,13 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarRed
 
 - type: entity
   id: AltarConvertWhite
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: white altar
   components:
   - type: Sprite
@@ -334,10 +342,13 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarWhite
 
 - type: entity
   id: AltarConvertYellow
-  parent: AltarConvertFestival
+  parent: AltarBase
   name: yellow altar
   components:
   - type: Sprite
@@ -353,6 +364,9 @@
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  - type: Construction
+    graph: AltarGraph
+    node: altarYellow
 
 - type: entity
   id: AltarHeaven
@@ -368,32 +382,13 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Cults/heaven.rsi
     state: full
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 125
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 5
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
   - type: PointLight
     radius: 1.5
     energy: 1
     color: "#f08080"
+  - type: Construction
+    graph: AltarGraph
+    node: altarHeaven
 
 - type: entity
   id: AltarFangs
@@ -404,6 +399,9 @@
     sprite: Structures/Furniture/Altars/Cults/fangs.rsi
   - type: Icon
     sprite: Structures/Furniture/Altars/Cults/fangs.rsi
+  - type: Construction
+    graph: AltarGraph
+    node: altarFangs
 
 
 - type: entity
@@ -415,6 +413,44 @@
   - type: Sprite
     sprite: Structures/Furniture/Altars/Cults/bananium.rsi
     state: full
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialBananium1:
+            min: 1
+            max: 5
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Construction
     graph: BananiumAltarGraph
     node: bananiumAltar
+
+- type: entity
+  id: AltarDefault
+  parent: AltarBase
+  name: altar
+  description: An uncovered, nondescript altar.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
+    state: default
+  - type: Icon
+    sprite: Structures/Furniture/Altars/Gods/nanotrasen.rsi
+    state: default
+  - type: Construction
+    graph: AltarGraph
+    node: altarClear

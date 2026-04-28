@@ -1,5 +1,4 @@
 using Content.Server.DeviceLinking.Components;
-using Content.Server.DeviceNetwork;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
@@ -78,9 +77,9 @@ public sealed class LogicGateSystem : EntitySystem
             return;
 
         // cycle through possible gates
-        var gate = (int) comp.Gate;
+        var gate = (int)comp.Gate;
         gate = ++gate % GateCount;
-        comp.Gate = (LogicGate) gate;
+        comp.Gate = (LogicGate)gate;
 
         // since gate changed the output probably has too, update it
         UpdateOutput(uid, comp);

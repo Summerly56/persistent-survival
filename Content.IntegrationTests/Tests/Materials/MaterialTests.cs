@@ -1,7 +1,7 @@
 #nullable enable
 using Content.Server.Stack;
-using Content.Shared.Stacks;
 using Content.Shared.Materials;
+using Content.Shared.Stacks;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 

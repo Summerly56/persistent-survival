@@ -1,10 +1,9 @@
-﻿using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Verbs;
 using Robust.Shared.Toolshed;
-using Robust.Shared.Toolshed.Syntax;
 using Robust.Shared.Toolshed.TypeParsers;
+using System.Linq;
 
 namespace Content.Server.Toolshed.Commands.Verbs;
 

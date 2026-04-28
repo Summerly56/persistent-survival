@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Server.Power.Components;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Power.EntitySystems
 {

@@ -1,6 +1,5 @@
-using System.Numerics;
-using Content.Client.Movement.Systems;
 using Content.Shared.Movement.Components;
+using System.Numerics;
 
 namespace Content.Client.Movement.Components;
 

@@ -1,4 +1,4 @@
-﻿using Content.Shared.Atmos;
+using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping.Binary.Components;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
@@ -33,10 +33,9 @@ namespace Content.Client._Funkystation.Atmos.UI
             _window.PumpTransferRateChanged += OnPumpTransferRatePressed;
         }
 
-        private void OnToggleStatusButtonPressed()
+        private void OnToggleStatusButtonPressed(bool enabled)
         {
-            if (_window is null) return;
-            SendMessage(new GasHeatPumpToggleStatusMessage(_window.PumpStatus));
+            SendMessage(new GasHeatPumpToggleStatusMessage(enabled));
         }
 
         private void OnPumpTransferRatePressed(string value)

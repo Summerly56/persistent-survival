@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.GameStates;
+using System.Numerics;
 
 namespace Content.Shared.Movement.Components;
 

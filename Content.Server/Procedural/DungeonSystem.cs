@@ -1,7 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Content.Server.Construction;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Content.Server.Decals;
 using Content.Server.GameTicking.Events;
 using Content.Shared.CCVar;
@@ -10,11 +6,9 @@ using Content.Shared.GameTicking;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
-using Content.Shared.Tag;
-using Robust.Server.GameObjects;
-using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -22,6 +16,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural;
 
@@ -48,8 +44,8 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
     private const double DungeonJobTime = 0.005;
 
-    public const int CollisionMask = (int) CollisionGroup.Impassable;
-    public const int CollisionLayer = (int) CollisionGroup.Impassable;
+    public const int CollisionMask = (int)CollisionGroup.Impassable;
+    public const int CollisionLayer = (int)CollisionGroup.Impassable;
 
     private readonly JobQueue _dungeonJobQueue = new(DungeonJobTime);
     private readonly Dictionary<DungeonJob.DungeonJob, CancellationTokenSource> _dungeonJobs = new();
@@ -125,7 +121,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         foreach (var proto in rooms.Modified.Values)
         {
-            var roomProto = (DungeonRoomPrototype) proto;
+            var roomProto = (DungeonRoomPrototype)proto;
             var query = AllEntityQuery<DungeonAtlasTemplateComponent>();
 
             while (query.MoveNext(out var uid, out var comp))
@@ -143,7 +139,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         foreach (var proto in rooms.Modified.Values)
         {
-            var roomProto = (DungeonRoomPrototype) proto;
+            var roomProto = (DungeonRoomPrototype)proto;
             var query = AllEntityQuery<DungeonAtlasTemplateComponent>();
             var found = false;
 
@@ -177,7 +173,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         var opts = new MapLoadOptions
         {
-            DeserializationOptions = DeserializationOptions.Default with {PauseMaps = true},
+            DeserializationOptions = DeserializationOptions.Default with { PauseMaps = true },
             ExpectedCategory = FileCategory.Map
         };
 

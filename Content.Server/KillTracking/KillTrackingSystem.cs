@@ -1,5 +1,4 @@
 using Content.Server.NPC.HTN;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
@@ -17,7 +16,7 @@ public sealed class KillTrackingSystem : EntitySystem
     public override void Initialize()
     {
         // Add damage to LifetimeDamage before MobStateChangedEvent gets raised
-        SubscribeLocalEvent<KillTrackerComponent, DamageChangedEvent>(OnDamageChanged, before: [ typeof(MobThresholdSystem) ]);
+        SubscribeLocalEvent<KillTrackerComponent, DamageChangedEvent>(OnDamageChanged, before: [typeof(MobThresholdSystem)]);
         SubscribeLocalEvent<KillTrackerComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
@@ -28,17 +27,17 @@ public sealed class KillTrackingSystem : EntitySystem
 
         if (!args.DamageIncreased)
         {
-     //       foreach (var key in component.LifetimeDamage.Keys)
-     //       {
-    //            component.LifetimeDamage[key] -= args.DamageDelta.GetTotal();
-     //       }
+            //       foreach (var key in component.LifetimeDamage.Keys)
+            //       {
+            //            component.LifetimeDamage[key] -= args.DamageDelta.GetTotal();
+            //       }
 
-    //        return;
+            //        return;
         }
 
-     //   var source = GetKillSource(args.Origin);
-    //    var damage = component.LifetimeDamage.GetValueOrDefault(source);
-    //    component.LifetimeDamage[source] = damage + args.DamageDelta.GetTotal();
+        //   var source = GetKillSource(args.Origin);
+        //    var damage = component.LifetimeDamage.GetValueOrDefault(source);
+        //    component.LifetimeDamage[source] = damage + args.DamageDelta.GetTotal();
     }
 
     private void OnMobStateChanged(EntityUid uid, KillTrackerComponent component, MobStateChangedEvent args)

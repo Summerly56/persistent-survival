@@ -20,6 +20,11 @@ namespace Content.Shared.Atmos
         public const float OneAtmosphere = 101.325f;
 
         /// <summary>
+        /// Global Atmospherics epsilon. Used for all general floating-point comparisons.
+        /// </summary>
+        public const float Epsilon = 0.5f;
+
+        /// <summary>
         ///     Maximum external pressure (in kPA) a gas miner will, by default, output to.
         ///     This is used to initialize roundstart atmos rooms.
         /// </summary>
@@ -159,7 +164,9 @@ namespace Content.Shared.Atmos
         public const float MinimumHeatCapacity = 0.0003f;
 
         /// <summary>
-        ///     For the purposes of making space "colder"
+        /// Allows Atmospherics to cool down rooms during spacing
+        /// by assigning a fake heat capacity to space,
+        /// making space "actually cold" for gameplay reasons.
         /// </summary>
         public const float SpaceHeatCapacity = 7000f;
 
@@ -220,13 +227,15 @@ namespace Content.Shared.Atmos
         public const int AdjustedNumberOfGases = ((TotalNumberOfGases + 3) / 4) * 4;
 
         /// <summary>
-        ///     Amount of heat released per mole of burnt hydrogen or tritium (hydrogen isotope)
-        /// </summary>
-        public const float FireHydrogenEnergyReleased = 284e3f; // hydrogen is 284 kJ/mol
-        /// <summary>
         ///     Amount of heat released per mole of burnt methane (real-life: 890 kJ/mol, scaled for game balance)
         /// </summary>
         public const float FireMethaneEnergyReleased = 560e3f; // methane is 560 kJ/mol
+
+        /// <summary>
+        ///     Amount of heat released per mole of burnt hydrogen (real-life: ~286 kJ/mol).
+        ///     Also used as the base energy for tritium combustion (tritium applies a 10× multiplier).
+        /// </summary>
+        public const float FireHydrogenEnergyReleased = 286e3f;
         public const float FireMinimumTemperatureToExist = T0C + 100f;
         public const float FireMinimumTemperatureToSpread = T0C + 150f;
         public const float FireSpreadRadiosityScale = 0.85f;
@@ -237,8 +246,8 @@ namespace Content.Shared.Atmos
         public const float SuperSaturationEnds = SuperSaturationThreshold / 3;
 
         public const float OxygenBurnRateBase = 1.4f;
-        public const float PlasmaMinimumBurnTemperature = (100f+T0C);
-        public const float PlasmaUpperTemperature = (1370f+T0C);
+        public const float PlasmaMinimumBurnTemperature = (100f + T0C);
+        public const float PlasmaUpperTemperature = (1370f + T0C);
         public const float PlasmaOxygenFullburn = 10f;
         public const float PlasmaBurnRateDelta = 9f;
 
@@ -249,6 +258,7 @@ namespace Content.Shared.Atmos
 
         public const float TritiumBurnOxyFactor = 100f;
         public const float TritiumBurnTritFactor = 10f;
+        public const float TritiumBurnFuelRatio = 2f;
 
         public const float FrezonCoolLowerTemperature = 23.15f;
 
@@ -276,7 +286,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     1 mol of Tritium is required per X mol of oxygen.
         /// </summary>
-        public const float FrezonProductionTritRatio = 8.0f;
+        public const float FrezonProductionTritRatio = 50.0f;
 
         /// <summary>
         ///     1 / X of the tritium is converted into Frezon each tick
@@ -304,6 +314,43 @@ namespace Content.Shared.Atmos
         ///     4 means up to 25% of limiting reagent per tick.
         /// </summary>
         public const float ClF3ProductionRate = 4f;
+
+        /// <summary>
+        ///     Formation enthalpy of ClF3, approximately 163.2 kJ/mol.
+        ///     Positive value here because the reaction is exothermic (releases heat).
+        ///     Used by the ClF3 production (synthesis) reaction.
+        /// </summary>
+        public const float ClF3FormationEnergy = 163000f;
+
+        /// <summary>
+        ///     Minimum temperature (K) for ClF3 oxidation reactions to begin.
+        ///     ~-20°C (253 K) — ClF3 is hypergolic; reacts well below room temperature.
+        /// </summary>
+        public const float ClF3OxidationMinTemperature = T0C - 20f;
+
+        /// <summary>
+        ///     Temperature (K) at which ClF3 oxidation reaches full rate.
+        ///     ~300°C (573 K).
+        /// </summary>
+        public const float ClF3OxidationUpperTemperature = T0C + 300f;
+
+        /// <summary>
+        ///     Maximum fraction of ClF3 that reacts per tick at full temperature.
+        /// </summary>
+        public const float ClF3OxidationRate = 0.25f;
+
+        /// <summary>
+        ///     Energy released per mole of ClF3 consumed during oxidation (~400 kJ/mol).
+        ///     ClF3 oxidation reactions are extremely exothermic.
+        /// </summary>
+        public const float ClF3OxidationEnergy = 400000f;
+
+        /// <summary>
+        ///     Energy released per mole of ClF3 consumed when oxidizing Tritium (~2000 kJ/mol).
+        ///     The radiative fluorination of tritium is extraordinarily energetic,
+        ///     producing a massive thermal and radiation burst.
+        /// </summary>
+        public const float ClF3TritiumEnergy = 2000000f;
 
         /// <summary>
         ///     Divisor for Ammonia Oxygen reaction so that it doesn't happen instantaneously.

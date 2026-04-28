@@ -1,7 +1,6 @@
 using Content.Server.Administration;
 using Content.Server.EUI;
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords;
 using Content.Server.StationRecords.Systems;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -12,7 +11,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.Roles;
 using Content.Shared.Station.Components;
 using Content.Shared.StationRecords;
-using NetCord;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
@@ -23,8 +21,8 @@ namespace Content.Server.CrewManifest;
 
 public sealed class CrewManifestSystem : EntitySystem
 {
+    private const string PassengerProtoID = "Passenger";
     [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly StationRecordsSystem _recordsSystem = default!;
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -235,18 +233,20 @@ public sealed class CrewManifestSystem : EntitySystem
         foreach (var employee in activeWorkers)
         {
             EntityUid? player = null;
+#pragma warning disable RA0030 // Consider using the non-generic variant of this method
             if (TryComp<TransformComponent>(employee, out var comp) && comp != null)
             {
                 player = comp.ParentUid;
             }
+#pragma warning restore RA0030 // Consider using the non-generic variant of this method
             if (player == null) continue;
             var name = Name(player.Value);
             if (!crewRecords.TryGetRecord(name, out var record) || record == null) continue;
             if (!crewAssignments.TryGetAssignment(record.AssignmentID, out var assignment) || assignment == null) continue;
 
             var entry = new CrewManifestEntry(name, assignment.Name, "JobIconUnknown", "Passenger");
-            
-            _prototypeManager.TryIndex("Passenger", out JobPrototype? job);
+
+            _prototypeManager.TryIndex(PassengerProtoID, out JobPrototype? job);
             entriesSort.Add((job, entry));
         }
 

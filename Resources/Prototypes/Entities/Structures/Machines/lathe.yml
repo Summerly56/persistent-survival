@@ -49,6 +49,11 @@
     price: 360
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -135,6 +140,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - CassetteTape
+    - ReligionStatic
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -210,6 +216,7 @@
     - Instruments
     - Equipment
     - Hardsuits
+    - PaperworkDynamic
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -384,6 +391,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
@@ -432,6 +441,8 @@
     - type: Lathe
       idleState: icon
       runningState: icon
+      unlitIdleState: unlit
+      unlitRunningState: unlit-building
       staticPacks:
       - SecurityAmmoStatic
     - type: EmagLatheRecipes
@@ -463,6 +474,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
     - ChemistryStatic

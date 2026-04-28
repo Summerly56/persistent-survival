@@ -1,4 +1,3 @@
-using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents.Components;
 using Content.Server.Traits.Assorted;
 using Content.Shared.GameTicking.Components;
@@ -17,7 +16,7 @@ public sealed class MassHallucinationsRule : StationEventSystem<MassHallucinatio
     {
         base.Started(uid, component, gameRule, args);
 
-        var query = EntityQueryEnumerator<MindContainerComponent, HumanoidAppearanceComponent>();
+        var query = EntityQueryEnumerator<MindContainerComponent, HumanoidProfileComponent>();
         while (query.MoveNext(out var ent, out _, out _))
         {
             if (!EnsureComp<ParacusiaComponent>(ent, out var paracusia))

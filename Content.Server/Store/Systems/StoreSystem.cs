@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Store.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Implants.Components;
@@ -11,6 +10,7 @@ using Content.Shared.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Store.Systems;
 

@@ -3,16 +3,13 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Popups;
-using Robust.Shared.Random;
+using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Random;
-using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Effects;
-using Content.Shared.Stunnable;
 
 namespace Content.Shared.Damage.Systems;
 

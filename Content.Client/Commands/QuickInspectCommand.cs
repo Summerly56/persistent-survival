@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Input;
 using Robust.Client.Input;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using System.Linq;
 
 namespace Content.Client.Commands;
 

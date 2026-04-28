@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
 using Content.Shared;
 using NUnit.Framework;
 using Robust.Shared.Maths;
 using Robust.UnitTesting;
+using System;
+using System.Collections.Generic;
 
 namespace Content.Tests.Shared;
 

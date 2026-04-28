@@ -66,7 +66,7 @@ public sealed partial class AirAlarmWindow : FancyWindow
         _modes.OnItemSelected += args =>
         {
             _modes.SelectId(args.Id);
-            AirAlarmModeChanged!.Invoke((AirAlarmMode) args.Id);
+            AirAlarmModeChanged!.Invoke((AirAlarmMode)args.Id);
         };
 
         _autoMode.OnToggled += _ =>
@@ -116,7 +116,7 @@ public sealed partial class AirAlarmWindow : FancyWindow
 
     public void UpdateModeSelector(AirAlarmMode mode)
     {
-        _modes.SelectId((int) mode);
+        _modes.SelectId((int)mode);
     }
 
     public void UpdateAutoMode(bool enabled)
@@ -148,7 +148,7 @@ public sealed partial class AirAlarmWindow : FancyWindow
                 {
                     var control = new ScrubberControl(scrubber, addr);
                     control.ScrubberDataChanged += AtmosDeviceDataChanged;
-					control.ScrubberDataCopied += AtmosDeviceDataCopied;
+                    control.ScrubberDataCopied += AtmosDeviceDataCopied;
                     _scrubbers.Add(addr, control);
                     CScrubberContainer.AddChild(control);
                 }

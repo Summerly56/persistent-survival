@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -10,6 +9,7 @@ using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
+using System.Linq;
 
 namespace Content.Shared.Storage.EntitySystems;
 

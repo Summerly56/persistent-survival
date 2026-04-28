@@ -1,7 +1,7 @@
-using Robust.Shared.Random;
-using Content.Shared.Stacks;
 using Content.Shared.Prototypes;
+using Content.Shared.Stacks;
 using Content.Shared.VendingMachines;
+using Robust.Shared.Random;
 
 namespace Content.Server.Destructible.Thresholds.Behaviors
 {
@@ -11,7 +11,7 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
     /// </summary>
     [Serializable]
     [DataDefinition]
-    public sealed partial class DumpRestockInventory: IThresholdBehavior
+    public sealed partial class DumpRestockInventory : IThresholdBehavior
     {
         /// <summary>
         ///     The percent of each inventory entry that will be salvaged
@@ -36,7 +36,7 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
 
             foreach (var (entityId, count) in packPrototype.StartingInventory)
             {
-                var toSpawn = (int) Math.Round(count * Percent);
+                var toSpawn = (int)Math.Round(count * Percent);
 
                 if (toSpawn == 0) continue;
 

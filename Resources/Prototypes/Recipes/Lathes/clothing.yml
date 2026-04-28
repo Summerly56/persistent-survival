@@ -1902,6 +1902,11 @@
   id: ClothingNeckCloakHop
   result: ClothingNeckCloakHop
 
+- type: latheRecipe
+  parent: BaseCommandCoatRecipe
+  id: ClothingNeckCloakRd
+  result: ClothingNeckCloakRd
+
 # Mantles
 - type: latheRecipe
   parent: BaseCommandCoatRecipe
@@ -1937,6 +1942,11 @@
   parent: BaseCommandCoatRecipe
   id: ClothingNeckMantleRD
   result: ClothingNeckMantleRD
+
+- type: latheRecipe
+  parent: BaseCommandCoatRecipe
+  id: ClothingNeckMantleHOS
+  result: ClothingNeckMantleHOS
 
 # Military
 - type: latheRecipe

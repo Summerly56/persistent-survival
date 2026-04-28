@@ -12,6 +12,7 @@ using System.Linq;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.Radio.Ui;
+
 [GenerateTypedNameReferences]
 public sealed partial class HeadsetMenuWindow : DefaultWindow
 {
@@ -56,7 +57,7 @@ public sealed partial class HeadsetMenuWindow : DefaultWindow
                 BUI.SendMessage(new HeadsetMenuInputSelect(0));
             }
         }
-        if(state.TransmitTo != 0 && !PossibleOutputs.TrySelectId(state.TransmitTo))
+        if (state.TransmitTo != 0 && !PossibleOutputs.TrySelectId(state.TransmitTo))
         {
             if (BUI != null)
             {

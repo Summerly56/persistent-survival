@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.Implants.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
+using System.Linq;
 
 namespace Content.Shared.Implants;
 

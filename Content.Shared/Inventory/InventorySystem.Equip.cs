@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Armor;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Gibbing;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -17,6 +17,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Inventory;
 
@@ -43,6 +44,8 @@ public abstract partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
 
         SubscribeAllEvent<UseSlotNetworkMessage>(OnUseSlot);
+
+        SubscribeLocalEvent<InventoryComponent, BeingGibbedEvent>(OnBeingGibbed);
     }
 
     private void OnEntRemoved(EntityUid uid, InventoryComponent component, EntRemovedFromContainerMessage args)
@@ -130,7 +133,7 @@ public abstract partial class InventorySystem
     {
         if (!Resolve(target, ref inventory, false))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"));
             return false;
         }
@@ -141,14 +144,14 @@ public abstract partial class InventorySystem
 
         if (!TryGetSlotContainer(target, slot, out var slotContainer, out var slotDefinition, inventory))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString("inventory-component-can-equip-cannot"));
             return false;
         }
 
         if (!force && !CanEquip(actor, target, itemUid, slot, out var reason, slotDefinition, inventory, clothing))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString(reason));
             return false;
         }
@@ -178,7 +181,7 @@ public abstract partial class InventorySystem
 
         if (!_containerSystem.Insert(itemUid, slotContainer))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
             return false;
         }
@@ -397,14 +400,14 @@ public abstract partial class InventorySystem
 
         if (!Resolve(target, ref inventory, false))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
             return false;
         }
 
         if (!TryGetSlotContainer(target, slot, out var slotContainer, out var slotDefinition, inventory))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString("inventory-component-can-unequip-cannot"));
             return false;
         }
@@ -416,7 +419,7 @@ public abstract partial class InventorySystem
 
         if (!force && !CanUnequip(actor, target, slot, out var reason, slotContainer, slotDefinition, inventory))
         {
-            if(!silent)
+            if (!silent)
                 _popup.PopupCursor(Loc.GetString(reason));
             return false;
         }
@@ -560,6 +563,17 @@ public abstract partial class InventorySystem
         foreach (var item in _handsSystem.EnumerateHeld(uid))
         {
             _interactionSystem.DoContactInteraction(uid, item);
+        }
+    }
+
+    private void OnBeingGibbed(Entity<InventoryComponent> ent, ref BeingGibbedEvent args)
+    {
+        foreach (var item in GetHandOrInventoryEntities((ent, null, ent)))
+        {
+            // Give me liberty, give me death
+            // TODO: Give me an API that can tell the difference between a virtual item and an electropak being removed.
+            if (!HasComp<AttachedClothingComponent>(item))
+                args.Giblets.Add(item);
         }
     }
 }

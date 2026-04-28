@@ -1,8 +1,7 @@
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.NPC.Pathfinding;
 using Robust.Shared.Map;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
 

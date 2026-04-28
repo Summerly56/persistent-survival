@@ -1,4 +1,4 @@
-﻿using Content.Shared.Objectives;
+using Content.Shared.Objectives;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.CharacterInfo;

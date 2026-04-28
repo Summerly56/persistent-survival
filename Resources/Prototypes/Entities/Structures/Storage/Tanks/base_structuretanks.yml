@@ -1,6 +1,6 @@
 - type: entity
   id: StorageTank
-  parent: BaseStructureDynamic
+  parent: [ BaseStructureDynamic, BasePaperLabelable]
   name: storage tank
   description: A liquids storage tank.
   abstract: true
@@ -66,9 +66,13 @@
     solution: tank
   - type: ReagentTank
   - type: DumpableSolution
-    solution: tank  
+    solution: tank
   - type: Transform
     noRot: true
+  - type: ContainerContainer
+    containers:
+      paper_label: !type:ContainerSlot
+
 
 # For highcap tanks
 - type: entity

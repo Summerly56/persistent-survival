@@ -1,11 +1,10 @@
-﻿using Content.Server.Administration.Logs;
+using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Server.Power.Components;
 using Content.Shared.Database;
 using Content.Shared.Power;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
-using Robust.Shared.Player;
 
 namespace Content.Server.Power.EntitySystems;
 
@@ -195,7 +194,7 @@ public sealed class PowerChargeSystem : EntitySystem
         else
         {
             var diff = chargeTarget - component.Charge;
-            chargeEta = (short) Math.Abs(diff / chargeRate);
+            chargeEta = (short)Math.Abs(diff / chargeRate);
         }
 
         var status = chargeRate switch
@@ -209,10 +208,10 @@ public sealed class PowerChargeSystem : EntitySystem
 
         var state = new PowerChargeState(
             component.SwitchedOn,
-            (byte) (component.Charge * 255),
+            (byte)(component.Charge * 255),
             status,
-            (short) Math.Round(powerReceiver.PowerReceived),
-            (short) Math.Round(powerReceiver.Load),
+            (short)Math.Round(powerReceiver.PowerReceived),
+            (short)Math.Round(powerReceiver.Load),
             chargeEta
         );
 

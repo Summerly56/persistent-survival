@@ -1,11 +1,10 @@
-using System.Linq;
 using Content.Client.Administration.Managers;
 using Content.Client.Administration.Systems;
 using Content.Client.UserInterface;
 using Content.Shared.Administration;
 using Content.Shared.IdentityManagement;
-using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using System.Linq;
 
 namespace Content.Client.ContextMenu.UI
 {

@@ -1,9 +1,9 @@
-using Content.Shared.Species.Components;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
-using Content.Shared.Popups;
-using Content.Shared.Stunnable;
 using Content.Shared.Mind;
+using Content.Shared.Popups;
+using Content.Shared.Species.Components;
+using Content.Shared.Stunnable;
 using Content.Shared.Zombies;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;

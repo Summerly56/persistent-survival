@@ -1,11 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Alert;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.StatusEffect
 {
@@ -138,7 +137,7 @@ namespace Content.Shared.StatusEffect
                 // If they already have the comp, we just won't bother updating anything.
                 if (!HasComp(uid, Factory.GetRegistration(component).Type))
                 {
-                    var newComponent = (Component) Factory.GetComponent(component);
+                    var newComponent = (Component)Factory.GetComponent(component);
                     AddComp(uid, newComponent);
                     status.ActiveEffects[key].RelevantComponent = component;
                 }

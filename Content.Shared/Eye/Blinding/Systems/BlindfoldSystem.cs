@@ -1,6 +1,6 @@
 using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Inventory.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Inventory.Events;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 

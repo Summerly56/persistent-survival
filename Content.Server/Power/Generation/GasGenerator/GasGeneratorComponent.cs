@@ -1,6 +1,4 @@
 using Content.Shared.Atmos;
-using Content.Shared.Power;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Power.Generation.GasGenerator;
 
@@ -189,29 +187,29 @@ public sealed partial class GasGeneratorComponent : Component
     /// Higher values = more smoothing.
     /// </summary>
     [DataField("powerSmoothingFactor")]
-        public float PowerSmoothingFactor = 0.0f; // disable smoothing by default for simple model
+    public float PowerSmoothingFactor = 0.0f; // disable smoothing by default for simple model
 
     /// <summary>
     /// Current ramp position for power ramping (smooth power curve).
-        /// </summary>
+    /// </summary>
     [ViewVariables]
-        public float RampPosition = 0f; // disable ramping by default for simple model
+    public float RampPosition = 0f; // disable ramping by default for simple model
 
     /// <summary>
     /// Multiplier for ramp adjustments (allows exponential ramping).
-        /// </summary>
+    /// </summary>
     [DataField("rampFactor")]
-        public float RampFactor = 1.0f; // no ramping
+    public float RampFactor = 1.0f; // no ramping
 
     /// <summary>
     /// Minimum ramp position to ensure some power generation.
-        /// </summary>
+    /// </summary>
     [DataField("rampMinimum")]
-        public float RampMinimum = 0f;
+    public float RampMinimum = 0f;
 
     /// <summary>
     /// Whether the generator is currently enabled (can still be powered off by power consumer).
-        /// </summary>
+    /// </summary>
     [DataField("enabled")]
     public bool Enabled = true;
 

@@ -1,11 +1,12 @@
-using System.Linq;
 using Content.Server.Chemistry.Components;
-using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Server.Hands.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
+using Content.Shared.Labels.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Server.Audio;
@@ -13,9 +14,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-using Content.Shared.Labels.Components;
-using Content.Shared.Storage;
-using Content.Server.Hands.Systems;
+using System.Linq;
 
 namespace Content.Server.Chemistry.EntitySystems
 {

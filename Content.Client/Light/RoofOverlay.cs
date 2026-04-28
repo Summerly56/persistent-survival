@@ -57,7 +57,7 @@ public sealed class RoofOverlay : Overlay
 
         _grids.Clear();
         _mapManager.FindGridsIntersecting(args.MapId, bounds, ref _grids, approx: true, includeMap: true);
-        var lightScale = viewport.LightRenderTarget.Size / (Vector2) viewport.Size;
+        var lightScale = viewport.LightRenderTarget.Size / (Vector2)viewport.Size;
         var scale = viewport.RenderScale / (Vector2.One / lightScale);
 
         worldHandle.RenderInRenderTarget(target,

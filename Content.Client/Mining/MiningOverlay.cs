@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Mining.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -6,6 +5,7 @@ using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Client.Mining;
 

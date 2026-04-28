@@ -1,6 +1,6 @@
-using System.Reflection;
 using Content.Shared.NodeContainer.NodeGroups;
 using Robust.Shared.Reflection;
+using System.Reflection;
 
 namespace Content.Server.NodeContainer.NodeGroups
 {

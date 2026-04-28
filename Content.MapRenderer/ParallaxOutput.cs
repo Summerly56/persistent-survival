@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Utility;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Content.MapRenderer;
 

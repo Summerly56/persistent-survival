@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.GridControl.Systems;
 using Robust.Shared.Serialization;
+using System.Numerics;
 
 namespace Content.Shared.GridControl.Components;
 

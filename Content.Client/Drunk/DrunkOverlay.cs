@@ -59,9 +59,9 @@ public sealed class DrunkOverlay : Overlay
 
         var time = status.Item2;
 
-        var power = time == null ? MaxBoozePower : (float) Math.Min((time - _timing.CurTime).Value.TotalSeconds, MaxBoozePower);
+        var power = time == null ? MaxBoozePower : (float)Math.Min((time - _timing.CurTime).Value.TotalSeconds, MaxBoozePower);
 
-        CurrentBoozePower += BoozePowerScale * (power - CurrentBoozePower) * args.DeltaSeconds / (power+1);
+        CurrentBoozePower += BoozePowerScale * (power - CurrentBoozePower) * args.DeltaSeconds / (power + 1);
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

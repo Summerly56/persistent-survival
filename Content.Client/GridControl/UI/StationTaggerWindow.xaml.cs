@@ -12,6 +12,7 @@ using static Content.Shared.GridControl.Components.StationTaggerComponent;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.GridControl.UI;
+
 [GenerateTypedNameReferences]
 public sealed partial class StationTaggerWindow : DefaultWindow
 {

@@ -1,15 +1,12 @@
 using Content.Shared.Whitelist;
-using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
-using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.SmartFridge;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-[Access(typeof(SmartFridgeSystem))]
+[Access(typeof(SharedSmartFridgeSystem))]
 public sealed partial class SmartFridgeComponent : Component
 {
     /// <summary>
@@ -45,8 +42,8 @@ public sealed partial class SmartFridgeComponent : Component
     /// <summary>
     /// A mapping of smart fridge entries to the actual contained contents
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    [Access(typeof(SmartFridgeSystem), Other = AccessPermissions.ReadExecute)]
+    [AutoNetworkedField]
+    [Access(typeof(SharedSmartFridgeSystem), Other = AccessPermissions.ReadExecute)]
     public Dictionary<SmartFridgeEntry, HashSet<NetEntity>> ContainedEntries = new();
 
     [DataField]
@@ -77,6 +74,10 @@ public sealed partial class SmartFridgeComponent : Component
     public SoundSpecifier SoundDeny = new SoundCollectionSpecifier("VendingDeny");
 }
 
+/// <summary>
+/// A single entry in the smart fridge UI.
+/// May contain multiple items of the same type.
+/// </summary>
 [Serializable, NetSerializable, DataRecord]
 public partial record struct SmartFridgeEntry
 {
@@ -94,8 +95,20 @@ public enum SmartFridgeUiKey : byte
     Key,
 }
 
+/// <summary>
+/// Sent by the client when trying to dispense an item inside the fridge.
+/// </summary>
 [Serializable, NetSerializable]
 public sealed class SmartFridgeDispenseItemMessage(SmartFridgeEntry entry) : BoundUserInterfaceMessage
+{
+    public SmartFridgeEntry Entry = entry;
+}
+
+/// <summary>
+/// Sent by the client when trying to remove an empty smart fridge entry from the list of items in the UI.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class SmartFridgeRemoveEntryMessage(SmartFridgeEntry entry) : BoundUserInterfaceMessage
 {
     public SmartFridgeEntry Entry = entry;
 }

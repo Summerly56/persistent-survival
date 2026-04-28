@@ -1,6 +1,6 @@
 using Content.Shared.Damage.Systems;
-using Content.Shared.Popups;
 using Content.Shared.Fax.Components;
+using Content.Shared.Popups;
 
 namespace Content.Shared.Fax.Systems;
 /// <summary>

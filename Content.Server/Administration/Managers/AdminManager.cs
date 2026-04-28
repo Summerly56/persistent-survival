@@ -1,7 +1,3 @@
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Shared.Administration;
@@ -18,6 +14,10 @@ using Robust.Shared.Player;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Toolshed.Errors;
 using Robust.Shared.Utility;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 
 namespace Content.Server.Administration.Managers
@@ -355,7 +355,7 @@ namespace Content.Server.Administration.Managers
             }
             else if (e.NewStatus == SessionStatus.Disconnected)
             {
-                if (_admins.Remove(e.Session, out var reg ) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
+                if (_admins.Remove(e.Session, out var reg) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
                 {
                     if (reg.Data.Stealth)
                     {
@@ -487,7 +487,7 @@ namespace Content.Server.Administration.Managers
                     Active = !dbData.Deadminned,
                 };
 
-                if (dbData.Title != null  && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
+                if (dbData.Title != null && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
                 {
                     data.Title = dbData.Title;
                 }

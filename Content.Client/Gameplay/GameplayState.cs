@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client.Changelog;
 using Content.Client.Hands;
 using Content.Client.UserInterface.Controls;
@@ -13,6 +12,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Client.Gameplay
 {

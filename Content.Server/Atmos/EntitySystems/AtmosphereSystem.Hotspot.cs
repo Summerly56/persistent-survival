@@ -1,10 +1,12 @@
-using Content.Server.Atmos.Components;
 using Content.Server.Decals;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Reactions;
 using Content.Shared.Database;
+using Content.Shared.Radiation.Components;
+using Content.Shared.Singularity.Components;
 using Robust.Shared.Audio;
+using Robust.Shared.Spawners;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
@@ -84,28 +86,12 @@ public sealed partial class AtmosphereSystem
         if (tile.ExcitedGroup != null)
             ExcitedGroupResetCooldowns(tile.ExcitedGroup);
 
-        var oxygen = tile.Air?.GetMoles(Gas.Oxygen) ?? 0f;
-        var plasma = tile.Air?.GetMoles(Gas.Plasma) ?? 0f;
-        var tritium = tile.Air?.GetMoles(Gas.Tritium) ?? 0f;
-        var methane = tile.Air?.GetMoles(Gas.Methane) ?? 0f;
-        var hydrogen = tile.Air?.GetMoles(Gas.Hydrogen) ?? 0f;
-        var clf3 = tile.Air?.GetMoles(Gas.ChlorineTrifluoride) ?? 0f;
-
-        // Allow ClF3 fires to persist without oxygen; require at least one fuel present.
-        var hasFuel = plasma > 0.5f || tritium > 0.5f || methane > 0.5f || hydrogen > 0.5f || clf3 > 0.5f;
-
         if (tile.Hotspot.Temperature < Atmospherics.FireMinimumTemperatureToExist ||
             tile.Hotspot.Volume <= 1f ||
             tile.Air == null ||
-            (!hasFuel) ||
-            (oxygen < 0.5f && clf3 < 0.5f))
+            !IsMixtureIgnitable(tile.Air))
         {
-            // Extinguish hotspot and clear any residual fire reaction results on the tile's air
             tile.Hotspot = new Hotspot();
-            if (tile.Air != null)
-            {
-                tile.Air.ReactionResults[(byte)GasReaction.Fire] = 0f;
-            }
             InvalidateVisuals(ent, tile);
             return;
         }
@@ -162,11 +148,6 @@ public sealed partial class AtmosphereSystem
                         HotspotExpose(gridAtmosphere, otherTile, radiatedTemperature, Atmospherics.CellVolume / 4);
                 }
             }
-            // Clear the tile's stored reaction result after using it to size the hotspot
-            if (tile.Air != null)
-            {
-                tile.Air.ReactionResults[(byte)GasReaction.Fire] = 0f;
-            }
         }
         else
         {
@@ -211,33 +192,26 @@ public sealed partial class AtmosphereSystem
     /// This clamps the temperature and volume of the hotspot to the maximum
     /// of the provided parameters and whatever's on the tile.</param>
     /// <param name="sparkSourceUid">Entity that started the exposure for admin logging.</param>
-    /// <param name="fuelGas">The gas fuel type for fire color. If null, determined automatically.</param>
     private void HotspotExpose(GridAtmosphereComponent gridAtmosphere,
         TileAtmosphere tile,
         float exposedTemperature,
         float exposedVolume,
         bool soh = false,
-        EntityUid? sparkSourceUid = null,
-        Gas? fuelGas = null)
+        EntityUid? sparkSourceUid = null)
     {
         if (tile.Air == null)
             return;
 
-        var oxygen = tile.Air.GetMoles(Gas.Oxygen);
-        var clf3 = tile.Air.GetMoles(Gas.ChlorineTrifluoride);
-
-        // ClF3 is hypergolic and ignites without oxygen, but most other gases need oxygen
-        if (oxygen < 0.5f && clf3 < 0.5f)
+        if (!IsMixtureOxidizer(tile.Air))
             return;
 
-        var plasma = tile.Air.GetMoles(Gas.Plasma);
-        var tritium = tile.Air.GetMoles(Gas.Tritium);
+        var isFlammable = IsMixtureFuel(tile.Air);
 
         if (tile.Hotspot.Valid)
         {
             if (soh)
             {
-                if (plasma > 0.5f || tritium > 0.5f || clf3 > 0.5f)
+                if (isFlammable)
                 {
                     tile.Hotspot.Temperature = MathF.Max(tile.Hotspot.Temperature, exposedTemperature);
                     tile.Hotspot.Volume = MathF.Max(tile.Hotspot.Volume, exposedVolume);
@@ -247,35 +221,14 @@ public sealed partial class AtmosphereSystem
             return;
         }
 
-        if (exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature &&
-            (plasma > 0.5f || tritium > 0.5f ||
-             tile.Air.GetMoles(Gas.Methane) > 0.5f ||
-             tile.Air.GetMoles(Gas.Hydrogen) > 0.5f ||
-             clf3 > 0.5f)) // ClF3 ignites at high temperature regardless of oxygen
+        if (exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature && isFlammable)
         {
             if (sparkSourceUid.HasValue)
             {
                 _adminLog.Add(LogType.Flammable,
                     LogImpact.High,
-                    $"Heat/spark of {ToPrettyString(sparkSourceUid.Value)} caused atmos ignition of gas: {tile.Air.Temperature.ToString():temperature}K - {oxygen}mol Oxygen, {plasma}mol Plasma, {tritium}mol Tritium");
-            }
-
-            // Determine primary fuel gas if not provided
-            var primaryFuel = fuelGas ?? Gas.Plasma; // Default to plasma
-            if (!fuelGas.HasValue)
-            {
-                // Auto-detect based on most abundant fuel gas
-                var methane = tile.Air.GetMoles(Gas.Methane);
-                var hydrogen = tile.Air.GetMoles(Gas.Hydrogen);
-
-                if (clf3 > plasma && clf3 > tritium && clf3 > methane && clf3 > hydrogen)
-                    primaryFuel = Gas.ChlorineTrifluoride;
-                if (methane > plasma && methane > tritium && methane > hydrogen)
-                    primaryFuel = Gas.Methane;
-                else if (hydrogen > plasma && hydrogen > tritium && hydrogen > methane)
-                    primaryFuel = Gas.Hydrogen;
-                else if (tritium > plasma)
-                    primaryFuel = Gas.Tritium;
+                    $"Heat/spark of {ToPrettyString(sparkSourceUid.Value)} caused atmos ignition of gas: " +
+                    $"{tile.Air.ToPrettyString()}");
             }
 
             tile.Hotspot = new Hotspot
@@ -285,7 +238,7 @@ public sealed partial class AtmosphereSystem
                 SkippedFirstProcess = tile.CurrentCycle > gridAtmosphere.UpdateCounter,
                 Valid = true,
                 State = 1,
-                PrimaryFuel = primaryFuel
+                FireColor = GetFuelBurnColor(tile.Air)
             };
 
             AddActiveTile(gridAtmosphere, tile);
@@ -322,13 +275,10 @@ public sealed partial class AtmosphereSystem
             // Scale the fire based on the type of reaction that occured.
             tile.Hotspot.Volume = affected.ReactionResults[(byte)GasReaction.Fire] * Atmospherics.FireGrowthRate;
             Merge(tile.Air, affected);
-
-            // Clear any residual fire reaction result stored on the tile's air to avoid persisting heat.
-            if (tile.Air != null)
-            {
-                tile.Air.ReactionResults[(byte)GasReaction.Fire] = 0f;
-            }
         }
+
+        // Compute fire color from the proportional mix of fuel gases in the tile's air.
+        tile.Hotspot.FireColor = GetFuelBurnColor(tile.Air);
 
         var fireEvent = new TileFireEvent(tile.Hotspot.Temperature, tile.Hotspot.Volume);
         _entSet.Clear();
@@ -337,6 +287,68 @@ public sealed partial class AtmosphereSystem
         foreach (var entity in _entSet)
         {
             RaiseLocalEvent(entity, ref fireEvent);
+        }
+    }
+
+    /// <summary>
+    /// Exposes entities on a tile to ClF3 oxidation. Called from the ClF3 reaction
+    /// regardless of whether a hotspot exists — ClF3 corrodes items on contact.
+    /// </summary>
+    public void PerformClF3Exposure(TileAtmosphere tile, float clf3Moles, float temperature)
+    {
+        var evt = new TileClF3ExposureEvent(clf3Moles, temperature);
+        _entSet.Clear();
+        _lookup.GetLocalEntitiesIntersecting(tile.GridIndex, tile.GridIndices, _entSet, 0f);
+
+        foreach (var entity in _entSet)
+        {
+            RaiseLocalEvent(entity, ref evt);
+        }
+    }
+
+    /// <summary>
+    /// Spawns or refreshes a ClF3TritiumFlash entity — a gravitational-lensing
+    /// shimmer + radiation source. Only ONE flash entity is allowed per grid at a time.
+    /// Intensity scales with total tritium present on the reacting tile.
+    /// Uses smooth lerping so the visual doesn't pop between ticks.
+    /// </summary>
+    public void SpawnRadiationPulse(TileAtmosphere tile, float tritiumMoles)
+    {
+        if (!TryComp<MapGridComponent>(tile.GridIndex, out var grid))
+            return;
+
+        // Scale radiation intensity with tritium present. Cap at 15 rads/s.
+        var radIntensity = MathF.Min(tritiumMoles * 1f, 15f);
+        // Scale visual distortion with tritium. Range: 400 (moderate) to 3000 (dramatic).
+        var targetDistortion = MathF.Min(400f + tritiumMoles * 60f, 3000f);
+
+        // Only ONE visual entity per grid. Search for an existing flash to refresh.
+        var query = EntityQueryEnumerator<SingularityDistortionComponent, RadiationSourceComponent, TimedDespawnComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var distortion, out var radSource, out var despawn, out var xform))
+        {
+            if (xform.GridUid == tile.GridIndex)
+            {
+                // Smooth lerp toward target intensity (fast rise, slower fall).
+                var lerpRate = targetDistortion > distortion.Intensity ? 0.4f : 0.15f;
+                distortion.Intensity = distortion.Intensity + (targetDistortion - distortion.Intensity) * lerpRate;
+                radSource.Intensity = radIntensity;
+                despawn.Lifetime = 6f;
+                Dirty(uid, distortion);
+                return;
+            }
+        }
+
+        // No existing flash on this grid — spawn a new one.
+        var coords = _mapSystem.GridTileToLocal(tile.GridIndex, grid, tile.GridIndices);
+        var flash = Spawn("ClF3TritiumFlash", coords);
+
+        if (TryComp<RadiationSourceComponent>(flash, out var newRadSource))
+            newRadSource.Intensity = radIntensity;
+
+        if (TryComp<SingularityDistortionComponent>(flash, out var newDistortion))
+        {
+            newDistortion.Intensity = targetDistortion;
+            Dirty(flash, newDistortion);
         }
     }
 }

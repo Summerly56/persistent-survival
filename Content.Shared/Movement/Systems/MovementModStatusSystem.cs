@@ -232,7 +232,7 @@ public sealed class MovementModStatusSystem : EntitySystem
         float friction
     )
     {
-        return TryUpdateFrictionModDuration(uid,duration, friction, friction);
+        return TryUpdateFrictionModDuration(uid, duration, friction, friction);
     }
 
     /// <summary>

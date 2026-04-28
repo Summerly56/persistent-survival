@@ -1,8 +1,6 @@
 using Content.IntegrationTests.Tests.Interaction;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Nutrition;

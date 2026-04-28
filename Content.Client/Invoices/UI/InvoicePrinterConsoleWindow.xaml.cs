@@ -18,8 +18,6 @@ namespace Content.Client.Invoices.UI
     [GenerateTypedNameReferences]
     public sealed partial class InvoicePrinterConsoleWindow : DefaultWindow
     {
-        [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
         private readonly ISawmill _logMill = default!;
 
@@ -57,14 +55,14 @@ namespace Content.Client.Invoices.UI
             if (state.StationMode)
             {
                 PossibleStations.Visible = true;
-                if(state.SelectedStation != 0 && state.SelectedStation == state.TaxingStation)
+                if (state.SelectedStation != 0 && state.SelectedStation == state.TaxingStation)
                 {
                     TaxDetails.Visible = false;
                 }
                 ChangeModeStation.Pressed = true;
                 ChangeModePersonal.Pressed = false;
                 TargetAccountLabel.Text = state.SelectedName;
-                if(state.SelectedStation == 0)
+                if (state.SelectedStation == 0)
                 {
                     PrintButton.Disabled = true;
                 }
@@ -96,7 +94,7 @@ namespace Content.Client.Invoices.UI
                 ChangeModeStation.Pressed = false;
                 ChangeModePersonal.Pressed = true;
                 TargetAccountLabel.Text = state.TargetName;
-                if(state.TargetName == null || state.TargetName == string.Empty)
+                if (state.TargetName == null || state.TargetName == string.Empty)
                 {
                     PrintButton.Disabled = true;
                 }
@@ -106,7 +104,7 @@ namespace Content.Client.Invoices.UI
                 }
             }
 
-            if(state.TaxRate < 1)
+            if (state.TaxRate < 1)
             {
                 TaxDetails.Visible = false;
             }

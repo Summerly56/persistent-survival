@@ -16,7 +16,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
 
         //We need to know the exact time period that has passed since the last update to ensure the tape position is sync'd with the server
         //Since the client can skip frames when lagging, we cannot use frameTime
-        var realTime = (float) (Timing.CurTime - _lastTickTime).TotalSeconds;
+        var realTime = (float)(Timing.CurTime - _lastTickTime).TotalSeconds;
         _lastTickTime = Timing.CurTime;
 
         base.Update(realTime);

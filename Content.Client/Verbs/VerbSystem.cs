@@ -208,7 +208,7 @@ namespace Content.Client.Verbs
         /// </remarks>
         public void ExecuteVerb(NetEntity target, Verb verb)
         {
-            if ( _playerManager.LocalEntity is not {} user)
+            if (_playerManager.LocalEntity is not { } user)
                 return;
 
             // is this verb actually valid?

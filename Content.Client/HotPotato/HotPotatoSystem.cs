@@ -1,6 +1,6 @@
 using Content.Shared.HotPotato;
-using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Client.HotPotato;

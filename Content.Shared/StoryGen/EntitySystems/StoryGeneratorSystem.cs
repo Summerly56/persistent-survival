@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.StoryGen;
 

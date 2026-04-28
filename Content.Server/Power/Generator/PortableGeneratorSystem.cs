@@ -1,4 +1,4 @@
-﻿using Content.Server.DoAfter;
+using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -7,7 +7,6 @@ using Content.Shared.Power.Generator;
 using Content.Shared.Verbs;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 

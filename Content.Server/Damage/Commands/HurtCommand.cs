@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Damage;
@@ -7,6 +5,8 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Damage.Commands
 {

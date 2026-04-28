@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.IntegrationTests.Tests.Construction.Interaction;
 using Content.IntegrationTests.Tests.Interaction;
 using Content.IntegrationTests.Tests.Weldable;
 using Content.Shared.Tools.Components;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.DoAfter;
 

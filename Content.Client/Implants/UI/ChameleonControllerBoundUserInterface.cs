@@ -1,4 +1,4 @@
-﻿using Content.Shared.Clothing;
+using Content.Shared.Clothing;
 using Content.Shared.Implants;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
@@ -19,7 +19,7 @@ public sealed class ChameleonControllerBoundUserInterface : BoundUserInterface
 
     public ChameleonControllerBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
-        _delay =  EntMan.System<UseDelaySystem>();
+        _delay = EntMan.System<UseDelaySystem>();
     }
 
     protected override void Open()

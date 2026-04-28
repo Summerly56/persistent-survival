@@ -1,7 +1,7 @@
-﻿using System;
+using Content.MapRenderer.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Content.MapRenderer.Extensions;
 
 namespace Content.MapRenderer;
 

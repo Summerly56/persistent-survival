@@ -1,10 +1,9 @@
-using System.Numerics;
 using Content.Shared.Procedural;
 using Content.Shared.Tag;
 using Robust.Shared.Collections;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
+using System.Numerics;
 
 namespace Content.Server.Procedural.DungeonJob;
 

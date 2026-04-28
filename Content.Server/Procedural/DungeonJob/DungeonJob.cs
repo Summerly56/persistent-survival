@@ -1,8 +1,4 @@
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Decals;
-using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Shuttles.Systems;
@@ -22,7 +18,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
+using System.Threading;
+using System.Threading.Tasks;
 using IDunGenLayer = Content.Shared.Procedural.IDunGenLayer;
 
 namespace Content.Server.Procedural.DungeonJob;

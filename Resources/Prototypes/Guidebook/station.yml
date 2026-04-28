@@ -6,7 +6,6 @@
   children:
   - Jobs
   - Survival
-  #- Antagonists, Persistence Station
   - Glossary
 
 - type: guideEntry

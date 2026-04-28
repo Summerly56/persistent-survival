@@ -485,6 +485,7 @@
   - ClothingNeckCloakPirateCap
   - ClothingNeckCloakCe
   - ClothingCloakCmo
+  - ClothingNeckCloakRd
   - ClothingNeckCloakHop
   - ClothingNeckCloakTrans
   - ClothingNeckCloakGoliathCloak
@@ -510,6 +511,7 @@
   - ClothingNeckMantle
   - ClothingNeckMantleQM
   - ClothingNeckMantleRD
+  - ClothingNeckMantleHOS
 
 - type: latheRecipePack
   id: Carpets

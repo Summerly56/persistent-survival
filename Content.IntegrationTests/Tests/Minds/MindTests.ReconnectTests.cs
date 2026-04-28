@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
 using Robust.Server.Player;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Minds;
 

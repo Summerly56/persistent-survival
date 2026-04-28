@@ -17,6 +17,7 @@ public sealed class AdminWorldObjectivesEuiState : EuiStateBase
     }
 }
 [DataDefinition, NetSerializable, Serializable]
+[Virtual]
 public partial class WorldObjectivesEntry
 {
     [DataField("_id")]

@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Reflection;
 using Content.Client.IoC;
 using Content.Server.IoC;
 using Robust.Shared.Analyzers;
 using Robust.Shared.IoC;
 using Robust.UnitTesting;
+using System.Collections.Generic;
+using System.Reflection;
 using EntryPoint = Content.Server.Entry.EntryPoint;
 
 namespace Content.Tests

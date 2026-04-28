@@ -1,10 +1,9 @@
-using System.Numerics;
 using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Maths;
+using System.Numerics;
 
 namespace Content.IntegrationTests.Tests.Interaction
 {

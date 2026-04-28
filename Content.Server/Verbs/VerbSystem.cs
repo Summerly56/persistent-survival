@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
@@ -8,6 +7,7 @@ using Content.Shared.Database;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Verbs
 {
@@ -35,7 +35,7 @@ namespace Content.Server.Verbs
                 return;
             }
 
-            if (player.AttachedEntity is not {} attached)
+            if (player.AttachedEntity is not { } attached)
             {
                 Log.Warning($"{nameof(HandleVerbRequest)} called by player {player} with no attached entity.");
                 return;

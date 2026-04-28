@@ -1,9 +1,9 @@
-using System.Text.RegularExpressions;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Content.Shared.Configurable
 {

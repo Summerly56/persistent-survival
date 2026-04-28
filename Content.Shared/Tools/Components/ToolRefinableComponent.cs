@@ -1,7 +1,7 @@
 using Content.Shared.Storage;
+using Content.Shared.Tools.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Content.Shared.Tools.Systems;
 
 namespace Content.Shared.Tools.Components;
 

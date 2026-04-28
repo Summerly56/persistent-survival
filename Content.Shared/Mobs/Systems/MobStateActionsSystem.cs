@@ -33,7 +33,7 @@ public sealed class MobStateActionsSystem : EntitySystem
         if (!TryComp<MobStateActionsComponent>(uid, out var mobStateActionsComp))
             return;
         if (mobStateActionsComp.GrantedActions.Count > 0) return;
-         ComposeActions(uid, mobStateActionsComp, component.CurrentState);
+        ComposeActions(uid, mobStateActionsComp, component.CurrentState);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public sealed class MobStateActionsSystem : EntitySystem
             if (_actions.AddAction(uid, ref act, id, uid, action))
                 component.GrantedActions.Add(act.Value);
         }
-        if(newMobState == MobState.Dead)
+        if (newMobState == MobState.Dead)
         {
             var respawnTime = TimeSpan.FromSeconds(_configurationManager.GetCVar(CCVars.AcceptDeathTime));
             component.AcceptDeathCooldown = _timing.CurTime + respawnTime;

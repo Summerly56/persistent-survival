@@ -1,8 +1,8 @@
 using Content.Client.Message;
 using Content.Client.Stylesheets;
 using Content.Shared.Remotes.Components;
-using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
 
 namespace Content.Client.Remotes.UI;

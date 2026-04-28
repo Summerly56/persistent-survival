@@ -1,5 +1,3 @@
-using System.Collections.Frozen;
-using System.Text.RegularExpressions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Popups;
@@ -14,6 +12,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Collections.Frozen;
+using System.Text.RegularExpressions;
 
 namespace Content.Shared.Chat;
 
@@ -298,7 +298,10 @@ public abstract partial class SharedChatSystem : EntitySystem
     public static string InjectTagAroundString(ChatMessage message, string targetString, string tag, string? tagParameter)
     {
         var rawmsg = message.WrappedMessage;
+        // TODO: Figure out if there's any way we can cache this, and if not then rewrite this to not use regex.
+#pragma warning disable RA0026
         rawmsg = Regex.Replace(rawmsg, "(?i)(" + targetString + ")(?-i)(?![^[]*])", $"[{tag}={tagParameter}]$1[/{tag}]");
+#pragma warning restore RA0026
         return rawmsg;
     }
 

@@ -1,15 +1,15 @@
-using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
-using Content.Shared.Physics;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Physics;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Throwing
 {
@@ -56,7 +56,7 @@ namespace Content.Shared.Throwing
 
             var fixture = fixturesComponent.Fixtures.Values.First();
             var shape = fixture.Shape;
-            _fixtures.TryCreateFixture(uid, shape, ThrowingFixture, hard: false, collisionMask: (int) CollisionGroup.ThrownItem, manager: fixturesComponent, body: body);
+            _fixtures.TryCreateFixture(uid, shape, ThrowingFixture, hard: false, collisionMask: (int)CollisionGroup.ThrownItem, manager: fixturesComponent, body: body);
         }
 
         private void HandleCollision(EntityUid uid, ThrownItemComponent component, ref StartCollideEvent args)

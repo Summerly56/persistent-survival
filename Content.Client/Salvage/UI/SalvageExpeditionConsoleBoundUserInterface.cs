@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Stylesheets;
 using Content.Shared.CCVar;
 using Content.Shared.Procedural;
@@ -9,6 +8,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Client.Salvage.UI;
 

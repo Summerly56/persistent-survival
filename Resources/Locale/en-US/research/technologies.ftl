@@ -85,3 +85,4 @@ research-technology-bluespace-chemistry = Bluespace Chemistry
 research-technology-cremation = Crematorium
 research-technology-advanced-telecommunications = Advanced Telecommunications
 research-technology-cloning-technology = Cloning Technology
+research-technology-paper-protection = Paperwork protection

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Database;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Storage.Components;
@@ -7,6 +6,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Shared.Storage.EntitySystems;
 

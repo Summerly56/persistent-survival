@@ -1,8 +1,7 @@
 - type: entity
-  id: BaseRollingGate
+  id: Rolling_Gate
   parent: BaseStructure
   name: rolling gate
-  abstract: true
   description: A rolling gate, commonly used in malls and storefronts.
   placement:
     mode: SnapgridCenter
@@ -11,7 +10,6 @@
     flags:
     - Anchorable
   - type: Rotatable
-  - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Doors/Shutters/Rolling_gate.rsi
     drawdepth: BlastDoors
@@ -44,19 +42,14 @@
     tags:
     - ForceNoFixRotations # Don't want the fixrotations command to target these
   - type: Door
-    openDrawDepth: BlastDoors
-    closedDrawDepth: BlastDoors
+    closeTimeOne: 0.4
+    closeTimeTwo: 1.2
+    openTimeOne: 1.4
+    openTimeTwo: 0.3
+    openingAnimationTime: 1.6
+    closingAnimationTime: 1.7    
     bumpOpen: false
     clickOpen: false
-    closeTimeOne: 1.45
-    closeTimeTwo: 0.2
-    openTimeOne: 1.50
-    openTimeTwo: 0.2
-    openingAnimationTime: 1.5
-    closingAnimationTime: 1.45
-    crushDamage:
-      types:
-        Blunt: 5 # getting shutters closed on you probably doesn't hurt that much
     openSound:
       path: /Audio/Machines/shutter.ogg
     closeSound:
@@ -100,14 +93,21 @@
     messagePerceivedByOthers: shutter-rattle
     interactSuccessSound:
       collection: FenceRattle
+  - type: Construction
+    graph: RollingGate
+    node: RollingGate
+    containers:
+    - board 
+
+#for construction
 
 - type: entity
-  id: RollingGate
-  parent: BaseRollingGate
-  name: rolling mall gate
-  description: A rolling gate, commonly used in malls and storefronts.
+  id: RollingGateFrame
+  parent: ShuttersFrame
+  name: Rolling gate frame
+  description: A frame for constructing a security rolling gate.
   components:
-  - type: Icon
+  - type: Sprite
     sprite: Structures/Doors/Shutters/Rolling_gate.rsi
     state: closed
   - type: Door

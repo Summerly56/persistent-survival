@@ -29,16 +29,20 @@ namespace Content.Server.Atmos.EntitySystems
 
         private void OnAirtightInit(Entity<AirtightComponent> airtight, ref ComponentInit args)
         {
-            // TODO AIRTIGHT what FixAirBlockedDirectionInitialize even for?
-            if (!airtight.Comp.FixAirBlockedDirectionInitialize)
+            // If this entity blocks air in all directions (e.g. full tile walls, doors, and windows)
+            // we can skip some expensive logic.
+            if (airtight.Comp.InitialAirBlockedDirection == (int)AtmosDirection.All)
             {
+                airtight.Comp.CurrentAirBlockedDirection = airtight.Comp.InitialAirBlockedDirection;
                 UpdatePosition(airtight);
                 return;
             }
 
+            // Otherwise we need to determine its current blocked air directions based on rotation
+            // and check if it's still airtight.
             var xform = Transform(airtight);
             airtight.Comp.CurrentAirBlockedDirection =
-                (int) Rotate((AtmosDirection) airtight.Comp.InitialAirBlockedDirection, xform.LocalRotation);
+                (int)Rotate((AtmosDirection)airtight.Comp.InitialAirBlockedDirection, xform.LocalRotation);
             UpdatePosition(airtight, xform);
             var airtightEv = new AirtightChanged(airtight, airtight, false, default);
             RaiseLocalEvent(airtight, ref airtightEv, true);
@@ -88,7 +92,7 @@ namespace Content.Server.Atmos.EntitySystems
         private void OnAirtightMoved(Entity<AirtightComponent> ent, ref MoveEvent ev)
         {
             var (owner, airtight) = ent;
-            airtight.CurrentAirBlockedDirection = (int) Rotate((AtmosDirection)airtight.InitialAirBlockedDirection, ev.NewRotation);
+            airtight.CurrentAirBlockedDirection = (int)Rotate((AtmosDirection)airtight.InitialAirBlockedDirection, ev.NewRotation);
             var pos = airtight.LastPosition;
             UpdatePosition(ent, ev.Component);
             var airtightEv = new AirtightChanged(owner, airtight, false, pos);
@@ -158,7 +162,7 @@ namespace Content.Server.Atmos.EntitySystems
             // TODO ATMOS MULTIZ: When we make multiZ atmos, special case this.
             for (var i = 0; i < Atmospherics.Directions; i++)
             {
-                var direction = (AtmosDirection) (1 << i);
+                var direction = (AtmosDirection)(1 << i);
                 if (!myDirection.IsFlagSet(direction))
                     continue;
                 var angle = direction.ToAngle();

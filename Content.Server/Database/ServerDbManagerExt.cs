@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
 using Robust.Shared.Asynchronous;
+using System.Text.Json;
 
 namespace Content.Server.Database;
 

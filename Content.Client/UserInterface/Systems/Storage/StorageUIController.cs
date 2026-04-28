@@ -253,7 +253,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
         }
         else if (args.Function == ContentKeyFunctions.SaveItemLocation)
         {
-            if (window.StorageEntity is not {} storage)
+            if (window.StorageEntity is not { } storage)
                 return;
 
             EntityManager.RaisePredictiveEvent(new StorageSaveItemLocationEvent(
@@ -423,7 +423,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
             EntityManager);
 
         // I don't know why it divides the position by 2. Hope this helps! -emo
-        LayoutContainer.SetPosition(DraggingGhost, UIManager.MousePositionScaled.Position / 2 - offset );
+        LayoutContainer.SetPosition(DraggingGhost, UIManager.MousePositionScaled.Position / 2 - offset);
     }
 
     private void OnMenuEndDrag()

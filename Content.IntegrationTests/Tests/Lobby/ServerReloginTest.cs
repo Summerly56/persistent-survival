@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.CCVar;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
+using System.Linq;
 namespace Content.IntegrationTests.Tests.Lobby;
 
 public sealed class ServerReloginTest

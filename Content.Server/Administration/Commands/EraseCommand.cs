@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Server.Administration.Systems;
 using Content.Shared.Administration;
 using Robust.Server.Player;
 using Robust.Shared.Console;
+using System.Linq;
 
 namespace Content.Server.Administration.Commands;
 

@@ -424,6 +424,9 @@
     refineResult:
     - id: SheetGlass1
     - id: ShardCrystalRed
+  - type: Tag
+    tags:
+    - LightTubeRed
 
 - type: entity
   parent: LightTubeCrystalCyan
@@ -439,6 +442,9 @@
     refineResult:
     - id: SheetGlass1
     - id: ShardCrystalGreen
+  - type: Tag
+    tags:
+    - LightTubeCyan
 
 
 - type: entity

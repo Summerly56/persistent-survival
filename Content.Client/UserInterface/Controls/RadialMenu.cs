@@ -1,11 +1,11 @@
-using System.Linq;
-using System.Numerics;
 using Content.Shared.Input;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Input;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.UserInterface.Controls;
 

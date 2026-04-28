@@ -1,5 +1,3 @@
-using System.IO;
-using System.Linq;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -9,6 +7,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Events;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Utility;
+using System.IO;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests
 {

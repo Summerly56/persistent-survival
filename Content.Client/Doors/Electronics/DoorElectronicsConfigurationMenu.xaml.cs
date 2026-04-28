@@ -17,7 +17,6 @@ public sealed partial class DoorElectronicsConfigurationMenu : FancyWindow
 {
     private readonly AccessLevelControl _buttonsList = new();
 
-    public event Action<List<ProtoId<AccessLevelPrototype>>>? OnAccessChanged;
     public event Action<string>? OnAccessToggle;
     public event Action<string>? PersonalAccessToggle;
 
@@ -35,20 +34,20 @@ public sealed partial class DoorElectronicsConfigurationMenu : FancyWindow
         AccessLevelControlContainer.RemoveAllChildren();
         PersonalAccessContainer.RemoveAllChildren();
         StationNameLabel.Text = state.StationName;
-        if(state.PersonalAccess && state.PersonalAccessList != null)
+        if (state.PersonalAccess && state.PersonalAccessList != null)
         {
             ChangeMode.Text = "Station";
             PersonalAccessAddContainer.Visible = true;
             PersonalAccessContainer.Visible = true;
             AccessLevelControlContainer.Visible = false;
-            foreach(var access in state.PersonalAccessList)
+            foreach (var access in state.PersonalAccessList)
             {
                 Button button = new();
                 button.Text = access;
                 PersonalAccessContainer.AddChild(button);
                 button.OnPressed += _ => { PersonalAccessToggle?.Invoke(access); };
             }
-            
+
         }
         else
         {

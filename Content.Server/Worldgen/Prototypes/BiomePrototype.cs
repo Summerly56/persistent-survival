@@ -1,8 +1,8 @@
-﻿using System.Numerics;
 using Content.Shared.EntityTable;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
+using System.Numerics;
 
 namespace Content.Server.Worldgen.Prototypes;
 
@@ -66,7 +66,7 @@ public sealed partial class BiomePrototype : IPrototype, IInheritingPrototype
         // Add all components required by the prototype. Engine update for this whenst.
         foreach (var data in ChunkComponents.Values)
         {
-            var comp = (Component) serialization.CreateCopy(data.Component, notNullableOverride: true);
+            var comp = (Component)serialization.CreateCopy(data.Component, notNullableOverride: true);
             entityManager.AddComponent(target, comp);
         }
     }

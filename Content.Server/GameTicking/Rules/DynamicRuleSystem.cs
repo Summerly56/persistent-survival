@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Content.Server.Administration.Logs;
 using Content.Server.RoundEnd;
 using Content.Shared.Database;
@@ -8,6 +7,7 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.GameTicking.Rules;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Diagnostics;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -22,7 +22,7 @@ public sealed class DynamicRuleSystem : GameRuleSystem<DynamicRuleComponent>
     {
         base.Added(uid, component, gameRule, args);
 
-        component.Budget = _random.Next(component.StartingBudgetMin, component.StartingBudgetMax);;
+        component.Budget = _random.Next(component.StartingBudgetMin, component.StartingBudgetMax); ;
         component.NextRuleTime = Timing.CurTime + _random.Next(component.MinRuleInterval, component.MaxRuleInterval);
     }
 
@@ -81,7 +81,7 @@ public sealed class DynamicRuleSystem : GameRuleSystem<DynamicRuleComponent>
     /// </summary>
     private void UpdateBudget(Entity<DynamicRuleComponent> entity)
     {
-        var duration = (float) (Timing.CurTime - entity.Comp.LastBudgetUpdate).TotalSeconds;
+        var duration = (float)(Timing.CurTime - entity.Comp.LastBudgetUpdate).TotalSeconds;
 
         entity.Comp.Budget += duration * entity.Comp.BudgetPerSecond;
         entity.Comp.LastBudgetUpdate = Timing.CurTime;

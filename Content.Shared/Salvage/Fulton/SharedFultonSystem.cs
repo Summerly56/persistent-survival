@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Foldable;
@@ -7,13 +6,13 @@ using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Shared.Salvage.Fulton;
 
@@ -23,13 +22,13 @@ namespace Content.Shared.Salvage.Fulton;
 public abstract partial class SharedFultonSystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] private   readonly MetaDataSystem _metadata = default!;
+    [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
-    [Dependency] private   readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private   readonly FoldableSystem _foldable = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly FoldableSystem _foldable = default!;
     [Dependency] protected readonly SharedContainerSystem Container = default!;
-    [Dependency] private   readonly SharedPopupSystem _popup = default!;
-    [Dependency] private   readonly SharedStackSystem _stack = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedStackSystem _stack = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 

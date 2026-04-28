@@ -27,7 +27,8 @@ public sealed partial class NanoTaskItemPopup : DefaultWindow
             description: DescriptionInput.Text,
             taskIsFor: RequesterInput.Text,
             isTaskDone: false,
-            priority: _priorityGroup.Pressed switch {
+            priority: _priorityGroup.Pressed switch
+            {
                 var item when item == LowButton => NanoTaskPriority.Low,
                 var item when item == MediumButton => NanoTaskPriority.Medium,
                 var item when item == HighButton => NanoTaskPriority.High,

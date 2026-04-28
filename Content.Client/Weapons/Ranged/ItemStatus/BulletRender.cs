@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Client.Resources;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
+using System.Numerics;
 
 namespace Content.Client.Weapons.Ranged.ItemStatus;
 
@@ -41,7 +41,7 @@ public abstract class BaseBulletRenderer : Control
     {
         var countPerRow = Math.Min(Capacity, CountPerRow(availableSize.X));
 
-        var rows = Math.Min((int) MathF.Ceiling(Capacity / (float) countPerRow), Rows);
+        var rows = Math.Min((int)MathF.Ceiling(Capacity / (float)countPerRow), Rows);
 
         var height = _params.ItemHeight * rows + (_params.VerticalSeparation * rows - 1);
         var width = RowWidth(countPerRow);
@@ -110,7 +110,7 @@ public abstract class BaseBulletRenderer : Control
 
     private int CountPerRow(float width)
     {
-        return (int) ((width - _params.ItemWidth + _params.ItemSeparation) / _params.ItemSeparation);
+        return (int)((width - _params.ItemWidth + _params.ItemSeparation) / _params.ItemSeparation);
     }
 
     private int RowWidth(int count)

@@ -1,7 +1,7 @@
-﻿using Content.Server.DeviceLinking.Components.Overload;
+using Content.Server.DeviceLinking.Components.Overload;
+using Content.Shared.DeviceLinking.Events;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
-using Content.Shared.DeviceLinking.Events;
 
 namespace Content.Server.DeviceLinking.Systems;
 

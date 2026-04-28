@@ -1,18 +1,18 @@
 using Content.Server.Antag;
+using Content.Server.Clothing.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Zombies;
 using Content.Shared.Administration;
-using Content.Server.Clothing.Systems;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Content.Shared.Roles.Components;
 
 namespace Content.Server.Administration.Systems;
 
@@ -31,6 +31,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
+    private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     // All antag verbs have names so invokeverb works.
@@ -207,7 +208,22 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(wizard);
 
-        if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
+        var ninjaName = Loc.GetString("admin-verb-text-make-space-ninja");
+        Verb ninja = new()
+        {
+            Text = ninjaName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Weapons/Melee/energykatana.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<NinjaRoleComponent>(targetPlayer, DefaultNinjaRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", ninjaName, Loc.GetString("admin-verb-make-space-ninja")),
+        };
+        args.Verbs.Add(ninja);
+
+        if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
     }
 }

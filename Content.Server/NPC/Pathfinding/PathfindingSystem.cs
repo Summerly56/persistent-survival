@@ -1,8 +1,3 @@
-using System.Buffers;
-using System.Linq;
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Destructible;
 using Content.Server.NPC.Systems;
@@ -22,6 +17,11 @@ using Robust.Shared.Random;
 using Robust.Shared.Threading;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Buffers;
+using System.Linq;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.Pathfinding
 {

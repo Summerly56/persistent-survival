@@ -47,18 +47,18 @@ public abstract class SharedCargoSystem : EntitySystem
         {
             { stationBank.Comp.PrimaryAccount, 1.0 }
         };
-        var distribution = new Dictionary<ProtoId<CargoAccountPrototype>, double>
-        {
-            { stationBank.Comp.PrimaryAccount, stationBank.Comp.PrimaryCut }
-        };
-        var remaining = 1.0 - stationBank.Comp.PrimaryCut;
+        //var distribution = new Dictionary<ProtoId<CargoAccountPrototype>, double>
+        //{
+        //    { stationBank.Comp.PrimaryAccount, stationBank.Comp.PrimaryCut }
+        //};
+        //var remaining = 1.0 - stationBank.Comp.PrimaryCut;
 
-        foreach (var (account, percentage) in stationBank.Comp.RevenueDistribution)
-        {
-            var existing = distribution.GetOrNew(account);
-            distribution[account] = existing + remaining * percentage;
-        }
-        return distribution;
+        //foreach (var (account, percentage) in stationBank.Comp.RevenueDistribution)
+        //{
+        //    var existing = distribution.GetOrNew(account);
+        //    distribution[account] = existing + remaining * percentage;
+        //}
+        //return distribution;
     }
 
     /// <summary>
@@ -170,7 +170,7 @@ public abstract class SharedCargoSystem : EntitySystem
         UpdateBankAccount(
             ent,
             balanceAdded,
-            new Dictionary<ProtoId<CargoAccountPrototype>, double> { {account, 1} },
+            new Dictionary<ProtoId<CargoAccountPrototype>, double> { { account, 1 } },
             dirty: dirty);
     }
 
@@ -193,7 +193,7 @@ public abstract class SharedCargoSystem : EntitySystem
 
         foreach (var (account, percent) in accountDistribution)
         {
-            var accountBalancedAdded = (int) Math.Round(percent * balanceAdded);
+            var accountBalancedAdded = (int)Math.Round(percent * balanceAdded);
             ent.Comp.Accounts[account] += accountBalancedAdded;
         }
 

@@ -114,3 +114,11 @@
   completetime: 0.4
   materials:
     Steel: 100
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: RollingPin
+  result: RollingPin
+  materials:
+    Wood: 200
+    Steel: 50

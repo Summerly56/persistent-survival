@@ -2,17 +2,14 @@ using Content.Server.Actions;
 using Content.Server.Animals.Components;
 using Content.Server.Popups;
 using Content.Shared.Actions.Events;
-using Content.Shared.Atmos.Piping.Binary.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Storage;
 using Robust.Server.Audio;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using System.ComponentModel;
 
 namespace Content.Server.Animals.Systems;
 

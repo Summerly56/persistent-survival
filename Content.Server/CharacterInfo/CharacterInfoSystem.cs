@@ -1,8 +1,8 @@
-﻿using Content.Server.Mind;
-using Content.Server.Roles;
-using Content.Server.Roles.Jobs;
 using Content.Server._NF.Bank;
 using Content.Server.CrewAssignments.Systems;
+using Content.Server.Mind;
+using Content.Server.Roles;
+using Content.Server.Roles.Jobs;
 using Content.Shared.CCVar;
 using Content.Shared.CharacterInfo;
 using Content.Shared.DetailExaminable;
@@ -109,13 +109,13 @@ public sealed class CharacterInfoSystem : EntitySystem
         Dirty(entity, detail);
     }
 
-//     var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
-//         if (FlavorText.Length > maxFlavorTextLength)
-//     {
-//         flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
-//     }
-// else
-// {
-//     flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
-// }
+    //     var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
+    //         if (FlavorText.Length > maxFlavorTextLength)
+    //     {
+    //         flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
+    //     }
+    // else
+    // {
+    //     flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
+    // }
 }

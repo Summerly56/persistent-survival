@@ -1,6 +1,5 @@
-using System.Numerics;
 using Content.Shared.Camera;
-using Robust.Shared.Player;
+using System.Numerics;
 
 namespace Content.Server.Camera;
 

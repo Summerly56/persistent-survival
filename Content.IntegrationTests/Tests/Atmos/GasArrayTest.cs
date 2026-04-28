@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Atmos;
 

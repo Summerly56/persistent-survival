@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Utility;
+using System;
+using System.Collections.Generic;
 
 namespace Content.Benchmarks
 {

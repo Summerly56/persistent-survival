@@ -1,8 +1,8 @@
-using System.Text;
 using Content.Server.Construction.Completions;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Robust.Shared.Prototypes;
+using System.Text;
 
 namespace Content.IntegrationTests.Tests.Construction
 {

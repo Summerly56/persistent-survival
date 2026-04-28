@@ -1,7 +1,7 @@
-﻿using System.Linq;
 using JetBrains.Annotations;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Ghost.Roles.Raffles;
 

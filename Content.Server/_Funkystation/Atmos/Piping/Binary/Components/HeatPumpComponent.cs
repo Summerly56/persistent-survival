@@ -9,7 +9,7 @@ namespace Content.Server.Atmos.Piping.Binary.Components
         public bool Active { get; set; } = false;
 
         // Needed for on/off state to persist through save/load
-        [DataField] 
+        [DataField]
         public bool DesiredEnabled = false;
 
         [DataField("transferRate")]

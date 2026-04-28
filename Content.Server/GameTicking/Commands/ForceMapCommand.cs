@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Maps;
 using Content.Shared.Administration;
@@ -7,6 +6,7 @@ using Content.Shared.Maps;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.GameTicking.Commands
 {
@@ -23,7 +23,7 @@ namespace Content.Server.GameTicking.Commands
         {
             if (args.Length != 1)
             {
-                shell.WriteLine(Loc.GetString(Loc.GetString($"shell-need-exactly-one-argument")));
+                shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 

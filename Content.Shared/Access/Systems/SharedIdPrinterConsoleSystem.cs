@@ -10,16 +10,12 @@ namespace Content.Shared.Access.Systems
     [UsedImplicitly]
     public abstract class SharedIdPrinterConsoleSystem : EntitySystem
     {
-        [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-        [Dependency] private readonly ILogManager _log = default!;
 
         public const string Sawmill = "idconsole";
-        protected ISawmill _sawmill = default!;
 
         public override void Initialize()
         {
             base.Initialize();
-            _sawmill = _log.GetSawmill(Sawmill);
         }
 
         [Serializable, NetSerializable]

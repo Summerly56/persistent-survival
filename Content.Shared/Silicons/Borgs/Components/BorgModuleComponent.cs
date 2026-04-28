@@ -1,4 +1,4 @@
-﻿using Robust.Shared.GameStates;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Silicons.Borgs.Components;
 
@@ -35,6 +35,13 @@ public sealed partial class BorgModuleComponent : Component
     [DataField]
     public HashSet<LocId>? BorgFitTypes;
 }
+
+/// <summary>
+/// Raised on a chassis before a module is inserted into it.
+/// </summary>
+/// <param name="ModuleEnt">The module being added.</param>
+[ByRefEvent]
+public record struct BorgModuleInsertAttemptEvent(EntityUid ModuleEnt, bool Cancelled = false, string? Reason = null);
 
 /// <summary>
 /// Raised on a module when it is installed in order to add specific behavior to an entity.

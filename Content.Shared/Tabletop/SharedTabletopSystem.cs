@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
@@ -7,6 +5,8 @@ using Content.Shared.Tabletop.Components;
 using Content.Shared.Tabletop.Events;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 
 namespace Content.Shared.Tabletop
 {
@@ -60,12 +60,12 @@ namespace Content.Shared.Tabletop
             if (draggableComponent.DraggingPlayer != null)
             {
                 _appearance.SetData(dragged, TabletopItemVisuals.Scale, new Vector2(1.25f, 1.25f), appearance);
-                _appearance.SetData(dragged, TabletopItemVisuals.DrawDepth, (int) DrawDepth.DrawDepth.Items + 1, appearance);
+                _appearance.SetData(dragged, TabletopItemVisuals.DrawDepth, (int)DrawDepth.DrawDepth.Items + 1, appearance);
             }
             else
             {
                 _appearance.SetData(dragged, TabletopItemVisuals.Scale, Vector2.One, appearance);
-                _appearance.SetData(dragged, TabletopItemVisuals.DrawDepth, (int) DrawDepth.DrawDepth.Items, appearance);
+                _appearance.SetData(dragged, TabletopItemVisuals.DrawDepth, (int)DrawDepth.DrawDepth.Items, appearance);
             }
         }
 

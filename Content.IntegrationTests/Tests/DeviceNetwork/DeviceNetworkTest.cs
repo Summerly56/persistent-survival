@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceNetwork.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
-using Content.Shared.DeviceNetwork.Components;
+using System.Numerics;
 
 namespace Content.IntegrationTests.Tests.DeviceNetwork
 {

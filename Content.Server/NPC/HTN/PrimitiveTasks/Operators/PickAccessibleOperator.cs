@@ -1,7 +1,7 @@
+using Content.Server.NPC.Pathfinding;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server.NPC.Pathfinding;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
 

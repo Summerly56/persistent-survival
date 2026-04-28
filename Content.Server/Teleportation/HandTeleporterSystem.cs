@@ -1,13 +1,12 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Popups;
-using Content.Shared.DoAfter;
 using Content.Shared.Database;
+using Content.Shared.DoAfter;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Teleportation.Systems;
 using Robust.Server.Audio;
-using Robust.Server.GameObjects;
 
 namespace Content.Server.Teleportation;
 

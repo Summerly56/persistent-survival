@@ -1,5 +1,3 @@
-using System.Linq;
-using Content.Shared.Decals;
 using Microsoft.Extensions.ObjectPool;
 using Robust.Shared;
 using Robust.Shared.Configuration;
@@ -48,7 +46,7 @@ public sealed class ChunkingSystem : EntitySystem
         var chunks = viewerPool.Get();
         DebugTools.Assert(chunks.Count == 0);
 
-        if (session.Status != SessionStatus.InGame || session.AttachedEntity is not {} player)
+        if (session.Status != SessionStatus.InGame || session.AttachedEntity is not { } player)
             return chunks;
 
         var enlargement = viewEnlargement ?? chunkSize;

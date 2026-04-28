@@ -8,7 +8,7 @@ public sealed partial class CCVars
     /// <summary>
     ///     Controls if persistence autosave functionality is enabled.
     /// </summary>
-    public static  readonly CVarDef<bool>
+    public static readonly CVarDef<bool>
         AutoSaveEnabled = CVarDef.Create("game.autosaveenabled", true, CVar.ARCHIVE);
 
     /// <summary>
@@ -424,4 +424,12 @@ public sealed partial class CCVars
 
     public static readonly CVarDef<int> ForensicsMaxEntries =
         CVarDef.Create("game.forensics_max_entries", 5, CVar.SERVER);
+    /// <summary>
+    /// The maximum amount of tiles you can stack on top of each other. 0 is unlimited.
+    /// </summary>
+    /// <remarks>
+    /// Having it too high can result in "doomstacking" tiles - this messes with efficiency of explosions, deconstruction of tiles, and might result in memory problems.
+    /// </remarks>
+    public static readonly CVarDef<int> TileStackLimit =
+        CVarDef.Create("game.tile_stack_limit", 5, CVar.SERVER | CVar.REPLICATED);
 }

@@ -30,7 +30,7 @@ namespace Content.Client.Radio.Ui
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (HeadsetMenuBoundUserInterfaceState) state;
+            var castState = (HeadsetMenuBoundUserInterfaceState)state;
             _window?.UpdateState(_prototypeManager, castState);
         }
 

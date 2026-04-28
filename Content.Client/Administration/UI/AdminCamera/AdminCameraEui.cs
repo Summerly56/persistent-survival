@@ -1,9 +1,9 @@
-using System.Numerics;
 using Content.Client.Eui;
 using Content.Shared.Administration;
 using Content.Shared.Eui;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface.Controls;
+using System.Numerics;
 
 namespace Content.Client.Administration.UI.AdminCamera;
 

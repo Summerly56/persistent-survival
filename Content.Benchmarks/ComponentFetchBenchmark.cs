@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Utility;
+using System;
+using System.Collections.Generic;
 
 namespace Content.Benchmarks
 {
@@ -201,7 +201,7 @@ namespace Content.Benchmarks
 
             public override int GetHashCode()
             {
-                return (int) Value;
+                return (int)Value;
             }
 
             public static bool operator ==(EntityUid left, EntityUid right)

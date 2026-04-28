@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Content.Shared.Maps;
 using Content.Shared.Parallax.Biomes.Layers;
 using Robust.Shared.Map;
@@ -7,7 +5,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Noise;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
-using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 
 namespace Content.Shared.Parallax.Biomes;
 

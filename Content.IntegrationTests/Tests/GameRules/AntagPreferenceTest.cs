@@ -1,6 +1,4 @@
 #nullable enable
-using System.Collections.Generic;
-using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
@@ -8,6 +6,8 @@ using Content.Shared.GameTicking;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.GameRules;
 

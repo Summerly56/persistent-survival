@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
-using System.Numerics;
 
 namespace Content.Client.Power.Generation.GasGenerator;
 

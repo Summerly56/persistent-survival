@@ -1,6 +1,6 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Shared.Physics;
 

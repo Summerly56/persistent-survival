@@ -1,12 +1,12 @@
-﻿#nullable enable
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+#nullable enable
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
 using Robust.Shared;
 using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Content.Benchmarks;
 

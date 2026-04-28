@@ -1,10 +1,9 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Binary.Components;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Examine;
 using JetBrains.Annotations;
 
@@ -31,19 +30,19 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
 
             var n1 = inlet.Air.TotalMoles;
             var n2 = outlet.Air.TotalMoles;
-            var P1 = inlet.Air.Pressure;
-            var P2 = outlet.Air.Pressure;
-            var V1 = inlet.Air.Volume;
-            var V2 = outlet.Air.Volume;
-            var T1 = inlet.Air.Temperature;
-            var T2 = outlet.Air.Temperature;
-            var pressureDelta = P1 - P2;
+            var p1 = inlet.Air.Pressure;
+            var p2 = outlet.Air.Pressure;
+            var v1 = inlet.Air.Volume;
+            var v2 = outlet.Air.Volume;
+            var t1 = inlet.Air.Temperature;
+            var t2 = outlet.Air.Temperature;
+            var pressureDelta = p1 - p2;
 
             float dt = args.dt;
             float dV = 0;
-            var denom = (T1*V2 + T2*V1);
+            var denom = (t1 * v2 + t2 * v1);
 
-            if (pressureDelta > 0 && P1 > 0 && denom > 0)
+            if (pressureDelta > 0 && p1 > 0 && denom > 0)
             {
                 // Calculate the number of moles to transfer to equalize the final pressure of
                 // both sides of the valve. You can derive this equation yourself by solving
@@ -60,12 +59,12 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
                 // If you don't want to push through the math, just know that this behaves like a
                 // pump that can equalize pressure instantly, i.e. much faster than pressure or
                 // volume pumps.
-                var transferMoles = n1 - (n1+n2)*T2*V1 / denom;
+                var transferMoles = n1 - (n1 + n2) * t2 * v1 / denom;
 
                 // Get the volume transfered to update our flow meter.
                 // When you remove x from one side and add x to the other the total difference is 2x.
                 // Also account for atmos speedup so that measured flow rate matches the setting on the volume pump.
-                dV = 2*transferMoles*Atmospherics.R*T1/P1 / _atmosphereSystem.Speedup;
+                dV = 2 * transferMoles * Atmospherics.R * t1 / p1 / _atmosphereSystem.Speedup;
 
                 // Actually transfer the gas.
                 _atmosphereSystem.Merge(outlet.Air, inlet.Air.Remove(transferMoles));
@@ -73,8 +72,8 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
 
             // Update transfer rate with an exponential moving average.
             var tau = 1;    // Time constant (averaging time) in seconds
-            var a = dt/tau;
-            gate.FlowRate = a*dV/tau + (1-a)*gate.FlowRate; // in L/sec
+            var a = dt / tau;
+            gate.FlowRate = a * dV / tau + (1 - a) * gate.FlowRate; // in L/sec
         }
 
         private void OnExamined(Entity<GasPassiveGateComponent> gate, ref ExaminedEvent args)

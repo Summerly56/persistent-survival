@@ -10,6 +10,7 @@ using static Content.Shared.GridControl.Components.StationCreatorComponent;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.GridControl.UISC;
+
 [GenerateTypedNameReferences]
 public sealed partial class StationCreatorWindow : DefaultWindow
 {
@@ -38,7 +39,7 @@ public sealed partial class StationCreatorWindow : DefaultWindow
         {
             PrivilegedIdButton.Text = "";
         }
-        if(state.RealName != null)
+        if (state.RealName != null)
         {
             OwnerLabel.Text = state.RealName;
             FinishBtn.Disabled = false;

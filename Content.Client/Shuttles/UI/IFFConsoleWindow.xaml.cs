@@ -74,8 +74,8 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
             return;
 
         DesignationOptionButton.Clear();
-        DesignationOptionButton.AddItem(Loc.GetString("iff-console-designation-ship"), (int) IFFDesignation.Ship);
-        DesignationOptionButton.AddItem(Loc.GetString("iff-console-designation-station"), (int) IFFDesignation.Station);
+        DesignationOptionButton.AddItem(Loc.GetString("iff-console-designation-ship"), (int)IFFDesignation.Ship);
+        DesignationOptionButton.AddItem(Loc.GetString("iff-console-designation-station"), (int)IFFDesignation.Station);
         _designationOptionsLoaded = true;
     }
 
@@ -90,12 +90,12 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
         if (id < byte.MinValue || id > byte.MaxValue)
             return;
 
-        var designationId = (byte) id;
+        var designationId = (byte)id;
         if (!Enum.IsDefined(typeof(IFFDesignation), designationId))
             return;
 
         DesignationOptionButton.SelectId(id);
-        SetDesignation?.Invoke((IFFDesignation) designationId);
+        SetDesignation?.Invoke((IFFDesignation)designationId);
     }
 
     private void OnColorTextChanged(string text)
@@ -137,12 +137,12 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
 
     public void UpdateState(IFFConsoleBoundUserInterfaceState state)
     {
-        if ((state.AllowedFlags & IFFFlags.HideLabel) != 0x0)
+        if ((state.AllowedFlags & IFFFlags.HideLabel) != 0x0 || (state.AllowedFlags & IFFFlags.Hide) != 0x0)
         {
             ShowIFFOffButton.Disabled = false;
             ShowIFFOnButton.Disabled = false;
 
-            if ((state.Flags & IFFFlags.HideLabel) != 0x0)
+            if ((state.Flags & IFFFlags.HideLabel) != 0x0 || (state.Flags & IFFFlags.Hide) != 0x0)
             {
                 ShowIFFOffButton.Pressed = true;
             }
@@ -185,7 +185,7 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
         EnsureDesignationOptions();
         DesignationOptionButton.Disabled = !_canEditDesignation;
         _suppressDesignationEvent = true;
-        DesignationOptionButton.SelectId((int) state.Designation);
+        DesignationOptionButton.SelectId((int)state.Designation);
         _suppressDesignationEvent = false;
 
         var colorHex = state.SignatureColor.ToHexNoAlpha().TrimStart('#');

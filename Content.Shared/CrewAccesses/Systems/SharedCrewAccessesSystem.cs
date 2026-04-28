@@ -18,7 +18,7 @@ public abstract partial class SharedCrewAccessesystem : EntitySystem
         var target = _station.GetOwningStation(stationId);
         if (target == null) return null;
 
-        if (!EntityManager.TryGetComponent<CrewAccessesComponent>(target, out var crewComp))
+        if (!TryComp<CrewAccessesComponent>(target, out var crewComp))
         {
             return null;
         }

@@ -1,5 +1,5 @@
-using Robust.Shared.Random;
 using Content.Shared.DeviceNetwork.Components;
+using Robust.Shared.Random;
 
 namespace Content.Shared.DeviceNetwork;
 

@@ -1,9 +1,9 @@
-using System.Linq;
-using System.Text.RegularExpressions;
+using Content.Client.CharacterInfo;
+using Content.Shared.CCVar;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
-using Content.Shared.CCVar;
-using Content.Client.CharacterInfo;
+using System.Linq;
+using System.Text.RegularExpressions;
 using static Content.Client.CharacterInfo.CharacterInfoSystem;
 
 namespace Content.Client.UserInterface.Systems.Chat;

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Shared.Administration.Notes;
@@ -6,6 +5,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Eui;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using System.Linq;
 using static Content.Shared.Administration.Notes.AdminMessageEuiMsg;
 
 namespace Content.Server.Administration.Notes;

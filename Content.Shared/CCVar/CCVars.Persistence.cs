@@ -1,4 +1,3 @@
-using Content.Shared.Roles;
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;

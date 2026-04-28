@@ -1,10 +1,10 @@
 #nullable enable
-using System.Collections.Generic;
-using System.Linq;
 using Content.Shared.Stacks;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Collections.Generic;
+using System.Linq;
 using static Robust.UnitTesting.RobustIntegrationTest;
 
 namespace Content.IntegrationTests.Tests.Interaction;

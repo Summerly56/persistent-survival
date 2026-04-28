@@ -44,7 +44,7 @@ public sealed class XATReactiveSystem : BaseXATSystem<XATReactiveComponent>
         }
 
         var reactiveGroups = reactiveTriggerComponent.ReactiveGroups;
-        foreach(var reactiveGroup in reactiveGroups)
+        foreach (var reactiveGroup in reactiveGroups)
         {
             if (reactiveReagentEffectEntries.TryGetValue(reactiveGroup, out var effectEntry)
                 && effectEntry.Methods?.Contains(args.Method) == true)

@@ -1,9 +1,6 @@
-using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Prototypes;
-using YamlDotNet.Core.Tokens;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.StatusEffectNew;
 
@@ -306,7 +303,7 @@ public sealed partial class StatusEffectsSystem
     /// <returns> True if duration was edited successfully, false otherwise.</returns>
     public bool TryRemoveTime(EntityUid uid, EntProtoId effectProto, TimeSpan? time)
     {
-        return time == null ? TryRemoveStatusEffect(uid, effectProto) : TryAddTime(uid, effectProto, - time.Value);
+        return time == null ? TryRemoveStatusEffect(uid, effectProto) : TryAddTime(uid, effectProto, -time.Value);
     }
 
     /// <summary>

@@ -1,13 +1,11 @@
+using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Verbs;
-using Content.Shared.Examine;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Storage;
+using Content.Shared.Verbs;
 using JetBrains.Annotations;
-using Robust.Shared.Collections;
 using Robust.Shared.Containers;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -16,7 +14,7 @@ namespace Content.Shared.Item;
 public abstract class SharedItemSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private   readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] protected readonly SharedContainerSystem Container = default!;
 
     public override void Initialize()
@@ -218,7 +216,7 @@ public abstract class SharedItemSystem : EntitySystem
     {
         var shapes = GetItemShape(entity);
         var boundingShape = shapes.GetBoundingBox();
-        var boundingCenter = ((Box2) boundingShape).Center;
+        var boundingCenter = ((Box2)boundingShape).Center;
         var matty = Matrix3Helpers.CreateTransform(boundingCenter, rotation);
         var drift = boundingShape.BottomLeft - matty.TransformBox(boundingShape).BottomLeft;
 
@@ -255,7 +253,7 @@ public abstract class SharedItemSystem : EntitySystem
                 // Set the deactivated size to the default item's size before it gets changed.
                 itemToggleSize.DeactivatedSize ??= item.Size;
                 Dirty(uid, itemToggleSize);
-                SetSize(uid, (ProtoId<ItemSizePrototype>) itemToggleSize.ActivatedSize, item);
+                SetSize(uid, (ProtoId<ItemSizePrototype>)itemToggleSize.ActivatedSize, item);
             }
         }
         else
@@ -267,7 +265,7 @@ public abstract class SharedItemSystem : EntitySystem
 
             if (itemToggleSize.DeactivatedSize != null)
             {
-                SetSize(uid, (ProtoId<ItemSizePrototype>) itemToggleSize.DeactivatedSize, item);
+                SetSize(uid, (ProtoId<ItemSizePrototype>)itemToggleSize.DeactivatedSize, item);
             }
         }
     }

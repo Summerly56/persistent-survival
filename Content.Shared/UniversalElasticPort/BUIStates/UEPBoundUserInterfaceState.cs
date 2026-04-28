@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Atmos;
 using Robust.Shared.Serialization;
+using System.Numerics;
 
 namespace Content.Shared.MCTN.BUIStates;
 
@@ -82,7 +82,7 @@ public sealed class MCTNConnectMessage(NetEntity target) : BoundUserInterfaceMes
 }
 
 [Serializable, NetSerializable]
-public sealed class MCTNDisconnectMessage() : BoundUserInterfaceMessage {}
+public sealed class MCTNDisconnectMessage() : BoundUserInterfaceMessage { }
 
 
 [Serializable, NetSerializable]

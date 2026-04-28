@@ -1,5 +1,5 @@
-using System.Numerics;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Client.Paper.UI;
 

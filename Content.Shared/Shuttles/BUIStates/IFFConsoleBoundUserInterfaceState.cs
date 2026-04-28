@@ -1,5 +1,4 @@
 using Content.Shared.Shuttles.Components;
-using Robust.Shared.Maths;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Shuttles.BUIStates;

@@ -1,5 +1,7 @@
+using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.Access;
+using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
@@ -9,8 +11,6 @@ using Content.Shared.Turrets;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using System.Linq;
-using Content.Server.Administration.Logs;
-using Content.Shared.Database;
 
 namespace Content.Server.TurretController;
 

@@ -1,10 +1,10 @@
-using System;
 using Content.Shared.Dataset;
 using NUnit.Framework;
 using Robust.Shared.Collections;
 using Robust.Shared.IoC;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
+using System;
 
 namespace Content.Tests.Shared;
 

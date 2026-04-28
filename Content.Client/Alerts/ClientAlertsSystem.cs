@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Alert;
 using JetBrains.Annotations;
 using Robust.Client.Player;
@@ -6,6 +5,7 @@ using Robust.Client.UserInterface;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Client.Alerts;
 

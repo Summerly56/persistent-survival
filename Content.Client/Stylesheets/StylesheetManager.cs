@@ -44,7 +44,7 @@ namespace Content.Client.Stylesheets
 
             // add all sheetlets to the hashset
             var tys = _reflection.FindTypesWithAttribute<CommonSheetletAttribute>();
-            UnusedSheetlets = [..tys];
+            UnusedSheetlets = [.. tys];
 
             Stylesheets = new Dictionary<string, Stylesheet>();
             SheetNanotrasen = Init(new NanotrasenStylesheet(new BaseStylesheet.NoConfig(), this));

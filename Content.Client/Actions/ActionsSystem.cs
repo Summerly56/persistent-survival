@@ -103,7 +103,7 @@ namespace Content.Client.Actions
                 if (!comp.Actions.Add(actionId))
                     continue;
 
-                if (GetAction(actionId) is {} action)
+                if (GetAction(actionId) is { } action)
                     _added.Add(action);
             }
 
@@ -272,7 +272,7 @@ namespace Content.Client.Actions
                     var id = new ProtoId<ContentTileDefinition>(tileNode.Value);
                     var proto = _proto.Index(id);
                     actionId = Spawn(MappingEntityAction);
-                    if (proto.Sprite is {} sprite)
+                    if (proto.Sprite is { } sprite)
                         SetIcon(actionId, new SpriteSpecifier.Texture(sprite));
                     SetEvent(actionId, new StartPlacementActionEvent()
                     {
@@ -338,7 +338,7 @@ namespace Content.Client.Actions
             if (action.ClientExclusive)
             {
                 // TODO: abstract away from single event or maybe just RaiseLocalEvent?
-                if (comp.Event is {} ev)
+                if (comp.Event is { } ev)
                 {
                     ev.Target = coords;
                     ev.Entity = targetEnt;
@@ -364,7 +364,7 @@ namespace Content.Client.Actions
 
             // let world target component handle it
             var (uid, comp) = ent;
-            if (comp.Event is not {} ev)
+            if (comp.Event is not { } ev)
             {
                 DebugTools.Assert(HasComp<WorldTargetActionComponent>(ent), $"Action {ToPrettyString(ent)} requires WorldTargetActionComponent for entity-world targeting");
                 return;

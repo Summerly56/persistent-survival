@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 namespace Content.Server.Chat.Managers;
 
@@ -66,6 +66,7 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry(".-.", "chatsan-confused"),
         Entry("-_-", "chatsan-unimpressed"),
         Entry("smh", "chatsan-unimpressed"),
+        Entry(":?", "chatsan-shrugs"),
         Entry("o/", "chatsan-waves"),
         Entry("^^/", "chatsan-waves"),
         Entry(":/", "chatsan-uncertain"),

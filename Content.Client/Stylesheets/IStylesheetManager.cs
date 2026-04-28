@@ -21,7 +21,7 @@ public interface IStylesheetManager
     Stylesheet SheetSpace { get; }
 
     /// get a stylesheet by name
-    public bool TryGetStylesheet(string name, [MaybeNullWhen(false)]  out Stylesheet stylesheet);
+    public bool TryGetStylesheet(string name, [MaybeNullWhen(false)] out Stylesheet stylesheet);
 
     void Initialize();
 

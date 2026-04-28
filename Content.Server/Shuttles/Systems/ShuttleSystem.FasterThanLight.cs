@@ -1,14 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Numerics;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Events;
-using Content.Shared.Body.Components;
+using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
-using Content.Shared.Ghost;
-using Content.Shared.Maps;
 using Content.Shared.Parallax;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -25,6 +20,9 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Numerics;
 using FTLMapComponent = Content.Shared.Shuttles.Components.FTLMapComponent;
 
 namespace Content.Server.Shuttles.Systems;
@@ -48,7 +46,8 @@ public sealed partial class ShuttleSystem
     public float DefaultStartupTime;
     public float DefaultTravelTime;
     public float DefaultArrivalTime;
-    private float FTLCooldown;
+    private TimeSpan _fTLCooldown;
+    private TimeSpan _arrivalsFTLCooldown;
     public float FTLMassLimit;
     private TimeSpan _hyperspaceKnockdownTime = TimeSpan.FromSeconds(5);
 
@@ -87,7 +86,8 @@ public sealed partial class ShuttleSystem
         _cfg.OnValueChanged(CCVars.FTLStartupTime, time => DefaultStartupTime = time, true);
         _cfg.OnValueChanged(CCVars.FTLTravelTime, time => DefaultTravelTime = time, true);
         _cfg.OnValueChanged(CCVars.FTLArrivalTime, time => DefaultArrivalTime = time, true);
-        _cfg.OnValueChanged(CCVars.FTLCooldown, time => FTLCooldown = time, true);
+        _cfg.OnValueChanged(CCVars.FTLCooldown, time => _fTLCooldown = TimeSpan.FromSeconds(time), true);
+        _cfg.OnValueChanged(CCVars.ArrivalsFTLCooldown, time => _arrivalsFTLCooldown = TimeSpan.FromSeconds(time), true);
         _cfg.OnValueChanged(CCVars.FTLMassLimit, time => FTLMassLimit = time, true);
         _cfg.OnValueChanged(CCVars.HyperspaceKnockdownTime, time => _hyperspaceKnockdownTime = TimeSpan.FromSeconds(time), true);
     }
@@ -229,7 +229,7 @@ public sealed partial class ShuttleSystem
         {
 
             // Too large to FTL
-            if (FTLMassLimit > 0 &&  shuttlePhysics.Mass > FTLMassLimit)
+            if (FTLMassLimit > 0 && shuttlePhysics.Mass > FTLMassLimit)
             {
                 reason = Loc.GetString("shuttle-console-mass");
                 return false;
@@ -542,7 +542,10 @@ public sealed partial class ShuttleSystem
         }
 
         comp.State = FTLState.Cooldown;
-        comp.StateTime = StartEndTime.FromCurTime(_gameTiming, FTLCooldown);
+        var cooldown = entity.Comp2.FTLCooldownOverride ?? (HasComp<ArrivalsShuttleComponent>(uid)
+                ? _arrivalsFTLCooldown
+                : _fTLCooldown);
+        comp.StateTime = StartEndTime.FromCurTime(_gameTiming, cooldown);
         _console.RefreshShuttleConsoles(uid);
         _mapSystem.SetPaused(mapId, false);
         Smimsh(uid, xform: xform);
@@ -997,7 +1000,7 @@ public sealed partial class ShuttleSystem
                 {
                     _logger.Add(LogType.Gib, LogImpact.Extreme, $"{ToPrettyString(ent):player} got gibbed by the shuttle" +
                                                                 $" {ToPrettyString(uid)} arriving from FTL at {xform.Coordinates:coordinates}");
-                    var gibs = _bobby.GibBody(ent, body: mob);
+                    var gibs = _gibbing.Gib(ent);
                     _immuneEnts.UnionWith(gibs);
                     continue;
                 }

@@ -1,36 +1,35 @@
-using Content.Shared.Popups;
-using Content.Shared.Damage;
-using Content.Shared.Revenant;
-using Robust.Shared.Random;
-using Content.Shared.Tag;
-using Content.Shared.Storage.Components;
-using Content.Server.Light.Components;
 using Content.Server.Ghost;
-using Robust.Shared.Physics;
-using Content.Shared.Throwing;
-using Content.Server.Storage.EntitySystems;
-using Content.Shared.Interaction;
-using Content.Shared.Item;
-using Content.Shared.Bed.Sleep;
-using System.Linq;
-using System.Numerics;
 using Content.Server.Revenant.Components;
-using Content.Shared.Physics;
+using Content.Server.Storage.EntitySystems;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Interaction;
+using Content.Shared.Item;
 using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Physics;
+using Content.Shared.Popups;
+using Content.Shared.Revenant;
 using Content.Shared.Revenant.Components;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Utility;
-using Robust.Shared.Map.Components;
+using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
+using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Utility;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Revenant.EntitySystems;
 
@@ -76,7 +75,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) || HasComp<RevenantComponent>(target))
+        if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidProfileComponent>(target) || HasComp<RevenantComponent>(target))
             return;
 
         args.Handled = true;
@@ -149,7 +148,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if(_physics.GetEntitiesIntersectingBody(uid, (int) CollisionGroup.Impassable).Count > 0)
+        if (_physics.GetEntitiesIntersectingBody(uid, (int)CollisionGroup.Impassable).Count > 0)
         {
             _popup.PopupEntity(Loc.GetString("revenant-in-solid"), uid, uid);
             return;

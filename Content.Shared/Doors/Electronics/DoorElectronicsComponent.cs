@@ -1,7 +1,7 @@
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
-using Robust.Shared.Prototypes;
 using Content.Shared.Access;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Doors.Electronics;
 

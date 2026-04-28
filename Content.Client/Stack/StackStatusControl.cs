@@ -18,7 +18,7 @@ public sealed class StackStatusControl : Control
     public StackStatusControl(StackComponent parent)
     {
         _parent = parent;
-        _label = new RichTextLabel {StyleClasses = {StyleClass.ItemStatus}};
+        _label = new RichTextLabel { StyleClasses = { StyleClass.ItemStatus } };
         _label.SetMarkup(Loc.GetString("comp-stack-status", ("count", _parent.Count)));
         AddChild(_label);
     }

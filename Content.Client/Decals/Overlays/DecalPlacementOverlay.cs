@@ -1,10 +1,9 @@
-using System.Numerics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
+using System.Numerics;
 
 namespace Content.Client.Decals.Overlays;
 

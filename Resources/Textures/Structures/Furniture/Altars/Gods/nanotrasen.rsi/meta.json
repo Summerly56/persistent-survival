@@ -29,6 +29,9 @@
       "name": "toolbox"
     },
     {
+      "name": "default"
+    },
+    {
       "name": "technology_lightning",
       "delays": [
         [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]

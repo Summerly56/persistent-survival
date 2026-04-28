@@ -1,4 +1,4 @@
-﻿using Content.Shared.Administration.Systems;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
@@ -89,7 +89,7 @@ namespace Content.IntegrationTests.Tests.Commands
                     Assert.That(mobStateSystem.IsDead(human, mobState), Is.False);
                     Assert.That(mobStateSystem.IsIncapacitated(human, mobState), Is.False);
 
-                    Assert.That(damageable.TotalDamage, Is.EqualTo(FixedPoint2.Zero));
+                    Assert.That(damSystem.GetTotalDamage((human, damageable)), Is.EqualTo(FixedPoint2.Zero));
                 });
             });
             await pair.CleanReturnAsync();

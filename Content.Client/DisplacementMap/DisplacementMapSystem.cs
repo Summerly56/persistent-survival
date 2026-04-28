@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.DisplacementMap;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Serialization.Manager;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client.DisplacementMap;
 

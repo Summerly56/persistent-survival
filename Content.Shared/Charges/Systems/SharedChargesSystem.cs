@@ -130,7 +130,7 @@ public abstract class SharedChargesSystem : EntitySystem
         {
             var duration = action.Comp2.RechargeDuration;
             var diff = (_timing.CurTime - action.Comp1.LastUpdate);
-            var remainder = (int) (diff / duration);
+            var remainder = (int)(diff / duration);
 
             action.Comp1.LastCharges += remainder;
             action.Comp1.LastUpdate += (remainder * duration);

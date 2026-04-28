@@ -1,5 +1,3 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -17,6 +15,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Content.Benchmarks;
 

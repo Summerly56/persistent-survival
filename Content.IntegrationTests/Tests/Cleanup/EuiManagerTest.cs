@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Server.Administration.UI;
 using Content.Server.EUI;
 using Robust.Server.Player;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Cleanup;
 

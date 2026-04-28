@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.Item;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.SprayPainter.Prototypes;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Client.SprayPainter;
 

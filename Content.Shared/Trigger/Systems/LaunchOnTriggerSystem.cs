@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Trigger.Components.Effects;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using System.Numerics;
 
 namespace Content.Shared.Trigger.Systems;
 

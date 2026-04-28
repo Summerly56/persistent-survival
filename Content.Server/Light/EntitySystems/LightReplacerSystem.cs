@@ -1,15 +1,13 @@
-using System.Linq;
-using Content.Server.Light.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Light.EntitySystems;
 using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
 using JetBrains.Annotations;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using System.Linq;
 
 namespace Content.Server.Light.EntitySystems;
 
@@ -85,7 +83,7 @@ public sealed class LightReplacerSystem : SharedLightReplacerSystem
         // behaviour will depends on target type
         if (eventArgs.Target != null)
         {
-            var targetUid = (EntityUid) eventArgs.Target;
+            var targetUid = (EntityUid)eventArgs.Target;
 
             // replace broken light in fixture?
             if (TryComp<PoweredLightComponent>(targetUid, out var fixture))

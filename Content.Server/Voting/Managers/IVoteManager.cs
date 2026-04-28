@@ -1,6 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Voting;
 using Robust.Shared.Player;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Voting.Managers
 {

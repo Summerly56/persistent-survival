@@ -1,5 +1,3 @@
-using System.IO.Compression;
-using System.Linq;
 using Content.Client.Message;
 using Content.Client.Replay;
 using Content.Client.UserInterface.Systems.EscapeMenu;
@@ -15,6 +13,8 @@ using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Serialization.Markdown.Value;
 using Robust.Shared.Utility;
+using System.IO.Compression;
+using System.Linq;
 using static Robust.Shared.Replays.ReplayConstants;
 
 namespace Content.Replay.Menu;

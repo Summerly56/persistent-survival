@@ -209,3 +209,6 @@
           MaterialWoodPlank:
             min: 2
             max: 2
+  - type: Construction
+    graph: bed
+    node: psychbed

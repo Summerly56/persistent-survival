@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Xenoarchaeology.Artifact;
 

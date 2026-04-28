@@ -1,8 +1,8 @@
+using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
-using Content.Shared.Interaction;
-using Content.Shared.Examine;
 using Content.Shared.Verbs;
 
 namespace Content.Shared.Tools.EntitySystems;

@@ -1,8 +1,7 @@
 using Content.Shared.CrewAssignments.Components;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 using Content.Shared.Station;
 using Content.Shared.Station.Components;
+using Robust.Shared.Serialization;
 namespace Content.Shared.CrewAssignments.Systems;
 
 public abstract partial class SharedCrewAssignmentSystem : EntitySystem
@@ -18,7 +17,7 @@ public abstract partial class SharedCrewAssignmentSystem : EntitySystem
         var target = _station.GetOwningStation(stationId);
         if (target == null) return null;
 
-        if (!EntityManager.TryGetComponent<CrewAssignmentsComponent>(target, out var crewComp))
+        if (!TryComp<CrewAssignmentsComponent>(target, out var crewComp))
         {
             return null;
         }

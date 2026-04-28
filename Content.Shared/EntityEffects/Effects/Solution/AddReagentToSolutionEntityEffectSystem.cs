@@ -1,4 +1,4 @@
-﻿using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;

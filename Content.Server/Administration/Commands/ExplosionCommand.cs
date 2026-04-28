@@ -3,12 +3,12 @@ using Content.Server.EUI;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Explosion;
+using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Numerics;
-using Robust.Server.GameObjects;
 
 namespace Content.Server.Administration.Commands;
 

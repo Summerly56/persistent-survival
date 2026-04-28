@@ -1,5 +1,4 @@
 using Content.Server.Solar.EntitySystems;
-using Content.Shared.Guidebook;
 
 namespace Content.Server.Solar.Components
 {

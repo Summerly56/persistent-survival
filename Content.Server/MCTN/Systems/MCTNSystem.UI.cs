@@ -1,15 +1,15 @@
-using System.Linq;
+using Content.Server.MCTN.Components;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
+using Content.Server.Popups;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Nodes;
-using Content.Server.MCTN.Components;
-using Content.Shared.Coordinates;
-using Content.Shared.NodeContainer;
-using Content.Shared.MCTN.BUIStates;
-using Robust.Server.GameObjects;
 using Content.Shared.Access.Systems;
-using Content.Server.Popups;
+using Content.Shared.Coordinates;
+using Content.Shared.MCTN.BUIStates;
+using Content.Shared.NodeContainer;
+using Robust.Server.GameObjects;
+using System.Linq;
 
 namespace Content.Server.MCTN.Systems;
 

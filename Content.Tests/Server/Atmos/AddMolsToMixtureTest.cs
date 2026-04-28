@@ -1,7 +1,7 @@
-using System;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
 using NUnit.Framework;
+using System;
 
 namespace Content.Tests.Server.Atmos;
 

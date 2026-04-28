@@ -1,6 +1,5 @@
 using Content.Shared.GridControl.Components;
 using Content.Shared.GridControl.Systems;
-using Robust.Shared.Containers;
 
 namespace Content.Server.GridControl.Systems;
 

@@ -1,7 +1,7 @@
-using System.Reflection;
 using Content.Shared.Guidebook;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Reflection;
 
 namespace Content.Server.Guidebook;
 

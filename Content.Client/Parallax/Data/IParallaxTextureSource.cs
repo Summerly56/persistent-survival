@@ -1,6 +1,6 @@
+using Robust.Client.Graphics;
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Client.Graphics;
 
 namespace Content.Client.Parallax.Data
 {

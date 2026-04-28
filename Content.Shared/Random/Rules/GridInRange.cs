@@ -1,6 +1,6 @@
-using System.Numerics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using System.Numerics;
 
 namespace Content.Shared.Random.Rules;
 

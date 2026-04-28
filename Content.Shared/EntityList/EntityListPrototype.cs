@@ -1,5 +1,5 @@
-﻿using System.Collections.Immutable;
 using Robust.Shared.Prototypes;
+using System.Collections.Immutable;
 
 namespace Content.Shared.EntityList
 {

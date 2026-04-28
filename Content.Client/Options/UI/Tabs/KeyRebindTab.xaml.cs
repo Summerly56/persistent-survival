@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Shared.CCVar;
 using Content.Shared.Input;
@@ -12,6 +11,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Numerics;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
 namespace Content.Client.Options.UI.Tabs
@@ -137,8 +137,23 @@ namespace Content.Client.Options.UI.Tabs
             Dictionary<string, int> headerCount = new();
             Dictionary<string, Control> headerSpacers = new();
 
+            void AddToggleCvarCheckBox(string checkBoxName, CVarDef<bool> cvar)
+            {
+                CheckBox newCheckBox = new CheckBox() { Text = Loc.GetString(checkBoxName) };
+                newCheckBox.Pressed = _cfg.GetCVar(cvar);
+                newCheckBox.OnToggled += (e) =>
+                {
+                    _cfg.SetCVar(cvar, e.Pressed);
+                    _cfg.SaveToFile();
+                };
+
+                KeybindsContainer.AddChild(newCheckBox);
+            }
+
             AddHeader("ui-options-header-general");
-            AddCheckBox("ui-options-hotkey-keymap", _cfg.GetCVar(CVars.DisplayUSQWERTYHotkeys), HandleToggleUSQWERTYCheckbox);
+            AddToggleCvarCheckBox("ui-options-hotkey-keymap", CVars.DisplayUSQWERTYHotkeys);
+            AddToggleCvarCheckBox("ui-options-hold-to-attack-melee", CCVars.ControlHoldToAttackMelee);
+            AddToggleCvarCheckBox("ui-options-hold-to-attack-ranged", CCVars.ControlHoldToAttackRanged);
 
             AddHeader("ui-options-header-movement");
             AddButton(EngineKeyFunctions.MoveUp);

@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Shared.CCVar;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Player;
+using System.Numerics;
 
 namespace Content.Server.Movement.Systems;
 

@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Utility;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Stunnable;
 
@@ -9,7 +9,7 @@ namespace Content.Shared.Stunnable;
 public sealed partial class StunVisualsComponent : Component
 {
     [DataField]
-    public ResPath StarsPath = new ("Mobs/Effects/stunned.rsi");
+    public ResPath StarsPath = new("Mobs/Effects/stunned.rsi");
 
     [DataField]
     public string State = "stunned";

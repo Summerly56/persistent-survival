@@ -1,6 +1,6 @@
-﻿using System.Net;
 using Content.Server.IP;
 using NUnit.Framework;
+using System.Net;
 
 namespace Content.Tests.Server.Utility
 {

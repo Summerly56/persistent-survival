@@ -1,9 +1,7 @@
-using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents.Components;
-using Content.Server.StationRecords;
 using Content.Server.StationRecords.Systems;
-using Content.Shared.StationRecords;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.StationRecords;
 using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
@@ -27,8 +25,8 @@ public sealed class ClericalErrorRule : StationEventSystem<ClericalErrorRuleComp
         if (recordCount == 0)
             return;
 
-        var min = (int) Math.Max(1, Math.Round(component.MinToRemove * recordCount));
-        var max = (int) Math.Max(min, Math.Round(component.MaxToRemove * recordCount));
+        var min = (int)Math.Max(1, Math.Round(component.MinToRemove * recordCount));
+        var max = (int)Math.Max(min, Math.Round(component.MaxToRemove * recordCount));
         var toRemove = RobustRandom.Next(min, max);
         var keys = new List<uint>();
         for (var i = 0; i < toRemove; i++)

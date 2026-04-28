@@ -47,7 +47,7 @@ public sealed class ActionContainerSystem : EntitySystem
         if (!TryComp<ActionsContainerComponent>(mindId, out var mindActionContainerComp))
             return;
 
-        if (!HasComp<GhostComponent>(uid) && mindActionContainerComp.Container.ContainedEntities.Count > 0 )
+        if (!HasComp<GhostComponent>(uid) && mindActionContainerComp.Container.ContainedEntities.Count > 0)
             _actions.GrantContainedActions(uid, mindId);
     }
 
@@ -99,7 +99,7 @@ public sealed class ActionContainerSystem : EntitySystem
                 return false;
             }
 
-            if (_actions.GetAction(actionId) is not {} ent)
+            if (_actions.GetAction(actionId) is not { } ent)
                 return false;
 
             actionId = ent;
@@ -146,7 +146,7 @@ public sealed class ActionContainerSystem : EntitySystem
         ActionComponent? action = null,
         ActionsContainerComponent? container = null)
     {
-        if (_actions.GetAction((actionId, action)) is not {} ent)
+        if (_actions.GetAction((actionId, action)) is not { } ent)
             return;
 
         if (ent.Comp.Container == newContainer)
@@ -197,7 +197,7 @@ public sealed class ActionContainerSystem : EntitySystem
         ActionComponent? action = null,
         ActionsContainerComponent? container = null)
     {
-        if (_actions.GetAction((actionId, action)) is not {} ent)
+        if (_actions.GetAction((actionId, action)) is not { } ent)
             return;
 
         if (ent.Comp.Container == newContainer)
@@ -243,7 +243,7 @@ public sealed class ActionContainerSystem : EntitySystem
     /// </summary>
     public bool AddAction(EntityUid uid, EntityUid actionId, ActionComponent? action = null, ActionsContainerComponent? comp = null)
     {
-        if (_actions.GetAction((actionId, action)) is not {} ent)
+        if (_actions.GetAction((actionId, action)) is not { } ent)
             return false;
 
         if (ent.Comp.Container != null)
@@ -269,7 +269,7 @@ public sealed class ActionContainerSystem : EntitySystem
     /// </summary>
     public void RemoveAction(Entity<ActionComponent?>? action, bool logMissing = true)
     {
-        if (_actions.GetAction(action, logMissing) is not {} ent)
+        if (_actions.GetAction(action, logMissing) is not { } ent)
             return;
 
         if (ent.Comp.Container == null)
@@ -279,7 +279,7 @@ public sealed class ActionContainerSystem : EntitySystem
 
         // Container removal events should have removed the action from the action container.
         // However, just in case the container was already deleted we will still manually clear the container field
-        if (ent.Comp.Container is {} container)
+        if (ent.Comp.Container is { } container)
         {
             if (Exists(container))
                 Log.Error($"Failed to remove action {ToPrettyString(ent)} from its container {ToPrettyString(container)}?");
@@ -290,7 +290,7 @@ public sealed class ActionContainerSystem : EntitySystem
         // If the action was granted to some entity, then the removal from the container should have automatically removed it.
         // However, if the action was granted without ever being placed in an action container, it will not have been removed.
         // Therefore, to ensure that the behaviour of the method is consistent we will also explicitly remove the action.
-        if (ent.Comp.AttachedEntity is {} actions)
+        if (ent.Comp.AttachedEntity is { } actions)
             _actions.RemoveAction(actions, (ent, ent));
     }
 
@@ -312,7 +312,7 @@ public sealed class ActionContainerSystem : EntitySystem
         if (args.Container.ID != ActionsContainerComponent.ContainerId)
             return;
 
-        if (_actions.GetAction(args.Entity) is not {} action)
+        if (_actions.GetAction(args.Entity) is not { } action)
             return;
 
         if (action.Comp.Container != uid)
@@ -330,7 +330,7 @@ public sealed class ActionContainerSystem : EntitySystem
         if (args.Container.ID != ActionsContainerComponent.ContainerId)
             return;
 
-        if (_actions.GetAction(args.Entity, false) is not {} action)
+        if (_actions.GetAction(args.Entity, false) is not { } action)
             return;
 
         var ev = new ActionRemovedEvent(args.Entity, action);

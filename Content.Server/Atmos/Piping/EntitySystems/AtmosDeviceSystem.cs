@@ -1,10 +1,10 @@
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Atmos.Piping.EntitySystems
 {
@@ -131,7 +131,7 @@ namespace Content.Server.Atmos.Piping.EntitySystems
 
             var time = _gameTiming.CurTime;
             var ev = new AtmosDeviceUpdateEvent(_atmosphereSystem.AtmosTime, null, null);
-            foreach (var device in _joinedDevices)
+            foreach (var device in _joinedDevices.ToHashSet())
             {
                 var deviceGrid = Transform(device).GridUid;
                 if (HasComp<GridAtmosphereComponent>(deviceGrid))

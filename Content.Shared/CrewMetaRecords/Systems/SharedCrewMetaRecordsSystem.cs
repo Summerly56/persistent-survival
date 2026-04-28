@@ -1,9 +1,3 @@
-using Content.Shared.Containers.ItemSlots;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
-
 namespace Content.Shared.CrewMetaRecords;
 
 public abstract partial class SharedCrewMetaRecordsSystem : EntitySystem

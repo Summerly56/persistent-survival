@@ -1,10 +1,10 @@
-using System.Linq;
-using System.Numerics;
 using Content.Client.Radiation.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map.Components;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.Radiation.Overlays;
 

@@ -33,7 +33,7 @@ public sealed class CargoPalletConsoleInterfaceState : BoundUserInterfaceState
 
     public string SelectedName;
 
-    
+
 
     public CargoPalletConsoleInterfaceState(int appraisal, int count, bool enabled, CargoSaleMode cashmode, int tax, int taxingStation, string taxingName, Dictionary<int, string> formattedStations, int selectedFaction, string selectedName)
     {

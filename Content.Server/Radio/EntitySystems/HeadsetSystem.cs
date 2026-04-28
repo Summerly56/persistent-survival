@@ -1,23 +1,16 @@
-using Content.Server.Cargo.Components;
 using Content.Server.Station.Systems;
-using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
-using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.CrewAssignments.Components;
 using Content.Shared.CrewRecords.Components;
-using Content.Shared.GridControl.Components;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
-using Robust.Shared.Physics;
 using Robust.Shared.Player;
-using static Content.Shared.GridControl.Components.GridConfigComponent;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -57,7 +50,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         {
             if (TryComp<StationDataComponent>(station, out var data) && data != null)
             {
-                if(data.StationName != null) formattedStations.Add(data.UID, data.StationName);
+                if (data.StationName != null) formattedStations.Add(data.UID, data.StationName);
             }
         }
         var newState = new HeadsetMenuBoundUserInterfaceState(formattedStations, component.TransmitTo, component.RecieveFrom);

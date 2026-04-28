@@ -77,7 +77,7 @@ public sealed partial class RoboticsConsoleWindow : FancyWindow
         _allowBorgControl = state.AllowBorgControl;
 
         // clear invalid selection
-        if (_selected is {} selected && !_cyborgs.ContainsKey(selected))
+        if (_selected is { } selected && !_cyborgs.ContainsKey(selected))
             _selected = null;
 
         var hasCyborgs = _cyborgs.Count > 0;
@@ -107,7 +107,7 @@ public sealed partial class RoboticsConsoleWindow : FancyWindow
 
     private void PopulateData()
     {
-        if (_selected is not {} selected)
+        if (_selected is not { } selected)
         {
             SelectCyborg.Visible = true;
             BorgContainer.Visible = false;
@@ -122,7 +122,8 @@ public sealed partial class RoboticsConsoleWindow : FancyWindow
 
         BorgSprite.Texture = _sprite.Frame0(data.ChassisSprite!);
 
-        var batteryColor = data.Charge switch {
+        var batteryColor = data.Charge switch
+        {
             < 0.2f => "#FF6C7F", // red
             < 0.4f => "#EF973C", // orange
             < 0.6f => "#E8CB2D", // yellow
@@ -130,7 +131,8 @@ public sealed partial class RoboticsConsoleWindow : FancyWindow
             _ => "#00D3B8" // cyan
         };
 
-        var hpPercentColor = data.HpPercent switch {
+        var hpPercentColor = data.HpPercent switch
+        {
             < 0.2f => "#FF6C7F", // red
             < 0.4f => "#EF973C", // orange
             < 0.6f => "#E8CB2D", // yellow

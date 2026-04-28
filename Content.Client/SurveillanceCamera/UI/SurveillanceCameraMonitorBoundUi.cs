@@ -1,6 +1,5 @@
 using Content.Client.Eye;
 using Content.Shared.SurveillanceCamera;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 
 namespace Content.Client.SurveillanceCamera.UI;
@@ -34,11 +33,17 @@ public sealed class SurveillanceCameraMonitorBoundUserInterface : BoundUserInter
         _window.SubnetRefresh += OnSubnetRefresh;
         _window.CameraSwitchTimer += OnCameraSwitchTimer;
         _window.CameraDisconnect += OnCameraDisconnect;
+
+        var xform = EntMan.GetComponent<TransformComponent>(Owner);
+        var gridUid = xform.GridUid ?? xform.MapUid;
+
+        if (gridUid is not null)
+            _window?.SetMap(gridUid.Value);
     }
 
-    private void OnCameraSelected(string address)
+    private void OnCameraSelected(string address, string? subnet)
     {
-        SendMessage(new SurveillanceCameraMonitorSwitchMessage(address));
+        SendMessage(new SurveillanceCameraMonitorSwitchMessage(address, subnet));
     }
 
     private void OnSubnetRequest(string subnet)

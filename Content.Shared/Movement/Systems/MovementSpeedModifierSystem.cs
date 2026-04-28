@@ -258,6 +258,6 @@ namespace Content.Shared.Movement.Systems
         {
             Acceleration *= acceleration;
         }
-        SlotFlags IInventoryRelayEvent.TargetSlots =>  ~SlotFlags.POCKET;
+        SlotFlags IInventoryRelayEvent.TargetSlots => ~SlotFlags.POCKET;
     }
 }

@@ -1,9 +1,9 @@
 #nullable enable
-using System.Collections.Generic;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Sprite;
 

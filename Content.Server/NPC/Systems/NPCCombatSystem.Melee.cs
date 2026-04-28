@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Server.NPC.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.NPC;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.NPC.Systems;
 

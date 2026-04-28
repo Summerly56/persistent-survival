@@ -1,11 +1,11 @@
 using Content.Server.Physics.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Controllers;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Physics;
-using System.Numerics;
-using Robust.Shared.Physics.Controllers;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Server.Physics.Controllers;
 
@@ -63,11 +63,11 @@ public sealed class ChaoticJumpSystem : VirtualController
         if (rayCastResults != null)
         {
             targetPos = rayCastResults.Value.HitPos;
-            targetPos = new Vector2(targetPos.X - (float) Math.Cos(direction), targetPos.Y - (float) Math.Sin(direction)); //offset so that the teleport does not take place directly inside the target
+            targetPos = new Vector2(targetPos.X - (float)Math.Cos(direction), targetPos.Y - (float)Math.Sin(direction)); //offset so that the teleport does not take place directly inside the target
         }
         else
         {
-            targetPos = new Vector2(startPos.X + range * (float) Math.Cos(direction), startPos.Y + range * (float) Math.Sin(direction));
+            targetPos = new Vector2(startPos.X + range * (float)Math.Cos(direction), startPos.Y + range * (float)Math.Sin(direction));
         }
 
         Spawn(component.Effect, transform.Coordinates);

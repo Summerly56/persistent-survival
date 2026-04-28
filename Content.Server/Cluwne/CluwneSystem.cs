@@ -1,7 +1,7 @@
 using Content.Server.Chat;
 using Content.Server.Chat.Systems;
-using Content.Server.Emoting.Systems;
 using Content.Server.Clothing.Systems;
+using Content.Server.Emoting.Systems;
 using Content.Server.Popups;
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Chat;
@@ -14,8 +14,8 @@ using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.Cluwne;
 

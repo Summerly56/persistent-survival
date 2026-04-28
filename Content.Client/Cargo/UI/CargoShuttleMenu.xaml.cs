@@ -34,15 +34,18 @@ namespace Content.Client.Cargo.UI
 
             foreach (var order in orders)
             {
-                 var product = protoManager.Index<EntityPrototype>(order.ProductId);
-                 var productName = product.Name;
-                 var account = protoManager.Index(order.Account);
+                if (!protoManager.Resolve(order.Product, out var productProto))
+                    continue;
 
-                 var row = new CargoOrderRow
-                 {
-                     Order = order,
-                     Icon = { Texture = sprites.Frame0(product) },
-                     ProductName =
+                var product = protoManager.Index<EntityPrototype>(productProto.Product);
+                var productName = product.Name;
+                var account = protoManager.Index(order.Account);
+
+                var row = new CargoOrderRow
+                {
+                    Order = order,
+                    Icon = { Texture = sprites.Frame0(product) },
+                    ProductName =
                      {
                          Text = Loc.GetString(
                              "cargo-console-menu-populate-orders-cargo-order-row-product-name-text",
@@ -52,14 +55,14 @@ namespace Content.Client.Cargo.UI
                              ("accountColor", account.Color),
                              ("account", Loc.GetString(account.Code)))
                      },
-                     Description = {Text = Loc.GetString("cargo-console-menu-order-reason-description",
+                    Description = {Text = Loc.GetString("cargo-console-menu-order-reason-description",
                          ("reason", order.Reason))}
-                 };
+                };
 
-                 row.Approve.Visible = false;
-                 row.Cancel.Visible = false;
+                row.Approve.Visible = false;
+                row.Cancel.Visible = false;
 
-                 Orders.AddChild(row);
+                Orders.AddChild(row);
             }
         }
     }

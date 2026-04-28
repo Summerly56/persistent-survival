@@ -1,6 +1,5 @@
-using System.Numerics;
-using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.CCVar;
 using JetBrains.Annotations;
@@ -11,6 +10,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using System.Numerics;
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -131,7 +131,7 @@ namespace Content.Server.Atmos.EntitySystems
             // Afterwards we reset all the chunk data for the next time we tick.
             foreach (var session in _playerObservers)
             {
-                if (session.AttachedEntity is not {Valid: true} entity)
+                if (session.AttachedEntity is not { Valid: true } entity)
                     continue;
 
                 var transform = Transform(entity);

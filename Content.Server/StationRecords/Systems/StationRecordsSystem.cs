@@ -1,6 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
-using Content.Server.Forensics;
 using Content.Shared.Access.Components;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
@@ -11,7 +9,6 @@ using Content.Shared.Roles;
 using Content.Shared.StationRecords;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server.StationRecords.Systems;
 
@@ -40,7 +37,6 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     [Dependency] private readonly StationRecordKeyStorageSystem _keyStorage = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IdCardSystem _idCard = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -65,13 +61,13 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         // given entity is a card and the card itself is the key the record will be mistakenly renamed to the card's name
         // if we don't return early.
         // We also do not include the PDA itself being renamed, as that triggers the same event (e.g. for chameleon PDAs).
-        if (HasComp<IdCardComponent>(ev.Uid) ||  HasComp<PdaComponent>(ev.Uid))
+        if (HasComp<IdCardComponent>(ev.Uid) || HasComp<PdaComponent>(ev.Uid))
             return;
 
         if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
         {
             if (TryComp(idCard, out StationRecordKeyStorageComponent? keyStorage)
-                && keyStorage.Key is {} key)
+                && keyStorage.Key is { } key)
             {
                 if (TryGetRecord<GeneralStationRecord>(key, out var generalRecord))
                 {
@@ -146,7 +142,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
-        if (GetRecordByName(station, name, records) is {} id)
+        if (GetRecordByName(station, name, records) is { } id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
@@ -183,11 +179,11 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     /// </summary>
     public void SetIdKey(EntityUid? uid, StationRecordKey key)
     {
-        if (uid is not {} idUid)
+        if (uid is not { } idUid)
             return;
 
         var keyStorageEntity = idUid;
-        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is {} id)
+        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is { } id)
         {
             keyStorageEntity = id;
         }
@@ -215,27 +211,6 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         return false;
     }
 
-    /// <summary>
-    /// Gets a random record from the station's record entries.
-    /// </summary>
-    /// <param name="ent">The EntityId of the station from which you want to get the record.</param>
-    /// <param name="entry">The resulting entry.</param>
-    /// <typeparam name="T">Type to get from the record set.</typeparam>
-    /// <returns>True if a record was obtained. False otherwise.</returns>
-    public bool TryGetRandomRecord<T>(Entity<StationRecordsComponent?> ent, [NotNullWhen(true)] out T? entry)
-    {
-        entry = default;
-
-        if (!Resolve(ent.Owner, ref ent.Comp))
-            return false;
-
-        if (ent.Comp.Records.Keys.Count == 0)
-            return false;
-
-        var key = _random.Pick(ent.Comp.Records.Keys);
-
-        return ent.Comp.Records.TryGetRecordEntry(key, out entry);
-    }
 
     /// <summary>
     /// Get the name for a record, or an empty string if it has no record.
@@ -243,7 +218,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     public string RecordName(StationRecordKey key)
     {
         if (!TryGetRecord<GeneralStationRecord>(key, out var record))
-           return string.Empty;
+            return string.Empty;
 
         return record.Name;
     }

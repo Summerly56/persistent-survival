@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Client.Items.Systems;
 using Content.Shared.Clothing;
 using Content.Shared.Hands;
@@ -10,6 +8,8 @@ using Robust.Client.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
+using System.Linq;
+using System.Numerics;
 using static Robust.Client.GameObjects.SpriteComponent;
 
 namespace Content.Client.Light

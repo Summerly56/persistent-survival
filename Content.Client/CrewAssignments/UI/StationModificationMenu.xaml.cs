@@ -25,9 +25,6 @@ namespace Content.Client.CrewAssignments.UI
     [GenerateTypedNameReferences]
     public sealed partial class StationModificationMenu : FancyWindow
     {
-        [Dependency] private readonly IGameTiming _timing = default!;
-
-        private readonly IEntityManager _entityManager;
         private readonly IPrototypeManager _protoManager;
         private readonly CargoSystem _cargoSystem;
         private readonly SpriteSystem _spriteSystem;
@@ -35,7 +32,7 @@ namespace Content.Client.CrewAssignments.UI
         private EntityUid? _station;
         private int? _lastAssignmentSelected;
         private int? _lastChannelSelected;
-        public string? _lastAssignmentCreated;
+        public string? LastAssignmentCreated;
         Dictionary<string, CrewAccess>? _accesses;
         Dictionary<int, CrewAssignment>? _assignments;
         public Dictionary<ProtoId<RadioChannelPrototype>, FactionRadioData>? RadioData;
@@ -48,7 +45,6 @@ namespace Content.Client.CrewAssignments.UI
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
-            _entityManager = entMan;
             _protoManager = protoManager;
             _cargoSystem = entMan.System<CargoSystem>();
             _spriteSystem = spriteSystem;
@@ -85,7 +81,7 @@ namespace Content.Client.CrewAssignments.UI
         }
         public void UpdateStation(EntityUid station, string name)
         {
-            
+
             _station = station;
             StationNameLabel.Text = name;
             StationNameField.Text = name;
@@ -93,7 +89,7 @@ namespace Content.Client.CrewAssignments.UI
         public void UpdateOwners(List<string> owners)
         {
             Requests.RemoveAllChildren();
-            foreach (var owner in owners )
+            foreach (var owner in owners)
             {
                 var button = new StationOwnerButton(owner);
                 button.OnPressed += (args) => { OnOwnerPressed?.Invoke(args); };
@@ -122,7 +118,7 @@ namespace Content.Client.CrewAssignments.UI
         {
             int id = PossibleChannels.SelectedId;
             if (RadioData == null) return;
-            if (RadioData.Count-1 < id) return;
+            if (RadioData.Count - 1 < id) return;
             var kv = RadioData.ElementAt(id);
             var data = kv.Value;
             ChannelEnable.Pressed = data.Enabled;
@@ -167,14 +163,14 @@ namespace Content.Client.CrewAssignments.UI
             }
 
         }
-        
+
         public void UpdateUpgrades(ProtoId<FactionLevelPrototype> level, int balance)
         {
             _protoManager.Resolve(level, out var levelProto);
             if (levelProto == null) return;
             FactionLevelPrototype? nextLevelProto = null;
 
-            if(levelProto.Next != null)
+            if (levelProto.Next != null)
                 _protoManager.Resolve(levelProto.Next, out nextLevelProto);
 
             CurrentFactionLevelLabel.Text = levelProto.Name;
@@ -193,7 +189,7 @@ namespace Content.Client.CrewAssignments.UI
             {
                 NextFactionLevelLabel.Text = nextLevelProto.Name;
                 nextLevelDesc = $"Owned Tile Limit:[color=green]{nextLevelProto.TileLimit}[/color]";
-                if(nextLevelProto.TradestationClaim)
+                if (nextLevelProto.TradestationClaim)
                 {
                     nextLevelDesc += $"\n[color=green]Can claim trade stations[/color]";
                 }
@@ -212,9 +208,9 @@ namespace Content.Client.CrewAssignments.UI
             foreach (var owner in assignments)
             {
                 PossibleAssignments.AddItem(owner.Value.Name, owner.Key);
-                if (_lastAssignmentCreated == owner.Value.Name) _lastAssignmentSelected = owner.Key;
+                if (LastAssignmentCreated == owner.Value.Name) _lastAssignmentSelected = owner.Key;
             }
-            if(_lastAssignmentSelected != null)
+            if (_lastAssignmentSelected != null)
             {
                 PossibleAssignments.TrySelectId(_lastAssignmentSelected.Value);
             }
@@ -224,7 +220,7 @@ namespace Content.Client.CrewAssignments.UI
         {
             int id = PossibleAssignments.SelectedId;
             if (_assignments == null) return;
-            if(_assignments.TryGetValue(id, out var assignment))
+            if (_assignments.TryGetValue(id, out var assignment))
             {
                 AssignmentDetails.Visible = true;
                 AssignmentNameField.Text = assignment.Name;
@@ -232,7 +228,7 @@ namespace Content.Client.CrewAssignments.UI
                 CLevelSpinBox.Value = assignment.Clevel;
                 SpendingLimitSpinBox.Value = assignment.SpendingLimit;
 
-                if(assignment.CanClaim)
+                if (assignment.CanClaim)
                 {
                     ClaimBtn.Pressed = true;
                 }
@@ -248,7 +244,7 @@ namespace Content.Client.CrewAssignments.UI
                 {
                     ReassignmentBtn.Pressed = false;
                 }
-                if(assignment.CanEditGeneralRecord)
+                if (assignment.CanEditGeneralRecord)
                 {
                     GenRecBtn.Pressed = true;
                 }

@@ -33,6 +33,16 @@
             - material: Durathread
               amount: 2
               doAfter: 1
+        - to: psychbed
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 10
+              doAfter: 1
+            - material: Durathread
+              amount: 2
+              doAfter: 1
     - node: bed
       entity: Bed
       edges:
@@ -66,6 +76,20 @@
             - !type:SpawnPrototype
               prototype: SheetPlasteel1
               amount: 2
+            - !type:SpawnPrototype
+              prototype: MaterialDurathread1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+    - node: psychbed
+      entity: PsychBed
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 10
             - !type:SpawnPrototype
               prototype: MaterialDurathread1
               amount: 2

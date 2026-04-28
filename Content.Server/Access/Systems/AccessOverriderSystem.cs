@@ -13,10 +13,8 @@ using Content.Shared.Station;
 using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using static Content.Shared.Access.Components.AccessOverriderComponent;
@@ -61,7 +59,7 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
         if (args.Target == null || !TryComp(args.Target, out AccessReaderComponent? accessReader))
             return;
 
-        if (!_interactionSystem.InRangeUnobstructed(args.User, (EntityUid) args.Target))
+        if (!_interactionSystem.InRangeUnobstructed(args.User, (EntityUid)args.Target))
             return;
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.DoAfter, new AccessOverriderDoAfterEvent(), uid, target: args.Target, used: uid)
@@ -172,13 +170,13 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
             if (!_accessReader.GetMainAccessReader(accessReader, out accessReaderEnt))
                 return;
             var station = _station.GetOwningStation(accessReaderEnt.Value.Owner);
-            
+
             currentAccesses = accessReaderEnt.Value.Comp.AccessNames;
             personalAccesses = accessReaderEnt.Value.Comp.PersonalAccessNames;
             personalAccessMode = accessReaderEnt.Value.Comp.PersonalAccessMode;
             if (station != null)
             {
-                
+
                 if (TryComp<StationDataComponent>(station, out var sD) && sD != null && sD.StationName != null)
                 {
                     stationName = sD.StationName;
@@ -197,19 +195,19 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
                     if (TryComp<IdCardComponent>(idCard, out var idCardEnt))
                     {
                         var realName = "";
-                        if(idCardEnt.FullName != null) realName = idCardEnt.FullName;
-                        if(sD != null && realName != "")
+                        if (idCardEnt.FullName != null) realName = idCardEnt.FullName;
+                        if (sD != null && realName != "")
                         {
                             if (sD.Owners.Contains(realName)) isOwner = true;
                         }
 
                         if (TryComp<CrewRecordsComponent>(station, out var crewRecords))
                         {
-                            if(crewRecords.TryGetRecord(realName, out var crewRecord) && crewRecord != null)
+                            if (crewRecords.TryGetRecord(realName, out var crewRecord) && crewRecord != null)
                             {
                                 if (TryComp<CrewAssignmentsComponent>(station, out var crewAssignments))
                                 {
-                                    if(crewAssignments.TryGetAssignment(crewRecord.AssignmentID, out var crewAssignment) && crewAssignment != null)
+                                    if (crewAssignments.TryGetAssignment(crewRecord.AssignmentID, out var crewAssignment) && crewAssignment != null)
                                     {
                                         possibleAccesses = crewAssignment.AccessIDs;
                                     }
@@ -224,7 +222,7 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
             }
             if (allAccesses != null)
             {
-                if(!isOwner)
+                if (!isOwner)
                 {
                     if (possibleAccesses == null)
                     {
@@ -295,8 +293,8 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
         if (!Resolve(uid, ref component) || component.TargetAccessReaderId is not { Valid: true })
             return;
 
-//        if (!PrivilegedIdIsAuthorized(uid, component))
-//            return;
+        //        if (!PrivilegedIdIsAuthorized(uid, component))
+        //            return;
 
         if (!_interactionSystem.InRangeUnobstructed(player, component.TargetAccessReaderId))
         {
@@ -378,7 +376,7 @@ public sealed class AccessOverriderSystem : SharedAccessOverriderSystem
         _adminLogger.Add(LogType.Action, LogImpact.High,
             $"{ToPrettyString(player):player} has modified {ToPrettyString(accessReaderEnt.Value):entity} with the following allowed access level holders: {newAccess}");
 
-        _accessReader.TryToggleAccess(accessReaderEnt.Value,newAccess);
+        _accessReader.TryToggleAccess(accessReaderEnt.Value, newAccess);
 
         var ev = new OnAccessOverriderAccessUpdatedEvent(player);
         RaiseLocalEvent(component.TargetAccessReaderId, ref ev);

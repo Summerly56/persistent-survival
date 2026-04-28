@@ -2,21 +2,13 @@ using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
 using Content.Shared._NF.Bank;
 using Content.Shared._NF.Bank.Components;
-using Content.Shared._NF.Bank.Events;
 using Content.Shared.GameTicking;
-using Content.Shared.Preferences;
 using Robust.Shared.Player;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading;
-using System.Xml.Linq;
 
 namespace Content.Server._NF.Bank;
 
 public sealed partial class BankSystem : SharedBankSystem
 {
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
 
@@ -42,25 +34,25 @@ public sealed partial class BankSystem : SharedBankSystem
     public void DirtyMoneyAccountsComponent()
     {
         var target = _map.GetMapOrInvalid(_gameTicker.DefaultMap);
-        if (!EntityManager.TryGetComponent<MoneyAccountsComponent>(target, out var moneyComp))
+        if (!TryComp<MoneyAccountsComponent>(target, out var moneyComp))
         {
             _log.Info($"GetMoneyAccountsComponent: No MoneyAccountsComponent found.");
         }
-        if(moneyComp != null)
-          Dirty(target, moneyComp);
+        if (moneyComp != null)
+            Dirty(target, moneyComp);
     }
 
     public MoneyAccountsComponent? GetMoneyAccountsComponent()
     {
         var target = _map.GetMapOrInvalid(_gameTicker.DefaultMap);
-        if (!EntityManager.TryGetComponent<MoneyAccountsComponent>(target, out var moneyComp))
+        if (!TryComp<MoneyAccountsComponent>(target, out var moneyComp))
         {
             _log.Info($"GetMoneyAccountsComponent: No MoneyAccountsComponent found.");
         }
 
         return moneyComp;
     }
-    
+
     public void EnsureAccount(string name, int balance = 0)
     {
         var accName = name;

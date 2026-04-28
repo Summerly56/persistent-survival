@@ -72,9 +72,9 @@ namespace Content.Client.Cargo.BUI
             _menu.OnClose += Close;
             _menu.AccountTypeMode.OnPressed += ChangeAccountType;
 
-            _menu.OnItemSelected += (args) =>
+            _menu.OnItemSelected += (row) =>
             {
-                if (args.Button.Parent is not CargoProductRow row)
+                if (row == null)
                     return;
 
                 description.Clear();
@@ -95,7 +95,7 @@ namespace Content.Client.Cargo.BUI
             _menu.OnOrderApproved += ApproveOrder;
             _menu.OnOrderCanceled += RemoveOrder;
             _menu.PossibleTrades.OnItemSelected += OnPossibleTradeSelected;
-            
+
             _orderMenu.SubmitButton.OnPressed += (_) =>
             {
                 if (AddOrder())
@@ -139,7 +139,7 @@ namespace Content.Client.Cargo.BUI
             if (state is not CargoConsoleInterfaceState cState || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
                 return;
             var station = EntMan.GetEntity(cState.Station);
-            
+
             OrderCapacity = cState.Capacity;
             OrderCount = cState.Count;
             BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
@@ -150,7 +150,7 @@ namespace Content.Client.Cargo.BUI
                 return;
             _menu.ProductCatalogue = cState.Products;
 
-            _menu?.UpdateStation(station, cState.PersonalMode, cState.Tax, cState.PossibleTrades, cState.SelectedTrade,cState.OwnedTrade);
+            _menu?.UpdateStation(station, cState.PersonalMode, cState.Tax, cState.PossibleTrades, cState.SelectedTrade, cState.OwnedTrade);
             Populate(cState.Orders, cState);
         }
 
@@ -187,23 +187,24 @@ namespace Content.Client.Cargo.BUI
 
             SendMessage(new CargoConsoleChangeAccountType());
         }
-        private void RemoveOrder(ButtonEventArgs args)
+
+        private void RemoveOrder(CargoOrderData? order)
         {
-            if (args.Button.Parent?.Parent is not CargoOrderRow row || row.Order == null)
+            if (order == null)
                 return;
 
-            SendMessage(new CargoConsoleRemoveOrderMessage(row.Order.OrderId));
+            SendMessage(new CargoConsoleRemoveOrderMessage(order.OrderId));
         }
 
-        private void ApproveOrder(ButtonEventArgs args)
+        private void ApproveOrder(CargoOrderData? order)
         {
-            if (args.Button.Parent?.Parent is not CargoOrderRow row || row.Order == null)
+            if (order == null)
                 return;
 
             if (OrderCount >= OrderCapacity)
                 return;
 
-            SendMessage(new CargoConsoleApproveOrderMessage(row.Order.OrderId));
+            SendMessage(new CargoConsoleApproveOrderMessage(order.OrderId));
         }
     }
 }

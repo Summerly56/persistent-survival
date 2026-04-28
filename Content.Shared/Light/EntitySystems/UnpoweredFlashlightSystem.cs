@@ -2,7 +2,6 @@ using Content.Shared.Actions;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Light.Components;
 using Content.Shared.Mind.Components;
-using Content.Shared.Storage.Components;
 using Content.Shared.Toggleable;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
@@ -65,7 +64,7 @@ public sealed class UnpoweredFlashlightSystem : EntitySystem
         ActivationVerb verb = new()
         {
             Text = Loc.GetString("toggle-flashlight-verb-get-data-text"),
-            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/light.svg.192dpi.png")),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/light.svg.192dpi.png")),
             Act = () => TryToggleLight((uid, component), args.User),
             Priority = -1 // For things like PDA's, Open-UI and other verbs that should be higher priority.
         };

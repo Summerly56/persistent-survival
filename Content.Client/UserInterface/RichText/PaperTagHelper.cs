@@ -1,6 +1,6 @@
+using Content.Client.Paper.UI;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Content.Client.Paper.UI;
 
 namespace Content.Client.UserInterface.RichText;
 

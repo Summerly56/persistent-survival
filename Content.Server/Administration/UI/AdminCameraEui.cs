@@ -1,14 +1,14 @@
 using Content.Server.Administration.Managers;
 using Content.Server.EUI;
 using Content.Shared.Administration;
+using Content.Shared.Coordinates;
 using Content.Shared.Eui;
 using Content.Shared.Follower;
-using Content.Shared.Coordinates;
+using JetBrains.Annotations;
 using Robust.Server.GameStates;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using JetBrains.Annotations;
 
 namespace Content.Server.Administration.UI;
 

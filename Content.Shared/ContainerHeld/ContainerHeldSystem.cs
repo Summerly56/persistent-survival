@@ -1,9 +1,8 @@
-using Robust.Shared.Containers;
-
 using Content.Shared.Item;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Toggleable;
+using Robust.Shared.Containers;
 
 namespace Content.Shared.ContainerHeld;
 

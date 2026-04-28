@@ -1,7 +1,7 @@
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Stunnable;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Hands.Components;
 using Content.Shared.Wieldable.Components;
 
 namespace Content.Shared.Traits.Assorted;

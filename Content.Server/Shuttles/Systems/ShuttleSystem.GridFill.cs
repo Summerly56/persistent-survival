@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Events;
 using Content.Shared.CCVar;
@@ -9,6 +8,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Systems;
 

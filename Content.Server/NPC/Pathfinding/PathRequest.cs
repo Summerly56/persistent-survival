@@ -1,9 +1,8 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Content.Shared.NPC;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.Pathfinding;
 
@@ -91,10 +90,10 @@ public sealed class BFSPathRequest : PathRequest
         int layer,
         int mask,
         CancellationToken cancelToken) : base(start, flags, layer, mask, cancelToken)
-        {
-            ExpansionRange = expansionRange;
-            ExpansionLimit = expansionLimit;
-        }
+    {
+        ExpansionRange = expansionRange;
+        ExpansionLimit = expansionLimit;
+    }
 }
 
 /// <summary>

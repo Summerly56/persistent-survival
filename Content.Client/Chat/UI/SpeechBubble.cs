@@ -27,33 +27,33 @@ namespace Content.Client.Chat.UI
             Whisper,
             Looc
         }/// <summary>
-///     Base time a speech bubble stays on screen, before scaling by message size.
-/// </summary>
-private static readonly TimeSpan BaseTotalTime = TimeSpan.FromSeconds(1.0);
+         ///     Base time a speech bubble stays on screen, before scaling by message size.
+         /// </summary>
+        private static readonly TimeSpan BaseTotalTime = TimeSpan.FromSeconds(1.0);
 
-/// <summary>
-///     Approximate line height used to estimate how many lines the bubble contains.
-///     This scales lifetime based on the *rendered* bubble height rather than raw characters.
-/// </summary>
-private const float ApproxLineHeightPx = 18f;
+        /// <summary>
+        ///     Approximate line height used to estimate how many lines the bubble contains.
+        ///     This scales lifetime based on the *rendered* bubble height rather than raw characters.
+        /// </summary>
+        private const float ApproxLineHeightPx = 18f;
 
-/// <summary>
-///     Additional lifetime added per extra rendered line.
-/// </summary>
-private static readonly TimeSpan TimePerExtraLine = TimeSpan.FromSeconds(2.5);
+        /// <summary>
+        ///     Additional lifetime added per extra rendered line.
+        /// </summary>
+        private static readonly TimeSpan TimePerExtraLine = TimeSpan.FromSeconds(2.5);
 
-/// <summary>
-///     Lifetime clamps so bubbles never linger forever (or vanish too quickly).
-/// </summary>
-private static readonly TimeSpan MinTotalTime = TimeSpan.FromSeconds(1.0);
-private static readonly TimeSpan MaxTotalTime = TimeSpan.FromSeconds(20.0);
+        /// <summary>
+        ///     Lifetime clamps so bubbles never linger forever (or vanish too quickly).
+        /// </summary>
+        private static readonly TimeSpan MinTotalTime = TimeSpan.FromSeconds(1.0);
+        private static readonly TimeSpan MaxTotalTime = TimeSpan.FromSeconds(20.0);
 
-/// <summary>
-///     Fade duration is computed as a fraction of total lifetime, then clamped.
-/// </summary>
-private const float FadeFractionOfTotal = 0.30f;
-private static readonly TimeSpan MinFadeTime = TimeSpan.FromSeconds(0.35);
-private static readonly TimeSpan MaxFadeTime = TimeSpan.FromSeconds(2.5);
+        /// <summary>
+        ///     Fade duration is computed as a fraction of total lifetime, then clamped.
+        /// </summary>
+        private const float FadeFractionOfTotal = 0.30f;
+        private static readonly TimeSpan MinFadeTime = TimeSpan.FromSeconds(0.35);
+        private static readonly TimeSpan MaxFadeTime = TimeSpan.FromSeconds(2.5);
 
         /// <summary>
         ///     The distance in world space to offset the speech bubble from the center of the entity.
@@ -122,26 +122,26 @@ private static readonly TimeSpan MaxFadeTime = TimeSpan.FromSeconds(2.5);
             bubble.Measure(Vector2Helpers.Infinity);
             ContentSize = bubble.DesiredSize;
             _verticalOffsetAchieved = -ContentSize.Y;
-           
-// Scale lifetime based on rendered bubble height (i.e. how many lines it wrapped to).
-// This reliably makes longer messages persist longer, even for fancy bubbles.
-var lines = 1;
-if (ContentSize.Y > 0)
-    lines = (int) MathF.Max(1, MathF.Ceiling(ContentSize.Y / ApproxLineHeightPx));
 
-var totalTime = BaseTotalTime + TimePerExtraLine * (lines - 1);
+            // Scale lifetime based on rendered bubble height (i.e. how many lines it wrapped to).
+            // This reliably makes longer messages persist longer, even for fancy bubbles.
+            var lines = 1;
+            if (ContentSize.Y > 0)
+                lines = (int)MathF.Max(1, MathF.Ceiling(ContentSize.Y / ApproxLineHeightPx));
 
-if (totalTime < MinTotalTime)
-    totalTime = MinTotalTime;
-else if (totalTime > MaxTotalTime)
-    totalTime = MaxTotalTime;
+            var totalTime = BaseTotalTime + TimePerExtraLine * (lines - 1);
 
-var fadeSeconds = MathHelper.Clamp((float) totalTime.TotalSeconds * FadeFractionOfTotal,
-    (float) MinFadeTime.TotalSeconds,
-    (float) MaxFadeTime.TotalSeconds);
+            if (totalTime < MinTotalTime)
+                totalTime = MinTotalTime;
+            else if (totalTime > MaxTotalTime)
+                totalTime = MaxTotalTime;
 
-_fadeTime = TimeSpan.FromSeconds(fadeSeconds);
-_deathTime = _timing.RealTime + totalTime;
+            var fadeSeconds = MathHelper.Clamp((float)totalTime.TotalSeconds * FadeFractionOfTotal,
+                (float)MinFadeTime.TotalSeconds,
+                (float)MaxFadeTime.TotalSeconds);
+
+            _fadeTime = TimeSpan.FromSeconds(fadeSeconds);
+            _deathTime = _timing.RealTime + totalTime;
         }
 
         protected abstract Control BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null);
@@ -175,15 +175,15 @@ _deathTime = _timing.RealTime + totalTime;
             }
 
             if (timeLeft <= _fadeTime.TotalSeconds)
-{
-    // Update alpha if we're fading.
-    Modulate = Color.White.WithAlpha(timeLeft / (float) _fadeTime.TotalSeconds);
-}
-else
-{
-    // Make opaque otherwise, because it might have been hidden before
-    Modulate = Color.White;
-}
+            {
+                // Update alpha if we're fading.
+                Modulate = Color.White.WithAlpha(timeLeft / (float)_fadeTime.TotalSeconds);
+            }
+            else
+            {
+                // Make opaque otherwise, because it might have been hidden before
+                Modulate = Color.White;
+            }
 
             var baseOffset = 0f;
 

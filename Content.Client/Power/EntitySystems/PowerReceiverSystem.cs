@@ -1,10 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Client.Power.Components;
-using Content.Shared.Power.Components;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Power;
+using Content.Shared.Power.Components;
+using Content.Shared.Power.EntitySystems;
 using Robust.Shared.GameStates;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client.Power.EntitySystems;
 

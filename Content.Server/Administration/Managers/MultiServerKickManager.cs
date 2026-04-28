@@ -1,5 +1,3 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Robust.Server.Player;
@@ -8,6 +6,8 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Content.Server.Administration.Managers;
 

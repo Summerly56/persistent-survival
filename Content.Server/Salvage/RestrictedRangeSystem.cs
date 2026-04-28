@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Movement.Components;
 using Content.Shared.Physics;
 using Content.Shared.Salvage;
@@ -6,6 +5,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using System.Numerics;
 
 namespace Content.Server.Salvage;
 
@@ -36,7 +36,7 @@ public sealed class RestrictedRangeSystem : SharedRestrictedRangeSystem
             boundaryUid,
             cShape,
             "boundary",
-            collisionLayer: (int) (CollisionGroup.HighImpassable | CollisionGroup.Impassable | CollisionGroup.LowImpassable),
+            collisionLayer: (int)(CollisionGroup.HighImpassable | CollisionGroup.Impassable | CollisionGroup.LowImpassable),
             body: boundaryPhysics);
         _physics.WakeBody(boundaryUid, body: boundaryPhysics);
         AddComp<BoundaryComponent>(boundaryUid);

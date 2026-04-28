@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Movement.Components;
 using Content.Server.Physics.Controllers;
 using Content.Shared.ActionBlocker;
@@ -7,9 +6,7 @@ using Content.Shared.Gravity;
 using Content.Shared.Input;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
-using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Rotatable;
-using Robust.Server.Physics;
 using Robust.Shared.Containers;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -20,6 +17,7 @@ using Robust.Shared.Physics.Dynamics.Joints;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Server.Movement.Systems;
 
@@ -242,7 +240,7 @@ public sealed class PullController : VirtualController
                 continue;
             }
 
-            if (pullable.Puller is not {Valid: true} puller)
+            if (pullable.Puller is not { Valid: true } puller)
                 continue;
 
             var pullerXform = _xformQuery.Get(puller);

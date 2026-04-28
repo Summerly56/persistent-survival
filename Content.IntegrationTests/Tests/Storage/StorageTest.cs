@@ -1,6 +1,4 @@
 #nullable enable
-using System.Collections.Generic;
-using System.Linq;
 using Content.Shared.Containers;
 using Content.Shared.Item;
 using Content.Shared.Prototypes;
@@ -9,6 +7,8 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Storage;
 

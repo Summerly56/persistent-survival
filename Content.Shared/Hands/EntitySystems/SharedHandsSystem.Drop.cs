@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Database;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
@@ -9,6 +8,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Shared.Hands.EntitySystems;
 
@@ -77,7 +77,7 @@ public abstract partial class SharedHandsSystem
         if (!ContainerSystem.TryGetContainer(uid, handId, out var container))
             return false;
 
-        if (container.ContainedEntities.FirstOrNull() is not {} held)
+        if (container.ContainedEntities.FirstOrNull() is not { } held)
             return false;
 
         if (!ContainerSystem.CanRemove(held, container))

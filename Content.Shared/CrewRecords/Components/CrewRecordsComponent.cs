@@ -1,6 +1,4 @@
-using Content.Shared._NF.Bank.Events;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.CrewRecords.Components;
 
@@ -45,6 +43,7 @@ public sealed partial class CrewRecordsComponent : Component
 
 [DataDefinition]
 [Serializable]
+[Virtual]
 public partial class CrewRecord
 {
 

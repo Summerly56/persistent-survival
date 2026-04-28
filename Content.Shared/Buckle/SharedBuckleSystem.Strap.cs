@@ -1,10 +1,10 @@
-﻿using System.Linq;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Construction;
 using Content.Shared.Destructible;
 using Content.Shared.Foldable;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
+using System.Linq;
 
 namespace Content.Shared.Buckle;
 

@@ -1,11 +1,11 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Server.EUI;
 using Content.Shared.Administration.Notes;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Eui;
 using Robust.Shared.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Administration.Notes;
 

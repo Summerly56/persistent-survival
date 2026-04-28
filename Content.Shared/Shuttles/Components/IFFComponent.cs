@@ -1,7 +1,7 @@
 using Content.Shared.Shuttles.Systems;
 using Content.Shared.Tag;
-using Robust.Shared.Prototypes;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Shuttles.Components;
 

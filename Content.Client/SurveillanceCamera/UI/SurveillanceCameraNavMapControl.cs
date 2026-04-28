@@ -1,9 +1,9 @@
-using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
-using Robust.Shared.Map;
 using Content.Client.Pinpointer.UI;
 using Content.Client.Resources;
 using Content.Shared.SurveillanceCamera.Components;
+using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
+using Robust.Shared.Map;
 
 namespace Content.Client.SurveillanceCamera.UI;
 

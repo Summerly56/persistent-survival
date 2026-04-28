@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Client.Guidebook.Richtext;
 using Robust.Client.Console;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client.Administration.UI.CustomControls
 {

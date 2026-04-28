@@ -1,9 +1,9 @@
+using Content.Server.NPC.HTN.PrimitiveTasks;
+using Robust.Shared.CPUJob.JobQueues;
+using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.CPUJob.JobQueues;
-using Content.Server.NPC.HTN.PrimitiveTasks;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.NPC.HTN;
 

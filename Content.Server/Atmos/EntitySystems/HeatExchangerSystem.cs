@@ -1,16 +1,9 @@
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.Atmos.Piping.Unary.Components;
-using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
-using Content.Server.NodeContainer;
-using Content.Shared.Atmos.Piping;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.CCVar;
-using Content.Shared.Interaction;
-using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -22,7 +15,7 @@ public sealed class HeatExchangerSystem : EntitySystem
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    float tileLoss;
+    float _tileLoss;
 
     public override void Initialize()
     {
@@ -35,13 +28,13 @@ public sealed class HeatExchangerSystem : EntitySystem
 
     private void CacheTileLoss(float val)
     {
-        tileLoss = val;
+        _tileLoss = val;
     }
 
     private void OnAtmosUpdate(EntityUid uid, HeatExchangerComponent comp, ref AtmosDeviceUpdateEvent args)
     {
         // make sure that the tile the device is on isn't blocked by a wall or something similar.
-        if (args.Grid is {} grid
+        if (args.Grid is { } grid
             && _transform.TryGetGridTilePosition(uid, out var tile)
             && _atmosphereSystem.IsTileAirBlockedCached(grid, tile))
         {
@@ -54,7 +47,7 @@ public sealed class HeatExchangerSystem : EntitySystem
         var dt = args.dt;
 
         // Let n = moles(inlet) - moles(outlet), really a Δn
-        var P = inlet.Air.Pressure - outlet.Air.Pressure; // really a ΔP
+        var p = inlet.Air.Pressure - outlet.Air.Pressure; // really a ΔP
         // Such that positive P causes flow from the inlet to the outlet.
 
         // We want moles transferred to be proportional to the pressure difference, i.e.
@@ -70,10 +63,10 @@ public sealed class HeatExchangerSystem : EntitySystem
         // Which is a first-order linear differential equation with constant (heh...) coefficients:
         // dP/dt + kP = 0, where k = -G*(dP/dn).
         // This differential equation has a closed-form solution, namely:
-        float Pfinal = P * MathF.Exp(-comp.G * dPdn * dt);
+        float pfinal = p * MathF.Exp(-comp.G * dPdn * dt);
 
         // Finally, back out n, the moles transferred in this tick:
-        float n = (P - Pfinal) / dPdn;
+        float n = (p - pfinal) / dPdn;
 
         GasMixture xfer;
         if (n > 0)
@@ -81,38 +74,38 @@ public sealed class HeatExchangerSystem : EntitySystem
         else
             xfer = outlet.Air.Remove(-n);
 
-        float CXfer = _atmosphereSystem.GetHeatCapacity(xfer, true);
-        if (CXfer < Atmospherics.MinimumHeatCapacity)
+        float cXfer = _atmosphereSystem.GetHeatCapacity(xfer, true);
+        if (cXfer < Atmospherics.MinimumHeatCapacity)
             return;
 
         var radTemp = Atmospherics.TCMB;
 
         var environment = _atmosphereSystem.GetContainingMixture(uid, true, true);
         bool hasEnv = false;
-        float CEnv = 0f;
+        float cEnv = 0f;
         if (environment != null)
         {
-            CEnv = _atmosphereSystem.GetHeatCapacity(environment, true);
-            hasEnv = CEnv >= Atmospherics.MinimumHeatCapacity && environment.TotalMoles > 0f;
+            cEnv = _atmosphereSystem.GetHeatCapacity(environment, true);
+            hasEnv = cEnv >= Atmospherics.MinimumHeatCapacity && environment.TotalMoles > 0f;
             if (hasEnv)
                 radTemp = environment.Temperature;
         }
 
         // How ΔT' scales in respect to heat transferred
-        float TdivQ = 1f / CXfer;
+        float tdivQ = 1f / cXfer;
         // Since it's ΔT, also account for the environment's temperature change
         if (hasEnv)
-            TdivQ += 1f / CEnv;
+            tdivQ += 1f / cEnv;
 
         // Radiation
         float dTR = xfer.Temperature - radTemp;
         float dTRA = MathF.Abs(dTR);
-        float a0 = tileLoss / MathF.Pow(Atmospherics.T20C, 4);
+        float a0 = _tileLoss / MathF.Pow(Atmospherics.T20C, 4);
         // ΔT' = -kΔT^4, k = -ΔT'/ΔT^4
-        float kR = comp.alpha * a0 * TdivQ;
+        float kR = comp.alpha * a0 * tdivQ;
         // Based on the fact that ((3t)^(-1/3))' = -(3t)^(-4/3) = -((3t)^(-1/3))^4, and ΔT' = -kΔT^4.
-        float dT2R = dTR * MathF.Pow((1f + 3f * kR * dt * dTRA * dTRA * dTRA), -1f/3f);
-        float dER = (dTR - dT2R) / TdivQ;
+        float dT2R = dTR * MathF.Pow((1f + 3f * kR * dt * dTRA * dTRA * dTRA), -1f / 3f);
+        float dER = (dTR - dT2R) / tdivQ;
         _atmosphereSystem.AddHeat(xfer, -dER);
         if (hasEnv && environment != null)
         {
@@ -123,9 +116,9 @@ public sealed class HeatExchangerSystem : EntitySystem
             // Positive dT is from pipe to surroundings
             float dT = xfer.Temperature - environment.Temperature;
             // ΔT' = -kΔT, k = -ΔT' / ΔT
-            float k = comp.K * TdivQ;
+            float k = comp.K * tdivQ;
             float dT2 = dT * MathF.Exp(-k * dt);
-            float dE = (dT - dT2) / TdivQ;
+            float dE = (dT - dT2) / tdivQ;
             _atmosphereSystem.AddHeat(xfer, -dE);
             _atmosphereSystem.AddHeat(environment, dE);
         }

@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using Content.Client.Resources;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -10,6 +7,9 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 using static Content.Shared.NodeContainer.NodeVis;
 
 namespace Content.Client.NodeContainer

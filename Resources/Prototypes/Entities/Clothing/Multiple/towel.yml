@@ -566,6 +566,9 @@
         color: "#ffe14d"
   - type: Fiber
     fiberColor: fibers-yellow
+  - type: Tag
+    tags:
+    - TowelYellow
 
 - type: entity
   id: TowelColorMaroon
@@ -698,6 +701,9 @@
         color: "#004787"
   - type: Fiber
     fiberColor: fibers-regal-blue
+  - type: Tag
+    tags:
+    - TowelNanotrasen
 
 - type: entity
   id: TowelColorCentcom

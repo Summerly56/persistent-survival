@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Client.Resources;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -29,7 +29,7 @@ namespace Content.Client.Stylesheets
         {
             var notoSans10 = resCache.GetFont
             (
-                new []
+                new[]
                 {
                     "/Fonts/NotoSans/NotoSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
@@ -39,7 +39,7 @@ namespace Content.Client.Stylesheets
             );
             var notoSansBold16 = resCache.GetFont
             (
-                new []
+                new[]
                 {
                     "/Fonts/NotoSans/NotoSans-Bold.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
@@ -65,9 +65,9 @@ namespace Content.Client.Stylesheets
             var tabContainerPanel = new StyleBoxTexture();
             tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat {BackgroundColor = new Color(64, 64, 64)};
+            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = new Color(64, 64, 64) };
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat {BackgroundColor = new Color(32, 32, 32)};
+            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = new Color(32, 32, 32) };
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             Stylesheet = new Stylesheet(BaseRules.Concat(new StyleRule[]

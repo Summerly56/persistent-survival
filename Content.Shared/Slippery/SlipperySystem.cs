@@ -13,8 +13,8 @@ using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared.Slippery;
 
@@ -184,7 +184,7 @@ public sealed class SlipAttemptEvent : EntityEventArgs, IInventoryRelayEvent
 /// </summary>
 /// <param name="Cancelled">If the slip should be cancelled</param>
 [ByRefEvent]
-public record struct SlipCausingAttemptEvent (bool Cancelled);
+public record struct SlipCausingAttemptEvent(bool Cancelled);
 
 /// Raised on an entity that CAUSED some other entity to slip (e.g., the banana peel).
 /// <param name="Slipped">The entity being slipped</param>

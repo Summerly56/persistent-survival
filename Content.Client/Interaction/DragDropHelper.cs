@@ -1,4 +1,4 @@
-﻿using Content.Shared.CCVar;
+using Content.Shared.CCVar;
 using Robust.Client.Input;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -70,7 +70,6 @@ public sealed class DragDropHelper<T>
         _onBeginDrag = onBeginDrag;
         _onEndDrag = onEndDrag;
         _onContinueDrag = onContinueDrag;
-        _cfg.OnValueChanged(CCVars.DragDropDeadZone, SetDeadZone, true);
     }
 
     /// <summary>
@@ -90,6 +89,7 @@ public sealed class DragDropHelper<T>
         Dragged = target;
         _state = DragState.MouseDown;
         _mouseDownScreenPos = _inputManager.MouseScreenPosition;
+        _deadzone = _cfg.GetCVar(CCVars.DragDropDeadZone);
     }
 
     /// <summary>
@@ -97,9 +97,9 @@ public sealed class DragDropHelper<T>
     /// </summary>
     public void EndDrag()
     {
-        Dragged = default;
         _state = DragState.NotDragging;
         _onEndDrag.Invoke();
+        Dragged = default;
     }
 
     private void StartDragging()
@@ -123,30 +123,25 @@ public sealed class DragDropHelper<T>
         {
             // check if dragging should begin
             case DragState.MouseDown:
-            {
-                var screenPos = _inputManager.MouseScreenPosition;
-                if ((_mouseDownScreenPos.Position - screenPos.Position).Length() > _deadzone)
                 {
-                    StartDragging();
-                }
+                    var screenPos = _inputManager.MouseScreenPosition;
+                    if ((_mouseDownScreenPos.Position - screenPos.Position).Length() > _deadzone)
+                    {
+                        StartDragging();
+                    }
 
-                break;
-            }
+                    break;
+                }
             case DragState.Dragging:
-            {
-                if (!_onContinueDrag.Invoke(frameTime))
                 {
-                    EndDrag();
+                    if (!_onContinueDrag.Invoke(frameTime))
+                    {
+                        EndDrag();
+                    }
+
+                    break;
                 }
-
-                break;
-            }
         }
-    }
-
-    private void SetDeadZone(float value)
-    {
-        _deadzone = value;
     }
 }
 

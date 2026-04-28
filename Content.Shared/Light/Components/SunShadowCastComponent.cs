@@ -1,6 +1,6 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics;
+using System.Numerics;
 
 namespace Content.Shared.Light.Components;
 

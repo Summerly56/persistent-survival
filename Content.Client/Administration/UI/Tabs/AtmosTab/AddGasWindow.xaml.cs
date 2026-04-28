@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Atmos.EntitySystems;
 using Content.Shared.Atmos.Prototypes;
 using JetBrains.Annotations;
@@ -8,6 +7,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Map.Components;
+using System.Linq;
 
 namespace Content.Client.Administration.UI.Tabs.AtmosTab
 {

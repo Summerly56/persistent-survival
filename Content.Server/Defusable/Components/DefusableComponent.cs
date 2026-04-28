@@ -1,5 +1,4 @@
 using Content.Server.Defusable.Systems;
-using Content.Server.Explosion.Components;
 using Robust.Shared.Audio;
 
 namespace Content.Server.Defusable.Components;
@@ -60,16 +59,16 @@ public sealed partial class DefusableComponent : Component
 
     #region Wires
     // wires, this is so that they're one use
-    [ViewVariables(VVAccess.ReadWrite), Access(Other=AccessPermissions.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWrite)]
     public bool DelayWireUsed;
 
-    [ViewVariables(VVAccess.ReadWrite), Access(Other=AccessPermissions.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWrite)]
     public bool ProceedWireCut;
 
-    [ViewVariables(VVAccess.ReadWrite), Access(Other=AccessPermissions.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWrite)]
     public bool ProceedWireUsed;
 
-    [ViewVariables(VVAccess.ReadWrite), Access(Other=AccessPermissions.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWrite)]
     public bool ActivatedWireUsed;
 
     #endregion

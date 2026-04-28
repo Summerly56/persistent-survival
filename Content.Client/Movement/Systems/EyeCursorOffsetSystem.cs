@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Client.Movement.Components;
 using Content.Client.Viewport;
 using Content.Shared.Camera;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Shared.Map;
+using System.Numerics;
 
 namespace Content.Client.Movement.Systems;
 

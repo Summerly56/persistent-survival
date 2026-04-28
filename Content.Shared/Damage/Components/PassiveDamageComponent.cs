@@ -1,7 +1,6 @@
 using Content.Shared.Mobs;
-using Content.Shared.FixedPoint;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Damage.Components;
 
@@ -28,12 +27,6 @@ public sealed partial class PassiveDamageComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Interval = 1f;
-
-    /// <summary>
-    /// The maximum HP the damage will be given to. If 0, disabled.
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public FixedPoint2 DamageCap = 0;
 
     [DataField("nextDamage", customTypeSerializer: typeof(TimeOffsetSerializer)), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan NextDamage = TimeSpan.Zero;

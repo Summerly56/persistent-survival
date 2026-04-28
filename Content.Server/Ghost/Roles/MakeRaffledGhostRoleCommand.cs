@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Raffles;
@@ -7,6 +6,7 @@ using Content.Shared.Ghost.Roles.Raffles;
 using Content.Shared.Mind.Components;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Ghost.Roles
 {

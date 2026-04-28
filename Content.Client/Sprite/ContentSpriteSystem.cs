@@ -1,7 +1,3 @@
-using System.IO;
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Client.Administration.Managers;
 using Content.Shared.Verbs;
 using Robust.Client.GameObjects;
@@ -13,6 +9,10 @@ using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using System.IO;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
 using Color = Robust.Shared.Maths.Color;
 
 namespace Content.Client.Sprite;

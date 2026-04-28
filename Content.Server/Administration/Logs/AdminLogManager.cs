@@ -1,7 +1,3 @@
-﻿using System.Collections.Concurrent;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Server.GameTicking;
@@ -22,6 +18,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Reflection;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Collections.Concurrent;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.Administration.Logs;
 
@@ -366,7 +366,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
                     continue;
 
                 case EntityStringRepresentation rep:
-                    if (rep.Session is {} session)
+                    if (rep.Session is { } session)
                         AddPlayer(players, session.UserId.UserId, logId);
                     continue;
 

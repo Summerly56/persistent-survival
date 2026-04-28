@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Client.Message;
 using Content.Shared.Salvage;
 using Content.Shared.Salvage.Magnet;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using System.Linq;
 
 namespace Content.Client.Salvage.UI;
 

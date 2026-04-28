@@ -1,7 +1,4 @@
-﻿#nullable enable
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+#nullable enable
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -16,6 +13,9 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Benchmarks;
 
@@ -67,7 +67,7 @@ public class PvsBenchmark
         await _pair.Server.WaitPost(() =>
         {
             var path = new ResPath(Map);
-            var opts = DeserializationOptions.Default with {InitializeMaps = true};
+            var opts = DeserializationOptions.Default with { InitializeMaps = true };
             if (!_entMan.System<MapLoaderSystem>().TryLoadMap(path, out _, out _, opts))
                 throw new Exception("Map load failed");
         });
@@ -88,7 +88,7 @@ public class PvsBenchmark
             for (var i = 0; i < PlayerCount; i++)
             {
                 var pos = _spawns[i % _spawns.Length];
-                var uid =_entMan.SpawnEntity("MobHuman", pos);
+                var uid = _entMan.SpawnEntity("MobHuman", pos);
                 _pair.Server.ConsoleHost.ExecuteCommand($"setoutfit {_entMan.GetNetEntity(uid)} CaptainGear");
                 mind.ControlMob(_players[i].UserId, uid);
             }

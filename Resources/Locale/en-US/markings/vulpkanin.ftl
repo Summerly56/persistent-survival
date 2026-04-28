@@ -120,6 +120,9 @@ marking-VulpTailVulpFade-vulp = Canidae tail (Base)
 marking-VulpTailVulpFade-vulp-fade = Canidae tail (Fade)
 marking-VulpTailVulpFade = Canidae (Fade)
 
+marking-VulpTailCoyote-coyote = Coyote Tail (Base)
+marking-VulpTailCoyote = Vulpkanin Coyote
+
 
 # Chest
 

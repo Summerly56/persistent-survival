@@ -1,5 +1,5 @@
-using System.Numerics;
 using Content.Shared.Chat;
+using System.Numerics;
 
 namespace Content.Client.UserInterface.Systems.Chat.Controls;
 

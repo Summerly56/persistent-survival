@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -6,6 +5,7 @@ using Content.Shared.Database;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using System.Linq;
 
 
 namespace Content.Server.Administration.Commands;
@@ -90,7 +90,15 @@ public sealed class BanCommand : LocalizedCommands
         var targetUid = located.UserId;
         var targetHWid = located.LastHWId;
 
-        _bans.CreateServerBan(targetUid, target, player?.UserId, null, targetHWid, minutes, severity, reason);
+        var banInfo = new CreateServerBanInfo(reason);
+        banInfo.WithBanningAdmin(player?.UserId);
+        banInfo.AddUser(targetUid, target);
+        banInfo.AddHWId(targetHWid);
+        if (minutes > 0)
+            banInfo.WithMinutes(minutes);
+        banInfo.WithSeverity(severity);
+
+        _bans.CreateServerBan(banInfo);
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)

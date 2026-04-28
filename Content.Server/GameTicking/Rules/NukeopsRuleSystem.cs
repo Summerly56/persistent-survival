@@ -18,16 +18,16 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Nuke;
 using Content.Shared.NukeOps;
 using Content.Shared.Roles.Components;
+using Content.Shared.Station.Components;
 using Content.Shared.Store;
+using Content.Shared.Store.Components;
 using Content.Shared.Tag;
 using Content.Shared.Zombies;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.Station.Components;
-using Content.Shared.Store.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -86,6 +86,8 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             return;
 
         component.TargetStation = RobustRandom.Pick(eligible);
+        var ev = new NukeopsTargetStationSelectedEvent(uid, component.TargetStation);
+        RaiseLocalEvent(ref ev);
     }
 
     #region Event Handlers
@@ -548,4 +550,21 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 
         return null;
     }
+}
+
+/// <summary>
+/// Raised when a station has been assigned as a target for the NukeOps rule.
+/// </summary>
+[ByRefEvent]
+public readonly struct NukeopsTargetStationSelectedEvent(EntityUid ruleEntity, EntityUid? targetStation)
+{
+    /// <summary>
+    /// The entity containing the NukeOps gamerule.
+    /// </summary>
+    public readonly EntityUid RuleEntity = ruleEntity;
+
+    /// <summary>
+    /// The target station, if it exists.
+    /// </summary>
+    public readonly EntityUid? TargetStation = targetStation;
 }

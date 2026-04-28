@@ -1,7 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Components;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -15,6 +12,8 @@ using Content.Shared.Singularity.Components;
 using Content.Shared.Timing;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Singularity.EntitySystems;
 

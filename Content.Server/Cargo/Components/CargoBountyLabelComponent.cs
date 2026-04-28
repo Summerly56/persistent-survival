@@ -1,5 +1,3 @@
-using Content.Server.Station.Systems;
-
 namespace Content.Server.Cargo.Components;
 
 /// <summary>
@@ -25,4 +23,7 @@ public sealed partial class CargoBountyLabelComponent : Component
     /// </summary>
     [DataField]
     public EntityUid? AssociatedStationId;
+
+    [DataField]
+    public string? DealerName;
 }

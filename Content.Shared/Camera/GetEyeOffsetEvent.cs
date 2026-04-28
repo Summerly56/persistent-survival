@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
+using System.Numerics;
 
 namespace Content.Shared.Camera;
 

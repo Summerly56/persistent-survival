@@ -1,4 +1,3 @@
-using System.IO;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -10,6 +9,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.IO;
 
 namespace Content.Server.Mapping;
 
@@ -60,7 +60,7 @@ public sealed class MappingSystem : EntitySystem
         if (!_autosaveEnabled)
             return;
 
-        foreach (var (uid, (time, name))in _currentlyAutosaving)
+        foreach (var (uid, (time, name)) in _currentlyAutosaving)
         {
             if (_timing.RealTime <= time)
                 continue;
@@ -104,7 +104,7 @@ public sealed class MappingSystem : EntitySystem
             ToggleAutosave(uid.Value, path);
     }
 
-    public void ToggleAutosave(EntityUid uid, string? path=null)
+    public void ToggleAutosave(EntityUid uid, string? path = null)
     {
         if (!_autosaveEnabled)
             return;

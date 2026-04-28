@@ -1,7 +1,4 @@
-using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Cargo.Prototypes;
 
@@ -33,5 +30,8 @@ public sealed partial class InfrastructureLevelPrototype : IPrototype
 
     [DataField]
     public int Income = -5000;
+
+    [DataField]
+    public int Level = 1;
 
 }

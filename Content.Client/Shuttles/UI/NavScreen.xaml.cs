@@ -33,16 +33,16 @@ public sealed partial class NavScreen : BoxContainer
         DockToggle.OnToggled += OnDockTogglePressed;
         DockToggle.Pressed = NavRadar.ShowDocks;
 
-        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-cruise"), (int) ShuttleDampingMode.Cruise);
-        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-normal"), (int) ShuttleDampingMode.Normal);
-        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-anchor"), (int) ShuttleDampingMode.Anchor);
+        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-cruise"), (int)ShuttleDampingMode.Cruise);
+        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-normal"), (int)ShuttleDampingMode.Normal);
+        DampingModeButton.AddItem(Loc.GetString("shuttle-console-damping-anchor"), (int)ShuttleDampingMode.Anchor);
         DampingModeButton.OnItemSelected += OnDampingSelected;
 
-        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-none"), (int) IFFSortMode.None);
-        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-station"), (int) IFFSortMode.Station);
-        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-ship"), (int) IFFSortMode.Ship);
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-none"), (int)IFFSortMode.None);
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-station"), (int)IFFSortMode.Station);
+        SortModeButton.AddItem(Loc.GetString("shuttle-console-sort-ship"), (int)IFFSortMode.Ship);
         SortModeButton.OnItemSelected += OnSortSelected;
-        SortModeButton.SelectId((int) IFFSortMode.None);
+        SortModeButton.SelectId((int)IFFSortMode.None);
     }
 
     public void SetShuttle(EntityUid? shuttle)
@@ -71,7 +71,7 @@ public sealed partial class NavScreen : BoxContainer
     public void UpdateState(NavInterfaceState scc)
     {
         NavRadar.UpdateState(scc);
-        DampingModeButton.SelectId((int) scc.DampingMode);
+        DampingModeButton.SelectId((int)scc.DampingMode);
     }
 
     public void SetMatrix(EntityCoordinates? coordinates, Angle? angle)
@@ -115,12 +115,12 @@ public sealed partial class NavScreen : BoxContainer
     private void OnDampingSelected(OptionButton.ItemSelectedEventArgs args)
     {
         DampingModeButton.SelectId(args.Id);
-        OnDampingModeChanged?.Invoke((ShuttleDampingMode) args.Id);
+        OnDampingModeChanged?.Invoke((ShuttleDampingMode)args.Id);
     }
 
     private void OnSortSelected(OptionButton.ItemSelectedEventArgs args)
     {
         SortModeButton.SelectId(args.Id);
-        NavRadar.SortMode = (IFFSortMode) args.Id;
+        NavRadar.SortMode = (IFFSortMode)args.Id;
     }
 }

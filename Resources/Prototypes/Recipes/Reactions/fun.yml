@@ -250,3 +250,16 @@
     intensityPerUnit: 1
     intensitySlope: 2.7
     maxTotalIntensity: 50
+
+- type: reaction
+  id: BananiumBreakdown
+  source: true
+  requiredMixerCategories:
+  - Electrolysis
+  reactants:
+    Bananium:
+      amount: 10
+  products:
+    Nutriment: 4
+    Vitamin: 2
+    Honk: 5

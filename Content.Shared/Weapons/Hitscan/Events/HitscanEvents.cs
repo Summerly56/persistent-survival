@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Damage;
 using Robust.Shared.Map;
+using System.Numerics;
 
 namespace Content.Shared.Weapons.Hitscan.Events;
 

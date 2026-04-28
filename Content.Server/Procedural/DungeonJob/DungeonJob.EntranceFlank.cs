@@ -1,10 +1,9 @@
-using System.Threading.Tasks;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.PostGeneration;
-using Content.Shared.Storage;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -26,7 +25,7 @@ public sealed partial class DungeonJob
             {
                 for (var i = 0; i < 8; i++)
                 {
-                    var dir = (Direction) i;
+                    var dir = (Direction)i;
                     var neighbor = entrance + dir.ToIntVec();
 
                     if (!dungeon.RoomExteriorTiles.Contains(neighbor))
@@ -35,7 +34,7 @@ public sealed partial class DungeonJob
                     if (reservedTiles.Contains(neighbor))
                         continue;
 
-                    tiles.Add((neighbor, _tile.GetVariantTile((ContentTileDefinition) tileDef, random)));
+                    tiles.Add((neighbor, _tile.GetVariantTile((ContentTileDefinition)tileDef, random)));
                     spawnPositions.Add(neighbor);
                 }
             }

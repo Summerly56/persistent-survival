@@ -1,7 +1,6 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Shared.Throwing
 {

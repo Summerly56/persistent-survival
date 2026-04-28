@@ -90,7 +90,7 @@
   - type: GuideHelp
     guides:
     - Security
-    #- Antagonists, Persistence Station
+    - Antagonists
 
 - type: entity
   name: truncheon
@@ -127,7 +127,7 @@
   - type: GuideHelp
     guides:
     - Security
-    #- Antagonists, Persistence Station
+    - Antagonists
 
 - type: entity
   name: flash
@@ -174,7 +174,7 @@
     - type: GuideHelp
       guides:
       - Security
-      #- Antagonists, Persistence Station
+      - Antagonists
 
 - type: entity
   name: flash
@@ -230,4 +230,4 @@
     - type: GuideHelp
       guides:
       - Security
-      #- Antagonists Persistence Station
+      - Antagonists

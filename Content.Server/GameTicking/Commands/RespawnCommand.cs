@@ -1,10 +1,10 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Mind;
 using Content.Shared.Players;
 using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
+using System.Linq;
 
 namespace Content.Server.GameTicking.Commands
 {
@@ -66,7 +66,7 @@ namespace Content.Server.GameTicking.Commands
             _gameTicker.Respawn(targetPlayer);
         }
 
-      public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+        public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
         {
             if (args.Length != 1)
                 return CompletionResult.Empty;

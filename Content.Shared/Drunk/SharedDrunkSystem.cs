@@ -30,7 +30,7 @@ public abstract class SharedDrunkSystem : EntitySystem
 
     public void TryRemoveDrunkennessTime(EntityUid uid, TimeSpan boozePower)
     {
-        Status.TryAddTime(uid, Drunk, - boozePower);
+        Status.TryAddTime(uid, Drunk, -boozePower);
     }
 
     private void OnLightweightDrinking(Entity<LightweightDrunkComponent> entity, ref DrunkEvent args)

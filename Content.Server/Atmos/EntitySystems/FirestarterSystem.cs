@@ -1,4 +1,3 @@
-using Content.Server.Atmos.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
@@ -54,7 +53,7 @@ public sealed class FirestarterSystem : SharedFirestarterSystem
         foreach (var flammable in _flammables)
         {
             var ent = flammable.Owner;
-            var stackAmount = 2 + (int) (severity / 0.15f);
+            var stackAmount = 2 + (int)(severity / 0.15f);
             _flammable.AdjustFireStacks(ent, stackAmount, flammable);
             _flammable.Ignite(ent, uid, flammable);
         }

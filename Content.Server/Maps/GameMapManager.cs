@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.GameTicking;
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
@@ -10,6 +7,9 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Maps;
 

@@ -1,12 +1,9 @@
-using System.Numerics;
-using Content.Server.UserInterface;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
-using Content.Shared.PowerCell;
-using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Systems;
 

@@ -11,13 +11,14 @@ using static Content.Shared.GridControl.Components.GridConfigComponent;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.GridControl.UI;
+
 [GenerateTypedNameReferences]
 public sealed partial class GridConfigWindow : DefaultWindow
 {
     public GridConfigBoundUserInterface? BUI;
     public void OnGridName(ButtonEventArgs args)
     {
-        if(GridNameLineEdit.Text != null && GridNameLineEdit.Text != "")
+        if (GridNameLineEdit.Text != null && GridNameLineEdit.Text != "")
         {
             if (BUI != null)
             {
@@ -67,7 +68,7 @@ public sealed partial class GridConfigWindow : DefaultWindow
     }
     public void UpdateState(IPrototypeManager protoManager, GridConfigBoundUserInterfaceState state)
     {
-        if(state.IdPresent)
+        if (state.IdPresent)
         {
             PrivilegedIdButton.Text = state.IdName;
         }
@@ -76,17 +77,17 @@ public sealed partial class GridConfigWindow : DefaultWindow
             PrivilegedIdButton.Text = "";
         }
         string targetName = "";
-        if(state.TargetName != null)
+        if (state.TargetName != null)
         {
-            targetName = state.TargetName; 
+            targetName = state.TargetName;
         }
         GridTileCount.Text = $"{state.GridTileCount}";
-        MaxPersonalClaimTileCount.Text = $"{state.MaxPersonalClaimTileCount- state.CurrentTileCount} available tiles";
+        MaxPersonalClaimTileCount.Text = $"{state.MaxPersonalClaimTileCount - state.CurrentTileCount} available tiles";
         if (state.PersonalMode)
         {
             ChangeModeBtn.Text = "Station";
             PossibleTargets.Visible = false;
-            TargetNameLabel.Text = $"Target Person: {targetName}";            
+            TargetNameLabel.Text = $"Target Person: {targetName}";
         }
         else
         {
@@ -108,7 +109,7 @@ public sealed partial class GridConfigWindow : DefaultWindow
             }
         }
         bool gridFound = false;
-        if(state.GridName != null)
+        if (state.GridName != null)
         {
             gridFound = true;
             GridNameLabel.Text = state.GridName;
@@ -118,9 +119,9 @@ public sealed partial class GridConfigWindow : DefaultWindow
             GridNameLabel.Text = "*Invalid*";
         }
         bool gridOwned = false;
-        if(state.ErrorMessage == null)
+        if (state.ErrorMessage == null)
         {
-            if(state.GridTileCount+state.CurrentTileCount > state.MaxPersonalClaimTileCount)
+            if (state.GridTileCount + state.CurrentTileCount > state.MaxPersonalClaimTileCount)
             {
                 state.ErrorMessage = "This grid will exceed the tile limit.";
             }
@@ -134,15 +135,15 @@ public sealed partial class GridConfigWindow : DefaultWindow
         {
             GridOwnerLabel.Text = "UNCLAIMED";
         }
-        if(!gridFound)
+        if (!gridFound)
         {
             MissingPrivilegesLabel.Text = "No grid detected.";
         }
-        else if(!state.IsAuth)
+        else if (!state.IsAuth)
         {
             MissingPrivilegesLabel.Text = "You are not authorized to modify this grid.";
         }
-        else if(state.ErrorMessage != null)
+        else if (state.ErrorMessage != null)
         {
             MissingPrivilegesLabel.Text = state.ErrorMessage;
         }
@@ -151,7 +152,7 @@ public sealed partial class GridConfigWindow : DefaultWindow
             MissingPrivilegesLabel.Text = "";
         }
 
-        if(state.IsControlled || !gridFound || !gridOwned)
+        if (state.IsControlled || !gridFound || !gridOwned)
         {
             GridDisconnect.Disabled = true;
         }

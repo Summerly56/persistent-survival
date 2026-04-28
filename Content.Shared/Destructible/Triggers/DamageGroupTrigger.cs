@@ -1,6 +1,6 @@
 using Content.Shared.Damage.Components;
-using Content.Shared.FixedPoint;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -28,6 +28,6 @@ public sealed partial class DamageGroupTrigger : IThresholdTrigger
 
     public bool Reached(Entity<DamageableComponent> damageable, SharedDestructibleSystem system)
     {
-        return damageable.Comp.DamagePerGroup[DamageGroup] >= Damage;
+        return system.Damageable.GetDamagePerGroup(damageable.Owner).GetValueOrDefault(DamageGroup) >= Damage;
     }
 }

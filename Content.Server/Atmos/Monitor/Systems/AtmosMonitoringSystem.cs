@@ -1,16 +1,14 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Monitor.Components;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.EntitySystems;
-using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Monitor;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Database;
@@ -429,11 +427,11 @@ public sealed class AtmosMonitorSystem : EntitySystem
                 if (gas == null || monitor.GasThresholds == null)
                     return;
 
-                logPrefix = ((Gas) gas).ToString();
+                logPrefix = ((Gas)gas).ToString();
                 logValueSuffix = "kPa";
-                monitor.GasThresholds.TryGetValue((Gas) gas, out logPreviousThreshold);
+                monitor.GasThresholds.TryGetValue((Gas)gas, out logPreviousThreshold);
 
-                monitor.GasThresholds[(Gas) gas] = threshold;
+                monitor.GasThresholds[(Gas)gas] = threshold;
                 break;
         }
 

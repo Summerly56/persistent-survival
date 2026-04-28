@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Lathe.Prototypes;
@@ -9,6 +7,8 @@ using Content.Shared.Research.Prototypes;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Shared.Lathe;
 
@@ -74,7 +74,7 @@ public abstract class SharedLatheSystem : EntitySystem
         foreach (var id in packs)
         {
             var pack = _proto.Index(id);
-            foreach(var recipe in pack.Recipes)
+            foreach (var recipe in pack.Recipes)
             {
                 recipes.Add(recipe, -404);
             }
@@ -127,7 +127,7 @@ public abstract class SharedLatheSystem : EntitySystem
     }
 
     public static int AdjustMaterial(int original, bool reduce, float multiplier)
-        => reduce ? (int) MathF.Ceiling(original * multiplier) : original;
+        => reduce ? (int)MathF.Ceiling(original * multiplier) : original;
 
     protected abstract bool HasRecipe(EntityUid uid, LatheRecipePrototype recipe, LatheComponent component);
 
@@ -143,7 +143,7 @@ public abstract class SharedLatheSystem : EntitySystem
         InverseRecipes.Clear();
         foreach (var latheRecipe in _proto.EnumeratePrototypes<LatheRecipePrototype>())
         {
-            if (latheRecipe.Result is not {} result)
+            if (latheRecipe.Result is not { } result)
                 continue;
 
             InverseRecipes.GetOrNew(result).Add(latheRecipe);
@@ -168,7 +168,7 @@ public abstract class SharedLatheSystem : EntitySystem
         if (!string.IsNullOrWhiteSpace(proto.Name))
             return Loc.GetString(proto.Name);
 
-        if (proto.Result is {} result)
+        if (proto.Result is { } result)
         {
             return _proto.Index(result).Name;
         }
@@ -194,7 +194,7 @@ public abstract class SharedLatheSystem : EntitySystem
         if (!string.IsNullOrWhiteSpace(proto.Description))
             return Loc.GetString(proto.Description);
 
-        if (proto.Result is {} result)
+        if (proto.Result is { } result)
         {
             return _proto.Index(result).Description;
         }

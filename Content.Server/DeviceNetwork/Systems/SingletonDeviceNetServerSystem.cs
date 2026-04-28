@@ -1,9 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.Medical.CrewMonitoring;
 using Content.Server.Station.Systems;
-using Content.Shared.Power;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Power;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.DeviceNetwork.Systems;
 
@@ -57,7 +57,7 @@ public sealed class SingletonDeviceNetServerSystem : EntitySystem
 
             if (!server.Available)
             {
-                DisconnectServer(uid,server, device);
+                DisconnectServer(uid, server, device);
                 continue;
             }
 

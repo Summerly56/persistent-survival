@@ -1,10 +1,9 @@
-﻿using Content.Server.Clothing.Systems;
+using Content.Server.Clothing.Systems;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;

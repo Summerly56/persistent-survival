@@ -1,18 +1,11 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using Content.Server.MiningFluid.Components;
 using Content.Shared.Atmos;
-using Content.Shared.FixedPoint;
 using Content.Shared.MiningFluid.Components;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Serialization.Manager;
-using Robust.Shared.Serialization.Manager.Attributes;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization.Markdown.Mapping;
-using Robust.Shared.Serialization.Markdown.Value;
 using Robust.UnitTesting.Shared.Serialization;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using YamlDotNet.RepresentationModel;
 
 namespace Content.IntegrationTests.Tests.Mining;

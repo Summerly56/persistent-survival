@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Server.Anomaly.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Anomaly.Components;
@@ -9,6 +7,8 @@ using Content.Shared.Teleportation.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Random;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Anomaly.Effects;
 

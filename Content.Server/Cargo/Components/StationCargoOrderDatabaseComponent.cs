@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Cargo.Components;
 

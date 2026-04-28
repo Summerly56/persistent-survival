@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Store.Systems;
 using Content.Server.StoreDiscount.Systems;
 using Content.Shared.FixedPoint;
@@ -10,6 +9,7 @@ using Content.Shared.PDA;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Traitor.Uplink;
 

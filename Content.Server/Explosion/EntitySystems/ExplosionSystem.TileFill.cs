@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Server.Explosion.Components;
 using Content.Shared.Administration;
 using Content.Shared.Explosion.Components;
@@ -7,6 +5,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Explosion.EntitySystems;
 

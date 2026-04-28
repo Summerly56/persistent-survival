@@ -102,7 +102,7 @@ public sealed partial class TapeRecorderWindow : FancyWindow
 
     private void SetEnabled(TapeRecorderMode mode, bool condition)
     {
-        _options.SetItemDisabled((int) mode, !(_hasCasette && condition));
+        _options.SetItemDisabled((int)mode, !(_hasCasette && condition));
     }
 
     protected override void FrameUpdate(FrameEventArgs args)

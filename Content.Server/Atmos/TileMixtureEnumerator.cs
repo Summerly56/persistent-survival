@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Atmos;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Atmos;
 

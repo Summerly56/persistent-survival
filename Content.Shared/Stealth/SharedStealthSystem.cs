@@ -1,6 +1,5 @@
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Stealth.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
@@ -181,7 +180,7 @@ public abstract class SharedStealthSystem : EntitySystem
 
         var deltaTime = _timing.CurTime - component.LastUpdated.Value;
 
-        var ev = new GetVisibilityModifiersEvent(uid, component, (float) deltaTime.TotalSeconds, 0f);
+        var ev = new GetVisibilityModifiersEvent(uid, component, (float)deltaTime.TotalSeconds, 0f);
         RaiseLocalEvent(uid, ev, false);
 
         return Math.Clamp(component.LastVisibility + ev.FlatModifier, component.MinVisibility, component.MaxVisibility);

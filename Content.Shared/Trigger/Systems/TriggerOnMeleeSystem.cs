@@ -27,7 +27,7 @@ public sealed class TriggerOnMeleeTriggerSystem : TriggerOnXSystem
     private void OnSwingTrigger(Entity<TriggerOnMeleeSwingComponent> ent, ref MeleeHitEvent args)
     {
         EntityUid? target;
-        if  (args.HitEntities.Count == 0)
+        if (args.HitEntities.Count == 0)
             target = ent.Comp.TargetIsUser ? null : args.User;
         else
             target = ent.Comp.TargetIsUser ? args.HitEntities[0] : args.User;

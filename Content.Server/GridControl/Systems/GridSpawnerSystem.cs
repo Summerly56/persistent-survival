@@ -1,10 +1,9 @@
-using System.Linq;
 using Content.Server.Station.Systems;
 using Content.Shared.GridControl.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.EntitySerialization.Systems;
-using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.GridControl.Systems;
 
@@ -12,7 +11,6 @@ namespace Content.Server.GridControl.Systems;
 public sealed class GridSpawnerSystem : EntitySystem
 {
     [Dependency] private readonly MapLoaderSystem _loader = default!;
-    [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly StationSystem _station = default!;
 

@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -7,6 +5,8 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.Administration.UI.SpawnExplosion;
 

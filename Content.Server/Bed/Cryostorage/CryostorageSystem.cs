@@ -5,9 +5,7 @@ using Content.Server.Ghost;
 using Content.Server.Hands.Systems;
 using Content.Server.Inventory;
 using Content.Server.Popups;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords;
 using Content.Server.StationRecords.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.Bed.Cryostorage;
@@ -43,12 +41,10 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly ClimbSystem _climb = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly GhostSystem _ghostSystem = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly ServerInventorySystem _inventory = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
@@ -199,7 +195,7 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
         }
 
         _audio.PlayPvs(cryostorageComponent.RemoveSound, ent);
-    
+
         UpdateCryostorageUIState((cryostorageEnt.Value, cryostorageComponent));
         AdminLog.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(ent):player} was entered into cryostorage inside of {ToPrettyString(cryostorageEnt.Value)}");
 

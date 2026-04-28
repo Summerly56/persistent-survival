@@ -1,4 +1,3 @@
-﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
@@ -9,6 +8,7 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.Prototypes;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -220,7 +220,7 @@ public sealed partial class IngestionSystem
             if (reagent.Metabolisms == null)
                 continue;
 
-            foreach (var entry in reagent.Metabolisms.Values)
+            foreach (var entry in reagent.Metabolisms.Metabolisms.Values)
             {
                 foreach (var effect in entry.Effects)
                 {
@@ -271,7 +271,7 @@ public sealed partial class IngestionSystem
             if (reagent.Metabolisms == null)
                 continue;
 
-            foreach (var entry in reagent.Metabolisms.Values)
+            foreach (var entry in reagent.Metabolisms.Metabolisms.Values)
             {
                 foreach (var effect in entry.Effects)
                 {
@@ -329,7 +329,7 @@ public sealed partial class IngestionSystem
         if (!_solutionContainer.TryGetSolution(uid, solutionName, out _, out var solution) || solution.Volume == 0)
             return 0;
 
-        return Math.Max(1, (int) Math.Ceiling((solution.Volume / splitVol).Float()));
+        return Math.Max(1, (int)Math.Ceiling((solution.Volume / splitVol).Float()));
     }
 
     #endregion

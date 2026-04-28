@@ -41,7 +41,7 @@ namespace Content.Client.GridControl.UI
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (StationTaggerBoundUserInterfaceState) state;
+            var castState = (StationTaggerBoundUserInterfaceState)state;
             _window?.UpdateState(_prototypeManager, castState);
         }
 

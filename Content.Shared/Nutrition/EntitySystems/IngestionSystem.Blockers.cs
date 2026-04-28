@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
@@ -7,7 +6,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Storage;
-using Content.Shared.Weapons.Ranged.Systems;
+using System.Linq;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 

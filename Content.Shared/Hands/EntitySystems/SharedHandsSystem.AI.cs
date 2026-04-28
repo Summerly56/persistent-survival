@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Hands.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Hands.EntitySystems;
 

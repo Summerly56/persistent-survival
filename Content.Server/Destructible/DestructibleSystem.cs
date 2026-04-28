@@ -1,8 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Body.Systems;
 using Content.Server.Construction;
 using Content.Server.Destructible.Thresholds;
 using Content.Server.Destructible.Thresholds.Behaviors;
@@ -10,12 +7,12 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.Destructible.Thresholds.Triggers;
 using Content.Shared.FixedPoint;
+using Content.Shared.Gibbing;
 using Content.Shared.Humanoid;
 using Content.Shared.Trigger.Systems;
 using JetBrains.Annotations;
@@ -23,6 +20,8 @@ using Robust.Server.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Destructible
 {
@@ -34,7 +33,7 @@ namespace Content.Server.Destructible
 
         [Dependency] public readonly AtmosphereSystem AtmosphereSystem = default!;
         [Dependency] public readonly AudioSystem AudioSystem = default!;
-        [Dependency] public readonly BodySystem BodySystem = default!;
+        [Dependency] public readonly GibbingSystem Gibbing = default!;
         [Dependency] public readonly ConstructionSystem ConstructionSystem = default!;
         [Dependency] public readonly ExplosionSystem ExplosionSystem = default!;
         [Dependency] public readonly StackSystem StackSystem = default!;
@@ -78,7 +77,7 @@ namespace Content.Server.Destructible
                     }));
 
                     // If it doesn't have a humanoid component, it's probably not particularly notable?
-                    if (logImpact > LogImpact.Medium && !HasComp<HumanoidAppearanceComponent>(uid))
+                    if (logImpact > LogImpact.Medium && !HasComp<HumanoidProfileComponent>(uid))
                         logImpact = LogImpact.Medium;
 
                     if (args.Origin != null)

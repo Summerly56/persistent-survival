@@ -24,6 +24,6 @@ namespace Content.Server.Solar.Components
         /// The current sun angular velocity. (This is changed in Initialize)
         /// </summary>
         [DataField]
-        public Angle SunAngularVelocity { get; set;} = Angle.Zero;
+        public Angle SunAngularVelocity { get; set; } = Angle.Zero;
     }
 }

@@ -1,7 +1,6 @@
 using Lidgren.Network;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
-using System.IO;
 
 namespace Content.Shared.Preferences
 {

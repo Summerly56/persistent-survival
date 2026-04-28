@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Singularity.Events;
 using Content.Shared.Database;
@@ -15,6 +14,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Server.Singularity.EntitySystems;
 

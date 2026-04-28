@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Store.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
 using Content.Shared.StoreDiscount.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.StoreDiscount.Systems;
 
@@ -301,7 +301,7 @@ public sealed class StoreDiscountSystem : EntitySystem
         public CategoriesWithCumulativeWeightMap(IEnumerable<DiscountCategoryPrototype> prototypes)
         {
             var asArray = prototypes.ToArray();
-            _weights = new (asArray.Length);
+            _weights = new(asArray.Length);
             _categories = new(asArray.Length);
 
             var currentIndex = 0;
@@ -346,7 +346,7 @@ public sealed class StoreDiscountSystem : EntitySystem
 
             for (var i = indexToRemove + 1; i < _categories.Count; i++)
             {
-                _weights[i]-= discountCategory.Weight;
+                _weights[i] -= discountCategory.Weight;
             }
 
             _totalWeight -= discountCategory.Weight;

@@ -11,7 +11,6 @@ using Content.Shared.CrewRecords.Components;
 using Content.Shared.GridControl.Components;
 using Content.Shared.Station;
 using Content.Shared.Station.Components;
-using Content.Shared.Warps;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
@@ -41,7 +40,6 @@ public sealed partial class StationSystem : SharedStationSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
-    [Dependency] private readonly EntityManager _entMan = default!;
     [Dependency] private readonly CrewMetaRecordsSystem _metaRecords = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly CrewManifestSystem _crewManifest = default!;
@@ -94,7 +92,7 @@ public sealed partial class StationSystem : SharedStationSystem
         var query = _entManager.AllEntityQueryEnumerator<JobNetComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if(comp.WorkingFor == id)
+            if (comp.WorkingFor == id)
             {
                 comp.WorkingFor = 0;
             }
@@ -138,8 +136,8 @@ public sealed partial class StationSystem : SharedStationSystem
             }
         }
     }
-    
-    
+
+
     public int GetPersonalTileCount(string realName)
     {
         var count = 0;
@@ -173,7 +171,6 @@ public sealed partial class StationSystem : SharedStationSystem
     }
     public EntityUid? GetStationTradeStation(EntityUid uid)
     {
-        var count = 0;
         var query = _entManager.AllEntityQueryEnumerator<StationMemberComponent, TradeStationComponent>();
         while (query.MoveNext(out var gridUid, out var member, out var mapgrid))
         {
@@ -584,7 +581,7 @@ public sealed partial class StationSystem : SharedStationSystem
 
         var oldName = metaData.EntityName;
         _metaData.SetEntityName(station, name, metaData);
-        if (EntityManager.TryGetComponent<StationDataComponent>(station, out var data))
+        if (TryComp<StationDataComponent>(station, out var data))
         {
             data.StationName = name;
         }

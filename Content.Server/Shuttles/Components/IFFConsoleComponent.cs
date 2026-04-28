@@ -23,4 +23,8 @@ public sealed partial class IFFConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("allowDesignationChange")]
     public bool AllowDesignationChange = true;
+    /// If true, automatically applies all supported IFF flags to the console's grid on MapInitEvent.
+    /// </summary>
+    [DataField]
+    public bool HideOnInit = false;
 }

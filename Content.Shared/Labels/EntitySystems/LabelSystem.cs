@@ -93,7 +93,7 @@ public sealed partial class LabelSystem : EntitySystem
 
     private void OnExamined(Entity<PaperLabelComponent> ent, ref ExaminedEvent args)
     {
-        if (ent.Comp.LabelSlot.Item is not {Valid: true} item)
+        if (ent.Comp.LabelSlot.Item is not { Valid: true } item)
             return;
 
         using (args.PushGroup(nameof(PaperLabelComponent)))

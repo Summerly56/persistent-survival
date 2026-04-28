@@ -1,8 +1,8 @@
 #nullable enable
-using System.Collections.Generic;
-using System.Linq;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Utility;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Helpers;
 

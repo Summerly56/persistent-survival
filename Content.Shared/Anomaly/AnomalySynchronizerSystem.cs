@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Examine;
@@ -9,6 +8,7 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Anomaly;
 

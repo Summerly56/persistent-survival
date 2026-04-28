@@ -1,7 +1,7 @@
-using System.Numerics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using System.Numerics;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
 namespace Content.Client.Ghost.UI;

@@ -1,5 +1,5 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
+using System.Numerics;
 
 namespace Content.Shared.Camera;
 
@@ -12,7 +12,7 @@ public sealed partial class CameraRecoilComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite)]
     public Vector2 LastKick { get; set; }
-    
+
     [ViewVariables(VVAccess.ReadWrite)]
     public float LastKickTime { get; set; }
 

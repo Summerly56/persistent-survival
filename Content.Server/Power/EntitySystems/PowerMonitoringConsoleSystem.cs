@@ -1,20 +1,20 @@
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
-using Content.Server.Power.Nodes;
 using Content.Server.Power.NodeGroups;
+using Content.Server.Power.Nodes;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.NodeContainer;
 using Content.Shared.Pinpointer;
-using Content.Shared.Station.Components;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.NodeContainer;
 
 namespace Content.Server.Power.EntitySystems;
 
@@ -173,10 +173,10 @@ internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitori
         var flag = GetFlag(relative);
 
         if (args.Anchored)
-            chunk.PowerCableData[(int) component.CableType] |= flag;
+            chunk.PowerCableData[(int)component.CableType] |= flag;
 
         else
-            chunk.PowerCableData[(int) component.CableType] &= ~flag;
+            chunk.PowerCableData[(int)component.CableType] &= ~flag;
 
         var query = AllEntityQuery<PowerMonitoringCableNetworksComponent, TransformComponent>();
         while (query.MoveNext(out var ent, out var entCableNetworks, out var entXform))
@@ -908,7 +908,7 @@ internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitori
             var relative = SharedMapSystem.GetChunkRelative(tile.GridIndices, ChunkSize);
             var flag = GetFlag(relative);
 
-            chunk.PowerCableData[(int) cable.CableType] |= flag;
+            chunk.PowerCableData[(int)cable.CableType] |= flag;
         }
 
         return allChunks;
@@ -935,7 +935,7 @@ internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitori
             var flag = GetFlag(relative);
 
             if (TryComp<CableComponent>(ent, out var cable))
-                chunk.PowerCableData[(int) cable.CableType] |= flag;
+                chunk.PowerCableData[(int)cable.CableType] |= flag;
         }
 
         Dirty(uid, component);

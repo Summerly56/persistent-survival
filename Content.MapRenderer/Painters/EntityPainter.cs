@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System;
+using System.Collections.Generic;
+using System.Numerics;
 using static Robust.UnitTesting.RobustIntegrationTest;
 
 namespace Content.MapRenderer.Painters;

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using static Content.Shared.Decals.DecalGridComponent;
 
 namespace Content.Shared.Decals
@@ -19,7 +18,7 @@ namespace Content.Shared.Decals
         // Note that this constant is effectively baked into all map files, because of how they save the grid decal component.
         // So if this ever needs changing, the maps need converting.
         public const int ChunkSize = 32;
-        public static Vector2i GetChunkIndices(Vector2 coordinates) => new ((int) Math.Floor(coordinates.X / ChunkSize), (int) Math.Floor(coordinates.Y / ChunkSize));
+        public static Vector2i GetChunkIndices(Vector2 coordinates) => new((int)Math.Floor(coordinates.X / ChunkSize), (int)Math.Floor(coordinates.Y / ChunkSize));
 
         public override void Initialize()
         {
@@ -80,7 +79,7 @@ namespace Content.Shared.Decals
             return comp.ChunkCollection.ChunkCollection;
         }
 
-        protected virtual void DirtyChunk(EntityUid id, Vector2i chunkIndices, DecalChunk chunk) {}
+        protected virtual void DirtyChunk(EntityUid id, Vector2i chunkIndices, DecalChunk chunk) { }
 
         // internal, so that client/predicted code doesn't accidentally remove decals. There is a public server-side function.
         protected bool RemoveDecalInternal(EntityUid gridId, uint decalId, [NotNullWhen(true)] out Decal? removed, DecalGridComponent? component = null)

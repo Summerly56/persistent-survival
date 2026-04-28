@@ -1,11 +1,8 @@
-using System.Numerics;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Components;
-using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Database;
-using Content.Shared.Friction;
 using Content.Shared.Projectiles;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -14,6 +11,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Shared.Throwing;
 

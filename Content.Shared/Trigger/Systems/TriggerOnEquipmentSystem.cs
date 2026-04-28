@@ -1,6 +1,6 @@
+using Content.Shared.Inventory.Events;
 using Content.Shared.Trigger.Components.Triggers;
 using Robust.Shared.Timing;
-using Content.Shared.Inventory.Events;
 
 namespace Content.Shared.Trigger.Systems;
 

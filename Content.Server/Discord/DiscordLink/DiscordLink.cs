@@ -1,11 +1,10 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using Content.Shared.CCVar;
 using NetCord;
 using NetCord.Gateway;
 using NetCord.Rest;
 using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
+using System.Threading.Tasks;
 
 namespace Content.Server.Discord.DiscordLink;
 

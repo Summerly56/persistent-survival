@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Salvage;
 using Robust.Client.Graphics;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Client.Overlays;
 

@@ -1,17 +1,16 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Presets;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Shared.GameTicking.Components;
-using Content.Shared.Random;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
+using Content.Shared.Random;
+using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.GameTicking.Rules;
 

@@ -1,18 +1,18 @@
+using Content.Server.Administration.Managers;
 using Content.Server.ParticleAccelerator.Components;
 using Content.Server.Power.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Machines.Components;
-using Content.Shared.Singularity.Components;
-using Robust.Shared.Utility;
-using System.Diagnostics;
-using Content.Server.Administration.Managers;
-using Content.Shared.CCVar;
+using Content.Shared.Machines.Events;
+using Content.Shared.ParticleAccelerator;
 using Content.Shared.Power;
+using Content.Shared.Singularity.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
-using Content.Shared.ParticleAccelerator;
-using Content.Shared.Machines.Events;
+using Robust.Shared.Utility;
+using System.Diagnostics;
 
 namespace Content.Server.ParticleAccelerator.EntitySystems;
 
@@ -152,10 +152,10 @@ public sealed partial class ParticleAcceleratorSystem
         if (comp.StrengthLocked)
             return;
 
-        strength = (ParticleAcceleratorPowerState) MathHelper.Clamp(
-            (int) strength,
-            (int) ParticleAcceleratorPowerState.Standby,
-            (int) comp.MaxStrength
+        strength = (ParticleAcceleratorPowerState)MathHelper.Clamp(
+            (int)strength,
+            (int)ParticleAcceleratorPowerState.Standby,
+            (int)comp.MaxStrength
         );
 
         if (strength == comp.SelectedStrength)
@@ -239,7 +239,7 @@ public sealed partial class ParticleAcceleratorSystem
 
         var powerDraw = comp.BasePowerDraw;
         if (comp.Enabled)
-            powerDraw += comp.LevelPowerDraw * (int) comp.SelectedStrength;
+            powerDraw += comp.LevelPowerDraw * (int)comp.SelectedStrength;
 
         powerConsumer.DrawRate = powerDraw;
     }
@@ -296,7 +296,7 @@ public sealed partial class ParticleAcceleratorSystem
             ParticleAcceleratorVisuals.VisualState,
             TryComp<ApcPowerReceiverComponent>(uid, out var apcPower) && !apcPower.Powered
                 ? ParticleAcceleratorVisualState.Unpowered
-                : (ParticleAcceleratorVisualState) comp.SelectedStrength,
+                : (ParticleAcceleratorVisualState)comp.SelectedStrength,
             appearance
         );
     }
@@ -306,7 +306,7 @@ public sealed partial class ParticleAcceleratorSystem
         if (!Resolve(uid, ref controller))
             return;
 
-        var state = controller.Powered ? (ParticleAcceleratorVisualState) controller.SelectedStrength : ParticleAcceleratorVisualState.Unpowered;
+        var state = controller.Powered ? (ParticleAcceleratorVisualState)controller.SelectedStrength : ParticleAcceleratorVisualState.Unpowered;
 
         if (!TryComp<MultipartMachineComponent>(uid, out var machineComp))
             return;

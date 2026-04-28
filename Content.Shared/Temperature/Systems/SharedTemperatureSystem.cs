@@ -1,10 +1,10 @@
-using System.Linq;
 using Content.Shared.Atmos;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Temperature.Systems;
 

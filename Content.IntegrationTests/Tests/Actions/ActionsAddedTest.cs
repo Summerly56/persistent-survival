@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.CombatMode;
 using Robust.Server.Player;
 using Robust.Shared.GameObjects;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Actions;
 

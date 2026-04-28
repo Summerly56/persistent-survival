@@ -134,7 +134,7 @@ public sealed partial class SimpleRadialMenu : RadialMenu
             _ => null
         };
 
-        if(imageControl != null)
+        if (imageControl != null)
             button.AddChild(imageControl);
 
         if (model is RadialMenuActionOptionBase actionOption)

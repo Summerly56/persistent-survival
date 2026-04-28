@@ -8,7 +8,7 @@ public sealed class StationAdminConsoleBoundUserInterface : BoundUserInterface
 {
     private StationAdminConsoleMenu? _menu;
 
-    public StationAdminConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) {}
+    public StationAdminConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {

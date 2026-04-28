@@ -1,6 +1,6 @@
+using Content.Shared.Guidebook;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Guidebook;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;

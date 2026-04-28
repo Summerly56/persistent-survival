@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.EntityEffects.Effects.EntitySpawning;
 
@@ -18,7 +18,7 @@ public abstract partial class BaseSpawnEntityEntityEffect<T> : EntityEffectBase<
     /// <summary>
     /// Prototype of the entity we're spawning
     /// </summary>
-    [DataField (required: true)]
+    [DataField(required: true)]
     public EntProtoId Entity;
 
     /// <summary>

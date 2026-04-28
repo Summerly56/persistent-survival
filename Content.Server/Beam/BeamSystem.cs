@@ -1,16 +1,15 @@
-﻿using System.Numerics;
 using Content.Server.Beam.Components;
 using Content.Shared.Beam;
 using Content.Shared.Beam.Components;
 using Content.Shared.Physics;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using System.Numerics;
 
 namespace Content.Server.Beam;
 
@@ -78,7 +77,7 @@ public sealed class BeamSystem : SharedBeamSystem
     {
         var beamSpawnPos = beamStartPos;
         var ent = Spawn(prototype, beamSpawnPos);
-        var shape = new EdgeShape(distanceCorrection, new Vector2(0,0));
+        var shape = new EdgeShape(distanceCorrection, new Vector2(0, 0));
 
         if (!TryComp<PhysicsComponent>(ent, out var physics) || !TryComp<BeamComponent>(ent, out var beam))
             return;
@@ -118,7 +117,7 @@ public sealed class BeamSystem : SharedBeamSystem
         }
 
         //Create the rest of the beam, sprites handled through the BeamVisualizerEvent
-        for (var i = 0; i < distanceLength-1; i++)
+        for (var i = 0; i < distanceLength - 1; i++)
         {
             beamSpawnPos = beamSpawnPos.Offset(calculatedDistance.Normalized());
             var newEnt = Spawn(prototype, beamSpawnPos);

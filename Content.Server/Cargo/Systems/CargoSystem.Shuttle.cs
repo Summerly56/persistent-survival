@@ -1,33 +1,27 @@
 using Content.Server.Cargo.Components;
-using Content.Server.Database;
 using Content.Server.Hands.Systems;
-using Content.Server.Stack;
-using Content.Server.Station.Commands;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Events;
-using Content.Shared.Cargo.Prototypes;
 using Content.Shared.CCVar;
 using Content.Shared.Coordinates;
-using Content.Shared.Hands.Components;
 using Content.Shared.Invoices.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Physics;
-using Robust.Shared.Prototypes;
 using System.Linq;
-using YamlDotNet.Core.Tokens;
 
 namespace Content.Server.Cargo.Systems;
 
 public sealed partial class CargoSystem
 {
+    private const string CreditProtoID = "Credit";
+
     /*
-     * Handles cargo shuttle / trade mechanics.
-     */
+* Handles cargo shuttle / trade mechanics.
+*/
 
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
@@ -59,7 +53,7 @@ public sealed partial class CargoSystem
         {
             if (TryComp<StationDataComponent>(selectedStation, out var sD) && sD != null)
             {
-                if(sD.StationName != null) selectedName = sD.StationName;
+                if (sD.StationName != null) selectedName = sD.StationName;
             }
         }
         int taxingStation = 0;
@@ -72,7 +66,7 @@ public sealed partial class CargoSystem
         {
             if (TryComp<StationDataComponent>(station, out var data) && data != null)
             {
-                if(data.StationName != null)
+                if (data.StationName != null)
                 {
                     formattedStations.Add(data.UID, data.StationName);
                 }
@@ -94,13 +88,13 @@ public sealed partial class CargoSystem
         }
         var tax = 25;
         var owningStation = _station.GetOwningStation(uid, null, true);
-        if(owningStation != null)
+        if (owningStation != null)
         {
             if (TryComp<StationDataComponent>(owningStation, out var sD) && sD != null)
             {
                 tax = sD.ExportTax;
                 taxingStation = sD.UID;
-                if(sD.StationName != null)
+                if (sD.StationName != null)
                 {
                     name = sD.StationName;
                 }
@@ -108,8 +102,8 @@ public sealed partial class CargoSystem
         }
         GetPalletGoods(gridUid, out var toSell, out var goods);
         var totalAmount = goods.Sum(t => t.Item3);
-        
-        
+
+
         _uiSystem.SetUiState(uid,
             CargoPalletConsoleUiKey.Sale,
             new CargoPalletConsoleInterfaceState((int)totalAmount, toSell.Count, true, comp.CashMode, tax, taxingStation, name, formattedStations, comp.SelectedStation, selectedName));
@@ -135,7 +129,7 @@ public sealed partial class CargoSystem
 
     private void OnChangeMoneyMode(EntityUid uid, CargoPalletConsoleComponent component, CargoPalletChangeMoneyMode args)
     {
-        if(component.CashMode == CargoSaleMode.Cash)
+        if (component.CashMode == CargoSaleMode.Cash)
         {
             component.CashMode = CargoSaleMode.Deposit;
         }
@@ -234,7 +228,7 @@ public sealed partial class CargoSystem
         return true;
     }
 
-    private void GetPalletGoods(EntityUid gridUid, out HashSet<EntityUid> toSell,  out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    private void GetPalletGoods(EntityUid gridUid, out HashSet<EntityUid> toSell, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
     {
         goods = new HashSet<(EntityUid, OverrideSellComponent?, double)>();
         toSell = new HashSet<EntityUid>();
@@ -311,7 +305,7 @@ public sealed partial class CargoSystem
             return 25;
         }
         TryComp<StationDataComponent>(station, out var sD);
-        if(sD == null)
+        if (sD == null)
         {
             return 25;
         }
@@ -337,7 +331,7 @@ public sealed partial class CargoSystem
 
         if (!SellPallets(gridUid, station, out var goods))
             return;
-        if(component.CashMode == CargoSaleMode.Cash)
+        if (component.CashMode == CargoSaleMode.Cash)
         {
             var tax = GetTaxRate(uid, component);
             var player = args.Actor;
@@ -352,15 +346,15 @@ public sealed partial class CargoSystem
             var taxPaidInt = (int)Math.Round(taxpaid);
             total -= taxPaidInt;
 
-            var stackPrototype = _protoMan.Index<StackPrototype>("Credit");
+            var stackPrototype = _protoMan.Index<StackPrototype>(CreditProtoID);
             var cashStack = _stack.SpawnAtPosition((int)Math.Round(total), stackPrototype, player.ToCoordinates());
             if (!_hands.TryPickupAnyHand(player, cashStack))
                 _transform.SetLocalRotation(cashStack, Angle.Zero); // Orient these to grid north instead of map north
-            if(taxPaidInt > 0)
+            if (taxPaidInt > 0)
             {
-                if(taxingStation != null)
+                if (taxingStation != null)
                 {
-                    if(TryComp<StationBankAccountComponent>(taxingStation, out var taxBankAccount) && taxBankAccount != null)
+                    if (TryComp<StationBankAccountComponent>(taxingStation, out var taxBankAccount) && taxBankAccount != null)
                     {
                         UpdateBankAccount((taxingStation.Value, taxBankAccount), taxPaidInt, "Cargo");
                     }

@@ -1,5 +1,5 @@
-using System.Numerics;
 using Robust.Shared.Map;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Events;
 

@@ -1,7 +1,8 @@
 using Content.Server.Atmos.Components;
-using Content.Server.Atmos.Piping.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.EntitySystems;
+using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -116,7 +117,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             for (var i = 0; i < Atmospherics.Directions; i++)
             {
-                var direction = (AtmosDirection) (1 << i);
+                var direction = (AtmosDirection)(1 << i);
                 var indices = tile.GridIndices.Offset(direction);
                 if (atmos.Tiles.TryGetValue(indices, out var adj)
                     && adj.NoGridTile
@@ -147,7 +148,7 @@ namespace Content.Server.Atmos.EntitySystems
                 var connected = false;
                 for (var i = 0; i < Atmospherics.Directions; i++)
                 {
-                    var indices = tile.GridIndices.Offset((AtmosDirection) (1 << i));
+                    var indices = tile.GridIndices.Offset((AtmosDirection)(1 << i));
                     if (_map.TryGetTile(ent.Comp3, indices, out var gridTile) && !gridTile.IsEmpty)
                     {
                         connected = true;
@@ -178,7 +179,7 @@ namespace Content.Server.Atmos.EntitySystems
             bool mapAtmosphere;
             if (_map.TryGetTile(ent.Comp3, idx, out var gTile) && !gTile.IsEmpty)
             {
-                var contentDef = (ContentTileDefinition) _tileDefinitionManager[gTile.TypeId];
+                var contentDef = (ContentTileDefinition)_tileDefinitionManager[gTile.TypeId];
                 mapAtmosphere = contentDef.MapAtmosphere;
                 tile.ThermalConductivity = contentDef.ThermalConductivity;
                 tile.HeatCapacity = contentDef.HeatCapacity;
@@ -187,7 +188,7 @@ namespace Content.Server.Atmos.EntitySystems
             else
             {
                 mapAtmosphere = true;
-                tile.ThermalConductivity =  0.5f;
+                tile.ThermalConductivity = 0.5f;
                 tile.HeatCapacity = float.PositiveInfinity;
 
                 if (!tile.NoGridTile)
@@ -272,7 +273,7 @@ namespace Content.Server.Atmos.EntitySystems
             if (tile.Air != null)
                 return;
 
-            tile.Air = new GasMixture(volume){Temperature = Atmospherics.T20C};
+            tile.Air = new GasMixture(volume) { Temperature = Atmospherics.T20C };
 
             if (data.FixVacuum)
                 GridFixTileVacuum(tile);
@@ -324,7 +325,7 @@ namespace Content.Server.Atmos.EntitySystems
             Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> ent)
         {
             var atmosphere = ent.Comp1;
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.ActiveTiles);
 
             var number = 0;
@@ -425,7 +426,7 @@ namespace Content.Server.Atmos.EntitySystems
             Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> ent)
         {
             var atmosphere = ent.Comp1;
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.HotspotTiles);
 
             var number = 0;
@@ -449,7 +450,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         private bool ProcessSuperconductivity(GridAtmosphereComponent atmosphere)
         {
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.SuperconductivityTiles);
 
             var number = 0;
@@ -485,16 +486,16 @@ namespace Content.Server.Atmos.EntitySystems
             {
                 atmosphere.DeltaPressureCursor = 0;
                 atmosphere.DeltaPressureDamageResults.Clear();
+                _deltaPressureInvalidEntityQueue.Clear();
             }
-
-            var remaining = count - atmosphere.DeltaPressureCursor;
-            var batchSize = Math.Max(50, DeltaPressureParallelProcessPerIteration);
-            var toProcess = Math.Min(batchSize, remaining);
 
             var timeCheck1 = 0;
             while (atmosphere.DeltaPressureCursor < count)
             {
-                var job = new DeltaPressureParallelJob(this,
+                var remaining = count - atmosphere.DeltaPressureCursor;
+                var toProcess = Math.Min(DeltaPressureParallelProcessPerIteration, remaining);
+
+                var job = new DeltaPressureParallelBulkJob(this,
                     atmosphere,
                     atmosphere.DeltaPressureCursor,
                     DeltaPressureParallelBatchSize);
@@ -526,6 +527,13 @@ namespace Content.Server.Atmos.EntitySystems
                 {
                     return false;
                 }
+            }
+
+            // Ents may have been invalidated (missing AirtightComp) during parallel processing.
+            // Since we can't touch the ent list during parallel processing, we queue them up here to be removed.
+            while (_deltaPressureInvalidEntityQueue.TryDequeue(out var invalidEnt))
+            {
+                TryRemoveDeltaPressureEntity(ent.AsNullable(), invalidEnt);
             }
 
             return true;
@@ -628,7 +636,7 @@ namespace Content.Server.Atmos.EntitySystems
                 _currentRunAtmosphere.Clear();
 
                 var query = EntityQueryEnumerator<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent>();
-                while (query.MoveNext(out var uid, out var atmos, out var overlay, out var grid, out var xform ))
+                while (query.MoveNext(out var uid, out var atmos, out var overlay, out var grid, out var xform))
                 {
                     _currentRunAtmosphere.Add((uid, atmos, overlay, grid, xform));
                 }
@@ -843,20 +851,5 @@ namespace Content.Server.Atmos.EntitySystems
         /// Method is finished with the GridAtmosphere.
         /// </summary>
         Finished,
-    }
-
-    public enum AtmosphereProcessingState : byte
-    {
-        Revalidate,
-        TileEqualize,
-        ActiveTiles,
-        ExcitedGroups,
-        HighPressureDelta,
-        DeltaPressure,
-        Hotspots,
-        Superconductivity,
-        PipeNet,
-        AtmosDevices,
-        NumStates
     }
 }

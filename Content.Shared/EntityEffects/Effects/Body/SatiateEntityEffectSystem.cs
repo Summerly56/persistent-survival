@@ -1,4 +1,4 @@
-﻿using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.Prototypes;
 
@@ -52,7 +52,7 @@ public abstract partial class Satiate<T> : EntityEffectBase<T> where T : EntityE
 public sealed partial class SatiateThirst : Satiate<SatiateThirst>
 {
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("entity-effect-guidebook-satiate-thirst", ("chance", Probability), ("relative",  Factor / AverageSatiation));
+        => Loc.GetString("entity-effect-guidebook-satiate-thirst", ("chance", Probability), ("relative", Factor / AverageSatiation));
 }
 
 /// <inheritdoc cref="Satiate{T}"/>

@@ -1,10 +1,10 @@
-using System.Linq;
 using Content.Client.Eui;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Shared.Eui;
 using Content.Shared.Ghost.Roles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
+using System.Linq;
 
 namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
 {

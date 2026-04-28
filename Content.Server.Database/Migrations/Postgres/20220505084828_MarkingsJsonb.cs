@@ -1,7 +1,7 @@
-﻿#nullable disable
+#nullable disable
 
-using System.Text.Json;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Text.Json;
 
 namespace Content.Server.Database.Migrations.Postgres
 {

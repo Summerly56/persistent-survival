@@ -1,6 +1,6 @@
-﻿using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using System.Numerics;
 
 namespace Content.Shared.Nutrition.AnimalHusbandry;
 

@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Server.Audio;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Materials;
@@ -166,7 +165,7 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
             return 0;
 
         // worst (unrealistic) case: -5.5 -> -6.0 -> 6
-        var toRemove = -(int) MathF.Floor(fractional);
+        var toRemove = -(int)MathF.Floor(fractional);
         toRemove = Math.Min(availableQuantity, toRemove);
 
         fractional = Math.Max(0, fractional + toRemove);

@@ -1,11 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.DoAfter;
 using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using System.Numerics;
 
 namespace Content.Shared.Clothing.Components;
 

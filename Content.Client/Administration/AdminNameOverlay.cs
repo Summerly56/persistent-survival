@@ -39,7 +39,7 @@ internal sealed class AdminNameOverlay : Overlay
 
     //TODO make this adjustable via GUI?
     private static readonly FrozenSet<ProtoId<RoleTypePrototype>> Filter =
-        new ProtoId<RoleTypePrototype>[] {"SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent"}
+        new ProtoId<RoleTypePrototype>[] { "SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent" }
         .ToFrozenSet();
 
     private readonly string _antagLabelClassic = Loc.GetString("admin-overlay-antag-classic");
@@ -101,7 +101,7 @@ internal sealed class AdminNameOverlay : Overlay
         var colorDisconnected = Color.White;
         var uiScale = _userInterfaceManager.RootControl.UIScale;
         var lineoffset = new Vector2(0f, 14f) * uiScale;
-        var drawnOverlays = new List<(Vector2,Vector2)>() ; // A saved list of the overlays already drawn
+        var drawnOverlays = new List<(Vector2, Vector2)>(); // A saved list of the overlays already drawn
 
         // Get all player positions before drawing overlays, so they can be sorted before iteration
         var sortable = new List<(PlayerInfo, Box2, EntityUid, Vector2)>();
@@ -134,7 +134,7 @@ internal sealed class AdminNameOverlay : Overlay
                 ? null
                 : _prototypeManager.Index(playerInfo.RoleProto.Value);
 
-            var roleName = Loc.GetString(rolePrototype?.Name ?? RoleTypePrototype.FallbackName);
+            var roleName = rolePrototype?.Name ?? RoleTypePrototype.FallbackName;
             var roleColor = rolePrototype?.Color ?? RoleTypePrototype.FallbackColor;
             var roleSymbol = rolePrototype?.Symbol ?? RoleTypePrototype.FallbackSymbol;
 
@@ -182,7 +182,7 @@ internal sealed class AdminNameOverlay : Overlay
                 {
                     // additional entries after maximum stack size is reached will be drawn over the last entry
                     if (i <= _overlayStackMax - 1)
-                        currentOffset = lineoffset + s.Item2 ;
+                        currentOffset = lineoffset + s.Item2;
                     i++;
                 }
             }
@@ -213,7 +213,7 @@ internal sealed class AdminNameOverlay : Overlay
             {
                 color = Color.GreenYellow;
                 color.A = alpha;
-                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, Loc.GetString(playerInfo.StartingJob), uiScale, playerInfo.Connected ? color : colorDisconnected);
+                args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, playerInfo.StartingJob, uiScale, playerInfo.Connected ? color : colorDisconnected);
                 currentOffset += lineoffset;
             }
 
@@ -241,7 +241,7 @@ internal sealed class AdminNameOverlay : Overlay
                     color = roleColor;
                     symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
                     text = IsFiltered(playerInfo.RoleProto)
-                        ? roleName.ToUpper()
+                        ? Loc.GetString(roleName).ToUpper()
                         : string.Empty;
                     break;
                 case AdminOverlayAntagFormat.Subtype:

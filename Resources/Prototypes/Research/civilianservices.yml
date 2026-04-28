@@ -97,6 +97,20 @@
   recipeUnlocks:
   - CrematoriumElectronics
 
+- type: technology
+  id: PaperProtection
+  name: research-technology-paper-protection
+  icon:
+    sprite: Objects/Misc/folders.rsi
+    state: folder-titanium
+  discipline: CivilianServices
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - BoxFolderTitaniumRed
+  - BoxFolderTitaniumGreen
+  - BoxFolderTitaniumBlue
+
 # Tier 2
 
 - type: technology
@@ -118,6 +132,8 @@
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
   - FauxTileDesertAstroSand
+  - FauxTileAstroIronsand
+  - FauxTileAstroIronsandBorderless
 
 - type: technology
   id: BiochemicalStasis
@@ -144,7 +160,7 @@
   tier: 2
   cost: 5000
   recipeUnlocks:
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
   - AdvancedJetInjector
 
 - type: technology

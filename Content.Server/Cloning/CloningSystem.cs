@@ -1,12 +1,12 @@
-using Content.Server.Humanoid;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Body;
 using Content.Shared.Cloning;
 using Content.Shared.Cloning.Events;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
-using Content.Shared.Inventory;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
+using Content.Shared.Inventory;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.StatusEffect;
 using Content.Shared.StatusEffectNew.Components;
@@ -27,7 +27,6 @@ namespace Content.Server.Cloning;
 /// </summary>
 public sealed partial class CloningSystem : SharedCloningSystem
 {
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -36,6 +35,7 @@ public sealed partial class CloningSystem : SharedCloningSystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _subdermalImplant = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly NameModifierSystem _nameMod = default!;
     [Dependency] private readonly Shared.StatusEffectNew.StatusEffectsSystem _statusEffects = default!; //TODO: This system has to support both the old and new status effect systems, until the old is able to be fully removed.
 
@@ -48,7 +48,7 @@ public sealed partial class CloningSystem : SharedCloningSystem
         if (!_prototype.Resolve(settingsId, out var settings))
             return false; // invalid settings
 
-        if (!TryComp<HumanoidAppearanceComponent>(original, out var humanoid))
+        if (!TryComp<HumanoidProfileComponent>(original, out var humanoid))
             return false; // whatever body was to be cloned, was not a humanoid
 
         if (!_prototype.Resolve(humanoid.Species, out var speciesPrototype))
@@ -60,7 +60,7 @@ public sealed partial class CloningSystem : SharedCloningSystem
             return false; // cannot clone, for example due to the unrevivable trait
 
         clone = coords == null ? Spawn(speciesPrototype.Prototype) : Spawn(speciesPrototype.Prototype, coords.Value);
-        _humanoidSystem.CloneAppearance(original, clone.Value);
+        _visualBody.CopyAppearanceFrom(original, clone.Value);
 
         CloneComponents(original, clone.Value, settings);
 

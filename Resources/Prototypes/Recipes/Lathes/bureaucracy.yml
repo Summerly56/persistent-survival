@@ -1,0 +1,114 @@
+# Base Prototypes
+
+- type: latheRecipe
+  abstract: true
+  id: BaseFolderRecipe
+  categories:
+  - Bureaucracy
+  completetime: 2
+  materials:
+    Steel: 50
+    Plastic: 100
+
+- type: latheRecipe
+  abstract: true
+  id: BaseReinforcedFolderRecipe
+  categories:
+  - Bureaucracy
+  completetime: 2
+  materials:
+    Titanium: 100
+    Steel: 50
+  unlockUses: 3
+
+# Recipes
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderClipboardEmpty
+  result: BoxFolderClipboardEmpty
+  completetime: 2
+  materials:
+    Wood: 100
+    Steel: 50
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderPlasticClipboardEmpty
+  result: BoxFolderPlasticClipboardEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderRedEmpty
+  result: BoxFolderRedEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderBlueEmpty
+  result: BoxFolderBlueEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderYellowEmpty
+  result: BoxFolderYellowEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderGreyEmpty
+  result: BoxFolderGreyEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderBlackEmpty
+  result: BoxFolderBlackEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BoxFolderGreenEmpty
+  result: BoxFolderGreenEmpty
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BlankPaper
+  result: Paper
+  completetime: 2
+  materials:
+    Paper: 50
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: DeskBell
+  result: DeskBell
+  completetime: 2
+  materials:
+    Steel: 100
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BrbSign
+  result: BrbSign
+  completetime: 2
+  materials:
+    Plastic: 50
+
+- type: latheRecipe
+  parent: BaseFolderRecipe
+  id: BriefcaseBrown
+  result: BriefcaseBrown
+  completetime: 2
+  materials:
+    Plastic: 500
+
+- type: latheRecipe
+  parent: BaseReinforcedFolderRecipe
+  id: BoxFolderTitaniumRed
+  result: BoxFolderTitaniumRedEmpty
+
+- type: latheRecipe
+  parent: BaseReinforcedFolderRecipe
+  id: BoxFolderTitaniumGreen
+  result: BoxFolderTitaniumGreenEmpty
+
+- type: latheRecipe
+  parent: BaseReinforcedFolderRecipe
+  id: BoxFolderTitaniumBlue
+  result: BoxFolderTitaniumBlueEmpty

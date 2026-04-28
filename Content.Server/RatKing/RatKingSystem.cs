@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.NPC;
@@ -14,6 +13,7 @@ using Content.Shared.Pointing;
 using Content.Shared.Random.Helpers;
 using Content.Shared.RatKing;
 using Robust.Shared.Map;
+using System.Numerics;
 
 namespace Content.Server.RatKing
 {

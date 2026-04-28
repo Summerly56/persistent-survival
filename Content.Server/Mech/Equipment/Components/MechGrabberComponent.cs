@@ -1,8 +1,7 @@
-﻿using System.Numerics;
-using System.Threading;
 using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
+using System.Numerics;
 
 namespace Content.Server.Mech.Equipment.Components;
 

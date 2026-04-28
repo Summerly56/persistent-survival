@@ -1,5 +1,5 @@
-using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Mind.Components;
+using Content.Shared.NameModifier.EntitySystems;
 
 namespace Content.Shared.Mind;
 

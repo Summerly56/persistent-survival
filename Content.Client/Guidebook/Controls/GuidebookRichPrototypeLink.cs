@@ -1,10 +1,10 @@
 using Content.Client.Guidebook.RichText;
+using Content.Client.UserInterface.ControlExtensions;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Content.Client.UserInterface.ControlExtensions;
 
 namespace Content.Client.Guidebook.Controls;
 
@@ -42,7 +42,7 @@ public sealed class GuidebookRichPrototypeLink : Control, IPrototypeLinkControl
     public void SetMessage(FormattedMessage message)
     {
         _message = message;
-        _richTextLabel.SetMessage(_message);
+        _richTextLabel.SetMessage(_message, tagsAllowed: null);
     }
 
     public IPrototype? LinkedPrototype { get; set; }

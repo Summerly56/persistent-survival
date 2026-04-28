@@ -24,7 +24,7 @@ public sealed partial class WorldObjectiveEdit : BoxContainer
         IoCManager.InjectDependencies(this);
         TitleLabel.Text = title;
         DescriptionLabel.TextRope = new Rope.Leaf(desc);
-        if(completedTime == null)
+        if (completedTime == null)
         {
             CompletedLabel.Visible = false;
         }

@@ -1,0 +1,216 @@
+- type: constructionGraph
+  id: StairsSteel
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: Stairs
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairStage
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairStage
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsWhite
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairWhite
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsWhiteStage
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairStageWhite
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsDark
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairDark
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsDarkStage
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Steel
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairStageDark
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsWood
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: WoodPlank
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairWood
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
+- type: constructionGraph
+  id: StairsWoodStage
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: WoodPlank
+              amount: 4
+              doAfter: 3
+
+    - node: done
+      entity: StairStageWood
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+

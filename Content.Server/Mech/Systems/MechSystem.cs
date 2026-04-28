@@ -2,6 +2,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Server.Mech.Components;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Atmos;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -258,7 +259,7 @@ public sealed partial class MechSystem : SharedMechSystem
 
     private void OnDamageChanged(EntityUid uid, MechComponent component, DamageChangedEvent args)
     {
-        var integrity = component.MaxIntegrity - args.Damageable.TotalDamage;
+        var integrity = component.MaxIntegrity - _damageable.GetTotalDamage((uid, args.Damageable));
         SetIntegrity(uid, integrity, component);
 
         if (args.DamageIncreased &&
@@ -427,7 +428,7 @@ public sealed partial class MechSystem : SharedMechSystem
             return;
         }
 
-        args.Gas =  _atmosphere.GetContainingMixture(component.Mech, excite: args.Excite);
+        args.Gas = _atmosphere.GetContainingMixture(component.Mech, excite: args.Excite);
         args.Handled = true;
     }
 

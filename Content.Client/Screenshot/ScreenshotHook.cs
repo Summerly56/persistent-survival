@@ -1,5 +1,3 @@
-using System.IO;
-using System.Threading.Tasks;
 using Content.Client.Viewport;
 using Content.Shared.Input;
 using Robust.Client.Graphics;
@@ -10,6 +8,8 @@ using Robust.Shared.Input.Binding;
 using Robust.Shared.Utility;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Content.Client.Screenshot
 {

@@ -1,7 +1,6 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
-using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
 
@@ -27,7 +26,7 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
         if (!Resolve(user, ref user.Comp, false))
             return false;
 
-        if (_actions.GetAction(user.Comp.ActionEnt) is not {} action)
+        if (_actions.GetAction(user.Comp.ActionEnt) is not { } action)
             return false;
 
         if (!_actions.ValidAction(action))

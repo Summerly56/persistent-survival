@@ -46,7 +46,7 @@ public sealed class EvacShuttleTest
         Assert.That(entMan.Count<EmergencyShuttleComponent>(), Is.EqualTo(1));
         Assert.That(entMan.Count<FTLMapComponent>(), Is.EqualTo(0));
 
-        var station = (Entity<StationCentcommComponent>) entMan.AllComponentsList<StationCentcommComponent>().Single();
+        var station = (Entity<StationCentcommComponent>)entMan.AllComponentsList<StationCentcommComponent>().Single();
         var data = entMan.GetComponent<StationDataComponent>(station);
         var shuttleData = entMan.GetComponent<StationEmergencyShuttleComponent>(station);
 
@@ -106,7 +106,7 @@ public sealed class EvacShuttleTest
 
         // Shuttle should be FTLing back to centcomm
         Assert.That(entMan.Count<FTLMapComponent>(), Is.EqualTo(1));
-        var ftl = (Entity<FTLMapComponent>) entMan.AllComponentsList<FTLMapComponent>().Single();
+        var ftl = (Entity<FTLMapComponent>)entMan.AllComponentsList<FTLMapComponent>().Single();
         Assert.That(entMan.HasComponent<MapComponent>(ftl));
         Assert.That(ftl.Owner, Is.Not.EqualTo(centcommMap));
         Assert.That(ftl.Owner, Is.Not.EqualTo(salternXform.MapUid));

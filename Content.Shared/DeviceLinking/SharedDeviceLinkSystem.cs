@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
@@ -7,6 +6,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Shared.DeviceLinking;
 
@@ -37,7 +37,7 @@ public abstract class SharedDeviceLinkSystem : EntitySystem
     {
         List<EntityUid> invalidSinks = new();
         List<(string, string)> invalidLinks = new();
-        foreach (var (sink, links)  in source.Comp.LinkedPorts)
+        foreach (var (sink, links) in source.Comp.LinkedPorts)
         {
             if (!TryComp(sink, out DeviceLinkSinkComponent? sinkComponent))
             {

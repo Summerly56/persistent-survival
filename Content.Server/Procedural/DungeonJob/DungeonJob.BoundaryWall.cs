@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.PostGeneration;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -32,7 +32,7 @@ public sealed partial class DungeonJob
             if (!_anchorable.TileFree((_gridUid, _grid), neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
-            tiles.Add((neighbor, _tile.GetVariantTile((ContentTileDefinition) tileDef, random)));
+            tiles.Add((neighbor, _tile.GetVariantTile((ContentTileDefinition)tileDef, random)));
         }
 
         foreach (var index in dungeon.CorridorExteriorTiles)

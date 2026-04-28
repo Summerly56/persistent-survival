@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
 using Content.Shared.Database;
 using NUnit.Framework;
+using System;
+using System.Linq;
 
 namespace Content.Tests.Shared.Administration.Logs;
 

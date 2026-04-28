@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.GameTicking.Managers;
 using Content.Client.Lobby;
 using Content.Shared.Audio.Events;
@@ -12,6 +11,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.Audio;
 

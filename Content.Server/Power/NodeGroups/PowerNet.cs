@@ -1,12 +1,11 @@
 using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.NodeContainer;
+using Content.Shared.NodeContainer.NodeGroups;
 using JetBrains.Annotations;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.NodeContainer;
-using Content.Shared.NodeContainer.NodeGroups;
 
 namespace Content.Server.Power.NodeGroups
 {

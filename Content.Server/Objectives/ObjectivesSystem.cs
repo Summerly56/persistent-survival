@@ -1,23 +1,23 @@
 using Content.Server.GameTicking;
+using Content.Server.Objectives.Commands;
 using Content.Server.Shuttles.Systems;
+using Content.Shared.CCVar;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Objectives.Systems;
+using Content.Shared.Prototypes;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
-using System.Linq;
-using System.Text;
-using Content.Server.Objectives.Commands;
-using Content.Shared.CCVar;
-using Content.Shared.Prototypes;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Text;
 
 namespace Content.Server.Objectives;
 
@@ -209,7 +209,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 }
             }
 
-            var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
+            var successRate = totalObjectives > 0 ? (float)completedObjectives / totalObjectives : 0f;
             agentSummaries.Add((agentSummary.ToString(), successRate, completedObjectives));
         }
 

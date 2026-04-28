@@ -3,7 +3,6 @@ using Content.Shared.Chat;
 using Content.Shared.Communications;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
-using Robust.Shared.Timing;
 
 namespace Content.Client.Communications.UI
 {
@@ -26,7 +25,6 @@ namespace Content.Client.Communications.UI
             _menu.OnAnnounce += AnnounceButtonPressed;
             _menu.OnBroadcast += BroadcastButtonPressed;
             _menu.OnAlertLevel += AlertLevelSelected;
-            _menu.OnEmergencyLevel += EmergencyShuttleButtonPressed;
         }
 
         public void AlertLevelSelected(string level)

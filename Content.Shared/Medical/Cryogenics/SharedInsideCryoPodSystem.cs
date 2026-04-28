@@ -1,4 +1,4 @@
-﻿using Content.Shared.Standing;
+using Content.Shared.Standing;
 using Robust.Shared.Containers;
 
 namespace Content.Shared.Medical.Cryogenics;

@@ -3,7 +3,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.GridControl.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.GridControl.Systems;

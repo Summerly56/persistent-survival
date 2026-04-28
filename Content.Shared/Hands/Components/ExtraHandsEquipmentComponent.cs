@@ -1,5 +1,5 @@
-using Robust.Shared.GameStates;
 using Content.Shared.Hands.EntitySystems;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Hands.Components;
 

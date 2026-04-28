@@ -22,7 +22,7 @@ public sealed class DoorElectronicsBoundUserInterface : BoundUserInterface
     {
         base.Open();
         _window = this.CreateWindow<DoorElectronicsConfigurationMenu>();
-        _window.OnAccessChanged += UpdateConfiguration;
+        //_window.OnAccessChanged += UpdateConfiguration;
         _window.OnAccessToggle += AccessToggle;
         _window.PersonalAccessToggle += PersonalAccessToggle;
         _window.PersonalSaveButton.OnPressed += PersonalAccessAdd;
@@ -60,7 +60,7 @@ public sealed class DoorElectronicsBoundUserInterface : BoundUserInterface
     {
         base.UpdateState(state);
 
-        var castState = (DoorElectronicsConfigurationState) state;
+        var castState = (DoorElectronicsConfigurationState)state;
 
         _window?.UpdateState(castState);
     }
@@ -83,12 +83,12 @@ public sealed class DoorElectronicsBoundUserInterface : BoundUserInterface
         if (_window == null) return;
         Button button = (Button)args.Button;
         var name = _window.PersonalLineEdit.Text;
-        if(name != null && name != "")
+        if (name != null && name != "")
         {
             SendMessage(new DoorElectronicsPersonalAddMessage(name));
             _window.PersonalLineEdit.Text = "";
         }
-        
+
     }
     public void ChangeMode(ButtonEventArgs args)
     {

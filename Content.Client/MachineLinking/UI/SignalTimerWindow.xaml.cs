@@ -89,7 +89,7 @@ public sealed partial class SignalTimerWindow : DefaultWindow
 
         foreach (var a in toRemove)
         {
-            CurrentDelayEditMinutes.Text = text.Replace(a.ToString(),"");
+            CurrentDelayEditMinutes.Text = text.Replace(a.ToString(), "");
         }
 
         if (CurrentDelayEditMinutes.Text == "")

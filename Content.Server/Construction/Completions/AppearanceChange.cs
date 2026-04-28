@@ -1,4 +1,3 @@
-﻿using Content.Server.Construction.Components;
 using Content.Shared.Construction;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;

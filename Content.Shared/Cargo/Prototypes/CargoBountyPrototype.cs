@@ -1,9 +1,21 @@
+using Content.Shared.Atmos;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Cargo.Prototypes;
+
+[Serializable, NetSerializable]
+public enum BountyType : byte
+{
+    PayOnComplete,
+    PayPer,
+    PayPerReagent,
+    PayPerGas
+}
+
 
 /// <summary>
 /// This is a prototype for a cargo bounty, a set of items
@@ -21,14 +33,15 @@ public sealed partial class CargoBountyPrototype : IPrototype
     /// The monetary reward for completing the bounty
     /// </summary>
     [DataField(required: true)]
-    public int Reward;
-
+    public float Reward;
     [DataField]
     public int SuccessXP = 25;
 
     [DataField]
     public int FailureXP = 5;
 
+    [DataField]
+    public BountyType BountyType = BountyType.PayOnComplete;
     /// <summary>
     /// A description for flava purposes.
     /// </summary>
@@ -38,10 +51,14 @@ public sealed partial class CargoBountyPrototype : IPrototype
     /// <summary>
     /// The entries that must be satisfied for the cargo bounty to be complete.
     /// </summary>
-    [DataField(required: true)]
+    [DataField]
     public List<CargoBountyItemEntry> Entries = new();
 
+    [DataField]
+    public ProtoId<ReagentPrototype>? ReagentId;
 
+    [DataField]
+    public Gas? GasId;
 
     /// <summary>
     /// A prefix appended to the beginning of a bounty's ID.
@@ -68,8 +85,8 @@ public readonly partial record struct CargoBountyItemEntry()
     /// <summary>
     /// A whitelist for determining what items satisfy the entry.
     /// </summary>
-    [DataField(required: true)]
-    public EntityWhitelist Whitelist { get; init; } = default!;
+    [DataField]
+    public EntityWhitelist? Whitelist { get; init; } = default!;
 
     /// <summary>
     /// A blacklist that can be used to exclude items in the whitelist.

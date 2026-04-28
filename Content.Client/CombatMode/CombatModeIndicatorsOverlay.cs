@@ -1,14 +1,12 @@
-using System.Numerics;
 using Content.Client.Hands.Systems;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
-using Robust.Client.Serialization;
 using Robust.Client.UserInterface;
 using Robust.Shared.Enums;
-using Robust.Shared.Graphics;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Client.CombatMode;
 

@@ -1,8 +1,8 @@
-using System.Linq;
-using System.Numerics;
 using Content.Shared.EntityTable;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Shared.Containers;
 

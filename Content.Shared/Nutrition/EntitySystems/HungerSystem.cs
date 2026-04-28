@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Alert;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
@@ -9,6 +8,7 @@ using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -45,8 +45,8 @@ public sealed class HungerSystem : EntitySystem
     private void OnMapInit(EntityUid uid, HungerComponent component, MapInitEvent args)
     {
         var amount = _random.Next(
-            (int) component.Thresholds[HungerThreshold.Peckish] + 10,
-            (int) component.Thresholds[HungerThreshold.Okay]);
+            (int)component.Thresholds[HungerThreshold.Peckish] + 10,
+            (int)component.Thresholds[HungerThreshold.Okay]);
         SetHunger(uid, amount, component);
     }
 

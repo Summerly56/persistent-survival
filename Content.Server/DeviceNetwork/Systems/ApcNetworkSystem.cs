@@ -1,11 +1,10 @@
 using Content.Server.DeviceNetwork.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
-using JetBrains.Annotations;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.Nodes;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.NodeContainer;
+using JetBrains.Annotations;
 
 namespace Content.Server.DeviceNetwork.Systems
 {

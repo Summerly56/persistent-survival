@@ -1,4 +1,3 @@
-﻿using System.Collections.Immutable;
 using Content.Server.GameTicking.Events;
 using Content.Server.Station.Events;
 using Content.Shared.CCVar;
@@ -7,6 +6,7 @@ using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Collections.Immutable;
 
 namespace Content.Server.Players.JobWhitelist;
 

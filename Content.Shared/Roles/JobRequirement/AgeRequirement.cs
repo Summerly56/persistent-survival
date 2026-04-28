@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Preferences;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Roles;
 

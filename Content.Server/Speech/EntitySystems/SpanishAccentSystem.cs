@@ -1,6 +1,6 @@
-using System.Text;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using System.Text;
 
 namespace Content.Server.Speech.EntitySystems
 {
@@ -58,7 +58,8 @@ namespace Content.Server.Speech.EntitySystems
                 if (toInsert.Length == 0)
                 {
                     msg.Append(s);
-                } else
+                }
+                else
                 {
                     msg.Append(s.Insert(s.Length - s.TrimStart().Length, toInsert.ToString()));
                 }

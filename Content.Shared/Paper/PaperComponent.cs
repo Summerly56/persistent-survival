@@ -63,7 +63,7 @@ public sealed partial class PaperComponent : Component
     {
         public readonly int SignatureIndex = signatureIndex;
     }
-    
+
     [Serializable, NetSerializable]
     public enum PaperUiKey
     {

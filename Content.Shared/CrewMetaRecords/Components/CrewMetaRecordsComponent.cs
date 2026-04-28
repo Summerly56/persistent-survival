@@ -2,7 +2,6 @@ using Content.Shared.CrewAssignments.Prototypes;
 using Content.Shared.CrewAssignments.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.CrewMetaRecords;
 
@@ -10,7 +9,10 @@ namespace Content.Shared.CrewMetaRecords;
 [AutoGenerateComponentState]
 public sealed partial class CrewMetaRecordsComponent : Component
 {
-
+    [DataField]
+    public string SectorStatus = "";
+    [DataField]
+    public int SectorChaos = 0;
     [DataField]
     public int NextObjectiveID = 1;
     [DataField]
@@ -59,6 +61,7 @@ public sealed partial class CrewMetaRecordsComponent : Component
 
 [DataDefinition]
 [Serializable]
+[Virtual]
 public partial class CrewMetaRecord
 {
     [DataField("_name")]

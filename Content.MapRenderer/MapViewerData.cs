@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-using System.Text.Json.Serialization;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Utility;
 using SixLabors.ImageSharp.PixelFormats;
+using System.Collections.Generic;
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace Content.MapRenderer;
 

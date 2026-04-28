@@ -1,5 +1,4 @@
 using Content.Shared.Database;
-using Content.Shared.Materials;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using JetBrains.Annotations;
@@ -119,7 +118,7 @@ public sealed partial class ResearchSystem
             if (generic.PurchaseEvent != null)
                 RaiseLocalEvent(generic.PurchaseEvent);
         }
-        if(!component.UnlockedTechnologies.Contains(technology.ID))
+        if (!component.UnlockedTechnologies.Contains(technology.ID))
             component.UnlockedTechnologies.Add(technology.ID);
         var addedRecipes = new List<string>();
         foreach (var unlock in technology.RecipeUnlocks)
@@ -173,7 +172,7 @@ public sealed partial class ResearchSystem
         if (args.Server != null)
             return;
         component.MainDiscipline = null;
-        component.CurrentTechnologyCards = new List<ProtoId < TechnologyPrototype >> ();
+        component.CurrentTechnologyCards = new List<ProtoId<TechnologyPrototype>>();
         component.SupportedDisciplines = new List<ProtoId<TechDisciplinePrototype>>();
         component.UnlockedTechnologies = new List<ProtoId<TechnologyPrototype>>();
         component.UnlockedRecipes = new Dictionary<ProtoId<LatheRecipePrototype>, int>();

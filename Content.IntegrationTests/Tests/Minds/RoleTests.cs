@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared.Roles.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Reflection;
@@ -31,7 +31,7 @@ public sealed class RoleTests
 
                 // It is possible that this is meant to be supported? Though I would assume that it would be for
                 // admin / prototype uploads, and that pre-defined roles should still check this.
-                Assert.That(!comp.Antag || comp.AntagPrototype != null , $"Role {proto.ID} is an antag, despite not having a antag prototype.");
+                Assert.That(!comp.Antag || comp.AntagPrototype != null, $"Role {proto.ID} is an antag, despite not having a antag prototype.");
             }
         });
 

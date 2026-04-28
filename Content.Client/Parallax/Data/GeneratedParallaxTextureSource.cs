@@ -1,9 +1,9 @@
-using System.Threading;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Content.Client.Parallax.Managers;
+using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Shared.Utility;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Client.Parallax.Data;
 

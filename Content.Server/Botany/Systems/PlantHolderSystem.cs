@@ -3,17 +3,21 @@ using Content.Server.Botany.Components;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Shared.Administration.Logs;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Botany;
 using Content.Shared.Burial.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Database;
+using Content.Shared.EntityEffects;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
-using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Kitchen.Components;
+using Content.Shared.Labels.Components;
 using Content.Shared.Popups;
 using Content.Shared.Random;
 using Content.Shared.Tag;
@@ -23,12 +27,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Chemistry.Reaction;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Database;
-using Content.Shared.EntityEffects;
-using Content.Shared.Kitchen.Components;
-using Content.Shared.Labels.Components;
 
 namespace Content.Server.Botany.Systems;
 
@@ -303,6 +301,7 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 healthOverride = component.Health;
             }
+            component.Seed.Unique = false;
             var packetSeed = component.Seed;
             var seed = _botany.SpawnSeedPacket(packetSeed, Transform(args.User).Coordinates, args.User, healthOverride);
             _randomHelper.RandomOffset(seed, 0.25f);
@@ -647,8 +646,8 @@ public sealed class PlantHolderSystem : EntitySystem
 
         CheckHealth(uid, component);
 
-        if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
-            AutoHarvest(uid, component);
+        //if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
+        //    AutoHarvest(uid, component);
 
         // If enough time has passed since the plant was harvested, we're ready to harvest again!
         if (!component.Dead && component.Seed.ProductPrototypes.Count > 0)

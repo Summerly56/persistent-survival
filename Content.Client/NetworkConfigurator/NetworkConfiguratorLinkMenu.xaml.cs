@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceNetwork;
@@ -9,6 +7,8 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.NetworkConfigurator;
 

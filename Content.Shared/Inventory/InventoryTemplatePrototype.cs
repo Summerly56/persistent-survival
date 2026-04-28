@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Strip;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using System.Numerics;
 
 namespace Content.Shared.Inventory;
 

@@ -1,17 +1,17 @@
-﻿using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Shared.Materials;
-using Content.Shared.Popups;
-using Content.Shared.Stacks;
 using Content.Server.Power.Components;
 using Content.Server.Stack;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Database;
+using Content.Shared.Materials;
+using Content.Shared.Popups;
+using Content.Shared.Stacks;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Materials;
 
@@ -106,7 +106,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             return false;
         if (TryComp<ApcPowerReceiverComponent>(receiver, out var power) && !power.Powered)
             return false;
-        
+
         if (TryComp<StackComponent>(toInsert, out var stackComponent)
             && storage.StorageLimit != null
             && composition.MaterialComposition.Count > 0)

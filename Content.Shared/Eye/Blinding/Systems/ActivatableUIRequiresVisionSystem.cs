@@ -1,6 +1,6 @@
-using Content.Shared.UserInterface;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Popups;
+using Content.Shared.UserInterface;
 using Robust.Shared.Collections;
 
 namespace Content.Shared.Eye.Blinding.Systems;

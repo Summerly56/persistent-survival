@@ -1,8 +1,9 @@
-using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Shared.Administration.Notes;
 using Content.Shared.Database;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
+using System.Threading.Tasks;
 
 namespace Content.Server.Administration.Notes;
 
@@ -16,7 +17,7 @@ public interface IAdminNotesManager
     bool CanDelete(ICommonSession admin);
     bool CanEdit(ICommonSession admin);
     bool CanView(ICommonSession admin);
-    Task OpenEui(ICommonSession admin, Guid notedPlayer);
+    Task OpenEui(ICommonSession admin, NetUserId notedPlayer);
     Task OpenUserNotesEui(ICommonSession player);
     Task AddAdminRemark(ICommonSession createdBy, Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime);
     Task DeleteAdminRemark(int noteId, NoteType type, ICommonSession deletedBy);

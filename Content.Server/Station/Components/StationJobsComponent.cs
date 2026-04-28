@@ -1,11 +1,8 @@
-﻿using System.Linq;
 using Content.Server.Station.Systems;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Station.Components;
 
@@ -48,7 +45,7 @@ public sealed partial class StationJobsComponent : Component
     /// Null if MidRoundTotalJobs is zero. This is a NaN free API.
     /// </remarks>
     [ViewVariables]
-    public float? PercentJobsRemaining => MidRoundTotalJobs > 0 ? TotalJobs / (float) MidRoundTotalJobs : null;
+    public float? PercentJobsRemaining => MidRoundTotalJobs > 0 ? TotalJobs / (float)MidRoundTotalJobs : null;
 
     /// <summary>
     /// The current list of jobs of available jobs. Null implies that is no limit.

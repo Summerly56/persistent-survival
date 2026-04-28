@@ -1,4 +1,4 @@
-﻿using Content.Shared.Chat;
+using Content.Shared.Chat;
 using Content.Shared.Input;
 using Robust.Client.UserInterface.Controls;
 
@@ -54,22 +54,22 @@ public class ChatInputBox : PanelContainer
 
     private void UpdateActiveChannel(ChatSelectChannel selectedChannel)
     {
-        ActiveChannel = (ChatChannel) selectedChannel;
+        ActiveChannel = (ChatChannel)selectedChannel;
     }
 
     private static string GetChatboxInfoPlaceholder()
     {
         return (BoundKeyHelper.IsBound(ContentKeyFunctions.FocusChat),
                 BoundKeyHelper.IsBound(ContentKeyFunctions.CycleChatChannelForward)) switch
-            {
-                (true, true) => Loc.GetString("hud-chatbox-info",
-                    ("talk-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.FocusChat)),
-                    ("cycle-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.CycleChatChannelForward))),
-                (true, false) => Loc.GetString("hud-chatbox-info-talk",
-                    ("talk-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.FocusChat))),
-                (false, true) => Loc.GetString("hud-chatbox-info-cycle",
-                    ("cycle-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.CycleChatChannelForward))),
-                (false, false) => Loc.GetString("hud-chatbox-info-unbound")
-            };
+        {
+            (true, true) => Loc.GetString("hud-chatbox-info",
+                ("talk-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.FocusChat)),
+                ("cycle-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.CycleChatChannelForward))),
+            (true, false) => Loc.GetString("hud-chatbox-info-talk",
+                ("talk-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.FocusChat))),
+            (false, true) => Loc.GetString("hud-chatbox-info-cycle",
+                ("cycle-key", BoundKeyHelper.ShortKeyName(ContentKeyFunctions.CycleChatChannelForward))),
+            (false, false) => Loc.GetString("hud-chatbox-info-unbound")
+        };
     }
 }

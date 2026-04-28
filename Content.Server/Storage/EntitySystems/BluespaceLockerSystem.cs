@@ -1,6 +1,6 @@
-using System.Linq;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Resist;
+using Content.Server.Shuttles.Components;
 using Content.Server.Storage.Components;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
@@ -13,11 +13,10 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Prototypes;
-using Content.Server.Shuttles.Components;
-using Robust.Shared.Physics;
+using System.Linq;
 
 namespace Content.Server.Storage.EntitySystems;
 
@@ -62,7 +61,7 @@ public sealed class BluespaceLockerSystem : EntitySystem
                 if (curTimeTicks < effectTargetComponent.BluespaceEffectNextTime)
                     return;
 
-                effectTargetComponent.BluespaceEffectNextTime = curTimeTicks + (uint) (_timing.TickRate * effectTargetComponent.BehaviorProperties.BluespaceEffectMinInterval);
+                effectTargetComponent.BluespaceEffectNextTime = curTimeTicks + (uint)(_timing.TickRate * effectTargetComponent.BehaviorProperties.BluespaceEffectMinInterval);
             }
 
         Spawn(effectSourceComponent.BehaviorProperties.BluespaceEffectPrototype, effectTargetUid.ToCoordinates());
@@ -235,7 +234,7 @@ public sealed class BluespaceLockerSystem : EntitySystem
                                 targetBluespaceComponent.BluespaceLinks.Add(lockerUid);
 
                             if (component.AutoLinksUseProperties)
-                                targetBluespaceComponent.BehaviorProperties = component.AutoLinkProperties with {};
+                                targetBluespaceComponent.BehaviorProperties = component.AutoLinkProperties with { };
 
                             GetTarget(potentialLink, targetBluespaceComponent, true);
                             BluespaceEffect(potentialLink, targetBluespaceComponent, targetBluespaceComponent, true);

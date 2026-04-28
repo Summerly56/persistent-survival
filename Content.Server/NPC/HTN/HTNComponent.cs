@@ -1,5 +1,5 @@
-using System.Threading;
 using Content.Server.NPC.Components;
+using System.Threading;
 
 namespace Content.Server.NPC.HTN;
 

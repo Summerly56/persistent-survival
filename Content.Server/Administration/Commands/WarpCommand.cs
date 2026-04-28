@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Shared.Administration;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
@@ -9,6 +7,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Administration.Commands
 {

@@ -1,8 +1,8 @@
-using System.Linq;
-using Content.Shared.Roles;
 using Content.Server.Storage.EntitySystems;
-using Robust.Shared.GameObjects;
+using Content.Shared.Roles;
 using Robust.Shared.Collections;
+using Robust.Shared.GameObjects;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Roles;
 

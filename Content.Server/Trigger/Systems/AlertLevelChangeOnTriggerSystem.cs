@@ -1,7 +1,7 @@
 using Content.Server.AlertLevel;
+using Content.Server.Station.Systems;
 using Content.Shared.Trigger;
 using Content.Shared.Trigger.Components.Effects;
-using Content.Server.Station.Systems;
 
 namespace Content.Server.Trigger.Systems;
 

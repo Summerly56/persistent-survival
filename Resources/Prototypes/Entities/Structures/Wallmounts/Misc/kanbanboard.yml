@@ -1,0 +1,40 @@
+﻿- type: entity
+  parent: BaseWallmount
+  id: KanbanBoard
+  name: kanban board
+  description: Used for project management and organization. It has a lot of sticky notes on it.
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Structures/Wallmounts/kanbanboard.rsi
+    layers:
+      - state: kanbanboard
+      - state: kanban-0
+      - map: ["enum.StorageFillLayers.Fill"]
+  - type: StorageFillVisualizer
+    maxFillLevels: 8
+    fillBaseName: kanban
+  - type: Storage
+    grid:
+    - 0,0,1,2
+    - 3,0,4,2
+    - 6,0,7,2
+    maxItemSize: Small
+    whitelist:
+      tags:
+        - Folder
+        - Document
+        - Write
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Construction
+    graph: KanbanBoard
+    node: kanbanBoard

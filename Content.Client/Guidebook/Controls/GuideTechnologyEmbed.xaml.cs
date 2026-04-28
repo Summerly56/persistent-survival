@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Client.Guidebook.Richtext;
 using Content.Client.Message;
 using Content.Client.Research;
@@ -12,6 +11,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client.Guidebook.Controls;
 

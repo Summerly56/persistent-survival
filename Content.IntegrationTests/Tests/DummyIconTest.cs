@@ -1,8 +1,8 @@
 #nullable enable
-using System.Linq;
 using Robust.Client.GameObjects;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests
 {

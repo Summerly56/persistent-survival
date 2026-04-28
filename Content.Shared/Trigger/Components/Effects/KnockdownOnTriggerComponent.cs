@@ -13,7 +13,7 @@ public sealed partial class KnockdownOnTriggerComponent : BaseXOnTriggerComponen
     /// How long the target is forced to be on the ground.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan KnockdownAmount =  TimeSpan.FromSeconds(1);
+    public TimeSpan KnockdownAmount = TimeSpan.FromSeconds(1);
 
     /// <summary>
     /// If true, refresh the duration.

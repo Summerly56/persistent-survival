@@ -1,6 +1,3 @@
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Server.Construction.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
@@ -19,6 +16,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Construction
 {
@@ -66,7 +66,7 @@ namespace Content.Server.Construction
             {
                 while (containerSlotEnumerator.MoveNext(out var containerSlot))
                 {
-                    if(!containerSlot.ContainedEntity.HasValue)
+                    if (!containerSlot.ContainedEntity.HasValue)
                         continue;
 
                     if (TryComp(containerSlot.ContainedEntity.Value, out StorageComponent? storage))
@@ -317,7 +317,7 @@ namespace Content.Server.Construction
 
         private async void HandleStartItemConstruction(TryStartItemConstructionMessage ev, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is {Valid: true} user)
+            if (args.SenderSession.AttachedEntity is { Valid: true } user)
                 await TryStartItemConstruction(ev.PrototypeName, user);
         }
 
@@ -417,7 +417,7 @@ namespace Content.Server.Construction
                 return;
             }
 
-            if (args.SenderSession.AttachedEntity is not {Valid: true} user)
+            if (args.SenderSession.AttachedEntity is not { Valid: true } user)
             {
                 Log.Error($"Client sent {nameof(TryStartStructureConstructionMessage)} with no attached entity!");
                 return;
@@ -450,7 +450,7 @@ namespace Content.Server.Construction
             }
             else
             {
-                var newSet = new HashSet<int> {ev.Ack};
+                var newSet = new HashSet<int> { ev.Ack };
                 _beingBuilt[args.SenderSession] = newSet;
             }
 
@@ -491,12 +491,12 @@ namespace Content.Server.Construction
 
             var edge = startNode.GetEdge(pathFind[0].Name);
 
-            if(edge == null)
+            if (edge == null)
                 throw new InvalidDataException($"Can't find edge from starting node to the next node in pathfinding! Recipe: {ev.PrototypeName}");
 
             var valid = false;
 
-            if (_handsSystem.GetActiveItem((user, hands)) is not {Valid: true} holding)
+            if (_handsSystem.GetActiveItem((user, hands)) is not { Valid: true } holding)
             {
                 Cleanup();
                 return;
@@ -532,7 +532,7 @@ namespace Content.Server.Construction
                     edge,
                     targetNode,
                     GetCoordinates(ev.Location),
-                    constructionPrototype.CanRotate ? ev.Angle : Angle.Zero) is not {Valid: true} structure)
+                    constructionPrototype.CanRotate ? ev.Angle : Angle.Zero) is not { Valid: true } structure)
             {
                 Cleanup();
                 return;

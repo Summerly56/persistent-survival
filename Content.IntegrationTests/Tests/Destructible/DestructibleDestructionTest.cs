@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Destructible.Thresholds.Behaviors;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -6,6 +5,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Linq;
 using static Content.IntegrationTests.Tests.Destructible.DestructibleTestPrototypes;
 
 namespace Content.IntegrationTests.Tests.Destructible

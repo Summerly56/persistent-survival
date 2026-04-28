@@ -1,9 +1,9 @@
-﻿using System.Globalization;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Content.PatreonParser;
 using CsvHelper;
 using CsvHelper.Configuration;
+using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using static System.Environment;
 
 var repository = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent!.Parent!.Parent!.Parent!;

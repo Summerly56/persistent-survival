@@ -1,4 +1,3 @@
-using Content.Shared.Cargo.Prototypes;
 using Content.Shared.CrewAccesses.Components;
 using Content.Shared.CrewAssignments.Components;
 using Content.Shared.CrewAssignments.Prototypes;

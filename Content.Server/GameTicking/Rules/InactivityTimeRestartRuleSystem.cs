@@ -1,9 +1,9 @@
-using System.Threading;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.GameTicking.Components;
 using Robust.Server.Player;
 using Robust.Shared.Player;
+using System.Threading;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.GameTicking.Rules;
@@ -59,7 +59,7 @@ public sealed class InactivityTimeRestartRuleSystem : GameRuleSystem<InactivityR
 
         GameTicker.EndRound(Loc.GetString("rule-time-has-run-out"));
 
-        _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-restarting-in-seconds", ("seconds",(int) component.RoundEndDelay.TotalSeconds)));
+        _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-restarting-in-seconds", ("seconds", (int)component.RoundEndDelay.TotalSeconds)));
 
         Timer.Spawn(component.RoundEndDelay, () => GameTicker.RestartRound());
     }

@@ -1,8 +1,9 @@
+using Content.Shared.Access.Components;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
-using Content.Shared.Access.Components;
 
 namespace Content.Shared.Access.Systems;
+
 public sealed class ActivatableUIRequiresAccessSystem : EntitySystem
 {
     [Dependency] private readonly AccessReaderSystem _access = default!;

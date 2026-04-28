@@ -1,4 +1,3 @@
-﻿using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -9,6 +8,7 @@ using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using System.Threading.Tasks;
 
 namespace Content.Benchmarks;
 

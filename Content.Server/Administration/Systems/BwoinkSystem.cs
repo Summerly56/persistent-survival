@@ -1,10 +1,3 @@
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -25,6 +18,13 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Content.Server.Administration.Systems
 {
@@ -110,7 +110,7 @@ namespace Content.Server.Administration.Systems
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
 
-        	_rateLimit.Register(
+            _rateLimit.Register(
                 RateLimitKey,
                 new RateLimitRegistration(CCVars.AhelpRateLimitPeriod,
                     CCVars.AhelpRateLimitCount,
@@ -172,7 +172,7 @@ namespace Content.Server.Administration.Systems
                 }
 
                 // Check if the user has been banned
-                var ban = await _dbManager.GetServerBanAsync(null, e.Session.UserId, null, null);
+                var ban = await _dbManager.GetBanAsync(null, e.Session.UserId, null, null);
                 if (ban != null)
                 {
                     var banMessage = Loc.GetString("bwoink-system-player-banned", ("banReason", ban.Reason));

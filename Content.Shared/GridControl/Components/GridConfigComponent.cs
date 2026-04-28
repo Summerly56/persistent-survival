@@ -51,7 +51,7 @@ public sealed partial class GridConfigComponent : Component
         public string? ErrorMessage = null;
         public GridConfigBoundUserInterfaceState(
             bool idpresent, bool isowner, bool isauth, bool personalmode, bool isControlled,
-            Dictionary<int,string>? possiblestations, string? targetname,
+            Dictionary<int, string>? possiblestations, string? targetname,
             string? ownername, string? gridname, string? idname, int? targetStation,
             int gridTileCount, int currentTileCount, int maxPersonalClaimTileCount, string? errorMessage
         )

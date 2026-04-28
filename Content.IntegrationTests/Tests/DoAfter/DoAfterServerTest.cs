@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Robust.Shared.GameObjects;
@@ -7,6 +6,7 @@ using Robust.Shared.Reflection;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.DoAfter
 {

@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
+using System.Linq;
 
 namespace Content.Server.Worldgen.Systems.Biomes;
 
@@ -14,7 +14,6 @@ public sealed class BiomeSelectionSystem : BaseWorldSystem
     [Dependency] private readonly NoiseIndexSystem _noiseIdx = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ISerializationManager _ser = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     /// <inheritdoc />
     public override void Initialize()

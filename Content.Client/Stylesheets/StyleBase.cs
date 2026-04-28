@@ -30,7 +30,7 @@ namespace Content.Client.Stylesheets
         {
             var notoSans12 = resCache.GetFont
             (
-                new []
+                new[]
                 {
                     "/Fonts/NotoSans/NotoSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
@@ -40,7 +40,7 @@ namespace Content.Client.Stylesheets
             );
             var notoSans12Italic = resCache.GetFont
             (
-                new []
+                new[]
                 {
                     "/Fonts/NotoSans/NotoSans-Italic.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",

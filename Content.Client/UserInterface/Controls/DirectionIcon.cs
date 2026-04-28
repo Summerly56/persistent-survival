@@ -1,6 +1,6 @@
-using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
+using System.Numerics;
 using Direction = Robust.Shared.Maths.Direction;
 
 namespace Content.Client.UserInterface.Controls;

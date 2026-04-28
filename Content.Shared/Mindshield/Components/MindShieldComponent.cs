@@ -1,6 +1,6 @@
 using Content.Shared.Revolutionary;
-using Robust.Shared.GameStates;
 using Content.Shared.StatusIcon;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Mindshield.Components;

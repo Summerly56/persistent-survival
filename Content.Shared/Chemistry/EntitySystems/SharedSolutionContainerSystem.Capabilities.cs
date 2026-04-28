@@ -1,7 +1,7 @@
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Kitchen.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.FixedPoint;
+using Content.Shared.Kitchen.Components;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
@@ -41,7 +41,7 @@ public abstract partial class SharedSolutionContainerSystem
             return false;
         }
 
-        return TryGetSolution((entity.Owner, entity.Comp2), entity.Comp1.GrindableSolution, out soln, out solution);
+        return TryGetSolution((entity.Owner, entity.Comp2), entity.Comp1.GrindableSolutionName, out soln, out solution);
     }
 
     public bool TryGetDumpableSolution(Entity<DumpableSolutionComponent?, SolutionContainerManagerComponent?> entity, [NotNullWhen(true)] out Entity<SolutionComponent>? soln, [NotNullWhen(true)] out Solution? solution)

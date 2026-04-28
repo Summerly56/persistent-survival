@@ -1,11 +1,11 @@
-using Content.Server.Atmos.EntitySystems;
 using Content.Server.Anomaly.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Atmos;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using System.Linq;
 using System.Numerics;
-using Robust.Shared.Map.Components;
 
 namespace Content.Server.Anomaly.Effects;
 

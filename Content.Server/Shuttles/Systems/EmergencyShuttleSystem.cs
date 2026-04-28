@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Numerics;
-using System.Threading;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -37,6 +34,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Numerics;
+using System.Threading;
 
 namespace Content.Server.Shuttles.Systems;
 

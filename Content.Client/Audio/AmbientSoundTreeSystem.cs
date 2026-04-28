@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Audio;
 using Robust.Shared.ComponentTrees;
 using Robust.Shared.Physics;
+using System.Numerics;
 
 namespace Content.Client.Audio;
 

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.GameTicking;
 using Content.Shared.Administration;
@@ -9,6 +8,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Mapping
 {
@@ -101,7 +101,7 @@ namespace Content.Server.Mapping
                 {
                     var path = new ResPath(args[1]);
                     toLoad = path.FilenameWithoutExtension;
-                    var opts = new DeserializationOptions {StoreYamlUids = true};
+                    var opts = new DeserializationOptions { StoreYamlUids = true };
 
                     if (isGrid == true)
                     {

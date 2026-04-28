@@ -1,12 +1,12 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Server.Chat.Systems;
 using Content.Server.Fax;
-using Content.Shared.Fax.Components;
 using Content.Server.Station.Systems;
+using Content.Shared.Fax.Components;
 using Content.Shared.Paper;
 using Content.Shared.Station.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Nuke
 {
@@ -22,7 +22,7 @@ namespace Content.Server.Nuke
         {
             base.Initialize();
             SubscribeLocalEvent<NukeCodePaperComponent, MapInitEvent>(OnMapInit,
-                after: new []{ typeof(NukeLabelSystem) });
+                after: new[] { typeof(NukeLabelSystem) });
         }
 
         private void OnMapInit(EntityUid uid, NukeCodePaperComponent component, MapInitEvent args)
@@ -129,7 +129,7 @@ namespace Content.Server.Nuke
             }
 
             if (!codesMessage.IsEmpty)
-                nukeCode = Loc.GetString("nuke-codes-message")+codesMessage;
+                nukeCode = Loc.GetString("nuke-codes-message") + codesMessage;
             return !codesMessage.IsEmpty;
         }
     }

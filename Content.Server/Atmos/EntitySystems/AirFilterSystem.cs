@@ -1,7 +1,6 @@
 using Content.Server.Atmos.Components;
-using Content.Server.Atmos.Piping.Components;
 using Content.Shared.Atmos;
-using Robust.Shared.Map;
+using Content.Shared.Atmos.Components;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -64,7 +63,7 @@ public sealed class AirFilterSystem : EntitySystem
         var gases = oxygen >= filter.TargetOxygen ? filter.Gases : filter.OverflowGases;
 
         GasMixture? destination = null;
-        if (args.Grid is {} grid)
+        if (args.Grid is { } grid)
         {
             var position = _transform.GetGridTilePositionOrDefault(uid);
             destination = _atmosphere.GetTileMixture(grid, args.Map, position, true);

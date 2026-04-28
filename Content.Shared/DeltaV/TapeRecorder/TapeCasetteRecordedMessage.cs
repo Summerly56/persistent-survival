@@ -46,6 +46,6 @@ public sealed partial class TapeCassetteRecordedMessage : IComparable<TapeCasset
         if (other == null)
             return 0;
 
-        return (int) (Timestamp - other.Timestamp);
+        return (int)(Timestamp - other.Timestamp);
     }
 }

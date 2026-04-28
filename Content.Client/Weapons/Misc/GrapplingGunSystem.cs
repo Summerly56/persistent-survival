@@ -1,4 +1,3 @@
-using System.Net;
 using Content.Client.Hands.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Weapons.Misc;
@@ -6,8 +5,6 @@ using Content.Shared.Weapons.Ranged.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Input;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Dynamics.Joints;
 
 namespace Content.Client.Weapons.Misc;
 
@@ -30,16 +27,6 @@ public sealed class GrapplingGunSystem : SharedGrapplingGunSystem
         var handUid = _hands.GetActiveHandEntity();
 
         if (!TryComp<GrapplingGunComponent>(handUid, out var grappling))
-            return;
-
-        if (!TryComp<JointComponent>(handUid, out var jointComp) ||
-            !jointComp.GetJoints.TryGetValue(GrapplingJoint, out var joint) ||
-            joint is not DistanceJoint distance)
-        {
-            return;
-        }
-
-        if (distance.MaxLength <= distance.MinLength)
             return;
 
         var reelKey = _input.CmdStates.GetState(EngineKeyFunctions.UseSecondary) == BoundKeyState.Down;

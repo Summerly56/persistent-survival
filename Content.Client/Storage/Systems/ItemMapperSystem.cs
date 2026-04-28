@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.Storage.Systems;
 

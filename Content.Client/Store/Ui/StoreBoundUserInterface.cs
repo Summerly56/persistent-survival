@@ -1,9 +1,9 @@
 using Content.Shared.Store;
-using JetBrains.Annotations;
-using System.Linq;
 using Content.Shared.Store.Components;
+using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Client.Store.Ui;
 

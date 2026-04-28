@@ -248,6 +248,7 @@
     materialComposition:
       Glass: 500
       Steel: 200
+
 - type: entity
   name: broken floodlight
   id: FloodlightBroken
@@ -301,3 +302,13 @@
     materialComposition:
       Glass: 500
       Steel: 200
+
+- type: entity
+  parent: Floodlight
+  id: EmptyFloodlight
+  suffix: Empty
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default

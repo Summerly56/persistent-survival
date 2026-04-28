@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Examine;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -8,6 +7,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using System.Numerics;
 
 namespace Content.Client.Popups;
 

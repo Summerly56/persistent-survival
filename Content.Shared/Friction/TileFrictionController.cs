@@ -1,8 +1,6 @@
-using System.Numerics;
 using Content.Shared.CCVar;
 using Content.Shared.Gravity;
 using Content.Shared.Interaction.Components;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Components;
@@ -14,9 +12,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Controllers;
-using Robust.Shared.Physics.Dynamics;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Shared.Friction
 {

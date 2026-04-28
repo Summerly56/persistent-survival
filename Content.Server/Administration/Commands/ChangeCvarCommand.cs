@@ -1,10 +1,10 @@
-﻿using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using System.Linq;
 
 namespace Content.Server.Administration.Commands;
 
@@ -131,41 +131,41 @@ public sealed class ChangeCvarCommand : IConsoleCommand
                     switch (parsed) // This looks bad, and im not sorry.
                     {
                         case int intVal:
-                        {
-                            if (intVal < (int)control.Min || intVal > (int)control.Max)
                             {
-                                allowed = false;
-                            }
+                                if (intVal < (int)control.Min || intVal > (int)control.Max)
+                                {
+                                    allowed = false;
+                                }
 
-                            break;
-                        }
+                                break;
+                            }
                         case float floatVal:
-                        {
-                            if (floatVal < (float)control.Min || floatVal > (float)control.Max)
                             {
-                                allowed = false;
-                            }
+                                if (floatVal < (float)control.Min || floatVal > (float)control.Max)
+                                {
+                                    allowed = false;
+                                }
 
-                            break;
-                        }
+                                break;
+                            }
                         case long longVal:
-                        {
-                            if (longVal < (long)control.Min || longVal > (long)control.Max)
                             {
-                                allowed = false;
-                            }
+                                if (longVal < (long)control.Min || longVal > (long)control.Max)
+                                {
+                                    allowed = false;
+                                }
 
-                            break;
-                        }
+                                break;
+                            }
                         case ushort ushortVal:
-                        {
-                            if (ushortVal < (ushort)control.Min || ushortVal > (ushort)control.Max)
                             {
-                                allowed = false;
-                            }
+                                if (ushortVal < (ushort)control.Min || ushortVal > (ushort)control.Max)
+                                {
+                                    allowed = false;
+                                }
 
-                            break;
-                        }
+                                break;
+                            }
                     }
                 }
 

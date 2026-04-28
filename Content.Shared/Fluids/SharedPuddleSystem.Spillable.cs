@@ -2,7 +2,6 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Prototypes;
-using Content.Shared.Chemistry.Reaction;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -80,7 +79,7 @@ public abstract partial class SharedPuddleSystem
                 // Injectors should not be hardcoded here.
                 if (TryComp<InjectorComponent>(entity, out var injectorComp)
                     && _prototypeManager.Resolve(injectorComp.ActiveModeProtoId, out var activeMode)
-                    && !activeMode.Behavior.HasFlag(InjectorBehavior.Draw))
+                    && !activeMode.Behavior.HasAnyFlag(InjectorBehavior.Draw | InjectorBehavior.Dynamic))
                 {
                     foreach (var mode in injectorComp.AllowedModes)
                     {

@@ -1,5 +1,5 @@
-using Content.Shared.Trigger.Components.Effects;
 using Content.Shared.RepulseAttract;
+using Content.Shared.Trigger.Components.Effects;
 
 namespace Content.Shared.Trigger.Systems;
 

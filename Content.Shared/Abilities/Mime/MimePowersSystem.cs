@@ -1,4 +1,3 @@
-using Content.Shared.Popups;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Alert;
@@ -7,6 +6,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Maps;
 using Content.Shared.Paper;
 using Content.Shared.Physics;
+using Content.Shared.Popups;
 using Content.Shared.Speech.Muting;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;

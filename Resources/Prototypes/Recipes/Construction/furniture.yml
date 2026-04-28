@@ -555,6 +555,18 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: PsychBed
+  graph: bed
+  startNode: start
+  targetNode: psychbed
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: DogBed
   graph: bed
   startNode: start
@@ -736,6 +748,19 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: KanbanBoard
+  graph: KanbanBoard
+  startNode: start
+  targetNode: kanbanBoard
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+  conditions:
+    - !type:WallmountCondition
 
 - type: construction
   id: NoticeBoard

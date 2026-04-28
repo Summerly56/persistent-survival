@@ -1,17 +1,10 @@
-using Content.Server.Doors.Electronics;
-using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CrewAccesses.Components;
-using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.Doors;
 using Content.Shared.Doors.Electronics;
-using Content.Shared.Interaction;
 using Content.Shared.Station;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
-using System.Linq;
 
 namespace Content.Server.Doors.Electronics;
 
@@ -37,7 +30,7 @@ public sealed class DoorElectronicsSystem : EntitySystem
         var accesses = new List<string>();
         List<string>? possibleAccesses = null;
         var station = _station.GetOwningStation(uid);
-        
+
         string stationName = "*None*";
         if (station != null)
         {

@@ -1,6 +1,5 @@
-using System.Linq;
-using System.Numerics;
 using Content.Server.Administration;
+using Content.Server.Antag;
 using Content.Server.Chat.Managers;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
@@ -36,6 +35,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -61,6 +62,7 @@ public sealed class ArrivalsSystem : EntitySystem
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
 
     private EntityQuery<PendingClockInComponent> _pendingQuery;
     private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
@@ -92,7 +94,7 @@ public sealed class ArrivalsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PlayerSpawningEvent>(HandlePlayerSpawning, before: new []{ typeof(SpawnPointSystem)}, after: new [] { typeof(ContainerSpawnPointSystem)});
+        SubscribeLocalEvent<PlayerSpawningEvent>(HandlePlayerSpawning, before: new[] { typeof(SpawnPointSystem) }, after: new[] { typeof(ContainerSpawnPointSystem) });
 
         SubscribeLocalEvent<StationArrivalsComponent, StationPostInitEvent>(OnStationPostInit);
 
@@ -273,6 +275,9 @@ public sealed class ArrivalsSystem : EntitySystem
 
             if (ArrivalsGodmode)
                 RemCompDeferred<GodmodeComponent>(pUid);
+
+            if (_actor.TryGetSession(pUid, out var session) && session is not null)
+                _antag.TryMakeLateJoinAntag(session);
         }
     }
 
@@ -441,6 +446,26 @@ public sealed class ArrivalsSystem : EntitySystem
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Check if an entity is on the arrivals grid.
+    /// </summary>
+    /// <param name="entity">Entity to check.</param>
+    /// <returns>True if the entity is on the arrivals grid. Returns false if not on arrivals, or there is no arrivals grid.</returns>
+    public bool IsOnArrivals(Entity<TransformComponent?> entity)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return false;
+
+        if (!TryGetArrivals(out var arrivals))
+            return false;
+
+        var arrivalsGridUid = Transform(arrivals).GridUid;
+        if (!arrivalsGridUid.HasValue)
+            return false;
+
+        return entity.Comp.GridUid == Transform(arrivals).GridUid;
     }
 
     public TimeSpan? NextShuttleArrival()

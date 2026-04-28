@@ -1,4 +1,4 @@
-﻿using Content.Client.Atmos.EntitySystems;
+using Content.Client.Atmos.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping.Trinary.Components;
 using Content.Shared.Localizations;
@@ -37,10 +37,9 @@ namespace Content.Client.Atmos.UI
             _window.SelectGasPressed += OnSelectGasPressed;
         }
 
-        private void OnToggleStatusButtonPressed()
+        private void OnToggleStatusButtonPressed(bool status)
         {
-            if (_window is null) return;
-            SendMessage(new GasFilterToggleStatusMessage(_window.FilterStatus));
+            SendMessage(new GasFilterToggleStatusMessage(status));
         }
 
         private void OnFilterTransferRatePressed(string value)
@@ -84,7 +83,7 @@ namespace Content.Client.Atmos.UI
             if (cast.FilteredGas is not null)
             {
                 var atmos = EntMan.System<AtmosphereSystem>();
-                var gas = atmos.GetGas((Gas) cast.FilteredGas);
+                var gas = atmos.GetGas((Gas)cast.FilteredGas);
                 var gasName = Loc.GetString(gas.Name);
                 _window.SetGasFiltered(gas.ID, gasName);
             }

@@ -1,5 +1,5 @@
-using Content.Shared.StepTrigger.Systems;
 using Content.Shared.EntityEffects;
+using Content.Shared.StepTrigger.Systems;
 
 namespace Content.Server.Tiles;
 

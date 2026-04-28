@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
 using Content.Shared.Database;
+using System.Runtime.CompilerServices;
 
 namespace Content.Shared.Administration.Logs;
 

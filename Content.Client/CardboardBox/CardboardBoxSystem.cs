@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Shared.CardboardBox;
 using Content.Shared.CardboardBox.Components;
 using Content.Shared.Examine;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Robust.Client.GameObjects;
+using System.Numerics;
 
 namespace Content.Client.CardboardBox;
 

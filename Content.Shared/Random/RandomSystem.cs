@@ -16,7 +16,7 @@ public sealed class RandomSystem : EntitySystem
         // - Remove the cost from budget
         // - If our remaining budget is under maxCost then start pruning unavailable entries.
         random.Shuffle(entries);
-        var budgetEntry = (IBudgetEntry) GetProbEntry(entries, probSum, random);
+        var budgetEntry = (IBudgetEntry)GetProbEntry(entries, probSum, random);
 
         budget -= budgetEntry.Cost;
 

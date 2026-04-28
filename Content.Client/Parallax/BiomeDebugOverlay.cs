@@ -1,5 +1,3 @@
-using System.Numerics;
-using System.Text;
 using Content.Shared.Parallax.Biomes;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -7,6 +5,8 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using System.Numerics;
+using System.Text;
 
 namespace Content.Client.Parallax;
 

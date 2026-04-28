@@ -1,4 +1,3 @@
-﻿using System.IO;
 using Content.Shared.Chemistry.Reagent;
 using NUnit.Framework;
 using Robust.Shared.IoC;
@@ -6,6 +5,7 @@ using Robust.Shared.Maths;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Utility;
+using System.IO;
 using YamlDotNet.RepresentationModel;
 
 namespace Content.Tests.Shared.Chemistry

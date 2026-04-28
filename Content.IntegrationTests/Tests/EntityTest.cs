@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using Robust.Shared;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Configuration;
@@ -11,6 +7,10 @@ using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager.Attributes;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 
 namespace Content.IntegrationTests.Tests
 {

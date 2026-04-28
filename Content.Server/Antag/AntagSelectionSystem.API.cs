@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.Antag;
@@ -13,6 +11,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Antag;
 
@@ -184,7 +184,7 @@ public sealed partial class AntagSelectionSystem
         // Check each individual antag role
         foreach (var role in roles)
         {
-            var list = new List<ProtoId<AntagPrototype>>{role};
+            var list = new List<ProtoId<AntagPrototype>> { role };
 
             if (character!.AntagPreferences.Contains(role)
                 && !_ban.IsRoleBanned(session, list)

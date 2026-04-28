@@ -47,13 +47,6 @@
   - CableHVCopperStack
 
 - type: latheRecipePack
-  id: PaperworkStatic
-  recipes:
-  - BoxFolderClipboardEmpty
-  - BoxFolderPlasticClipboardEmpty
-  - BlankPaper
-
-- type: latheRecipePack
   id: TowelsStatic # This is used for both the autolathe and the uniform printer, so "unique" towels that only HoP can print shouldn't be included!
   recipes:
   - TowelColorWhite
@@ -76,6 +69,7 @@
   - ClothingEyesGlassesSunglasses
   - ClothingHandsGlovesColorYellow
   - ClothingEyesGlassesMeson
+  - ClothingEyesGlassesCommand
 
 - type: latheRecipePack
   id: SalvageSecurityBoards

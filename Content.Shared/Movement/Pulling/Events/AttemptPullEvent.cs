@@ -1,5 +1,3 @@
-﻿using Robust.Shared.Physics.Components;
-
 namespace Content.Shared.Movement.Pulling.Events;
 
 /// <summary>

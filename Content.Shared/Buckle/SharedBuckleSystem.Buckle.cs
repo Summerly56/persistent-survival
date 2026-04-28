@@ -192,7 +192,7 @@ public abstract partial class SharedBuckleSystem
             Dirty(buckle.Comp.BuckledTo.Value, old);
         }
 
-        if (strap is {} strapEnt && Resolve(strapEnt.Owner, ref strapEnt.Comp))
+        if (strap is { } strapEnt && Resolve(strapEnt.Owner, ref strapEnt.Comp))
         {
             strapEnt.Comp.BuckledEntities.Add(buckle);
             Dirty(strapEnt);

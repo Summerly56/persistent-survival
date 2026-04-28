@@ -1,13 +1,10 @@
-﻿using Content.Server.Atmos;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Audio;
-using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Examine;
@@ -17,7 +14,6 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Power.Generation.Teg;
 using Content.Shared.Rounding;
 using Robust.Server.GameObjects;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Power.Generation.Teg;
 
@@ -151,6 +147,7 @@ public sealed class TegSystem : EntitySystem
 
             // Calculate thermal and electrical energy transfer between the two sides.
             // Assume temperature equalizes, i.e. Ta*cA + Tb*cB = Tf*(cA+cB)
+#pragma warning disable IDE1006 // Naming Styles
             var Tf = (airA.Temperature * cA + airB.Temperature * cB) / (cA + cB);
             // The maximum energy we can extract is (Ta - Tf)*cA, which is equal to (Tf - Tb)*cB
             var Wmax = MathF.Abs(airA.Temperature - Tf) * cA;
@@ -166,7 +163,7 @@ public sealed class TegSystem : EntitySystem
             // Reduce efficiency at low temperature differences to encourage burn chambers (instead
             // of just feeding the TEG room temperature gas from an infinite gas miner).
             var dT = Thot - Tcold;
-            N *= MathF.Tanh(dT/700); // https://www.wolframalpha.com/input?i=tanh(x/700)+from+0+to+1000
+            N *= MathF.Tanh(dT / 700); // https://www.wolframalpha.com/input?i=tanh(x/700)+from+0+to+1000
 
             var transfer = Wmax * N;
             electricalEnergy = transfer * component.PowerFactor;
@@ -362,8 +359,8 @@ public sealed class TegSystem : EntitySystem
     private (PipeNode inlet, PipeNode outlet) GetPipes(EntityUid uidCirculator)
     {
         var nodeContainer = _nodeContainerQuery.GetComponent(uidCirculator);
-        var inlet = (PipeNode) nodeContainer.Nodes[NodeNameInlet];
-        var outlet = (PipeNode) nodeContainer.Nodes[NodeNameOutlet];
+        var inlet = (PipeNode)nodeContainer.Nodes[NodeNameInlet];
+        var outlet = (PipeNode)nodeContainer.Nodes[NodeNameOutlet];
 
         return (inlet, outlet);
     }
@@ -414,3 +411,4 @@ public sealed class TegSystem : EntitySystem
             outlet.Air.Temperature);
     }
 }
+#pragma warning restore IDE1006 // Naming Styles

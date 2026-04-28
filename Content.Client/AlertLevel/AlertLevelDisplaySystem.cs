@@ -1,8 +1,6 @@
-using System.Linq;
 using Content.Shared.AlertLevel;
 using Robust.Client.GameObjects;
-using Robust.Client.Graphics;
-using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.AlertLevel;
 

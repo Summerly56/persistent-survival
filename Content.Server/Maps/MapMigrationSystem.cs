@@ -1,6 +1,3 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
 using Robust.Shared.ContentPack;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map.Events;
@@ -9,6 +6,9 @@ using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Serialization.Markdown.Value;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
 
 namespace Content.Server.Maps;
 
@@ -17,9 +17,9 @@ namespace Content.Server.Maps;
 /// </summary>
 public sealed class MapMigrationSystem : EntitySystem
 {
-#pragma warning disable CS0414
+#if DEBUG
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
-#pragma warning restore CS0414
+#endif
     [Dependency] private readonly IResourceManager _resMan = default!;
 
     private const string MigrationFile = "/migration.yml";
@@ -36,7 +36,7 @@ public sealed class MapMigrationSystem : EntitySystem
         // Verify that all of the entries map to valid entity prototypes.
         foreach (var node in mappings.Children.Values)
         {
-            var newId = ((ValueDataNode) node).Value;
+            var newId = ((ValueDataNode)node).Value;
             if (!string.IsNullOrEmpty(newId) && newId != "null")
                 DebugTools.Assert(_protoMan.HasIndex<EntityPrototype>(newId), $"{newId} is not an entity prototype.");
         }
@@ -56,7 +56,7 @@ public sealed class MapMigrationSystem : EntitySystem
         if (documents == null)
             return false;
 
-        mappings = (MappingDataNode) documents.Root;
+        mappings = (MappingDataNode)documents.Root;
         return true;
     }
 

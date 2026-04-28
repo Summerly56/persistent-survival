@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Reflection;
 using Content.Shared.CCVar.CVarAccess;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Reflection;
+using System.Linq;
+using System.Reflection;
 
 namespace Content.Server.Administration.Managers;
 

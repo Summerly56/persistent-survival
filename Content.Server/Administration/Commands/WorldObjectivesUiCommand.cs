@@ -1,6 +1,5 @@
 using Content.Server.CrewAssignments.AdminUI;
 using Content.Server.EUI;
-using Content.Server.Fax.AdminUI;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 

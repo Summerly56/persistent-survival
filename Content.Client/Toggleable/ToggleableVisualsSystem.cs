@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Clothing;
 using Content.Client.Items.Systems;
 using Content.Shared.Clothing;
@@ -9,6 +8,7 @@ using Content.Shared.Light.Components;
 using Content.Shared.Toggleable;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.Toggleable;
 

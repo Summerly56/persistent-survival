@@ -9,7 +9,7 @@ namespace Content.Server.Discord;
 public sealed class DiscordWebhook : IPostInjectInit
 {
     private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
-        { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+    { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
     [Dependency] private readonly ILogManager _log = default!;
 

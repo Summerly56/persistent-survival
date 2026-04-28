@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.DeviceLinking.Systems;
 using Content.Shared.Access.Components;
@@ -11,7 +10,6 @@ using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Server.Audio;
@@ -21,6 +19,7 @@ using Robust.Shared.Map.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.DeviceNetwork.Systems;
 

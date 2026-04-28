@@ -91,8 +91,8 @@
 
 - type: gasReaction
   id: ChlorineTrifluorideFire
-  priority: 10 # Extremely reactive, run before production to avoid instant recombination
-  minimumTemperature: 373.149
+  priority: 10 # Hypergolic oxidizer, runs before other reactions
+  minimumTemperature: 253.15 # -20°C — ClF3 is hypergolic, reacts well below room temp
   minimumRequirements:
     ChlorineTrifluoride: 0.01
   effects:
@@ -101,7 +101,7 @@
 - type: gasReaction
   id: ChlorineFluorideProduction
   priority: 2
-  minimumTemperature: 500 # Needs some heat to initiate
+  minimumTemperature: 523.15 # ~250°C, industrial synthesis temperature
   minimumRequirements:
     Chlorine: 0.01
     Fluorine: 0.01

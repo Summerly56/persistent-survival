@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
+using System.Numerics;
 
 namespace Content.Shared.Weapons.Melee.Events;
 

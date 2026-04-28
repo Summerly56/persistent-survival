@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Client.Guidebook.Richtext;
 using Content.Shared.Kitchen;
 using JetBrains.Annotations;
-using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Client.Guidebook.Controls;
 

@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Text;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Construction.Completions;
 using Content.Server.Disposal.Unit;
@@ -16,6 +14,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
+using System.Linq;
+using System.Text;
 
 namespace Content.Server.Disposal.Tube
 {

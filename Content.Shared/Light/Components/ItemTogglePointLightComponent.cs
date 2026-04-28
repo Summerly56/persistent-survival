@@ -1,6 +1,6 @@
 using Content.Shared.Item.ItemToggle.Components;
-using Robust.Shared.GameStates;
 using Content.Shared.Toggleable;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Light.Components;
 

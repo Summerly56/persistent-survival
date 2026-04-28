@@ -1,6 +1,6 @@
-using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
+using System.Numerics;
 
 namespace Content.Client.UserInterface.Controls
 {

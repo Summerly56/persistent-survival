@@ -1,6 +1,5 @@
 using Content.Server.Administration;
 using Content.Shared._RMC14.Examine.Pose;
-using Content.Shared.Actions;
 using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;

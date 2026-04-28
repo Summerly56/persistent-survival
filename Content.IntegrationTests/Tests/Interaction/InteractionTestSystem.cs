@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Content.Server.Construction;
 using Content.Shared.Construction;
 using Robust.Shared.GameObjects;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Interaction;
 

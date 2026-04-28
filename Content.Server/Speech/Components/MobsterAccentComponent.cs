@@ -1,4 +1,4 @@
-﻿namespace Content.Server.Speech.Components;
+namespace Content.Server.Speech.Components;
 
 /// <summary>
 ///     Nyehh, my gabagool, see?

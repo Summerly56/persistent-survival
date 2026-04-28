@@ -15,7 +15,6 @@ namespace Content.Client.CrewAssignments.UI;
 [GenerateTypedNameReferences]
 public sealed partial class WorldObjectiveEntryFragment : BoxContainer
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
 
 
@@ -25,7 +24,7 @@ public sealed partial class WorldObjectiveEntryFragment : BoxContainer
         IoCManager.InjectDependencies(this);
         TitleLabel.Text = title;
         DescriptionLabel.SetMarkup(desc);
-        if(completedTime == null)
+        if (completedTime == null)
         {
             CompletedLabel.Visible = false;
         }
@@ -36,7 +35,7 @@ public sealed partial class WorldObjectiveEntryFragment : BoxContainer
             var finalTime = completedTime.Value.AddYears(yearOffset);
             CompletedLabel.SetMarkup($"Completed: [color=green]{finalTime.ToString()}[/color]");
         }
-        if(reward == null)
+        if (reward == null)
         { RewardLabel.Visible = false; }
         else
         {

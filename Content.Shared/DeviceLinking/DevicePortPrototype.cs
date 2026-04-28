@@ -15,7 +15,7 @@ public abstract class DevicePortPrototype
     /// <summary>
     ///     Localization string for the port name. Displayed in the linking UI.
     /// </summary>
-    [DataField("name", required:true)]
+    [DataField("name", required: true)]
     public string Name = default!;
 
     /// <summary>

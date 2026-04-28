@@ -1,4 +1,4 @@
-﻿using Content.Shared.Atmos.Prototypes;
+using Content.Shared.Atmos.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 

@@ -1,6 +1,3 @@
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.DoAfter;
 using Content.Server.NPC.Components;
@@ -15,10 +12,13 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NPC;
 using Content.Shared.NPC.Components;
-using Content.Shared.NPC.Systems;
 using Content.Shared.NPC.Events;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
+using Content.Shared.Prying.Systems;
 using Content.Shared.Weapons.Melee;
+using Microsoft.Extensions.ObjectPool;
+using Prometheus;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -28,9 +28,9 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Prying.Systems;
-using Microsoft.Extensions.ObjectPool;
-using Prometheus;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.Systems;
 

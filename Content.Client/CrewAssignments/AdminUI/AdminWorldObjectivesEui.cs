@@ -1,7 +1,6 @@
 using Content.Client.Eui;
 using Content.Shared.CrewAssignments.Systems;
 using Content.Shared.Eui;
-using Content.Shared.Fax;
 using JetBrains.Annotations;
 
 namespace Content.Client.CrewAssignments.AdminUI;

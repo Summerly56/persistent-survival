@@ -10,6 +10,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Lobby.UI
@@ -21,12 +22,11 @@ namespace Content.Client.Lobby.UI
     public sealed partial class CharacterSetupGui : Control
     {
         [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
-        [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IPrototypeManager _protomanager = default!;
         [Dependency] private readonly IResourceCache _resourceCache = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
-        private readonly Button? _createNewCharacterButton;
 
         public event Action<int>? SelectCharacter;
         public event Action<int>? DeleteCharacter;
@@ -74,7 +74,6 @@ namespace Content.Client.Lobby.UI
             //   _createNewCharacterButton.Orphan();
             Characters.RemoveAllChildren();
 
-            var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
 
             if (!_preferencesManager.ServerDataLoaded)
@@ -89,9 +88,9 @@ namespace Content.Client.Lobby.UI
             var selectedSlot = _preferencesManager.Preferences?.SelectedCharacterIndex;
             for (int i = 0; i < _preferencesManager.Settings!.MaxCharacterSlots; i++)
             {
-                _preferencesManager.Preferences!.Characters.TryGetValue(i, out ICharacterProfile? characterProfile);
-                var characterPickerButton = new CharacterPickerButton(_entManager,
-                    _protomanager,
+                _preferencesManager.Preferences!.Characters.TryGetValue(i, out HumanoidCharacterProfile? characterProfile);
+                var characterPickerButton = new CharacterPickerButton(_protomanager,
+                    _playerManager,
                     characterButtonsGroup,
                     characterProfile,
                     i == selectedSlot);

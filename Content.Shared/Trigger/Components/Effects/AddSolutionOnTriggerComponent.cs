@@ -1,5 +1,5 @@
-using Robust.Shared.GameStates;
 using Content.Shared.Chemistry.Components;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Trigger.Components.Effects;
 

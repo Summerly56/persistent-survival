@@ -1,5 +1,5 @@
-using System.Text.Json;
 using Content.Server.Administration.Managers;
+using System.Text.Json;
 
 namespace Content.Server.Administration.Logs.Converters;
 
@@ -12,7 +12,7 @@ public sealed class EntityStringRepresentationConverter : AdminLogConverter<Enti
     {
         writer.WriteStartObject();
 
-        writer.WriteNumber("id", (int) value.Uid);
+        writer.WriteNumber("id", (int)value.Uid);
 
         if (value.Name != null)
         {

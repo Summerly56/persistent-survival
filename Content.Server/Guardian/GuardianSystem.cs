@@ -1,9 +1,9 @@
-using Content.Server.Body.Systems;
 using Content.Server.Popups;
 using Content.Shared.Actions;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
+using Content.Shared.Gibbing;
 using Content.Shared.Guardian;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -31,7 +31,7 @@ namespace Content.Server.Guardian
         [Dependency] private readonly SharedActionsSystem _actionSystem = default!;
         [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly BodySystem _bodySystem = default!;
+        [Dependency] private readonly GibbingSystem _gibbing = default!;
         [Dependency] private readonly SharedContainerSystem _container = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 
@@ -125,12 +125,12 @@ namespace Content.Server.Guardian
 
         private void OnHostShutdown(EntityUid uid, GuardianHostComponent component, ComponentShutdown args)
         {
-            if (component.HostedGuardian is not {} guardian)
+            if (component.HostedGuardian is not { } guardian)
                 return;
 
             // Ensure held items are dropped before deleting guardian.
             if (HasComp<HandsComponent>(guardian))
-                _bodySystem.GibBody(component.HostedGuardian.Value);
+                _gibbing.Gib(component.HostedGuardian.Value);
 
             QueueDel(guardian);
             QueueDel(component.ActionEntity);
@@ -300,8 +300,8 @@ namespace Content.Server.Guardian
         /// </summary>
         private void OnCreatorExamine(EntityUid uid, GuardianCreatorComponent component, ExaminedEvent args)
         {
-           if (component.Used)
-               args.PushMarkup(Loc.GetString("guardian-activator-empty-examine"));
+            if (component.Used)
+                args.PushMarkup(Loc.GetString("guardian-activator-empty-examine"));
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace Content.Server.Guardian
             guardianComponent.GuardianLoose = true;
         }
 
-        private void RetractGuardian(EntityUid host,GuardianHostComponent hostComponent, EntityUid guardian, GuardianComponent guardianComponent)
+        private void RetractGuardian(EntityUid host, GuardianHostComponent hostComponent, EntityUid guardian, GuardianComponent guardianComponent)
         {
             if (!guardianComponent.GuardianLoose)
             {

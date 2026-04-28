@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 

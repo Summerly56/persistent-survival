@@ -1,10 +1,8 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Cloning.Components;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Shared.UserInterface;
 using Content.Shared.Cloning;
 using Content.Shared.Cloning.CloningConsole;
 using Content.Shared.Database;
@@ -15,8 +13,10 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Power;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using System.Linq;
 
 namespace Content.Server.Cloning
 {

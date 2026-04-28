@@ -1,5 +1,5 @@
-using System.Numerics;
 using Content.Server.NPC.Components;
+using System.Numerics;
 
 namespace Content.Server.NPC.Events;
 

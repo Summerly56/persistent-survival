@@ -1,6 +1,6 @@
 using Content.Server.Fluids.EntitySystems;
-using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Nutrition;
@@ -10,7 +10,6 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.Throwing;
 using Content.Shared.Trigger.Components;
 using Content.Shared.Trigger.Systems;
-using Content.Shared.Chemistry.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;

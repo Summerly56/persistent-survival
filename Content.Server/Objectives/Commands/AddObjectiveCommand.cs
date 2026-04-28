@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
@@ -7,6 +6,7 @@ using Content.Shared.Prototypes;
 using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Objectives.Commands;
 
@@ -24,7 +24,7 @@ public sealed class AddObjectiveCommand : LocalizedEntityCommands
     {
         if (args.Length != 2)
         {
-            shell.WriteError(Loc.GetString(Loc.GetString("cmd-addobjective-invalid-args")));
+            shell.WriteError(Loc.GetString("cmd-addobjective-invalid-args"));
             return;
         }
 
@@ -68,6 +68,6 @@ public sealed class AddObjectiveCommand : LocalizedEntityCommands
 
         return CompletionResult.FromHintOptions(
             _objectives.Objectives(),
-            Loc.GetString(Loc.GetString("cmd-add-objective-obj-completion")));
+            Loc.GetString("cmd-add-objective-obj-completion"));
     }
 }

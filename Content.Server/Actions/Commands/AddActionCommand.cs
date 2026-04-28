@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
@@ -6,6 +5,7 @@ using Content.Shared.Administration;
 using Content.Shared.Prototypes;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Actions.Commands;
 
@@ -21,7 +21,7 @@ public sealed class AddActionCommand : LocalizedEntityCommands
     {
         if (args.Length != 2)
         {
-            shell.WriteError(Loc.GetString(Loc.GetString("cmd-addaction-invalid-args")));
+            shell.WriteError(Loc.GetString("cmd-addaction-invalid-args"));
             return;
         }
 

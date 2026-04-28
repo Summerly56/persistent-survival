@@ -1,6 +1,4 @@
-using Content.Shared._NF.Bank.Events;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Bank.Components;
 
@@ -14,7 +12,7 @@ public sealed partial class MoneyAccountsComponent : Component
     [AutoNetworkedField]
     public Dictionary<string, MoneyAccount> MoneyAccounts { get; set; } = new();
 
-    public bool TryGetBalance (string accountname, out int balance)
+    public bool TryGetBalance(string accountname, out int balance)
     {
         if (TryGetAccount(accountname, out var account))
         {
@@ -26,12 +24,11 @@ public sealed partial class MoneyAccountsComponent : Component
             balance = 0;
             return false;
         }
-    }    
+    }
     public bool TryGetAccount(string accountname, out MoneyAccount? account)
     {
-        if (MoneyAccounts.TryGetValue(accountname, out var Account))
+        if (MoneyAccounts.TryGetValue(accountname, out account))
         {
-            account = Account;
             return true;
         }
         else
@@ -50,6 +47,7 @@ public sealed partial class MoneyAccountsComponent : Component
 
 [DataDefinition]
 [Serializable]
+[Virtual]
 public partial class MoneyAccount
 {
     [DataField("_name")]

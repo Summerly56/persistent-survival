@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using System.Numerics;
 
 namespace Content.Shared.Drowsiness;
 

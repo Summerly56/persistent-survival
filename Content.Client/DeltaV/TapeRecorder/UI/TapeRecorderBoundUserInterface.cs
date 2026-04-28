@@ -1,6 +1,5 @@
 using Content.Shared.DeltaV.TapeRecorder;
 using Robust.Client.UserInterface;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client.DeltaV.TapeRecorder.UI;

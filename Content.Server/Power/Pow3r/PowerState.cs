@@ -1,11 +1,10 @@
+using Robust.Shared.Utility;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Robust.Shared.Utility;
-using static Content.Server.Power.Pow3r.PowerState;
 
 namespace Content.Server.Power.Pow3r
 {
@@ -14,7 +13,7 @@ namespace Content.Server.Power.Pow3r
         public static readonly JsonSerializerOptions SerializerOptions = new()
         {
             IncludeFields = true,
-            Converters = {new NodeIdJsonConverter()}
+            Converters = { new NodeIdJsonConverter() }
         };
 
         public GenIdStorage<Supply> Supplies = new();
@@ -28,7 +27,7 @@ namespace Content.Server.Power.Pow3r
             public readonly int Index;
             public readonly int Generation;
 
-            public long Combined => (uint) Index | ((long) Generation << 32);
+            public long Combined => (uint)Index | ((long)Generation << 32);
 
             public NodeId(int index, int generation)
             {
@@ -38,8 +37,8 @@ namespace Content.Server.Power.Pow3r
 
             public NodeId(long combined)
             {
-                Index = (int) combined;
-                Generation = (int) (combined >> 32);
+                Index = (int)combined;
+                Generation = (int)(combined >> 32);
             }
 
             public bool Equals(NodeId other)
@@ -366,7 +365,8 @@ namespace Content.Server.Power.Pow3r
             /// <summary>
             ///     The amount of power we WANT to be supplying to match grid load.
             /// </summary>
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public float SupplyRampTarget;
 
             /// <summary>
@@ -374,7 +374,7 @@ namespace Content.Server.Power.Pow3r
             /// </summary>
             [ViewVariables(VVAccess.ReadWrite)] public float SupplyRampPosition;
 
-            [ViewVariables] [JsonIgnore] public NodeId LinkedNetwork;
+            [ViewVariables][JsonIgnore] public NodeId LinkedNetwork;
 
             /// <summary>
             ///     Supply available during a tick. The actual current supply will be less than or equal to this. Used
@@ -395,7 +395,7 @@ namespace Content.Server.Power.Pow3r
             // == Runtime parameters ==
             [ViewVariables(VVAccess.ReadWrite)] public float ReceivingPower;
 
-            [ViewVariables] [JsonIgnore] public NodeId LinkedNetwork;
+            [ViewVariables][JsonIgnore] public NodeId LinkedNetwork;
         }
 
         public sealed class Battery
@@ -430,28 +430,35 @@ namespace Content.Server.Power.Pow3r
             [ViewVariables(VVAccess.ReadWrite)] public float CurrentReceiving;
             [ViewVariables(VVAccess.ReadWrite)] public float LoadingNetworkDemand;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public bool SupplyingMarked;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public bool LoadingMarked;
 
             /// <summary>
             ///     Amount of supply that the battery can provide this tick.
             /// </summary>
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public float AvailableSupply;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public float DesiredPower;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public float SupplyRampTarget;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public NodeId LinkedNetworkCharging;
 
-            [ViewVariables(VVAccess.ReadWrite)] [JsonIgnore]
+            [ViewVariables(VVAccess.ReadWrite)]
+            [JsonIgnore]
             public NodeId LinkedNetworkDischarging;
 
             /// <summary>
@@ -503,7 +510,7 @@ namespace Content.Server.Power.Pow3r
             /// </summary>
             [ViewVariables] public float LastCombinedMaxSupply = 0f;
 
-            [ViewVariables] [JsonIgnore] public int Height;
+            [ViewVariables][JsonIgnore] public int Height;
         }
     }
 }

@@ -1,5 +1,3 @@
-﻿using System.Linq;
-using System.Numerics;
 using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Systems.Biomes;
 using Content.Shared.CCVar;
@@ -13,6 +11,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Worldgen.Systems;
 

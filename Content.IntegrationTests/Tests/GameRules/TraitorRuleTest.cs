@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -13,6 +12,7 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Objectives.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.GameRules;
 

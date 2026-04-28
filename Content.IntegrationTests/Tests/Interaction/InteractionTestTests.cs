@@ -1,7 +1,7 @@
-using System.Linq;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Interaction;
 

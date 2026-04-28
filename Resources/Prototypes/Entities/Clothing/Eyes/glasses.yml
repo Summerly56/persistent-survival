@@ -189,7 +189,7 @@
   - type: GuideHelp
     guides:
     - Security
-    #- Antagonists, Persistence Station
+    - Antagonists
   - type: IdentityBlocker
     coverage: EYES
 
@@ -249,6 +249,7 @@
   - type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
+  - type: ThermalSight
 
 - type: entity
   parent: ClothingEyesBase

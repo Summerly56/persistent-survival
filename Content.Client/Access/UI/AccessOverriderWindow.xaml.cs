@@ -13,7 +13,6 @@ namespace Content.Client.Access.UI
     [GenerateTypedNameReferences]
     public sealed partial class AccessOverriderWindow : DefaultWindow
     {
-        public event Action<List<ProtoId<AccessLevelPrototype>>>? OnSubmit;
         public event Action<string>? OnAccessToggle;
         public event Action<string>? OnPersonalAccessToggle;
 
@@ -61,13 +60,13 @@ namespace Content.Client.Access.UI
             StationNameLabel.Text = state.StationName;
             AccessLevelGrid.RemoveAllChildren();
             PersonalAccessContainer.RemoveAllChildren();
-            if(state.PersonalAccess)
+            if (state.PersonalAccess)
             {
                 AccessLevelGrid.Visible = false;
                 ChangeMode.Text = "Station";
                 PersonalAccessAddContainer.Visible = true;
                 PersonalAccessContainer.Visible = true;
-                if(state.PersonalAccessList != null)
+                if (state.PersonalAccessList != null)
                 {
                     foreach (var access in state.PersonalAccessList)
                     {
@@ -116,8 +115,8 @@ namespace Content.Client.Access.UI
                     }
                 }
             }
-            
-            
+
+
         }
     }
 }

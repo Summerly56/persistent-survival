@@ -44,7 +44,7 @@ namespace Content.Server.Atmos.Reactions
                 // 2H2 + O2 -> 2H2O
                 var TMin = Atmospherics.PlasmaMinimumBurnTemperature;
                 var Tsen = 200f;
-                var baseRate = 0.06f; // increased for faster burn
+                var baseRate = 0.03f; // slower per-mole rate; H2 needs only 0.5 O2 so still burns fast overall
 
                 var hydrogenBurnRate = 0f;
 
@@ -95,7 +95,7 @@ namespace Content.Server.Atmos.Reactions
                 temperature = mixture.Temperature;
                 if (temperature > Atmospherics.FireMinimumTemperatureToExist)
                 {
-                    atmosphereSystem.HotspotExpose(location, temperature, mixture.Volume, fuelGas: Gas.Hydrogen);
+                    atmosphereSystem.HotspotExpose(location, temperature, mixture.Volume);
                 }
             }
 

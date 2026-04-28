@@ -272,7 +272,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
     /// </summary>
     private void OnMapInit(EntityUid uid, ToggleableClothingComponent component, MapInitEvent args)
     {
-        if (component.Container!.ContainedEntity is {} ent)
+        if (component.Container!.ContainedEntity is { } ent)
         {
             DebugTools.Assert(component.ClothingUid == ent, "Unexpected entity present inside of a toggleable clothing container.");
             return;

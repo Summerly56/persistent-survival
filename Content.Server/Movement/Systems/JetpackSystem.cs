@@ -1,4 +1,3 @@
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Movement.Components;
@@ -40,7 +39,7 @@ public sealed class JetpackSystem : SharedJetpackSystem
                 continue;
 
             var usedEnoughAir =
-                MathHelper.CloseTo(usedAir.TotalMoles, comp.MoleUsage, comp.MoleUsage/100);
+                MathHelper.CloseTo(usedAir.TotalMoles, comp.MoleUsage, comp.MoleUsage / 100);
 
             if (!usedEnoughAir)
             {

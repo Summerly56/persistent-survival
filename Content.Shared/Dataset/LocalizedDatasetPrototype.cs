@@ -1,6 +1,6 @@
-using System.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using System.Collections;
 
 namespace Content.Shared.Dataset;
 

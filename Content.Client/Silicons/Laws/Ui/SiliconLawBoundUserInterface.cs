@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using System.Linq;
 
 namespace Content.Client.Silicons.Laws.Ui;
 

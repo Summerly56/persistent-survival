@@ -2,11 +2,12 @@ using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 
+#pragma warning disable IDE1006 // Naming Styles
 namespace Content.Shared._RMC14.Examine.Pose;
+#pragma warning restore IDE1006 // Naming Styles
 
 public abstract class SharedRMCSetPoseSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     public override void Initialize()
     {

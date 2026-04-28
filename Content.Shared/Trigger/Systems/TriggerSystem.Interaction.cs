@@ -3,8 +3,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Throwing;
-using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Trigger.Components.Effects;
+using Content.Shared.Trigger.Components.Triggers;
 
 namespace Content.Shared.Trigger.Systems;
 

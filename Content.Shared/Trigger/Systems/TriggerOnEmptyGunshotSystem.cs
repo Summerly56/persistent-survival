@@ -2,6 +2,7 @@ using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Weapons.Ranged.Events;
 
 namespace Content.Shared.Trigger.Systems;
+
 public sealed partial class TriggerOnEmptyGunshotSystem : TriggerOnXSystem
 {
     public override void Initialize()

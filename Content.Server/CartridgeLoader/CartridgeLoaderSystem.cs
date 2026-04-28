@@ -1,6 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Server.DeviceNetwork.Systems;
 using Content.Server.PDA;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.DeviceNetwork.Events;
@@ -10,6 +7,8 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.CartridgeLoader;
 

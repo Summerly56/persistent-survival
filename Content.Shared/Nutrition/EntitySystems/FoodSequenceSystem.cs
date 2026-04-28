@@ -1,5 +1,3 @@
-using System.Numerics;
-using System.Text;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
@@ -10,6 +8,8 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Numerics;
+using System.Text;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -97,7 +97,7 @@ public sealed class FoodSequenceSystem : SharedFoodSequenceSystem
             return;
 
         _solutionContainer.RemoveAllSolution(resultSoln.Value); //Remove all YML reagents
-        resultSoln.Value.Comp.Solution.MaxVolume = startSoln.Value.Comp.Solution.MaxVolume;
+        _solutionContainer.SetCapacity(resultSoln.Value, startSoln.Value.Comp.Solution.MaxVolume);
         _solutionContainer.TryAddSolution(resultSoln.Value, startSolution);
 
         MergeFlavorProfiles(start, result);

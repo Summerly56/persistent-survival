@@ -1,4 +1,3 @@
-using Content.Server.Database;
 using Content.Shared.Cargo.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -47,9 +46,9 @@ public sealed partial class CargoSystem
         }
 
         ent.Comp.NextAccountActionTime = Timing.CurTime + ent.Comp.AccountActionDelay;
-        UpdateBankAccount((station, bank), -args.Amount,  ent.Comp.Account, dirty: false);
+        UpdateBankAccount((station, bank), -args.Amount, ent.Comp.Account, dirty: false);
         var idName = _accessReaderSystem.GetIdName(player);
-        if(idName != null)
+        if (idName != null)
         {
             _station.TrackSpending(idName, station, args.Amount);
         }
@@ -122,7 +121,7 @@ public sealed partial class CargoSystem
         var differs = false;
         foreach (var (account, percent) in args.Percents)
         {
-            if (percent != (int) Math.Round(bank.RevenueDistribution[account] * 100))
+            if (percent != (int)Math.Round(bank.RevenueDistribution[account] * 100))
             {
                 differs = true;
                 break;
@@ -138,7 +137,7 @@ public sealed partial class CargoSystem
 
         var primaryCut = bank.RevenueDistribution[bank.PrimaryAccount];
         bank.RevenueDistribution.Clear();
-        foreach (var (account, percent )in args.Percents)
+        foreach (var (account, percent) in args.Percents)
         {
             bank.RevenueDistribution.Add(account, percent / 100.0);
         }

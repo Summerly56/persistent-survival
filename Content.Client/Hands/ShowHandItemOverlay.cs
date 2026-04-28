@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client.Hands.Systems;
 using Content.Shared.CCVar;
 using Robust.Client.GameObjects;
@@ -9,6 +8,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
+using System.Numerics;
 using Direction = Robust.Shared.Maths.Direction;
 
 namespace Content.Client.Hands

@@ -1,6 +1,6 @@
-using Content.Shared.Stunnable;
 using Content.Shared.Damage.Components;
 using Content.Shared.Effects;
+using Content.Shared.Stunnable;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;

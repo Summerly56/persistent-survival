@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Decals;
 using Content.Server.Popups;
@@ -14,6 +12,8 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Server.Crayon;
 

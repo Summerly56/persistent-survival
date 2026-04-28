@@ -1,19 +1,12 @@
 using Content.Server.Administration;
 using Content.Server.Chat.Systems;
-using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Popups;
 using Content.Server.Preferences.Managers;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.AcceptDeath;
-using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Shared.CrewAssignments;
-using Content.Shared.CrewAssignments.Components;
-using Content.Shared.CrewAssignments.Prototypes;
-using Content.Shared.CrewAssignments.Systems;
-using Content.Shared.CrewRecords.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -21,12 +14,10 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Speech.Muting;
-using Content.Shared.Station.Components;
 using Robust.Server.Console;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Mobs;
@@ -136,7 +127,7 @@ public sealed class CritMobActionsSystem : EntitySystem
         if (!Resolve(jobnet, ref component) || user == null || component == null)
             return;
 
-        var state = new AcceptDeathUpdateState(component.AcceptDeathCooldown-_timing.CurTime, component.SOSCooldown-_timing.CurTime);
+        var state = new AcceptDeathUpdateState(component.AcceptDeathCooldown - _timing.CurTime, component.SOSCooldown - _timing.CurTime);
         _ui.SetUiState(jobnet, AcceptDeathUiKey.Key, state);
     }
     private void OnAcceptDeath(EntityUid uid, MobStateActionsComponent component, AcceptDeathEvent args)
@@ -177,7 +168,7 @@ public sealed class CritMobActionsSystem : EntitySystem
 
     private void FinalizeAcceptDeath(EntityUid uid, MobStateActionsComponent component, AcceptDeathFinalizeMessage args)
     {
-        if(!ValidateAcceptDeath(uid, component))
+        if (!ValidateAcceptDeath(uid, component))
         {
             return;
         }

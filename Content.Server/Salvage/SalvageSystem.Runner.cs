@@ -1,17 +1,17 @@
-using System.Numerics;
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Shared.Chat;
 using Content.Shared.Humanoid;
+using Content.Shared.Localizations;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Salvage.Expeditions;
 using Content.Shared.Shuttles.Components;
-using Content.Shared.Localizations;
 using Content.Shared.Station.Components;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using System.Numerics;
 
 namespace Content.Server.Salvage;
 
@@ -40,7 +40,7 @@ public sealed partial class SalvageSystem
         }
 
         // TODO: This is terrible but need bluespace harnesses or something.
-        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, MobStateComponent, TransformComponent>();
+        var query = EntityQueryEnumerator<HumanoidProfileComponent, MobStateComponent, TransformComponent>();
 
         while (query.MoveNext(out var uid, out _, out var mobState, out var mobXform))
         {

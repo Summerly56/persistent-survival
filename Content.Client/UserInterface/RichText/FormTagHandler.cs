@@ -1,10 +1,9 @@
-using System.Numerics;
-using System.Diagnostics.CodeAnalysis;
-using Robust.Client.UserInterface.RichText;
-using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
+using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Utility;
-using Robust.Client.Graphics;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 
 namespace Content.Client.UserInterface.RichText;
 

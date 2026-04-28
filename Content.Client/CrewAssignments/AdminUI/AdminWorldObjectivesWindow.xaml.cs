@@ -15,13 +15,12 @@ public sealed partial class AdminWorldObjectivesWindow : DefaultWindow
 {
 
 
-    public AdminWorldObjectivesEui _owner;
+    public AdminWorldObjectivesEui Owner;
 
-    [Dependency] private readonly IResourceCache _resCache = default!;
 
     public AdminWorldObjectivesWindow(AdminWorldObjectivesEui owner)
     {
-        _owner = owner;
+        Owner = owner;
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         var loc = IoCManager.Resolve<ILocalizationManager>();
@@ -34,7 +33,7 @@ public sealed partial class AdminWorldObjectivesWindow : DefaultWindow
         foreach (var objective in currentObjectives)
         {
             WorldObjectiveEdit worldEdit = new(objective.ID, objective.Title, objective.Description, objective.Reward, objective.CompletedTime, objective.CompletedDescription);
-            if(objective.Visible)
+            if (objective.Visible)
             {
                 Button completeButton = new();
                 completeButton.Text = "Complete";
@@ -76,34 +75,34 @@ public sealed partial class AdminWorldObjectivesWindow : DefaultWindow
 
     private void CreateMessage(BaseButton.ButtonEventArgs obj)
     {
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.CreateNew());
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.CreateNew());
     }
     private void OnComplete(int id, WorldObjectiveEdit edit)
     {
         OnSaveCurrent(id, edit);
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.Complete(id));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.Complete(id));
     }
     private void OnReveal(int id, WorldObjectiveEdit edit)
     {
         OnSaveCurrent(id, edit);
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.Reveal(id));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.Reveal(id));
     }
     private void OnDeleteCurrent(int id)
     {
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.Delete(id));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.Delete(id));
     }
     private void OnDeleteCompleted(int id)
     {
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.DeleteCompleted(id));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.DeleteCompleted(id));
     }
 
     private void OnSaveCurrent(int id, WorldObjectiveEdit edit)
     {
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.SaveChanges(id, edit.TitleLabel.Text, Rope.Collapse(edit.DescriptionLabel.TextRope), Rope.Collapse(edit.RewardLabel.TextRope), Rope.Collapse(edit.CompletedDescriptionLabel.TextRope)));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.SaveChanges(id, edit.TitleLabel.Text, Rope.Collapse(edit.DescriptionLabel.TextRope), Rope.Collapse(edit.RewardLabel.TextRope), Rope.Collapse(edit.CompletedDescriptionLabel.TextRope)));
     }
 
     private void OnSaveCompleted(int id, WorldObjectiveEdit edit)
     {
-        _owner.SendMessage(new AdminWorldObjectivesEuiMsg.SaveChangesCompleted(id, edit.TitleLabel.Text, Rope.Collapse(edit.DescriptionLabel.TextRope), Rope.Collapse(edit.RewardLabel.TextRope), Rope.Collapse(edit.CompletedDescriptionLabel.TextRope)));
+        Owner.SendMessage(new AdminWorldObjectivesEuiMsg.SaveChangesCompleted(id, edit.TitleLabel.Text, Rope.Collapse(edit.DescriptionLabel.TextRope), Rope.Collapse(edit.RewardLabel.TextRope), Rope.Collapse(edit.CompletedDescriptionLabel.TextRope)));
     }
 }

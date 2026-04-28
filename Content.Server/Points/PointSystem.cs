@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.FixedPoint;
 using Content.Shared.Points;
 using JetBrains.Annotations;
@@ -6,6 +5,7 @@ using Robust.Server.GameStates;
 using Robust.Server.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Points;
 

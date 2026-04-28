@@ -1,12 +1,12 @@
 using Content.Shared.Actions;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Ninja.Components;
 using Content.Shared.Popups;
-using Content.Shared.Examine;
 
 namespace Content.Shared.Ninja.Systems;
 

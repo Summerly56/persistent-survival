@@ -6,6 +6,7 @@
   - AppraisalTool
   - Pickaxe
   - UtilityKnife
+  - CargoTelepadMachineCircuitboard
 
 - type: latheRecipePack
   id: CargoBoardsStatic
@@ -16,7 +17,6 @@
   - CargoBountyComputerCircuitboard
   - SalvageJobBoardComputerCircuitboard
   - RadarConsoleCircuitboard
-
 ## Dynamic
 
 - type: latheRecipePack
@@ -27,10 +27,10 @@
   - MineralScannerEmpty
   - AdvancedMineralScannerEmpty
   - OreBagOfHolding
+  - WeaponGrapplingGun
 
 - type: latheRecipePack
   id: CargoBoards
   recipes:
   - OreProcessorIndustrialMachineCircuitboard
-  - CargoTelepadMachineCircuitboard
   - ShuttleGunKineticCircuitboard

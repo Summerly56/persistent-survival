@@ -1,12 +1,12 @@
 using Content.Shared.Actions;
 using Content.Shared.Cloning.Events;
 using Content.Shared.DoAfter;
-using Content.Shared.Nutrition.EntitySystems;
-using Robust.Shared.Serialization;
-using Content.Shared.Popups;
-using Robust.Shared.Network;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Popups;
 using Content.Shared.Stacks;
+using Robust.Shared.Network;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Sericulture;
 

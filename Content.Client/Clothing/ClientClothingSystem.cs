@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Client.DisplacementMap;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
@@ -14,6 +12,8 @@ using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using static Robust.Client.GameObjects.SpriteComponent;
 
 namespace Content.Client.Clothing;
@@ -271,7 +271,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         // Select displacement maps
         var displacementData = inventory.Displacements.GetValueOrDefault(slot); //Default unsexed map
 
-        var equipeeSex = CompOrNull<HumanoidAppearanceComponent>(equipee)?.Sex;
+        var equipeeSex = CompOrNull<HumanoidProfileComponent>(equipee)?.Sex;
         if (equipeeSex != null)
         {
             switch (equipeeSex)

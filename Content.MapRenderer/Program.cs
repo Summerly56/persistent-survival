@@ -1,10 +1,4 @@
-﻿#nullable enable
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+#nullable enable
 using Content.IntegrationTests;
 using Content.MapRenderer.Painters;
 using Content.Shared.Maps;
@@ -12,6 +6,12 @@ using Robust.Shared.Prototypes;
 using Robust.UnitTesting.Pool;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Webp;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Content.MapRenderer
 {
@@ -165,7 +165,7 @@ namespace Content.MapRenderer
 
                         await Console.Error.WriteLineAsync($"Found no map prototype for file '{toFind}'!");
 
-                        found: ;
+                    found:;
                     }
                 }
             }

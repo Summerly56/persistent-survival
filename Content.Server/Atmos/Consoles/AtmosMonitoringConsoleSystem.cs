@@ -1,7 +1,5 @@
-using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Components;
-using Content.Server.DeviceNetwork.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
@@ -9,7 +7,9 @@ using Content.Server.Power.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Consoles;
+using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Labels.Components;
+using Content.Shared.NodeContainer;
 using Content.Shared.Pinpointer;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -17,9 +17,6 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Server.Atmos.EntitySystems;
-using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.NodeContainer;
 
 namespace Content.Server.Atmos.Consoles;
 

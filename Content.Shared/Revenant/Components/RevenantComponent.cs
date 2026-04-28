@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
@@ -6,6 +5,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using System.Numerics;
 
 namespace Content.Shared.Revenant.Components;
 
@@ -27,7 +27,7 @@ public sealed partial class RevenantComponent : Component
     /// <summary>
     /// Prototype to spawn when the entity dies.
     /// </summary>
-    [DataField("spawnOnDeathPrototype", customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("spawnOnDeathPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string SpawnOnDeathPrototype = "Ectoplasm";
 
     /// <summary>

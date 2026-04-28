@@ -1,4 +1,3 @@
-﻿using System.IO;
 using Content.Shared.Dataset;
 using Content.Shared.Random.Helpers;
 using NUnit.Framework;
@@ -6,6 +5,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
+using System.IO;
 
 namespace Content.Tests.Shared.Utility
 {

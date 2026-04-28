@@ -1,8 +1,8 @@
-﻿using System.IO;
 using Lidgren.Network;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.IO;
 
 namespace Content.Shared.Mapping;
 
@@ -34,10 +34,10 @@ public sealed class MappingMapDataMessage : NetMessage
     {
         var stream = new MemoryStream();
         serializer.SerializeDirect(stream, Yml);
-        buffer.WriteVariableInt32((int) stream.Length);
+        buffer.WriteVariableInt32((int)stream.Length);
 
         stream.Position = 0;
-        var buf = new byte[ZStd.CompressBound((int) stream.Length)];
+        var buf = new byte[ZStd.CompressBound((int)stream.Length)];
         var length = Context.Compress2(buf, stream.AsSpan());
 
         buffer.WriteVariableInt32(length);

@@ -1,9 +1,9 @@
-﻿using System.Numerics;
 using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Prototypes;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using System.Numerics;
 
 namespace Content.Server.Worldgen.Systems;
 

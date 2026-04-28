@@ -1,24 +1,14 @@
-using Content.Client.Cargo.UI;
-using Content.Client.CrewAssignments.UI;
 using Content.Shared.AcceptDeath;
-using Content.Shared.Cargo.BUI;
-using Content.Shared.Cargo.Events;
-using Content.Shared.CrewAssignments;
-using Content.Shared.Store;
-using Content.Shared.Store.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
-using System.Linq;
 using static Robust.Client.UserInterface.Controls.BaseButton;
-using static Robust.Client.UserInterface.Controls.OptionButton;
 
 namespace Content.Client.AcceptDeath;
 
 [UsedImplicitly]
 public sealed class AcceptDeathBoundUserInterface : BoundUserInterface
 {
-    private IPrototypeManager _prototypeManager = default!;
 
     [ViewVariables]
     private AcceptDeathMenu? _menu;
@@ -32,7 +22,7 @@ public sealed class AcceptDeathBoundUserInterface : BoundUserInterface
         base.Open();
 
         _menu = this.CreateWindow<AcceptDeathMenu>();
-        _menu._owner = this;
+        _menu.Owner = this;
         _menu.AcceptDeathButton.OnPressed += OnAcceptDeath;
         _menu.SOSButton.OnPressed += OnSOS;
     }

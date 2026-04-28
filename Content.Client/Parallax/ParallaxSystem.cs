@@ -94,8 +94,8 @@ public sealed class ParallaxSystem : SharedParallaxSystem
         Color? modulate = null)
     {
         // Size of the texture in world units.
-        var size = sprite.Size / (float) EyeManager.PixelsPerMeter * scale;
-        var scrolled = scrolling * (float) curTime.TotalSeconds;
+        var size = sprite.Size / (float)EyeManager.PixelsPerMeter * scale;
+        var scrolled = scrolling * (float)curTime.TotalSeconds;
 
         // Origin - start with the parallax shift itself.
         var originBL = position * slowness + scrolled;

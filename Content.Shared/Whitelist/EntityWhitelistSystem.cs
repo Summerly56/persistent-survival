@@ -1,7 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Item;
 using Content.Shared.Tag;
-using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Whitelist;
 

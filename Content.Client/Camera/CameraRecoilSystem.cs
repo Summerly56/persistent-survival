@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
+using System.Numerics;
 
 namespace Content.Client.Camera;
 

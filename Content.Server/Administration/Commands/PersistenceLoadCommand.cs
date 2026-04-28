@@ -1,8 +1,5 @@
 using Content.Shared.Administration;
-using Content.Shared.CCVar;
-using Robust.Shared.Configuration;
 using Robust.Shared.Console;
-using Robust.Shared.Map;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Utility;
 
@@ -11,11 +8,7 @@ namespace Content.Server.Administration.Commands;
 [AdminCommand(AdminFlags.Server)]
 public sealed class PersistenceLoadCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override string Command => "persistenceload";
 

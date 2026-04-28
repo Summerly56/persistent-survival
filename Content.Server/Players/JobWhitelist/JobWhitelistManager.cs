@@ -1,6 +1,3 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.JobWhitelist;
@@ -10,6 +7,9 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.Players.JobWhitelist;
 

@@ -1,6 +1,6 @@
 using Content.Server.Antag.Components;
-using Content.Shared.GameTicking.Components;
 using Content.Server.GameTicking.Rules;
+using Content.Shared.GameTicking.Components;
 
 namespace Content.Server.Antag;
 

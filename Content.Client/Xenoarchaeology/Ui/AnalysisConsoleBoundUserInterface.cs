@@ -1,7 +1,7 @@
 using Content.Shared.Research.Components;
 using Content.Shared.Xenoarchaeology.Equipment.Components;
-using Robust.Client.UserInterface;
 using JetBrains.Annotations;
+using Robust.Client.UserInterface;
 
 namespace Content.Client.Xenoarchaeology.Ui;
 

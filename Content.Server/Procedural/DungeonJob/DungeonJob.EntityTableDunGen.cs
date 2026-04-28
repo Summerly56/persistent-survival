@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.NPC.Systems;
 using Content.Shared.EntityTable;
@@ -7,6 +5,8 @@ using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
 using Robust.Shared.Collections;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -41,8 +41,8 @@ public sealed partial class DungeonJob
 
                 if (!_anchorable.TileFree((_gridUid, _grid),
                         tile,
-                        (int) CollisionGroup.MachineLayer,
-                        (int) CollisionGroup.MachineLayer))
+                        (int)CollisionGroup.MachineLayer,
+                        (int)CollisionGroup.MachineLayer))
                 {
                     continue;
                 }

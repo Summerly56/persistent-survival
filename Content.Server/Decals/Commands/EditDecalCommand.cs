@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
+using System.Numerics;
 
 namespace Content.Server.Decals;
 
@@ -52,7 +52,7 @@ Possible modes are:\n
         switch (args[2].ToLower())
         {
             case "position":
-                if(args.Length != 5)
+                if (args.Length != 5)
                 {
                     shell.WriteError("Expected 6 arguments.");
                     return;
@@ -70,7 +70,7 @@ Possible modes are:\n
                 }
                 break;
             case "color":
-                if(args.Length != 4)
+                if (args.Length != 4)
                 {
                     shell.WriteError("Expected 5 arguments.");
                     return;
@@ -88,7 +88,7 @@ Possible modes are:\n
                 }
                 break;
             case "id":
-                if(args.Length != 4)
+                if (args.Length != 4)
                 {
                     shell.WriteError("Expected 5 arguments.");
                     return;
@@ -100,7 +100,7 @@ Possible modes are:\n
                 }
                 break;
             case "rotation":
-                if(args.Length != 4)
+                if (args.Length != 4)
                 {
                     shell.WriteError("Expected 5 arguments.");
                     return;
@@ -118,7 +118,7 @@ Possible modes are:\n
                 }
                 break;
             case "zindex":
-                if(args.Length != 4)
+                if (args.Length != 4)
                 {
                     shell.WriteError("Expected 5 arguments.");
                     return;
@@ -136,7 +136,7 @@ Possible modes are:\n
                 }
                 break;
             case "clean":
-                if(args.Length != 4)
+                if (args.Length != 4)
                 {
                     shell.WriteError("Expected 5 arguments.");
                     return;

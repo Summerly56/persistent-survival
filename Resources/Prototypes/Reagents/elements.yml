@@ -40,13 +40,13 @@
     - !type:PlantAdjustHealth
       amount: -1
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
           types:
             Poison: 3
-    Gas:
+    Respiration:
       effects:
       - !type:HealthChange
         damage:
@@ -70,7 +70,7 @@
   boilingPoint: 2595.0
   meltingPoint: 1083.0
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.1
       effects:
       - !type:HealthChange
@@ -81,8 +81,6 @@
         damage:
           types:
             Poison: 0.1
-    Medicine:
-      effects:
       - !type:ModifyBloodLevel
         conditions:
         - !type:MetabolizerTypeCondition
@@ -109,14 +107,14 @@
     - !type:PlantAdjustHealth
       amount: -2
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
           types:
             Caustic: 1.5
             Poison: 1.5
-    Gas:
+    Respiration:
       effects:
       - !type:HealthChange
         damage:
@@ -152,7 +150,7 @@
   boilingPoint: -253.0
   meltingPoint: -259.2
   metabolisms:
-    Gas:
+    Respiration:
       effects:
       - !type:HealthChange
         damage:
@@ -187,7 +185,7 @@
   boilingPoint: 2862.0
   meltingPoint: 1538.0
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.1
       effects:
       - !type:HealthChange
@@ -197,8 +195,6 @@
         damage:
           types:
             Poison: 0.1
-    Medicine:
-      effects:
       - !type:ModifyBloodLevel
         conditions:
         - !type:MetabolizerTypeCondition
@@ -217,7 +213,7 @@
   meltingPoint: 180.5
   boilingPoint: 1330.0
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.1
       effects:
       - !type:HealthChange
@@ -244,7 +240,7 @@
   meltingPoint: -38.83
   boilingPoint: 356.73
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -290,7 +286,7 @@
   boilingPoint: 3287.0
   meltingPoint: 1668.0
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.05
       effects:
       - !type:HealthChange
@@ -313,18 +309,17 @@
   physicalDesc: reagent-physical-desc-opaque
   recognizable: true
   metabolisms:
-    Food:
+    Digestion:
       effects:
-      - !type:SatiateHunger
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Human, Animal ]
-    Poison:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 0.5
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 0.15
+      - !type:AdjustReagent
+        reagent: Vitamin
+        amount: 0.1
+      - !type:AdjustReagent
+        reagent: Honk
+        amount: 0.25
 
 - type: reagent
   id: Radium
@@ -349,7 +344,7 @@
   boilingPoint: 3265.0
   meltingPoint: 1414.0
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -389,7 +384,7 @@
   boilingPoint: 445.0
   meltingPoint: 120.0
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -428,7 +423,7 @@
     probability: 0.2
     amount: 0.1
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:

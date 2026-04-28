@@ -1,6 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Timing;
 

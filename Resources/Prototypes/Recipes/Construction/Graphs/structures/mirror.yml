@@ -1,0 +1,61 @@
+- type: constructionGraph
+  id: MirrorGraph
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Glass
+              amount: 2
+              doAfter: 3
+            - material: Steel
+              amount: 1
+              doAfter: 3
+
+    - node: done
+      entity: Mirror
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetGlass1
+              amount: 2
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 1
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+- type: constructionGraph
+  id: MirrorModernGraph
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: done
+          steps:
+            - material: Glass
+              amount: 2
+              doAfter: 3
+            - material: Steel
+              amount: 1
+              doAfter: 3
+
+    - node: done
+      entity: MirrorModern
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetGlass1
+              amount: 2
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 1
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2

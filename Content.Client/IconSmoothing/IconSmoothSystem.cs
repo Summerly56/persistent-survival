@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Shared.IconSmoothing;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Map.Enumerators;
+using System.Numerics;
 using static Robust.Client.GameObjects.SpriteComponent;
 
 namespace Content.Client.IconSmoothing

@@ -1,6 +1,4 @@
-using System.Numerics;
 using Content.Shared.CCVar;
-using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.EntitySerialization.Systems;
@@ -8,6 +6,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.IntegrationTests.Tests
 {

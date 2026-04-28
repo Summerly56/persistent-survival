@@ -7,7 +7,6 @@ using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Shared.Collections;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server.Xenoarchaeology.Artifact.XAE;
 
@@ -39,11 +38,11 @@ public sealed class XAEPortalSystem : BaseXAESystem<XAEPortalComponent>
         if (validMinds.Count == 0)
             return;
 
-        if(!TrySpawnNextTo(ent.Comp.PortalProto, args.Artifact, out var firstPortal))
+        if (!TrySpawnNextTo(ent.Comp.PortalProto, args.Artifact, out var firstPortal))
             return;
 
         var target = _random.Pick(validMinds);
-        if(!TrySpawnNextTo(ent.Comp.PortalProto, target, out var secondPortal))
+        if (!TrySpawnNextTo(ent.Comp.PortalProto, target, out var secondPortal))
             return;
 
         // Manual position swapping, because the portal that opens doesn't trigger a collision, and doesn't teleport targets the first time.

@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Machines.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Machines.EntitySystems;
 

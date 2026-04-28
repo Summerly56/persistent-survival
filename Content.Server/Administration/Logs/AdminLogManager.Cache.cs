@@ -1,9 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Database;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Prometheus;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Administration.Logs;
 

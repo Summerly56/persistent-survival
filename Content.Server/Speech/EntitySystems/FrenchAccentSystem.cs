@@ -1,6 +1,6 @@
-using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using System.Text.RegularExpressions;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -43,9 +43,12 @@ public sealed class FrenchAccentSystem : EntitySystem
             var idxLetter = match.Index + 2;
 
             // If th is alone, just do 'z
-            if (msg.Length <= idxLetter) {
+            if (msg.Length <= idxLetter)
+            {
                 msg = msg.Substring(0, match.Index) + "'" + Z;
-            } else {
+            }
+            else
+            {
                 var c = "aeiouy".Contains(msg.Substring(idxLetter, 1).ToLower()) ? Z : S;
                 msg = msg.Substring(0, match.Index) + "'" + c + msg.Substring(idxLetter);
             }

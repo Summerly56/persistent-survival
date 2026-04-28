@@ -1,10 +1,10 @@
-using System.Numerics;
-using System.Threading;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared.DoAfter;
 using Content.Shared.NPC;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using System.Numerics;
+using System.Threading;
 
 namespace Content.Server.NPC.Components;
 
@@ -54,7 +54,7 @@ public sealed partial class NPCSteeringComponent : Component
     [DataField("lastStuckCoordinates")]
     public EntityCoordinates LastStuckCoordinates;
 
-    [DataField("lastStuckTime", customTypeSerializer:typeof(TimeOffsetSerializer))]
+    [DataField("lastStuckTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan LastStuckTime;
 

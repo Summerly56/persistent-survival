@@ -28,7 +28,7 @@ public sealed class AmbientOcclusionOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
-    private readonly OverlayResourceCache<CachedResources> _resources = new ();
+    private readonly OverlayResourceCache<CachedResources> _resources = new();
 
     public AmbientOcclusionOverlay()
     {
@@ -57,7 +57,7 @@ public sealed class AmbientOcclusionOverlay : Overlay
         var distance = _cfgManager.GetCVar(CCVars.AmbientOcclusionDistance);
         //var color = Color.Red;
         var target = viewport.RenderTarget;
-        var lightScale = target.Size / (Vector2) viewport.Size;
+        var lightScale = target.Size / (Vector2)viewport.Size;
         var scale = viewport.RenderScale / (Vector2.One / lightScale);
         var maps = _entManager.System<SharedMapSystem>();
         var lookups = _entManager.System<EntityLookupSystem>();

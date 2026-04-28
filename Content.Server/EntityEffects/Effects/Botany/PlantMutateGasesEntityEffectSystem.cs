@@ -1,9 +1,9 @@
-using System.Linq;
 using Content.Server.Botany.Components;
 using Content.Shared.Atmos;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects.Botany;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.EntityEffects.Effects.Botany;
 

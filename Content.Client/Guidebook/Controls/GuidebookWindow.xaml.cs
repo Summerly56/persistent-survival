@@ -76,7 +76,7 @@ public sealed partial class GuidebookWindow : FancyWindow, ILinkClickHandler, IA
 
             UserInterfaceManager.DeferAction(() =>
             {
-                if (control.GetControlScrollPosition() is not {} position)
+                if (control.GetControlScrollPosition() is not { } position)
                     return;
 
                 Scroll.HScrollTarget = position.X;

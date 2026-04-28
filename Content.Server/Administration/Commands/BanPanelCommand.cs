@@ -1,6 +1,6 @@
+using Content.Server.EUI;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Content.Server.EUI;
 
 namespace Content.Server.Administration.Commands;
 

@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.Components;
 using Content.Shared.Procedural.DungeonLayers;
 using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -75,7 +75,7 @@ public sealed partial class DungeonJob
             if (_prototype.Resolve(gen.Entity, out var proto) &&
                 proto.Components.TryGetComponent("EntityRemap", out var comps))
             {
-                var remappingComp = (EntityRemapComponent) comps;
+                var remappingComp = (EntityRemapComponent)comps;
                 remapping = remappingComp.Mask;
             }
 

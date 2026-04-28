@@ -1,5 +1,3 @@
-using System.Collections.Frozen;
-using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -10,6 +8,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Collections.Frozen;
+using System.Linq;
 
 
 namespace Content.Shared.Chemistry.Reaction
@@ -158,7 +158,7 @@ namespace Content.Shared.Chemistry.Reaction
             }
 
             if (reaction.Quantized)
-                lowestUnitReactions = (int) lowestUnitReactions;
+                lowestUnitReactions = (int)lowestUnitReactions;
 
             return lowestUnitReactions > 0;
         }

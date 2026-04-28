@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Server.Antag;
 
-public sealed class AntagSelectionPlayerPool (List<List<ICommonSession>> orderedPools)
+public sealed class AntagSelectionPlayerPool(List<List<ICommonSession>> orderedPools)
 {
     public bool TryPickAndTake(IRobustRandom random, [NotNullWhen(true)] out ICommonSession? session)
     {

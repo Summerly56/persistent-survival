@@ -1,4 +1,0 @@
-- type: entity
-  save: true
-  parent: BaseMobSlimePerson
-  id: MobSlimePerson

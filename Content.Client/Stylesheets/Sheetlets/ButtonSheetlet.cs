@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Client.Stylesheets.Palette;
 using Content.Client.Stylesheets.SheetletConfigs;
 using Content.Client.Stylesheets.Stylesheets;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using System.Numerics;
 using static Content.Client.Stylesheets.StylesheetHelpers;
 
 namespace Content.Client.Stylesheets.Sheetlets;
@@ -19,6 +19,7 @@ public sealed class ButtonSheetlet<T> : Sheetlet<T> where T : PalettedStylesheet
 
         var crossTex = sheet.GetTextureOr(iconCfg.CrossIconPath, NanotrasenStylesheet.TextureRoot);
         var refreshTex = sheet.GetTextureOr(iconCfg.RefreshIconPath, NanotrasenStylesheet.TextureRoot);
+        var helpTex = sheet.GetTextureOr(iconCfg.HelpIconPath, NanotrasenStylesheet.TextureRoot);
 
         var rules = new List<StyleRule>
         {
@@ -55,6 +56,11 @@ public sealed class ButtonSheetlet<T> : Sheetlet<T> where T : PalettedStylesheet
             E<TextureButton>()
                 .Class(StyleClass.RefreshButton)
                 .Prop(TextureButton.StylePropertyTexture, refreshTex),
+
+            // Help button
+            E<TextureButton>()
+                .Class(StyleClass.HelpButton)
+                .Prop(TextureButton.StylePropertyTexture, helpTex),
 
             // Ensure labels in buttons are aligned.
             E<Label>()

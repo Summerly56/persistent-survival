@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Radio.Components;
 using Content.Shared.Wires;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.EncryptionKeys;
 

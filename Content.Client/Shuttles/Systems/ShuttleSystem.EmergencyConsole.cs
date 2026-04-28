@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Shared.Shuttles.Events;
 using Content.Shared.Shuttles.Systems;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
+using System.Numerics;
 
 namespace Content.Client.Shuttles.Systems;
 

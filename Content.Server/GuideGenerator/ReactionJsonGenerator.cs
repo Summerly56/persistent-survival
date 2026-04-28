@@ -1,9 +1,9 @@
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 
 namespace Content.Server.GuideGenerator;
 

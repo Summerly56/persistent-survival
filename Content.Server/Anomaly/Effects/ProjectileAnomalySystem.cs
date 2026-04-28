@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Anomaly.Components;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Anomaly.Components;
@@ -7,6 +6,7 @@ using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.Anomaly.Effects;
 
@@ -74,7 +74,7 @@ public sealed class ProjectileAnomalySystem : EntitySystem
                 ? _random.PickAndTake(priority)
                 : _random.Pick(_inRange);
 
-            var targetXForm= _xFormQuery.GetComponent(target);
+            var targetXForm = _xFormQuery.GetComponent(target);
             var targetCoords = targetXForm.Coordinates.Offset(_random.NextVector2(0.5f));
 
             ShootProjectile(

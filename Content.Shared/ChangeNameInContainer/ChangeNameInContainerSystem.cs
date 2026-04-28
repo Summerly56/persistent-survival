@@ -1,7 +1,7 @@
 using Content.Shared.Chat;
-using Robust.Shared.Containers;
-using Content.Shared.Whitelist;
 using Content.Shared.Speech;
+using Content.Shared.Whitelist;
+using Robust.Shared.Containers;
 
 namespace Content.Shared.ChangeNameInContainer;
 

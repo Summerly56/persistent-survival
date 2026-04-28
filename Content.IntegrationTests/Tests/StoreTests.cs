@@ -127,7 +127,7 @@ public sealed class StoreTests
                     Assert.That(plainDiscountedCost.Value, Is.LessThan(prototypeCost.Value), "Expected discounted cost to be lower then prototype cost.");
 
 
-                    var buyMsg = new StoreBuyListingMessage(discountedListingItem.ID){Actor = human};
+                    var buyMsg = new StoreBuyListingMessage(discountedListingItem.ID) { Actor = human };
                     server.EntMan.EventBus.RaiseLocalEvent(pda, buyMsg);
 
                     var newBalance = storeComponent.Balance[UplinkSystem.TelecrystalCurrencyPrototype];

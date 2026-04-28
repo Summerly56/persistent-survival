@@ -1,4 +1,3 @@
-﻿using System.Numerics;
 using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Components.Debris;
 using Content.Server.Worldgen.Systems.Biomes;
@@ -25,7 +24,6 @@ public sealed class SimpleFloorPlanPopulatorSystem : BaseWorldSystem
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physx = default!;
     [Dependency] private readonly WorldControllerSystem _world = default!;
     [Dependency] private readonly ChunkOwnedEntitySystem _ownedEntity = default!;
 

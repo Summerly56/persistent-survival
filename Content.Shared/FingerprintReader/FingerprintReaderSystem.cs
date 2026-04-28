@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.FingerprintReader;
 

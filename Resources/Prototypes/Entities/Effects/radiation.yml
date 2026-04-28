@@ -13,3 +13,25 @@
       collection:
         RadiationPulse
   - type: RadiationPulse
+
+# Gravitational-lensing shimmer + radiation source for ClF3+Tritium reactions.
+# Uses the singularity distortion shader with a visible point light.
+# Distortion intensity is overridden dynamically by code based on tritium amount.
+- type: entity
+  name: radiative flash
+  id: ClF3TritiumFlash
+  categories: [ HideSpawnMenu ]
+  description: The air shimmers with intense ionizing radiation.
+  components:
+  - type: RadiationSource
+    intensity: 3
+    slope: 1.0
+  - type: TimedDespawn
+    lifetime: 6
+  - type: SingularityDistortion
+    intensity: 800
+    falloffPower: 2.4
+  - type: PointLight
+    radius: 10
+    energy: 20
+    color: "#7DF9FF"

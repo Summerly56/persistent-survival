@@ -87,7 +87,8 @@ public sealed class ApcSystem : EntitySystem
     // Change the APC's state only when the battery state changes, or when it's first created.
     private void OnBatteryChargeChanged(EntityUid uid, ApcComponent component, ref ChargeChangedEvent args)
     {
-        UpdateApcState(uid, component);
+        // Defer until the next tick.
+        component.NeedStateUpdate = true;
     }
 
     private static void OnApcStartup(EntityUid uid, ApcComponent component, ComponentStartup args)
@@ -163,7 +164,7 @@ public sealed class ApcSystem : EntitySystem
     }
 
     public void UpdateApcState(EntityUid uid,
-        ApcComponent? apc=null,
+        ApcComponent? apc = null,
         PowerNetworkBatteryComponent? battery = null)
     {
         if (!Resolve(uid, ref apc, ref battery, false))
@@ -209,7 +210,7 @@ public sealed class ApcSystem : EntitySystem
         var charge = ContentHelpers.RoundToNearestLevels(battery.CurrentStorage / battery.Capacity, 1.0, 100 / ChargeAccuracy) / 100f * ChargeAccuracy;
 
         var state = new ApcBoundInterfaceState(apc.MainBreakerEnabled,
-            (int) MathF.Ceiling(battery.CurrentSupply), apc.LastExternalState,
+            (int)MathF.Ceiling(battery.CurrentSupply), apc.LastExternalState,
             charge,
             apc.MaxLoad,
             apc.TripFlag);

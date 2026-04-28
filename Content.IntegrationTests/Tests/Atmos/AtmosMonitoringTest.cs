@@ -1,11 +1,10 @@
-using System.Numerics;
 using Content.Server.Atmos.Monitor.Components;
 using Content.Shared.Atmos;
-using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.IntegrationTests.Tests.Atmos;
 

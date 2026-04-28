@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.IO;
-using System.Threading.Tasks;
 using Content.Client.Markers;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
@@ -24,6 +17,13 @@ using Robust.UnitTesting.Pool;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Content.MapRenderer.Painters
 {

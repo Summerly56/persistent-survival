@@ -384,7 +384,6 @@
   parent: [ BaseGoldCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]
   id: CargoTelepadMachineCircuitboard
   result: CargoTelepadMachineCircuitboard
-  unlockUses: 2
 
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]

@@ -1,6 +1,6 @@
 using Content.Shared.Mobs;
-using Robust.Shared.Prototypes;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Species.Components;
 
@@ -13,7 +13,7 @@ public sealed partial class GibActionComponent : Component
     [DataField("actionPrototype", required: true)]
     public EntProtoId ActionPrototype;
 
-    [DataField, AutoNetworkedField] 
+    [DataField, AutoNetworkedField]
     public EntityUid? ActionEntity;
 
     /// <summary>

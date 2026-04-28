@@ -1,9 +1,8 @@
-using Content.Server.NodeContainer;
+using Content.Server.MCTN.Components;
+using Content.Server.MCTN.Systems;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.NodeContainer;
-using Content.Server.MCTN.Components;
-using Content.Server.MCTN.Systems;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Power.Nodes
@@ -33,13 +32,14 @@ namespace Content.Server.Power.Nodes
             return base.Connectable(entMan, xform);
         }
 
-        public override IEnumerable<Node> GetReachableNodes(TransformComponent xform,
+        public override IEnumerable<Node> GetReachableNodes(
+            Entity<TransformComponent> xform,
             EntityQuery<NodeContainerComponent> nodeQuery,
             EntityQuery<TransformComponent> xformQuery,
-            MapGridComponent? grid,
+            Entity<MapGridComponent>? grid,
             IEntityManager entMan)
         {
-            if (!xform.Anchored || grid == null)
+            if (!xform.Comp.Anchored || grid is not { } gridEnt)
                 yield break;
 
             if (entMan.TryGetComponent<MCTNComponent>(Owner, out var mctn) && entMan.TrySystem<MCTNSystem>(out var uepSys))
@@ -49,9 +49,10 @@ namespace Content.Server.Power.Nodes
                     yield return remoteNode;
             }
 
-            var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+            var mapSystem = entMan.System<SharedMapSystem>();
+            var gridIndex = mapSystem.TileIndicesFor(gridEnt, xform.Comp.Coordinates);
 
-            foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, grid, gridIndex))
+            foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, gridEnt, gridIndex, mapSystem))
             {
                 if (node is CableNode)
                     yield return node;

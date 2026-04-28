@@ -1,10 +1,9 @@
-using System.Linq;
 using Content.Server.Solar.Components;
-using Content.Server.UserInterface;
 using Content.Shared.Solar;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Solar.EntitySystems
 {
@@ -16,7 +15,6 @@ namespace Content.Server.Solar.EntitySystems
     {
         [Dependency] private readonly PowerSolarSystem _powerSolarSystem = default!;
         [Dependency] private readonly PowerSolarTrackerSystem _powerSolarTracker = default!;
-        [Dependency] private readonly SolarPositioningSystem _solarPositioning = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 

@@ -1,5 +1,6 @@
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -7,7 +8,9 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Light;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Random.Helpers;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
@@ -17,12 +20,8 @@ using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
-using Content.Shared.Movement.Systems;
-using Content.Shared.Random.Helpers;
-using Content.Shared.Clothing.Components;
 
 namespace Content.Shared.Flash;
 
@@ -205,10 +204,7 @@ public abstract class SharedFlashSystem : EntitySystem
         _entityLookup.GetEntitiesInRange(transform.Coordinates, range, _entSet);
         foreach (var entity in _entSet)
         {
-            // TODO: Use RandomPredicted https://github.com/space-wizards/RobustToolbox/pull/5849
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(entity).Id);
-            var rand = new System.Random(seed);
-            if (!rand.Prob(probability))
+            if (!SharedRandomExtensions.PredictedProb(_timing, probability, GetNetEntity(entity)))
                 continue;
 
             // Is the entity affected by the flash either through status effects or by taking damage?

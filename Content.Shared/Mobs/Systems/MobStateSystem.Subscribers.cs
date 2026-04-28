@@ -1,7 +1,6 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.Damage;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Emoting;
@@ -18,7 +17,6 @@ using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Throwing;
-using Robust.Shared.Physics.Components;
 
 namespace Content.Shared.Mobs.Systems;
 
@@ -117,33 +115,33 @@ public partial class MobStateSystem
         switch (state)
         {
             case MobState.Alive:
-            {
-                _standing.Stand(target);
-                _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
-                break;
-            }
+                {
+                    _standing.Stand(target);
+                    _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
+                    break;
+                }
             case MobState.Critical:
-            {
-                Down(target);
-                _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
-                break;
-            }
+                {
+                    Down(target);
+                    _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
+                    break;
+                }
             case MobState.Dead:
-            {
-                EnsureComp<CollisionWakeComponent>(target);
-                Down(target);
-                _appearance.SetData(target, MobStateVisuals.State, MobState.Dead);
-                break;
-            }
+                {
+                    EnsureComp<CollisionWakeComponent>(target);
+                    Down(target);
+                    _appearance.SetData(target, MobStateVisuals.State, MobState.Dead);
+                    break;
+                }
             case MobState.Invalid:
-            {
-                //unused;
-                break;
-            }
+                {
+                    //unused;
+                    break;
+                }
             default:
-            {
-                throw new NotImplementedException();
-            }
+                {
+                    throw new NotImplementedException();
+                }
         }
     }
 

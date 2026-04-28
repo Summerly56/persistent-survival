@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.GameObjects;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests;
 

@@ -1,10 +1,8 @@
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Power;
 using Content.Shared.Tools;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using System.Diagnostics.Tracing;
 using Content.Shared.Tools.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Power.Components;
 

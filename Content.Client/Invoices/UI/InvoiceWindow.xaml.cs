@@ -20,9 +20,6 @@ namespace Content.Client.Invoices.UI
     public sealed partial class InvoiceWindow : DefaultWindow
     {
         [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ILogManager _logManager = default!;
-        private readonly ISawmill _logMill = default!;
 
         private readonly InvoiceBoundUserInterface _owner;
 
@@ -30,7 +27,6 @@ namespace Content.Client.Invoices.UI
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
-            _logMill = _logManager.GetSawmill(SharedIdCardConsoleSystem.Sawmill);
 
             _owner = owner;
             PayButton.OnPressed += _ => PayInvoice();
@@ -45,7 +41,7 @@ namespace Content.Client.Invoices.UI
             ReasonLabel.SetMarkup(state.InvoiceReason);
             CostLabel.Text = $"${state.InvoiceCost}";
             PaidToLabel.Text = state.PaidTo;
-            if(state.PayslipMode)
+            if (state.PayslipMode)
             {
                 PaidToTitle.Text = "Paid by:";
                 CostTitle.Text = "Value:";
@@ -66,7 +62,7 @@ namespace Content.Client.Invoices.UI
                 PaidByLabel.Visible = true;
                 PaidLabel.Visible = true;
                 PayButton.Visible = false;
-                if(state.PaidTime != null)
+                if (state.PaidTime != null)
                 {
                     var yearOffset = _cfgManager.GetCVar(CCVars.YearOffset);
                     var finalTime = state.PaidTime.Value.AddYears(yearOffset);

@@ -162,7 +162,7 @@
   - type: GuideHelp
     guides:
     - Robotics
-    #- Xenoborgs, Persistence Station
+    - Xenoborgs
   - type: Inventory
     templateId: borg
   - type: NpcFactionMember

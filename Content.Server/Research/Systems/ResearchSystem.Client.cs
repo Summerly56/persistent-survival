@@ -1,9 +1,7 @@
-using Content.Server.Database;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Research.Components;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace Content.Server.Research.Systems;
 
@@ -71,7 +69,7 @@ public sealed partial class ResearchSystem
 
     private void OnClientCompInit(EntityUid uid, ResearchClientComponent component, ComponentInit args)
     {
-        if(component.Server != null)
+        if (component.Server != null)
         {
             RegisterClient(uid, component.Server.Value);
         }

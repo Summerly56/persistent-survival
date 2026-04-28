@@ -1,8 +1,8 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Verbs;
 using Robust.Shared.Console;
+using System.Linq;
 
 namespace Content.Server.Verbs.Commands
 {

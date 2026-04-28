@@ -1,5 +1,4 @@
-﻿using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Shared.GameStates;
+using Content.Shared.Weapons.Ranged.Systems;
 
 namespace Content.Shared.Weapons.Ranged.Components;
 

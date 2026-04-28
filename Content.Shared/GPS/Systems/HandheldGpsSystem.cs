@@ -27,8 +27,8 @@ public sealed class HandheldGpsSystem : EntitySystem
 
         if (pos.MapId != MapId.Nullspace)
         {
-            var x = (int) pos.Position.X;
-            var y = (int) pos.Position.Y;
+            var x = (int)pos.Position.X;
+            var y = (int)pos.Position.Y;
             posText = $"({x}, {y})";
         }
 

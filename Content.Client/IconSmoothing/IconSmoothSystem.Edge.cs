@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.IconSmoothing;
 using Robust.Client.GameObjects;
+using System.Numerics;
 
 namespace Content.Client.IconSmoothing;
 

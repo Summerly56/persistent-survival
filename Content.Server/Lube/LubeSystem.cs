@@ -1,4 +1,5 @@
 using Content.Server.Administration.Logs;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -7,7 +8,6 @@ using Content.Shared.Lube;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 

@@ -1,6 +1,6 @@
-using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
+using Content.Shared.Silicons.Laws.Components;
 
 namespace Content.Server.Silicons.Laws;
 

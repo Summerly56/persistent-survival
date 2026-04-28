@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Alert;
 using Content.Shared.Interaction;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Buckle.Components;
 

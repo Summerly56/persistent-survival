@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.PostGeneration;
@@ -7,6 +5,8 @@ using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -22,7 +22,7 @@ public sealed partial class DungeonJob
         // List of places to start from.
         var worm = new ValueList<Vector2i>();
         var startAngles = new Dictionary<Vector2i, Angle>();
-        var tileDef = (ContentTileDefinition) _tileDefManager[gen.Tile];
+        var tileDef = (ContentTileDefinition)_tileDefManager[gen.Tile];
 
         foreach (var room in dungeon.Rooms)
         {

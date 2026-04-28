@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Shared.Jittering;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Client.Jittering
 {

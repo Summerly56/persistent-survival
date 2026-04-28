@@ -1,4 +1,4 @@
-﻿using Content.Shared.CartridgeLoader;
+using Content.Shared.CartridgeLoader;
 
 namespace Content.Client.CartridgeLoader;
 

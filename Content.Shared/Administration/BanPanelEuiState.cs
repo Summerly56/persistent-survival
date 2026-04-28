@@ -1,9 +1,9 @@
-using System.Net;
 using Content.Shared.Database;
 using Content.Shared.Eui;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using System.Net;
 
 namespace Content.Shared.Administration;
 

@@ -1,6 +1,5 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Monitor.Systems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.DeviceNetwork.Systems;
@@ -9,6 +8,7 @@ using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Monitor;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Atmos.Piping.Unary;
@@ -19,8 +19,8 @@ using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.DoAfter;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Power;
 using Content.Shared.Tools.Systems;
@@ -241,7 +241,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
                     if (previous.Enabled != setData.Enabled)
                     {
-                        string enabled = setData.Enabled ? "enabled" : "disabled" ;
+                        string enabled = setData.Enabled ? "enabled" : "disabled";
                         _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(uid)} {enabled}");
                     }
 
@@ -271,7 +271,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
                     if (previous.PressureLockoutOverride != setData.PressureLockoutOverride)
                     {
-                        string enabled = setData.PressureLockoutOverride ? "enabled" : "disabled" ;
+                        string enabled = setData.PressureLockoutOverride ? "enabled" : "disabled";
                         _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(uid)} pressure lockout override {enabled}");
                     }
 

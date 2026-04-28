@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Alert;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
@@ -9,6 +9,7 @@ using Content.Shared.Prying.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
+using System.Diagnostics.CodeAnalysis;
 using PryUnpoweredComponent = Content.Shared.Prying.Components.PryUnpoweredComponent;
 
 namespace Content.Shared.Prying.Systems;
@@ -22,15 +23,35 @@ public sealed class PryingSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PryingComponent, ComponentStartup>(OnPryingStartup);
+        SubscribeLocalEvent<PryingComponent, ComponentShutdown>(OnPryingShutdown);
+
         // Mob prying doors
         SubscribeLocalEvent<DoorComponent, GetVerbsEvent<AlternativeVerb>>(OnDoorAltVerb);
         SubscribeLocalEvent<DoorComponent, DoorPryDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<DoorComponent, InteractUsingEvent>(TryPryDoor);
+    }
+
+    private void OnPryingStartup(Entity<PryingComponent> ent, ref ComponentStartup args)
+    {
+        if (ent.Comp.PryingAlertProtoId == null)
+            return;
+
+        _alerts.ShowAlert(ent.Owner, ent.Comp.PryingAlertProtoId.Value);
+    }
+
+    private void OnPryingShutdown(Entity<PryingComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.PryingAlertProtoId == null)
+            return;
+
+        _alerts.ClearAlert(ent.Owner, ent.Comp.PryingAlertProtoId.Value);
     }
 
     private void TryPryDoor(EntityUid uid, DoorComponent comp, InteractUsingEvent args)

@@ -3,12 +3,13 @@ using Content.Server.Database;
 using Content.Server.Preferences.Managers;
 using Content.Shared._NF.Bank.Components;
 using Content.Shared.Administration;
-using Content.Shared.Preferences;
 using Robust.Server.Player;
 using Robust.Shared.Console;
 using System.Linq;
 
+#pragma warning disable IDE1006 // Naming Styles
 namespace Content.Server._NF.Bank.Commands;
+#pragma warning restore IDE1006 // Naming Styles
 
 /// <summary>
 /// Command that allows administrators to check a player's bank balance using their username.
@@ -17,11 +18,7 @@ namespace Content.Server._NF.Bank.Commands;
 [AdminCommand(AdminFlags.Admin)]
 public sealed class CheckBankBalance : IConsoleCommand
 {
-    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _dbManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] protected readonly EntityManager EntityManager = default!;
+    [Dependency] private readonly EntityManager _entityManager = default!;
     public string Command => "checkbalance";
     public string Description => "Check a characters's bank balance by character name.";
     public string Help => "checkbalance <charactername>";
@@ -37,7 +34,7 @@ public sealed class CheckBankBalance : IConsoleCommand
         var username = args[0];
 
         Type type = typeof(BankAccountComponent);
-        var components = EntityManager.GetAllComponents(type, true);
+        var components = _entityManager.GetAllComponents(type, true);
         if (components.Count() < 1)
         {
             shell.WriteLine($" No MoneyAccountsComponents found.");

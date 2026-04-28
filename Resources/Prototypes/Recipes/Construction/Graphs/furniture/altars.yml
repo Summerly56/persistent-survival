@@ -25,3 +25,381 @@
           steps:
             - tool: Welding
               doAfter: 5
+
+- type: constructionGraph
+  id: AltarGraph
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: altarClear
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: WoodPlank
+              amount: 10
+              doAfter: 5
+
+    - node: altarClear
+      entity: AltarDefault
+      edges:
+        - to: altarNT
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+          - tag: TowelNanotrasen
+            name: construction-graph-tag-towel-NT
+            icon:
+              sprite: "Clothing/Multiple/towel.rsi"
+              state: "icon"
+              doAfter: 1
+
+        - to: altarYellow
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+          - tag: TowelYellow
+            name: construction-graph-tag-towel-yellow
+            icon:
+              sprite: "Clothing/Multiple/towel.rsi"
+              state: "icon"
+              doAfter: 1
+
+        - to: altarFestival
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+          - tag: PlushieSlime
+            name: construction-graph-tag-slime-plushie
+            icon:
+              sprite: "Objects/Fun/Plushies/slime.rsi"
+              state: "icon"
+              doAfter: 1
+
+        - to: altarHeaven
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+          - tag: CrystalRed
+            name: construction-graph-tag-red-crystal-shard
+            icon:
+              sprite: "Objects/Materials/Shards/crystal.rsi"
+              state: "shard1"
+              doAfter: 1
+
+        - to: altarFangs
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: SpaceCarpTooth
+              amount: 4
+              doAfter: 1
+
+        - to: altarDruid
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetGreen
+              amount: 1
+              doAfter: 1
+
+        - to: altarBlue
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetBlue
+              amount: 1
+              doAfter: 1
+
+        - to: altarBlack
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetBlack
+              amount: 1
+              doAfter: 1
+
+        - to: altarOrange
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetOrange
+              amount: 1
+              doAfter: 1
+
+        - to: altarRed
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetRed
+              amount: 1
+              doAfter: 1
+
+        - to: altarWhite
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: FloorCarpetWhite
+              amount: 1
+              doAfter: 1
+
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: MaterialWoodPlank1
+                amount: 10
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarNT
+      entity: AltarNanotrasen
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: TowelColorNT
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarYellow
+      entity: AltarConvertYellow
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: TowelColorYellow
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarFestival
+      entity: AltarConvertFestival
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: PlushieSlime 
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarHeaven
+      entity: AltarHeaven
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: ShardCrystalRed
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarFangs
+      entity: AltarFangs
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: MaterialToothSpaceCarp1
+                amount: 4
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarDruid
+      entity: AltarDruid
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemGreen
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarBlue
+      entity: AltarConvertBlue
+      edges:
+        - to: altarTechnology
+          steps:
+          - tag: CrystalCyan
+            name: construction-graph-tag-cyan-crystal-shard
+            icon:
+              sprite: "Objects/Materials/Shards/crystal.rsi"
+              state: "shard1"
+              doAfter: 1
+
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemBlue
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarBlack # Black
+      entity: AltarConvert
+      edges:
+        - to: altarChaos
+          steps:
+          - tag: DiceD20
+            name: construction-graph-tag-dice-d20
+            icon:
+              sprite: "Objects/Fun/dice.rsi"
+              state: "d20icon"
+              doAfter: 1
+
+        - to: altarSatana
+          steps:
+          - tag: CrystalRed
+            name: construction-graph-tag-red-crystal-shard
+            icon:
+              sprite: "Objects/Materials/Shards/crystal.rsi"
+              state: "shard1"
+              doAfter: 1
+
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemBlack
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarOrange
+      entity: AltarConvertOrange
+      edges:
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemOrange
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarRed
+      entity: AltarConvertRed
+      edges:
+        - to: altarChristian
+          steps:
+          - tag: Candle
+            name: construction-graph-tag-candle
+            icon:
+              sprite: "Objects/Misc/candles.rsi"
+              state: "candle-big"
+              doAfter: 1
+
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemRed
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarWhite
+      entity: AltarConvertWhite
+      edges:
+        - to: altarToolbox
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - tag: Toolbox
+              name: construction-graph-tag-toolbox
+              store: toolbox
+              doAfter: 1
+              icon:
+                sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+                state: icon
+
+        - to: altarClear
+          completed:
+          - !type:SpawnPrototype
+                prototype: FloorCarpetItemWhite
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarTechnology
+      entity: AltarTechnology
+      edges:
+        - to: altarBlue
+          completed:
+          - !type:SpawnPrototype
+                prototype: ShardCrystalCyan
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarChaos
+      entity: AltarChaos
+      edges:
+        - to: altarBlack
+          completed:
+          - !type:SpawnPrototype
+                prototype: d20Dice
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: altarSatana
+      entity: AltarSatana
+      edges:
+        - to: altarBlack
+          completed:
+          - !type:SpawnPrototype
+                prototype: ShardCrystalRed
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: altarChristian
+      entity: AltarSpaceChristian
+      edges:
+        - to: altarRed
+          completed:
+          - !type:SpawnPrototype
+                prototype: Candle
+                amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: altarToolbox
+      entity: AltarToolbox
+      edges:
+        - to: altarWhite
+          completed:
+          - !type:EmptyAllContainers
+          steps:
+            - tool: Prying
+              doAfter: 1

@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
@@ -19,6 +17,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -172,7 +172,7 @@ public sealed class RadioSystem : EntitySystem
             };
         }
         else
-            hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
+            hasActiveServer = true;// HasActiveServer(sourceMapId, channel.ID);
 
         var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
         var encryptionID = 0;
@@ -183,7 +183,9 @@ public sealed class RadioSystem : EntitySystem
         while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
         {
             if (TryComp<IntercomComponent>(receiver, out _)) continue;
+#pragma warning disable CS0642 // Possible mistaken empty statement
             if (encryptionID == 0 && !channel.Encrypted) ;
+#pragma warning restore CS0642 // Possible mistaken empty statement
 
             else if (TryComp<HeadsetComponent>(receiver, out var targetHeadset) && targetHeadset != null)
             {

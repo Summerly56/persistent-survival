@@ -1,10 +1,13 @@
-using System.Diagnostics.CodeAnalysis;
+using Content.Shared.CrewAssignments.Components;
+using Content.Shared.CrewAssignments.Systems;
+using Content.Shared.Implants.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.StatusEffectNew;
 
@@ -14,13 +17,17 @@ namespace Content.Shared.StatusEffectNew;
 /// </summary>
 public sealed partial class StatusEffectsSystem : EntitySystem
 {
+    [Dependency] private readonly IComponentFactory _factory = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedJobNetSystem _jobNetSystem = default!;
 
     private EntityQuery<StatusEffectContainerComponent> _containerQuery;
     private EntityQuery<StatusEffectComponent> _effectQuery;
+
+    public readonly HashSet<string> StatusEffectPrototypes = [];
 
     public override void Initialize()
     {
@@ -35,8 +42,12 @@ public sealed partial class StatusEffectsSystem : EntitySystem
 
         SubscribeLocalEvent<RejuvenateRemovedStatusEffectComponent, StatusEffectRelayedEvent<RejuvenateEvent>>(OnRejuvenate);
 
+        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
+
         _containerQuery = GetEntityQuery<StatusEffectContainerComponent>();
         _effectQuery = GetEntityQuery<StatusEffectComponent>();
+
+        ReloadStatusEffectsCache();
     }
 
     public override void Update(float frameTime)
@@ -58,6 +69,25 @@ public sealed partial class StatusEffectsSystem : EntitySystem
                 continue;
 
             PredictedQueueDel(ent);
+        }
+    }
+
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
+    {
+        if (!args.WasModified<EntityPrototype>())
+            return;
+
+        ReloadStatusEffectsCache();
+    }
+
+    private void ReloadStatusEffectsCache()
+    {
+        StatusEffectPrototypes.Clear();
+
+        foreach (var ent in _proto.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (ent.TryGetComponent<StatusEffectComponent>(out _, _factory))
+                StatusEffectPrototypes.Add(ent.ID);
         }
     }
 
@@ -201,7 +231,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
 
         var endTime = delay == null ? _timing.CurTime + duration : _timing.CurTime + delay + duration;
         SetStatusEffectEndTime((effect.Value, effectComp), endTime);
-        var startTime = delay == null ? TimeSpan.Zero : _timing.CurTime + delay.Value;
+        var startTime = delay == null ? _timing.CurTime : _timing.CurTime + delay.Value;
         SetStatusEffectStartTime(effect.Value, startTime);
 
         TryApplyStatusEffect((statusEffect.Value, effectComp));
@@ -279,6 +309,20 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         if (ent.Comp.AppliedTo is not { } appliedTo)
             return; // Not much we can do!
 
+        if (TryComp<ImplantedComponent>(ent.Comp.AppliedTo, out var implanted) && implanted != null)
+        {
+            if (implanted.ImplantContainer != null)
+            {
+                foreach (var originalImplant in implanted.ImplantContainer.ContainedEntities)
+                {
+                    if (TryComp<JobNetComponent>(originalImplant, out var jobnet) && jobnet != null)
+                    {
+
+                        _jobNetSystem.ReagentObjectiveTryComplete(jobnet, ent);
+                    }
+                }
+            }
+        }
         var ev = new StatusEffectEndTimeUpdatedEvent(appliedTo, endTime);
         RaiseLocalEvent(ent, ref ev);
 

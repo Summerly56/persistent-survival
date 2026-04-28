@@ -70,7 +70,7 @@ public sealed class AirAlarmUIState : BoundUserInterfaceState
 
 [Serializable, NetSerializable]
 public sealed class AirAlarmResyncAllDevicesMessage : BoundUserInterfaceMessage
-{}
+{ }
 
 [Serializable, NetSerializable]
 public sealed class AirAlarmUpdateAlarmModeMessage : BoundUserInterfaceMessage

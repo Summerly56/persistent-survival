@@ -1,5 +1,4 @@
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
@@ -48,7 +47,7 @@ public sealed class GasCanisterSystem : SharedGasCanisterSystem
 
     protected override void DirtyUI(EntityUid uid, GasCanisterComponent? canister = null, NodeContainerComponent? nodeContainer = null)
     {
-        if (!Resolve(uid, ref canister, ref nodeContainer))
+        if (!Resolve(uid, ref canister, ref nodeContainer, logMissing: false))
             return;
 
         var portStatus = false;
@@ -79,7 +78,7 @@ public sealed class GasCanisterSystem : SharedGasCanisterSystem
         if (!_nodeContainer.TryGetNode(nodeContainer, canister.PortName, out PortablePipeNode? portNode))
             return;
 
-        if (portNode.NodeGroup is PipeNet {NodeCount: > 1} net)
+        if (portNode.NodeGroup is PipeNet { NodeCount: > 1 } net)
         {
             MixContainerWithPipeNet(canister.Air, net.Air);
         }
@@ -147,6 +146,7 @@ public sealed class GasCanisterSystem : SharedGasCanisterSystem
 
     private void CalculateCanisterPrice(EntityUid uid, GasCanisterComponent component, ref PriceCalculationEvent args)
     {
+        if (args.Handled) return;
         args.Price += _atmos.GetPrice(component.Air);
     }
 

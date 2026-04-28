@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
@@ -6,10 +5,10 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Shared.Storage.EntitySystems;
 
@@ -28,7 +27,7 @@ public sealed class DumpableSystem : EntitySystem
     {
         base.Initialize();
         _itemQuery = GetEntityQuery<ItemComponent>();
-        SubscribeLocalEvent<DumpableComponent, AfterInteractEvent>(OnAfterInteract, before: new[]{ typeof(SharedStorageSystem) }, after: new[]{ typeof(SharedEntityStorageSystem) });
+        SubscribeLocalEvent<DumpableComponent, AfterInteractEvent>(OnAfterInteract, before: new[] { typeof(SharedStorageSystem) }, after: new[] { typeof(SharedEntityStorageSystem) });
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<AlternativeVerb>>(AddDumpVerb);
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<UtilityVerb>>(AddUtilityVerbs);
         SubscribeLocalEvent<DumpableComponent, DumpableDoAfterEvent>(OnDoAfter);
@@ -73,7 +72,7 @@ public sealed class DumpableSystem : EntitySystem
                 StartDoAfter(uid, args.Target, args.User, dumpable);//Had multiplier of 0.6f
             },
             Text = Loc.GetString("dump-verb-name"),
-            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/drop.svg.192dpi.png")),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/drop.svg.192dpi.png")),
         };
         args.Verbs.Add(verb);
     }
@@ -126,7 +125,7 @@ public sealed class DumpableSystem : EntitySystem
             delay += itemSize.Weight;
         }
 
-        delay *= (float) dumpable.DelayPerItem.TotalSeconds * dumpable.Multiplier;
+        delay *= (float)dumpable.DelayPerItem.TotalSeconds * dumpable.Multiplier;
 
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, userUid, delay, new DumpableDoAfterEvent(), storageUid, target: targetUid, used: storageUid)
         {

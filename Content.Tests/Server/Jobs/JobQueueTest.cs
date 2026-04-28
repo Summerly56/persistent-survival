@@ -1,11 +1,11 @@
+using NUnit.Framework;
+using Robust.Shared.CPUJob.JobQueues;
+using Robust.Shared.CPUJob.JobQueues.Queues;
+using Robust.Shared.Timing;
+using Robust.UnitTesting;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.CPUJob.JobQueues;
-using Robust.Shared.CPUJob.JobQueues.Queues;
-using NUnit.Framework;
-using Robust.Shared.Timing;
-using Robust.UnitTesting;
 
 namespace Content.Tests.Server.Jobs
 {

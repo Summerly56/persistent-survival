@@ -102,7 +102,7 @@ namespace Content.Server.GameTicking
             _map.SetPaused(DefaultMap, true);
             bool finalSaveFound = false;
             var initial = new ResPath("current");
-            ResPath path = initial;
+            ResPath? path = initial;
             int indof = 0;
             if (_resourceManager.UserData.Exists(initial.ToRootedPath()))
             {
@@ -123,7 +123,7 @@ namespace Content.Server.GameTicking
                 }
             }
             var start = _gameTiming.CurTime;
-            bool save_stat = _loader.TrySaveMap(DefaultMap, path);
+            bool save_stat = _loader.TrySaveMap(DefaultMap, path!.Value);
             var end = _gameTiming.CurTime;
             var finaltime = start - end;
             _adminLogger.Add(LogType.EventRan, LogImpact.Extreme, $"MAP SAVE STATUS: {save_stat} TIME TAKEN: {finaltime.TotalSeconds}");
@@ -136,7 +136,7 @@ namespace Content.Server.GameTicking
                 return;
             bool finalSaveFound = false;
             var initial = new ResPath("current");
-            ResPath path = initial;
+            ResPath? path = initial;
             int indof = 0;
             if (_resourceManager.UserData.Exists(initial.ToRootedPath()))
             {
@@ -155,7 +155,7 @@ namespace Content.Server.GameTicking
                     }
                 }
                 var start = _gameTiming.CurTime;
-                bool save_stat = _loader.TryLoadMap(path!, out var entity, out var grids, new DeserializationOptions() { PauseMaps = true });
+                bool save_stat = _loader.TryLoadMap(path!.Value, out var entity, out var grids, new DeserializationOptions() { PauseMaps = true });
                 if (entity.HasValue)
                 {
                     DefaultMap = entity.Value.Comp.MapId;
@@ -223,7 +223,7 @@ namespace Content.Server.GameTicking
             for (var i = 0; i < maps.Count; i++)
             {
                 LoadGameMap(maps[i], out var mapId);
-                DebugTools.Assert(!_map.IsInitialized(mapId));
+                //    DebugTools.Assert(!_map.IsInitialized(mapId));
 
                 if (i == 0)
                     DefaultMap = mapId;
@@ -440,100 +440,100 @@ namespace Content.Server.GameTicking
             try
             {
 #endif
-            // If this game ticker is a dummy or the round is already being started, do nothing!
-            if (DummyTicker || _startingRound)
-                return;
+                // If this game ticker is a dummy or the round is already being started, do nothing!
+                if (DummyTicker || _startingRound)
+                    return;
 
-            _startingRound = true;
+                _startingRound = true;
 
-            if (RoundId == 0)
-                IncrementRoundNumber();
+                if (RoundId == 0)
+                    IncrementRoundNumber();
 
-            ReplayStartRound();
+                ReplayStartRound();
 
-            DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
-            _sawmill.Info("Starting round!");
+                DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
+                _sawmill.Info("Starting round!");
 
-            SendServerMessage(Loc.GetString("game-ticker-start-round"));
+                SendServerMessage(Loc.GetString("game-ticker-start-round"));
 
-            var readyPlayers = new List<ICommonSession>();
-            var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
-            var autoDeAdmin = _cfg.GetCVar(CCVars.AdminDeadminOnJoin);
-            foreach (var (userId, status) in _playerGameStatuses)
-            {
-                if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
-                if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
-
-                if (autoDeAdmin && _adminManager.IsAdmin(session))
+                var readyPlayers = new List<ICommonSession>();
+                var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
+                var autoDeAdmin = _cfg.GetCVar(CCVars.AdminDeadminOnJoin);
+                foreach (var (userId, status) in _playerGameStatuses)
                 {
-                    _adminManager.DeAdmin(session);
-                }
+                    if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
+                    if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
+
+                    if (autoDeAdmin && _adminManager.IsAdmin(session))
+                    {
+                        _adminManager.DeAdmin(session);
+                    }
 #if DEBUG
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif
 
-                readyPlayers.Add(session);
-                HumanoidCharacterProfile? profile;
-                if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-                {
-                    profile = preferences.SelectedCharacter as HumanoidCharacterProfile;
+                    readyPlayers.Add(session);
+                    HumanoidCharacterProfile? profile;
+                    if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
+                    {
+                        profile = preferences.SelectedCharacter as HumanoidCharacterProfile;
+                    }
+                    else
+                    {
+                        var speciesToBlacklist =
+                            new HashSet<string>(_cfg.GetCVar(CCVars.ICNewAccountSpeciesBlacklist).Split(","));
+                        profile = HumanoidCharacterProfile.Random(speciesToBlacklist);
+                    }
+                    readyPlayerProfiles.Add(userId, profile!);
                 }
-                else
+
+                DebugTools.AssertEqual(readyPlayers.Count, ReadyPlayerCount());
+
+                // Just in case it hasn't been loaded previously we'll try loading it.
+                LoadMaps();
+
+                // map has been selected so update the lobby info text
+                // applies to players who didn't ready up
+                UpdateInfoText();
+
+                StartGamePresetRules();
+
+                RoundLengthMetric.Set(0);
+
+                var startingEvent = new RoundStartingEvent(RoundId);
+                RaiseLocalEvent(startingEvent);
+
+                var origReadyPlayers = readyPlayers.ToArray();
+
+                if (!StartPreset(origReadyPlayers, force))
                 {
-                    var speciesToBlacklist =
-                        new HashSet<string>(_cfg.GetCVar(CCVars.ICNewAccountSpeciesBlacklist).Split(","));
-                    profile = HumanoidCharacterProfile.Random(speciesToBlacklist);
+                    _startingRound = false;
+                    return;
                 }
-                readyPlayerProfiles.Add(userId, profile!);
-            }
+                var skipinit = false;
+                if (_ent.TryGetComponent(_map.GetMap(DefaultMap), out MapComponent? mc))
+                {
+                    if (mc.MapInitialized) skipinit = true;
+                }
+                if (!skipinit)
+                {
+                    // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
+                    _map.InitializeMap(DefaultMap);
+                }
+                _map.SetPaused(DefaultMap, false);
 
-            DebugTools.AssertEqual(readyPlayers.Count, ReadyPlayerCount());
+                SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
 
-            // Just in case it hasn't been loaded previously we'll try loading it.
-            LoadMaps();
+                _roundStartDateTime = DateTime.UtcNow;
+                RunLevel = GameRunLevel.InRound;
 
-            // map has been selected so update the lobby info text
-            // applies to players who didn't ready up
-            UpdateInfoText();
-
-            StartGamePresetRules();
-
-            RoundLengthMetric.Set(0);
-
-            var startingEvent = new RoundStartingEvent(RoundId);
-            RaiseLocalEvent(startingEvent);
-
-            var origReadyPlayers = readyPlayers.ToArray();
-
-            if (!StartPreset(origReadyPlayers, force))
-            {
-                _startingRound = false;
-                return;
-            }
-            var skipinit = false;
-            if (_ent.TryGetComponent(_map.GetMap(DefaultMap), out MapComponent? mc))
-            {
-                if (mc.MapInitialized) skipinit = true;
-            }
-            if (!skipinit)
-            {
-                // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
-                _map.InitializeMap(DefaultMap);
-            }
-            _map.SetPaused(DefaultMap, false);
-
-            SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
-
-            _roundStartDateTime = DateTime.UtcNow;
-            RunLevel = GameRunLevel.InRound;
-
-            RoundStartTimeSpan = _gameTiming.CurTime;
-            SendStatusToAll();
-            ReqWindowAttentionAll();
-            UpdateLateJoinStatus();
-            AnnounceRound();
-            UpdateInfoText();
-            SendRoundStartedDiscordMessage();
+                RoundStartTimeSpan = _gameTiming.CurTime;
+                SendStatusToAll();
+                ReqWindowAttentionAll();
+                UpdateLateJoinStatus();
+                AnnounceRound();
+                UpdateInfoText();
+                SendRoundStartedDiscordMessage();
 
 #if EXCEPTION_TOLERANCE
             }
@@ -760,22 +760,22 @@ namespace Content.Server.GameTicking
             IncrementRoundNumber();
             SendRoundStartingDiscordMessage();
 
-            if (true)//!LobbyEnabled)
-            {
-                StartRound();
-            }
-            else
-            {
-                if (_playerManager.PlayerCount == 0)
-                    _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
-                else
-                    _roundStartTime = _gameTiming.CurTime + LobbyDuration;
+            //if (true)//!LobbyEnabled)
+            //{
+            StartRound();
+            //}
+            //else
+            //{
+            //    if (_playerManager.PlayerCount == 0)
+            //        _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
+            //    else
+            //        _roundStartTime = _gameTiming.CurTime + LobbyDuration;
 
-                SendStatusToAll();
-                UpdateInfoText();
+            //    SendStatusToAll();
+            //    UpdateInfoText();
 
-                ReqWindowAttentionAll();
-            }
+            //    ReqWindowAttentionAll();
+            //}
         }
 
         private async void SendRoundStartingDiscordMessage()
@@ -838,6 +838,7 @@ namespace Content.Server.GameTicking
             }
         }
 
+        private int _warnings = 3;
         public bool DelayStart(TimeSpan time)
         {
             if (_runLevel != GameRunLevel.PreRoundLobby)
@@ -853,42 +854,42 @@ namespace Content.Server.GameTicking
 
             return true;
         }
-        int warnings = 3;
         private void UpdateRoundFlow(float frameTime)
         {
+            
             if (_cfg.GetCVar(CCVars.AutoSaveEnabled) && RunLevel == GameRunLevel.InRound)
             {
                 RoundLengthMetric.Inc(frameTime);
 
                 _timeToNextSave += TimeSpan.FromSeconds(frameTime);
-                if(warnings==3)
+                if (_warnings == 3)
                 {
-                    if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval)-5))
+                    if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval) - 5))
                     {
-                        warnings--;
+                        _warnings--;
                         SendServerMessage("The game will automatically save in 5 minutes.");
                     }
                 }
-                else if(warnings==2)
+                else if (_warnings == 2)
                 {
                     if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval) - 1))
                     {
-                        warnings--;
+                        _warnings--;
                         SendServerMessage("The game will automatically save in 1 minute.");
                     }
                 }
-                else if(warnings==1)
+                else if (_warnings == 1)
                 {
-                    if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval))-TimeSpan.FromSeconds(3))
+                    if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval)) - TimeSpan.FromSeconds(3))
                     {
-                        warnings--;
+                        _warnings--;
                         SendServerMessage("The game is saving..");
                     }
                 }
                 if (_timeToNextSave > TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.AutoSaveInterval)))
                 {
                     _timeToNextSave = TimeSpan.Zero;
-                    warnings = 3;
+                    _warnings = 3;
                     SaveMaps();
                     SendServerMessage("Game Saved.");
                 }

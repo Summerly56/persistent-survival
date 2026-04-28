@@ -1,5 +1,5 @@
-using System.Numerics;
 using Robust.Client.Graphics;
+using System.Numerics;
 
 namespace Content.Client.TextScreen;
 

@@ -50,11 +50,15 @@
 
 - type: cargoProduct
   id: EmergencyInflatablewall
+  description: cargoproduct-description-emergencyinflatablewall
   icon:
     sprite: Objects/Misc/inflatable_wall.rsi
     state: item_wall
-  product: CrateEmergencyInflatablewall
-  cost: 750
+  product: BoxInflatable
+  container:
+    entity: WrappedParcel
+    containerId: contents
+  cost: 500
   category: cargoproduct-category-name-emergency
   group: market
 

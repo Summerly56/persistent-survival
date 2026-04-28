@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Objectives.Systems;
 
@@ -114,7 +114,7 @@ public abstract class SharedObjectivesSystem : EntitySystem
         if (!Resolve(mindId, ref mind))
             return null;
 
-        if (GetProgress(uid, (mindId, mind)) is not {} progress)
+        if (GetProgress(uid, (mindId, mind)) is not { } progress)
             return null;
 
         var comp = Comp<ObjectiveComponent>(uid);

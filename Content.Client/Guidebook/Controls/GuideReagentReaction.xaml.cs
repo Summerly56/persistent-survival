@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Client.Message;
 using Content.Client.UserInterface.ControlExtensions;
 using Content.Shared.Atmos.Prototypes;
@@ -15,6 +14,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Graphics.RSI;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Client.Guidebook.Controls;
 

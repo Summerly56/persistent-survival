@@ -1,4 +1,4 @@
-﻿using Content.Server.Worldgen.Components;
+using Content.Server.Worldgen.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 
@@ -10,7 +10,6 @@ namespace Content.Server.Worldgen.Systems;
 public sealed class LocalityLoaderSystem : BaseWorldSystem
 {
     [Dependency] private readonly TransformSystem _xformSys = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     /// <summary>
     /// Max amount of LocalityLoaders to check per tick

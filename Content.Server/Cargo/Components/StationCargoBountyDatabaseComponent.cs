@@ -50,7 +50,7 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     public ProtoId<CargoBountyGroupPrototype> Group = "StationBounty";
 
     [DataField]
-    public Dictionary<ProtoId<CargoBountyGroupPrototype>, int> Groups = new() { {"StationBounty", 4}, {"ServiceBounty", 2} };
+    public Dictionary<ProtoId<CargoBountyGroupPrototype>, int> Groups = new() { { "StationBounty", 4 }, { "ServiceBounty", 2 } };
 
     /// <summary>
     /// The time at which players will be able to skip the next bounty.

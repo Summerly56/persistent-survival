@@ -1,0 +1,102 @@
+- type: guideEntry
+  id: Factions
+  name: Factions
+  text: "/ServerInfo/Guidebook/Persistence/Factions.xml"
+  children:
+  - FactionCreation
+  - FactionModification
+
+- type: guideEntry
+  id: FactionCreation
+  name: Faction Creation
+  text: "/ServerInfo/Guidebook/Persistence/FactionCreation.xml"
+
+- type: guideEntry
+  id: FactionModification
+  name: Faction Modification
+  text: "/ServerInfo/Guidebook/Persistence/FactionModification.xml"
+
+
+- type: guideEntry
+  id: Threshold
+  name: The Threshold
+  text: "/ServerInfo/Guidebook/Persistence/Threshold.xml"
+  children:
+  - MakingMoney
+  - ThresholdCargo
+  - ThresholdMiningHunting
+  - ThresholdScience
+  - Death
+  - Achievements
+  - GridControl
+  - AccessControl
+
+- type: guideEntry
+  id: MakingMoney
+  name: Making Money
+  text: "/ServerInfo/Guidebook/Persistence/MakingMoney.xml"
+
+- type: guideEntry
+  id: ThresholdCargo
+  name: Threshold Cargo
+  text: "/ServerInfo/Guidebook/Persistence/ThresholdCargo.xml"
+
+- type: guideEntry
+  id: ThresholdMiningHunting
+  name: Threshold Mining/Hunting
+  text: "/ServerInfo/Guidebook/Persistence/ThresholdMiningHunting.xml"
+
+- type: guideEntry
+  id: ThresholdScience
+  name: Threshold Science
+  text: "/ServerInfo/Guidebook/Persistence/ThresholdScience.xml"
+
+- type: guideEntry
+  id: Death
+  name: Death
+  text: "/ServerInfo/Guidebook/Persistence/Death.xml"
+
+- type: guideEntry
+  id: Achievements
+  name: Achievements
+  text: "/ServerInfo/Guidebook/Persistence/Achievements.xml"
+
+- type: guideEntry
+  id: GridControl
+  name: Grid Control
+  text: "/ServerInfo/Guidebook/Persistence/GridControl.xml"
+
+- type: guideEntry
+  id: AccessControl
+  name: Access Control
+  text: "/ServerInfo/Guidebook/Persistence/AccessControl.xml"
+
+- type: guideEntry
+  id: Precursor
+  name: Precursor
+  text: "/ServerInfo/Guidebook/Persistence/Precursor.xml"
+  children:
+  - Dealer
+  - BountyHunter
+  - Purchases
+  - SectorChaos
+
+- type: guideEntry
+  id: Dealer
+  name: Dealer
+  text: "/ServerInfo/Guidebook/Persistence/Dealer.xml"
+
+- type: guideEntry
+  id: BountyHunter
+  name: Bounty Hunter & Assassin
+  text: "/ServerInfo/Guidebook/Persistence/Hunter.xml"
+
+- type: guideEntry
+  id: Purchases
+  name: Precursor Purchases
+  text: "/ServerInfo/Guidebook/Persistence/Purchases.xml"
+
+- type: guideEntry
+  id: SectorChaos
+  name: Sector Chaos
+  text: "/ServerInfo/Guidebook/Persistence/SectorChaos.xml"

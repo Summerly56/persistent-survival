@@ -1,7 +1,3 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection.IPIntel;
 using Content.Server.Database;
@@ -12,6 +8,10 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Log;
 using Robust.Shared.Timing;
 using Robust.UnitTesting;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 // ReSharper disable AccessToModifiedClosure
 

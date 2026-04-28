@@ -1,5 +1,4 @@
 using Content.Server.Chat.Managers;
-using Content.Server.Database.Migrations.Postgres;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Chat;
@@ -63,7 +62,7 @@ public sealed class RespawnRuleSystem : GameRuleSystem<RespawnDeadRuleComponent>
     private void OnSuicide(SuicideEvent ev)
     {
         if (!TryComp<ActorComponent>(ev.Victim, out var actor))
-           return;
+            return;
 
         var query = EntityQueryEnumerator<RespawnTrackerComponent>();
         while (query.MoveNext(out _, out var respawn))
@@ -82,7 +81,7 @@ public sealed class RespawnRuleSystem : GameRuleSystem<RespawnDeadRuleComponent>
             return;
 
         var query = EntityQueryEnumerator<RespawnDeadRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var respawnRule, out  var tracker, out var rule))
+        while (query.MoveNext(out var uid, out var respawnRule, out var tracker, out var rule))
         {
             if (!GameTicker.IsGameRuleActive(uid, rule))
                 continue;

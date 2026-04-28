@@ -1,8 +1,8 @@
-﻿using System.Linq;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.StationEvents.Events;
 

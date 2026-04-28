@@ -21,7 +21,7 @@ public sealed class ShowMindShieldIconsSystem : EquipmentHudSystem<ShowMindShiel
     //  ...imagine cheating in a game about silly paper dolls
     private void OnGetStatusIconsEventFake(EntityUid uid, FakeMindShieldComponent component, ref GetStatusIconsEvent ev)
     {
-        if(!IsActive)
+        if (!IsActive)
             return;
         if (component.IsEnabled && _prototype.Resolve(component.MindShieldStatusIcon, out var fakeStatusIconPrototype))
             ev.StatusIcons.Add(fakeStatusIconPrototype);

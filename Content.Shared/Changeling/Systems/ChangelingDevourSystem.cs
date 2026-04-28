@@ -2,9 +2,8 @@ using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Armor;
 using Content.Shared.Atmos.Rotting;
-using Content.Shared.Body.Components;
+using Content.Shared.Body;
 using Content.Shared.Changeling.Components;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -84,16 +83,7 @@ public sealed class ChangelingDevourSystem : EntitySystem
         if (target == null)
             return;
 
-        if (!TryComp<DamageableComponent>(target, out var damage))
-            return;
-
-        foreach (var damagePoints in comp.DamagePerTick.DamageDict)
-        {
-
-            if (damage.Damage.DamageDict.TryGetValue(damagePoints.Key, out var val) && val > comp.DevourConsumeDamageCap)
-                return;
-        }
-        _damageable.ChangeDamage((target.Value, damage), comp.DamagePerTick, true, true, user);
+        _damageable.ChangeDamage(target.Value, comp.DamagePerTick, true, true, user);
     }
 
     /// <summary>
@@ -174,7 +164,7 @@ public sealed class ChangelingDevourSystem : EntitySystem
         var curTime = _timing.CurTime;
         args.Handled = true;
 
-        if (!EntityManager.EntityExists(ent.Comp.CurrentDevourSound))
+        if (!Exists(ent.Comp.CurrentDevourSound))
             _audio.Stop(ent.Comp.CurrentDevourSound!);
 
         if (args.Cancelled)
@@ -225,7 +215,7 @@ public sealed class ChangelingDevourSystem : EntitySystem
         if (target == null)
             return;
 
-        if (EntityManager.EntityExists(ent.Comp.CurrentDevourSound))
+        if (Exists(ent.Comp.CurrentDevourSound))
             _audio.Stop(ent.Comp.CurrentDevourSound!);
 
         if (args.Cancelled)
@@ -249,7 +239,7 @@ public sealed class ChangelingDevourSystem : EntitySystem
 
         if (_mobState.IsDead(target.Value)
             && TryComp<BodyComponent>(target, out var body)
-            && HasComp<HumanoidAppearanceComponent>(target)
+            && HasComp<HumanoidProfileComponent>(target)
             && TryComp<ChangelingIdentityComponent>(args.User, out var identityStorage))
         {
             _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent.Owner):player}  successfully devoured {ToPrettyString(args.Target):player}'s identity");

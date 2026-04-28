@@ -29,6 +29,7 @@
   - OreBag
   - PlantBag
   - ClothingShoesSkates
+  - Floodlight
 
 - type: latheRecipePack
   id: AtmosStatic

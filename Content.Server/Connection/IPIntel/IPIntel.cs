@@ -1,7 +1,3 @@
-﻿using System.Buffers.Binary;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Shared.CCVar;
@@ -10,6 +6,10 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Buffers.Binary;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace Content.Server.Connection.IPIntel;
 
@@ -100,7 +100,7 @@ public sealed class IPIntel
         // Helps with saving your limited request limit.
         if (_exemptPlaytime != TimeSpan.Zero)
         {
-            var overallTime = ( await _db.GetPlayTimes(e.UserId)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall);
+            var overallTime = (await _db.GetPlayTimes(e.UserId)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall);
             if (overallTime != null && overallTime.TimeSpent >= _exemptPlaytime)
             {
                 return (false, string.Empty);
@@ -369,7 +369,7 @@ public sealed class IPIntel
         foreach (var (reservedIp, maskBits) in ReservedRangesIpv6)
         {
             var mask = UInt128.MaxValue << (128 - maskBits);
-            if (((UInt128) ipBits & mask ) == (reservedIp & mask))
+            if (((UInt128)ipBits & mask) == (reservedIp & mask))
                 return true;
         }
 

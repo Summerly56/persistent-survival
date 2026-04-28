@@ -1,6 +1,5 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Components;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Popups;
@@ -32,7 +31,7 @@ namespace Content.Server.Atmos.Piping.EntitySystems
             if (!component.Enabled || !TryComp(uid, out NodeContainerComponent? nodes))
                 return;
 
-            if (_atmosphere.GetContainingMixture(uid, true) is not {} environment)
+            if (_atmosphere.GetContainingMixture(uid, true) is not { } environment)
                 return;
 
             foreach (var node in nodes.Nodes.Values)

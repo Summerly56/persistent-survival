@@ -1,8 +1,8 @@
-using System.Collections.Frozen;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Speech;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
+using System.Collections.Frozen;
 
 namespace Content.Shared.Chat;
 

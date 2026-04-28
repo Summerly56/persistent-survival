@@ -1,7 +1,4 @@
-﻿#nullable enable
-using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+#nullable enable
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using Content.IntegrationTests;
@@ -17,6 +14,9 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Content.Benchmarks;
 
@@ -55,7 +55,7 @@ public class ComponentQueryBenchmark
         _pair.Server.WaitPost(() =>
         {
             var map = new ResPath(Map);
-            var opts = DeserializationOptions.Default with {InitializeMaps = true};
+            var opts = DeserializationOptions.Default with { InitializeMaps = true };
             if (!_entMan.System<MapLoaderSystem>().TryLoadMap(map, out _, out _, opts))
                 throw new Exception("Map load failed");
         }).GetAwaiter().GetResult();

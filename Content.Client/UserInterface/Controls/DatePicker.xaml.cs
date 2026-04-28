@@ -47,7 +47,8 @@ public sealed partial class DatePicker : Control
 
         DayLineEdit.OnTextChanged += _ => Update();
         YearLineEdit.OnTextChanged += _ => Update();
-        MonthOptionButton.OnItemSelected += args => {
+        MonthOptionButton.OnItemSelected += args =>
+        {
             if (args.Id != 0)
             {
                 MonthOptionButton.SelectId(args.Id);

@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Chemistry.EntitySystems;
 

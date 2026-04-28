@@ -1,6 +1,6 @@
 using Content.Server.Power.Components;
-using Content.Server.Power.Events;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Power.Events;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Events;
 using Content.Shared.Examine;
@@ -63,7 +63,7 @@ namespace Content.Server.Stunnable.Systems
                 args.Cancelled = true;
                 if (args.User != null)
                 {
-                    _popup.PopupEntity(Loc.GetString("stunbaton-component-low-charge"), (EntityUid) args.User, (EntityUid) args.User);
+                    _popup.PopupEntity(Loc.GetString("stunbaton-component-low-charge"), (EntityUid)args.User, (EntityUid)args.User);
                 }
                 return;
             }

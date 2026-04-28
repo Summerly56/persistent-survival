@@ -17,8 +17,8 @@ public sealed class BrainSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BrainComponent, OrganAddedToBodyEvent>((uid, _, args) => HandleMind(args.Body, uid));
-        SubscribeLocalEvent<BrainComponent, OrganRemovedFromBodyEvent>((uid, _, args) => HandleMind(uid, args.OldBody));
+        SubscribeLocalEvent<BrainComponent, OrganGotInsertedEvent>((uid, _, args) => HandleMind(args.Target, uid));
+        SubscribeLocalEvent<BrainComponent, OrganGotRemovedEvent>((uid, _, args) => HandleMind(uid, args.Target));
         SubscribeLocalEvent<BrainComponent, PointAttemptEvent>(OnPointAttempt);
         SubscribeLocalEvent<BrainComponent, ComponentStartup>(OnCompStartup);
     }

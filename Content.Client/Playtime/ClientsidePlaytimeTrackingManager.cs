@@ -1,7 +1,7 @@
 using Content.Shared.CCVar;
 using Robust.Client.Player;
-using Robust.Shared.Network;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
 namespace Content.Client.Playtime;

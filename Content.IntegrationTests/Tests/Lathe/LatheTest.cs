@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Content.Shared.Lathe;
 using Content.Shared.Materials;
 using Content.Shared.Prototypes;
@@ -7,6 +5,8 @@ using Content.Shared.Research.Prototypes;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Lathe;
 

@@ -1,11 +1,11 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Binary.Components;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Binary.Components;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Audio;
@@ -15,7 +15,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
@@ -28,7 +27,6 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
         [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
         [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
         [Dependency] private readonly AtmosphereSystem _atmos = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -111,7 +109,7 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
             if (args.Handled || !args.Complex)
                 return;
 
-            if (!EntityManager.TryGetComponent(args.User, out ActorComponent? actor))
+            if (!TryComp(args.User, out ActorComponent? actor))
                 return;
 
             if (Transform(uid).Anchored)
@@ -146,6 +144,7 @@ namespace Content.Server.Atmos.Piping.Binary.EntitySystems
         private void OnToggleStatusMessage(EntityUid uid, HeatPumpComponent pump, GasHeatPumpToggleStatusMessage args)
         {
             pump.Active = args.Enabled;
+            pump.DesiredEnabled = args.Enabled;
             _appearance.SetData(uid, HeatPumpVisuals.Enabled, pump.Active);
             _adminLogger.Add(LogType.AtmosPowerChanged, LogImpact.Medium,
                 $"{ToPrettyString(args.Actor):player} set the power on {ToPrettyString(uid):device} to {args.Enabled}");

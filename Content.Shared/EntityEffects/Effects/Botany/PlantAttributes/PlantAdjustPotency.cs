@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.EntityEffects.Effects.Botany.PlantAttributes;
+namespace Content.Shared.EntityEffects.Effects.Botany.PlantAttributes;
 
 /// <summary>
 ///     Handles increase or decrease of plant potency.

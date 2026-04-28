@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Shared.Anomaly.Effects;
 using Content.Shared.Anomaly.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using System.Numerics;
 
 namespace Content.Shared.Anomaly.Components;
 

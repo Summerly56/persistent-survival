@@ -60,7 +60,7 @@ public sealed class MenuButton : ContainerButton
             Text = "",
             HorizontalAlignment = HAlignment.Center,
             ModulateSelfOverride = ColorNormal,
-            StyleClasses = {StyleClassLabelTopButton}
+            StyleClasses = { StyleClassLabelTopButton }
         };
         _root = new BoxContainer
         {

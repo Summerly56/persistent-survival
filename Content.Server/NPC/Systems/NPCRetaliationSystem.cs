@@ -1,6 +1,5 @@
 using Content.Server.NPC.Components;
 using Content.Shared.CombatMode;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
@@ -30,7 +29,7 @@ public sealed class NPCRetaliationSystem : EntitySystem
         if (!args.DamageIncreased)
             return;
 
-        if (args.Origin is not {} origin)
+        if (args.Origin is not { } origin)
             return;
 
         TryRetaliate(ent, origin);
@@ -52,7 +51,7 @@ public sealed class NPCRetaliationSystem : EntitySystem
             return false;
 
         _npcFaction.AggroEntity(ent.Owner, target);
-        if (ent.Comp.AttackMemoryLength is {} memoryLength)
+        if (ent.Comp.AttackMemoryLength is { } memoryLength)
             ent.Comp.AttackMemories[target] = _timing.CurTime + memoryLength;
 
         return true;

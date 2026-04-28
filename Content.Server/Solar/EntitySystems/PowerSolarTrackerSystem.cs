@@ -1,12 +1,6 @@
-using System.Linq;
-using Content.Server.Power.Components;
 using Content.Server.Solar.Components;
-using Content.Shared.GameTicking;
-using Content.Shared.Physics;
 using JetBrains.Annotations;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Solar.EntitySystems
 {

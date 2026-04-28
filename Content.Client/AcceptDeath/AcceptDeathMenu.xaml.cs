@@ -27,26 +27,23 @@ namespace Content.Client.AcceptDeath;
 [GenerateTypedNameReferences]
 public sealed partial class AcceptDeathMenu : DefaultWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     public TimeSpan ACDCooldown = TimeSpan.Zero;
     public TimeSpan SOSCooldown = TimeSpan.Zero;
-    public event Action<ButtonEventArgs>? OnJobPressed;
 
-    public AcceptDeathBoundUserInterface? _owner;
+    public AcceptDeathBoundUserInterface? Owner;
 
     public AcceptDeathMenu()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        
+
     }
-     
+
     public void UpdateState(AcceptDeathUpdateState state)
     {
         ACDCooldown = state.acceptDeathCooldown;
         SOSCooldown = state.sosCooldown;
-        if(ACDCooldown > TimeSpan.Zero)
+        if (ACDCooldown > TimeSpan.Zero)
         {
             AcceptDeathButton.Disabled = true;
             AcceptDeathButton.Text = $"Available in:{ACDCooldown.ToString("mm\\:ss")}";
@@ -56,7 +53,7 @@ public sealed partial class AcceptDeathMenu : DefaultWindow
             AcceptDeathButton.Disabled = false;
             AcceptDeathButton.Text = $"Accept Death";
         }
-        if(SOSCooldown > TimeSpan.Zero)
+        if (SOSCooldown > TimeSpan.Zero)
         {
             SOSButton.Disabled = true;
             SOSButton.Text = $"Available in:{SOSCooldown.ToString("mm\\:ss")}";

@@ -1,12 +1,11 @@
-using System.Linq;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Anomaly.Effects.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Physics;
 using Content.Shared.Throwing;
 using Robust.Shared.Map;
-using Content.Shared.Physics;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using System.Linq;
 
 namespace Content.Shared.Anomaly.Effects;
 
@@ -37,7 +36,7 @@ public abstract class SharedGravityAnomalySystem : EntitySystem
         foreach (var ent in lookup)
         {
             if (physQuery.TryGetComponent(ent, out var phys)
-                && (phys.CollisionMask & (int) CollisionGroup.GhostImpassable) != 0)
+                && (phys.CollisionMask & (int)CollisionGroup.GhostImpassable) != 0)
                 continue;
 
             var foo = _xform.GetWorldPosition(ent, xformQuery) - worldPos;
@@ -70,7 +69,7 @@ public abstract class SharedGravityAnomalySystem : EntitySystem
         foreach (var ent in lookup)
         {
             if (physQuery.TryGetComponent(ent, out var phys)
-                && (phys.CollisionMask & (int) CollisionGroup.GhostImpassable) != 0)
+                && (phys.CollisionMask & (int)CollisionGroup.GhostImpassable) != 0)
                 continue;
 
             var foo = _xform.GetWorldPosition(ent, xformQuery) - worldPos;

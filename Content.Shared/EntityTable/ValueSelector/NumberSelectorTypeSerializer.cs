@@ -49,6 +49,6 @@ public sealed class NumberSelectorTypeSerializer :
             return new RangeNumberSelector(new Vector2i(x, y));
         }
 
-        return (NumberSelector) serializationManager.Read(type, node, context)!;
+        return (NumberSelector)serializationManager.Read(type, node, context)!;
     }
 }

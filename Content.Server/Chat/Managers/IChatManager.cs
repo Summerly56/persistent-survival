@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Content.Shared.Players.RateLimiting;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Chat.Managers
 {

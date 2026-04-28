@@ -44,13 +44,13 @@ public sealed class StatusPalette
 
         var intervals = StatusColors.Length - 1;
 
-        var fromIdx = (int) Math.Floor(factor * intervals);
+        var fromIdx = (int)Math.Floor(factor * intervals);
         if (factor is 1.0f or 0.0f)
             return StatusColors[fromIdx];
 
         var from = StatusColors[fromIdx];
         var to = StatusColors[fromIdx + 1];
-        var f = (factor - (float) fromIdx / intervals) * intervals;
+        var f = (factor - (float)fromIdx / intervals) * intervals;
 
         return from.OkBlend(to, f);
     }

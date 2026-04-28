@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Actions;
 using Content.Shared.Storage;
+using System.Numerics;
 
 namespace Content.Shared.Magic.Events;
 

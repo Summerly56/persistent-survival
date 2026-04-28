@@ -10,6 +10,15 @@
     Steel: 50
     Glass: 200
 
+- type: latheRecipe
+  abstract: true
+  id: BaseBibleRecipe
+  categories:
+  - Religion
+  completetime: 2
+  materials:
+    Paper: 500
+    Plastic: 100
 # Recipes
 
 ## Lights
@@ -199,6 +208,14 @@
     Plastic: 100
 
 - type: latheRecipe
+  id: PrecursorExtractor
+  result: PrecursorExtractor
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+
+- type: latheRecipe
   id: BSPAnchorKey
   result: BSPAnchorKey
   completetime: 2
@@ -238,31 +255,72 @@
     Aluminium: 30
 
 - type: latheRecipe
-  id: BoxFolderClipboardEmpty
-  result: BoxFolderClipboardEmpty
-  completetime: 2
-  materials:
-    Wood: 100
-    Steel: 50
-
-- type: latheRecipe
-  id: BoxFolderPlasticClipboardEmpty
-  result: BoxFolderPlasticClipboardEmpty
-  completetime: 2
-  materials:
-    Plastic: 100
-    Steel: 50
-
-- type: latheRecipe
-  id: BlankPaper
-  result: Paper
-  completetime: 2
-  materials:
-    Paper: 50
-
-- type: latheRecipe
   id: TowelColorWhite
   result: TowelColorWhite
   completetime: 2
   materials:
     Cloth: 300
+
+- type: latheRecipe
+  parent: BaseLightRecipe
+  id: Floodlight
+  result: EmptyFloodlight
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: BarberScissors
+  result: BarberScissors
+  materials:
+    Steel: 200
+
+- type: latheRecipe
+  id: CigaretteFilter
+  result: CigaretteFilter
+  completetime: 2
+  materials:
+    Paper: 20
+    Wood: 20
+
+# Bibles
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: Bible
+  result: Bible
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleDruid
+  result: BibleDruid
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleCommunistManifesto
+  result: BibleCommunistManifesto
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleNarsie
+  result: BibleNarsie
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleNanoTrasen
+  result: BibleNanoTrasen
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleHonk
+  result: BibleHonk
+
+- type: latheRecipe
+  parent: BaseBibleRecipe
+  id: BibleRatvar
+  result: BibleRatvar
+  materials:
+    Brass: 550
+

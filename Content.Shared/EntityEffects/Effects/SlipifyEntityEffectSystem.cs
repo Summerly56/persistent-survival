@@ -1,9 +1,9 @@
-﻿using System.Linq;
 using Content.Shared.Physics;
 using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
+using System.Linq;
 
 namespace Content.Shared.EntityEffects.Effects;
 

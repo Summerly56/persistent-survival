@@ -19,10 +19,6 @@ namespace Content.Client.GridControl.UI
     [GenerateTypedNameReferences]
     public sealed partial class GridControlConsoleWindow : DefaultWindow
     {
-        [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ILogManager _logManager = default!;
-        private readonly ISawmill _logMill = default!;
 
         private readonly GridControlConsoleBoundUserInterface _owner;
 
@@ -30,7 +26,6 @@ namespace Content.Client.GridControl.UI
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
-            _logMill = _logManager.GetSawmill(SharedIdCardConsoleSystem.Sawmill);
 
             _owner = owner;
 
@@ -40,7 +35,7 @@ namespace Content.Client.GridControl.UI
 
         public void UpdateState(GridControlConsoleBoundUserInterfaceState state)
         {
-            if(state.Active)
+            if (state.Active)
             {
                 OnButton.Disabled = true;
                 OffButton.Disabled = false;

@@ -1,9 +1,8 @@
-﻿using Content.Server.Administration;
+using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration;
 using Robust.Shared.Player;
 using Robust.Shared.Toolshed;
-using Robust.Shared.Toolshed.Syntax;
 
 namespace Content.Server.Toolshed.Commands.AdminDebug;
 
@@ -25,6 +24,6 @@ public sealed class ACmdCommand : ToolshedCommand
     public bool CanInvoke(IInvocationContext ctx, [PipedArgument] CommandSpec command, ICommonSession player)
     {
         // Deliberately discard the error.
-        return ((IPermissionController) _adminManager).CheckInvokable(command, player, out _);
+        return ((IPermissionController)_adminManager).CheckInvokable(command, player, out _);
     }
 }

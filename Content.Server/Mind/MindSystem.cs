@@ -34,7 +34,7 @@ public sealed class MindSystem : SharedMindSystem
 
     private void OnMindShutdown(EntityUid uid, MindComponent mind, ComponentShutdown args)
     {
-        if (mind.UserId is {} user)
+        if (mind.UserId is { } user)
         {
             UserMinds.Remove(user);
             if (_players.TryGetPlayerData(user, out var data) && data.ContentData() is { } oldData)
@@ -54,7 +54,7 @@ public sealed class MindSystem : SharedMindSystem
             return;
 
         // If the player is currently visiting some other entity, simply attach to that entity.
-        if (mind.VisitingEntity is {Valid: true} visiting
+        if (mind.VisitingEntity is { Valid: true } visiting
             && visiting != uid
             && !Deleted(visiting)
             && !Terminating(visiting))
@@ -84,7 +84,7 @@ public sealed class MindSystem : SharedMindSystem
     {
         if (base.TryGetMind(user, out mindId, out mind))
         {
-        //    DebugTools.Assert(!_players.TryGetPlayerData(user, out var playerData) || playerData.ContentData() is not { } data || data.Mind == mindId);
+            //    DebugTools.Assert(!_players.TryGetPlayerData(user, out var playerData) || playerData.ContentData() is not { } data || data.Mind == mindId);
             return true;
         }
 
@@ -184,14 +184,14 @@ public sealed class MindSystem : SharedMindSystem
         {
             component = EnsureComp<MindContainerComponent>(entity.Value);
 
-            if (component.HasMind)
-                _ghosts.OnGhostAttempt(component.Mind.Value, false);
+            if (TryGetMind(entity.Value, out var entityMindId, out _))
+                _ghosts.OnGhostAttempt(entityMindId, false);
 
             if (TryComp<ActorComponent>(entity.Value, out var actor))
             {
                 // Happens when transferring to your currently visited entity.
                 if (!_players.TryGetSessionByEntity(entity.Value, out var session) ||
-                    mind.UserId == null || actor.PlayerSession != session )
+                    mind.UserId == null || actor.PlayerSession != session)
                 {
                     throw new ArgumentException("Visit target already has a session.", nameof(entity));
                 }
@@ -219,12 +219,18 @@ public sealed class MindSystem : SharedMindSystem
         var oldEntity = mind.OwnedEntity;
         if (TryComp(oldEntity, out MindContainerComponent? oldContainer))
         {
-            oldContainer.Mind = null;
-            mind.OwnedEntity = null;
             Entity<MindComponent> mindEnt = (mindId, mind);
             Entity<MindContainerComponent> containerEnt = (oldEntity.Value, oldContainer);
-            RaiseLocalEvent(oldEntity.Value, new MindRemovedMessage(mindEnt, containerEnt));
-            RaiseLocalEvent(mindId, new MindGotRemovedEvent(mindEnt, containerEnt));
+
+            RaiseLocalEvent(oldEntity.Value, new BeforeMindRemovedMessage(mindEnt, containerEnt, entity));
+            RaiseLocalEvent(mindId, new BeforeMindGotRemovedEvent(mindEnt, containerEnt, entity));
+
+            oldContainer.Mind = null;
+            oldContainer.HasMind = false;
+            mind.OwnedEntity = null;
+
+            RaiseLocalEvent(oldEntity.Value, new MindRemovedMessage(mindEnt, containerEnt, entity));
+            RaiseLocalEvent(mindId, new MindGotRemovedEvent(mindEnt, containerEnt, entity));
             Dirty(oldEntity.Value, oldContainer);
         }
 
@@ -256,12 +262,13 @@ public sealed class MindSystem : SharedMindSystem
         if (entity != null)
         {
             component!.Mind = mindId;
+            component.HasMind = true;
             mind.OwnedEntity = entity;
             mind.OriginalOwnedEntity ??= GetNetEntity(mind.OwnedEntity);
             Entity<MindComponent> mindEnt = (mindId, mind);
             Entity<MindContainerComponent> containerEnt = (entity.Value, component);
-            RaiseLocalEvent(entity.Value, new MindAddedMessage(mindEnt, containerEnt));
-            RaiseLocalEvent(mindId, new MindGotAddedEvent(mindEnt, containerEnt));
+            RaiseLocalEvent(entity.Value, new MindAddedMessage(mindEnt, containerEnt, oldEntity));
+            RaiseLocalEvent(mindId, new MindGotAddedEvent(mindEnt, containerEnt, oldEntity));
             Dirty(entity.Value, component);
         }
     }

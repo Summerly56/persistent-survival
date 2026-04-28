@@ -1,6 +1,6 @@
-using System.Linq;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
+using Content.Shared.Research.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Storage.Components;
 using Content.Shared.Whitelist;
@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Research.Components;
+using System.Linq;
 
 namespace Content.Shared.Materials;
 
@@ -182,7 +182,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     /// <param name="materials"></param>
     /// <returns>If the amount can be changed</returns>
     /// <param name="localOnly"></param>
-    public bool CanChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string,int> materials, bool localOnly = false)
+    public bool CanChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string, int> materials, bool localOnly = false)
     {
         if (!Resolve(entity, ref entity.Comp))
             return false;
@@ -224,7 +224,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!CanChangeMaterialAmount(uid, materialId, volume, component, localOnly))
             return false;
 
-        var changeEv = new ConsumeStoredMaterialsEvent((uid, component), new() {{materialId, volume}}, localOnly);
+        var changeEv = new ConsumeStoredMaterialsEvent((uid, component), new() { { materialId, volume } }, localOnly);
         RaiseLocalEvent(uid, ref changeEv);
         var remaining = changeEv.Materials.Values.First();
 

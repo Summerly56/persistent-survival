@@ -16,13 +16,8 @@ namespace Content.Client.GridControl.UI
     public sealed class GridControlConsoleBoundUserInterface : BoundUserInterface
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _cfgManager = default!;
 
         private GridControlConsoleWindow? _window;
-
-        // CCVar.
-        private int _maxNameLength;
-        private int _maxIdJobLength;
 
         public GridControlConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
@@ -33,7 +28,7 @@ namespace Content.Client.GridControl.UI
         {
             base.Open();
 
-         
+
 
             _window = new GridControlConsoleWindow(this, _prototypeManager)
             {
@@ -57,7 +52,7 @@ namespace Content.Client.GridControl.UI
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
-            var castState = (GridControlConsoleBoundUserInterfaceState) state;
+            var castState = (GridControlConsoleBoundUserInterfaceState)state;
             _window?.UpdateState(castState);
         }
 

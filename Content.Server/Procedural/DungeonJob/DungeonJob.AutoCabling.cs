@@ -1,10 +1,9 @@
-using System.Linq;
-using System.Threading.Tasks;
-using Content.Server.NodeContainer;
 using Content.Shared.NodeContainer;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.PostGeneration;
 using Robust.Shared.Random;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -92,7 +91,7 @@ public sealed partial class DungeonJob
 
             for (var i = 0; i < 4; i++)
             {
-                var dir = (Direction) (i * 2);
+                var dir = (Direction)(i * 2);
 
                 var neighbor = node + dir.ToIntVec();
                 var tileCost = 1f;

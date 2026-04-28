@@ -1,4 +1,4 @@
-﻿namespace Content.Server.Atmos.Components
+namespace Content.Server.Atmos.Components
 {
     // not if i get there first - Flipp
     /// <summary>

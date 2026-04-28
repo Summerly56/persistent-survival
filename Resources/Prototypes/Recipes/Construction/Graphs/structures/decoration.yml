@@ -86,3 +86,193 @@
       steps:
       - tool: Prying
         doAfter: 5
+
+- type: constructionGraph
+  id: StatueVenusRed
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: venusstatueRed
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 8
+              doAfter: 10
+            - tag: Toolbox
+              name: construction-graph-tag-toolbox
+              store: toolbox
+              doAfter: 1
+              icon:
+                sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+                state: icon
+
+    - node: venusstatueRed
+      entity: StatueVenusRed
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 8
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Anchoring
+              doAfter: 5
+            - tool: Welding
+              doAfter: 5
+
+- type: constructionGraph
+  id: StatueVenusBlue
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: venusstatueBlue
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 8
+              doAfter: 10
+            - tag: Toolbox
+              name: construction-graph-tag-toolbox
+              store: toolbox
+              doAfter: 1
+              icon:
+                sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+                state: icon
+
+    - node: venusstatueBlue
+      entity: StatueVenusBlue
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 8
+          - !type:EmptyAllContainers
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Anchoring
+              doAfter: 5
+            - tool: Welding
+              doAfter: 5
+
+- type: constructionGraph
+  id: Fireplace
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: fireplaceUnfinished
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 8
+              doAfter: 5
+            - material: WoodPlank
+              amount: 4
+              doAfter: 5
+
+    - node: fireplaceUnfinished
+      entity: FireplaceUnfinished
+      edges:
+        - to: fireplaceComplete
+          steps:
+            - tool: Welding
+              doAfter: 0.5
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 8
+          - !type:SpawnPrototype
+                prototype: MaterialWoodPlank1
+                amount: 4
+          - !type:EmptyAllContainers
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: fireplaceComplete
+      entity: Fireplace
+      edges:
+        - to: fireplaceUnfinished
+          steps:
+            - tool: Prying
+              doAfter: 4
+
+- type: constructionGraph
+  id: Memorial
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: memorial
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 8
+              doAfter: 5
+            - material: Silver
+              amount: 8
+              doAfter: 5
+
+    - node: memorial
+      entity: Memorial
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 8
+          - !type:SpawnPrototype
+                prototype: IngotSilver1
+                amount: 8
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 5
+
+- type: constructionGraph
+  id: EmployeeMemorial
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: employeeMemorial
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 8
+              doAfter: 5
+            - material: Silver
+              amount: 8
+              doAfter: 5
+
+    - node: employeeMemorial
+      entity: SS13Memorial
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 8
+          - !type:SpawnPrototype
+                prototype: IngotSilver1
+                amount: 8
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 5

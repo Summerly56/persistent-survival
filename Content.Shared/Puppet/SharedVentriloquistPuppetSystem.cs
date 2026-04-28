@@ -1,8 +1,8 @@
 using Content.Shared.ActionBlocker;
+using Content.Shared.Emoting;
 using Content.Shared.Hands;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
-using Content.Shared.Emoting;
 using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Puppet;

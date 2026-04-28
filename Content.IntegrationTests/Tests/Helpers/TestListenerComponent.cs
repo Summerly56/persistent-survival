@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Robust.Shared.GameObjects;
+using System.Collections.Generic;
 
 namespace Content.IntegrationTests.Tests.Helpers;
 

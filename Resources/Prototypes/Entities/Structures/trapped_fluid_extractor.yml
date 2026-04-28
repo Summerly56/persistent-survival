@@ -99,6 +99,9 @@
       tags:
         - Unstackable
         - Structure
+    - type: GuideHelp
+      guides:
+      - GasMining
 
     - type: SubFloorHide
       visibleLayers:
@@ -112,13 +115,10 @@
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: 'base'
           map: [ "enum.GasVolumePumpVisualLayers.Base" ]
-
         - state: 'drill-off'
           map: [ "enum.GasVolumePumpVisualLayers.Drill" ]
-
         - map: [ "enum.GasVolumePumpVisualLayers.PowerIndicator" ]
-        - map: [ "enum.GasVolumePumpVisualLayers.PowerIndicator", "active" ]
-    - type: Appearance
+
     - type: GenericVisualizer
       visuals:
         enum.TrappedFluidExtractorVisuals.State:
@@ -142,6 +142,10 @@
 
     - type: AtmosDevice
     - type: TrappedFluidExtractor
+      transferRate: 500
+      maxTransferRate: 500
+      maxPressure: 6500
+      powerUseActive: 900
 
     - type: AmbientSound
       enabled: true
@@ -155,7 +159,7 @@
     - type: PowerSwitch
     - type: PowerConsumer
       voltage: Medium
-      drawRate: 500
+      drawRate: 900
 
     - type: NodeContainer
       examinable: true

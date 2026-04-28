@@ -90,7 +90,7 @@ public abstract class SharedSprayPainterSystem : EntitySystem
 
     private void OnCompStart(Entity<PaintedComponent> ent, ref ComponentStartup args)
     {
-        if(ent.Comp.PaintProto != null && ent.Comp.PaintProto != "")
+        if (ent.Comp.PaintProto != null && ent.Comp.PaintProto != "")
             Appearance.SetData(ent, PaintableVisuals.Prototype, ent.Comp.PaintProto);
     }
     private void OnPainterDoAfter(Entity<SprayPainterComponent> ent, ref SprayPainterDoAfterEvent args)

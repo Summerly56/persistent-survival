@@ -1,7 +1,7 @@
-﻿using System.Diagnostics.Metrics;
-using System.Runtime.InteropServices;
 using Content.Server.Afk;
 using Robust.Server.DataMetrics;
+using System.Diagnostics.Metrics;
+using System.Runtime.InteropServices;
 
 namespace Content.Server.Administration.Managers;
 

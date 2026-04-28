@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Inventory;
 using Content.Shared.Weapons.Reflect;
+using System.Numerics;
 
 namespace Content.Shared.Weapons.Ranged.Events;
 

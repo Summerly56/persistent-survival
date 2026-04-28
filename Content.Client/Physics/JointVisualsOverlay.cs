@@ -1,8 +1,8 @@
-using System.Numerics;
 using Content.Shared.Physics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
+using System.Numerics;
 
 namespace Content.Client.Physics;
 

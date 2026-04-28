@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Stack;
@@ -8,6 +7,8 @@ using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Mind;
+using Content.Shared.Mindshield.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.PDA.Ringer;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
@@ -16,6 +17,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Store.Systems;
 
@@ -30,6 +32,7 @@ public sealed partial class StoreSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
 
     private void InitializeUi()
     {
@@ -262,9 +265,23 @@ public sealed partial class StoreSystem
         }
 
         //log dat shit.
+        var logImpact = LogImpact.Low;
+        var logExtraInfo = "";
+        if (component.ExpectedFaction?.Count > 0 && !_npcFaction.IsMemberOfAny(buyer, component.ExpectedFaction))
+        {
+            logImpact = LogImpact.High;
+            logExtraInfo = ", but was not from an expected faction";
+
+            if (HasComp<MindShieldComponent>(buyer))
+            {
+                logImpact = LogImpact.Extreme;
+                logExtraInfo += " while also possessing a mindshield";
+            }
+        }
+
         _admin.Add(LogType.StorePurchase,
-            LogImpact.Low,
-            $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _proto)}\" from {ToPrettyString(uid)}");
+            logImpact,
+            $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _proto)}\" from {ToPrettyString(uid)}{logExtraInfo}.");
 
         listing.PurchaseAmount++; //track how many times something has been purchased
         _audio.PlayEntity(component.BuySuccessSound, msg.Actor, uid); //cha-ching!
@@ -312,9 +329,9 @@ public sealed partial class StoreSystem
         foreach (var value in sortedCashValues)
         {
             var cashId = proto.Cash[value];
-            var amountToSpawn = (int) MathF.Floor((float) (amountRemaining / value));
+            var amountToSpawn = (int)MathF.Floor((float)(amountRemaining / value));
             var ents = _stack.SpawnMultipleAtPosition(cashId, amountToSpawn, coordinates);
-            if (ents.FirstOrDefault() is {} ent)
+            if (ents.FirstOrDefault() is { } ent)
                 _hands.PickupOrDrop(buyer, ent);
             amountRemaining -= value * amountToSpawn;
         }

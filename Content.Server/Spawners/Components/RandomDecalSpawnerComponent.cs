@@ -1,6 +1,6 @@
-using Robust.Shared.Prototypes;
-using Content.Shared.Maps;
 using Content.Shared.Decals;
+using Content.Shared.Maps;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Spawners.Components;
 

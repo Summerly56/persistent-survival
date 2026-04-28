@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Popups;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
@@ -88,7 +87,7 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
         if (!_doAfter.TryStartDoAfter(args))
             return;
 
-        _popup.PopupEntity(Loc.GetString("injector-component-injecting-user"), target, user);
+        _popup.PopupEntity(Loc.GetString("injector-component-needle-injecting-user"), target, user);
 
         var userName = Identity.Entity(user, EntityManager);
         _popup.PopupEntity(Loc.GetString("implanter-component-implanting-target", ("user", userName)), user, target, PopupType.LargeCaution);
@@ -112,7 +111,7 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
         };
 
         if (_doAfter.TryStartDoAfter(args))
-            _popup.PopupEntity(Loc.GetString("injector-component-injecting-user"), target, user);
+            _popup.PopupEntity(Loc.GetString("injector-component-needle-injecting-user"), target, user);
 
     }
 

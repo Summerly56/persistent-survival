@@ -9,12 +9,14 @@
   - type: Sprite
     sprite: Structures/Wallmounts/mirror.rsi
     state: mirror
-  - type: MagicMirror #instant and silent
+  - type: MagicMirror
+    organs:
+    - Head
+    layers:
+    - Hair
+    - FacialHair
     changeHairSound: null
-    addSlotTime: 0
-    removeSlotTime: 0
-    selectSlotTime: 0
-    changeSlotTime: 0
+    modifyTime: 0
   - type: ActivatableUI
     key: enum.MagicMirrorUiKey.Key
     singleUser: true
@@ -33,6 +35,9 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalGlassBreak
+  - type: Construction
+    graph: MirrorGraph
+    node: done
 
 - type: entity
   parent: Mirror
@@ -41,3 +46,6 @@
   components:
   - type: Sprite
     state: rectangle-mirror
+  - type: Construction
+    graph: MirrorModernGraph
+    node: done

@@ -1,13 +1,10 @@
-using System.Threading.Tasks;
 using Content.Server.Ghost.Roles.Components;
-using Content.Server.NPC.Components;
 using Content.Server.NPC.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
-using Content.Shared.Storage;
 using Robust.Shared.Collections;
-using Robust.Shared.Random;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -35,8 +32,8 @@ public sealed partial class DungeonJob
             {
                 var tile = availableTiles.RemoveSwap(random.Next(availableTiles.Count));
 
-                if (!_anchorable.TileFree((_gridUid, _grid), tile, (int) CollisionGroup.MachineLayer,
-                        (int) CollisionGroup.MachineLayer))
+                if (!_anchorable.TileFree((_gridUid, _grid), tile, (int)CollisionGroup.MachineLayer,
+                        (int)CollisionGroup.MachineLayer))
                 {
                     continue;
                 }

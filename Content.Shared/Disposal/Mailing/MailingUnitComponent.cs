@@ -1,4 +1,4 @@
-﻿using Content.Shared.Disposal.Mailing;
+using Content.Shared.Disposal.Mailing;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Disposal.Components;

@@ -1,5 +1,5 @@
-using System.Numerics;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.NPC.Pathfinding;
 

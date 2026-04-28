@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Server.Atmos.Piping.Unary.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping.Unary.Components;
+using System.Linq;
 
 namespace Content.Server.Atmos.Piping.Unary.Components
 {

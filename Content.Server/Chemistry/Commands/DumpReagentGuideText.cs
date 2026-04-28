@@ -1,4 +1,4 @@
-﻿using Content.Server.Administration;
+using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Console;
@@ -35,7 +35,7 @@ public sealed class DumpReagentGuideText : LocalizedEntityCommands
             return;
         }
 
-        foreach (var entry in reagent.Metabolisms.Values)
+        foreach (var entry in reagent.Metabolisms.Metabolisms.Values)
         {
             foreach (var effect in entry.Effects)
             {

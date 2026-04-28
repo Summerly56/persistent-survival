@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.DeviceNetwork;
 

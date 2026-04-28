@@ -106,7 +106,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
         _menu?.UpdateAssignments(Assignments);
         _menu?.UpdateUpgrades(cState.Level, cState.AccountBalance);
         _menu?.UpdateChannels(cState.RadioData);
-        if(_menu != null)
+        if (_menu != null)
         {
             _menu.ETaxSpinBox.Value = cState.ExportTax;
             _menu.ITaxSpinBox.Value = cState.ImportTax;
@@ -121,7 +121,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
                 _menu.TaxOptions.Visible = false;
                 _menu.ClaimTradeStationLabel.Visible = true;
             }
-            if(cState.JobNetEnabled)
+            if (cState.JobNetEnabled)
             {
                 _menu.JobNetOff.Pressed = false;
                 _menu.JobNetOn.Pressed = true;
@@ -132,7 +132,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
                 _menu.JobNetOn.Pressed = false;
             }
         }
-        
+
     }
 
     protected override void Dispose(bool disposing)
@@ -203,7 +203,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
         string newName = _menu.NewAssignmentNameField.Text;
         if (newName == null || newName == "") return;
         SendMessage(new StationModificationCreateAssignment(newName));
-        _menu._lastAssignmentCreated = newName;
+        _menu.LastAssignmentCreated = newName;
         _menu.NewAssignmentNameField.Text = "";
     }
 
@@ -219,7 +219,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
     }
     private void OnChannelEnable(ButtonEventArgs args)
     {
-        if(_menu == null || _menu.RadioData == null) return;
+        if (_menu == null || _menu.RadioData == null) return;
         var ind = _menu.PossibleChannels.SelectedId;
         if (_menu.RadioData.Count - 1 < ind) return;
         var kv = _menu.RadioData.ElementAtOrDefault(ind);
@@ -239,7 +239,7 @@ public sealed class StationModificationConsoleBoundUserInterface : BoundUserInte
         if (_menu == null) return;
         var assignment = _menu.PossibleAssignments.SelectedId;
         Button real = (Button)args.Button;
-        if(real==null||real.Text==null) return;
+        if (real == null || real.Text == null) return;
         SendMessage(new StationModificationToggleAssignmentAccess(assignment, args.Pressed, real.Text));
     }
 

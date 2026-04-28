@@ -1,8 +1,6 @@
-using Robust.Shared.GameStates;
-
 using Content.Shared.Singularity.EntitySystems;
 using Robust.Shared.Audio;
-using Robust.Shared.Utility;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Singularity.Components;
 

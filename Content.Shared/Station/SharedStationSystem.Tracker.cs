@@ -17,7 +17,7 @@ public abstract partial class SharedStationSystem
 
     private void OnTrackerCompInit(Entity<StationTrackerComponent> ent, ref ComponentInit args)
     {
-        if(ent.Comp.stationUID != 0)
+        if (ent.Comp.stationUID != 0)
         {
             ent.Comp.Station = GetStationByID(ent.Comp.stationUID);
         }
@@ -85,7 +85,7 @@ public abstract partial class SharedStationSystem
     [PublicAPI]
     public void SetStation(Entity<StationTrackerComponent?> ent, EntityUid? station)
     {
-        
+
         if (!Resolve(ent, ref ent.Comp))
             return;
         if (ent.Comp.locked) return;
@@ -93,11 +93,11 @@ public abstract partial class SharedStationSystem
             return;
 
         ent.Comp.Station = station;
-        if(TryComp<StationDataComponent>(station, out var sD) && sD != null)
+        if (TryComp<StationDataComponent>(station, out var sD) && sD != null)
         {
             ent.Comp.stationUID = sD.UID;
         }
-        
+
         Dirty(ent);
     }
 }

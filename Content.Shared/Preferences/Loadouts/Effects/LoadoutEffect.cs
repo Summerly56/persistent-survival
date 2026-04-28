@@ -1,6 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Preferences.Loadouts.Effects;
 
@@ -17,5 +17,5 @@ public abstract partial class LoadoutEffect
         IDependencyCollection collection,
         [NotNullWhen(false)] out FormattedMessage? reason);
 
-    public virtual void Apply(RoleLoadout loadout) {}
+    public virtual void Apply(RoleLoadout loadout) { }
 }

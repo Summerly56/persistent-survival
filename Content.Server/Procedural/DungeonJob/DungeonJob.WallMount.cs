@@ -1,9 +1,8 @@
-using System.Threading.Tasks;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.PostGeneration;
-using Content.Shared.Storage;
 using Robust.Shared.Random;
+using System.Threading.Tasks;
 
 namespace Content.Server.Procedural.DungeonJob;
 
@@ -17,7 +16,7 @@ public sealed partial class DungeonJob
         var checkedTiles = new HashSet<Vector2i>();
         var allExterior = new HashSet<Vector2i>(dungeon.CorridorExteriorTiles);
         allExterior.UnionWith(dungeon.RoomExteriorTiles);
-        var tileDef = (ContentTileDefinition) _tileDefManager[gen.Tile];
+        var tileDef = (ContentTileDefinition)_tileDefManager[gen.Tile];
         var contents = _prototype.Index(gen.Contents);
 
         foreach (var neighbor in allExterior)

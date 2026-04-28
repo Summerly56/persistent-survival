@@ -1,7 +1,7 @@
-using System.Numerics;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Client.Player;
+using System.Numerics;
 
 namespace Content.Client.Movement.Systems;
 

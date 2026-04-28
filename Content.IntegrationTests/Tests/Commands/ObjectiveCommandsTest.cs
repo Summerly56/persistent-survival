@@ -1,9 +1,9 @@
 #nullable enable
-using System.Linq;
 using Content.Server.Objectives;
 using Content.Shared.Mind;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
+using System.Linq;
 
 namespace Content.IntegrationTests.Tests.Commands;
 

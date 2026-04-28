@@ -83,10 +83,10 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
             if (station != null)
             {
                 gridOwnerTotalTiles = _station.GetStationTileCount(station.Value);
-                if(TryComp<StationDataComponent>(station, out var stationData) && stationData != null)
+                if (TryComp<StationDataComponent>(station, out var stationData) && stationData != null)
                 {
                     _protoMan.Resolve(stationData.Level, out var prototype);
-                    if(prototype != null)
+                    if (prototype != null)
                     {
                         tileLimit = prototype.TileLimit;
                     }

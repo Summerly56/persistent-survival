@@ -1,3 +1,6 @@
+using Content.Shared.CrewAssignments.Components;
+using Content.Shared.CrewAssignments.Systems;
+using Content.Shared.Implants.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Timing;
@@ -11,6 +14,7 @@ namespace Content.Shared.Jittering
     {
         [Dependency] protected readonly IGameTiming GameTiming = default!;
         [Dependency] protected readonly StatusEffectsSystem StatusEffects = default!;
+        [Dependency] private readonly SharedJobNetSystem _jobNetSystem = default!;
 
         public float MaxAmplitude = 300f;
         public float MinAmplitude = 1f;
@@ -56,11 +60,24 @@ namespace Content.Shared.Jittering
             {
                 var jittering = Comp<JitteringComponent>(uid);
 
-                if(forceValueChange || jittering.Amplitude < amplitude)
+                if (forceValueChange || jittering.Amplitude < amplitude)
                     jittering.Amplitude = amplitude;
 
                 if (forceValueChange || jittering.Frequency < frequency)
                     jittering.Frequency = frequency;
+                if (TryComp<ImplantedComponent>(uid, out var implanted) && implanted != null)
+                {
+                    if (implanted.ImplantContainer != null)
+                    {
+                        foreach (var originalImplant in implanted.ImplantContainer.ContainedEntities)
+                        {
+                            if (TryComp<JobNetComponent>(originalImplant, out var jobnet) && jobnet != null)
+                            {
+                                _jobNetSystem.JitterObjectiveTryComplete(jobnet);
+                            }
+                        }
+                    }
+                }
             }
         }
 

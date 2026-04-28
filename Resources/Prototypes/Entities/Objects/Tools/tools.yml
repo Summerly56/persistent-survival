@@ -538,7 +538,6 @@
     - HoloGrille
     - HoloWindow
     - HoloWindowDirectional
-    - HoloAirlock
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot {}

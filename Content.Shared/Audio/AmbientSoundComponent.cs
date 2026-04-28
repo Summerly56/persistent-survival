@@ -1,9 +1,9 @@
-using System.Numerics;
 using Robust.Shared.Audio;
 using Robust.Shared.ComponentTrees;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics;
 using Robust.Shared.Serialization;
+using System.Numerics;
 
 namespace Content.Shared.Audio;
 

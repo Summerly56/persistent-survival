@@ -1,6 +1,6 @@
-using System.Numerics;
 using Content.Shared.Weapons.Melee.Components;
 using Robust.Shared.GameStates;
+using System.Numerics;
 
 namespace Content.Shared.Anomaly.Components;
 

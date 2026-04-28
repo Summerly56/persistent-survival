@@ -1,17 +1,17 @@
 using Content.Server.Administration.Logs;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Payload.Components;
 using Content.Shared.Tag;
 using Content.Shared.Trigger;
-using Content.Shared.Chemistry.EntitySystems;
+using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 using System.Linq;
-using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Payload.EntitySystems;
 
@@ -112,9 +112,9 @@ public sealed class PayloadSystem : EntitySystem
             if (Factory.GetComponent(registration.Type) is not Component component)
                 continue;
 
-            var temp = (object) component;
+            var temp = (object)component;
             _serializationManager.CopyTo(data.Component, ref temp);
-            AddComp(uid, (Component) temp!);
+            AddComp(uid, (Component)temp!);
 
             trigger.GrantedComponents.Add(registration.Type);
         }

@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -10,7 +9,7 @@ using JetBrains.Annotations;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Shared.Stacks;
 

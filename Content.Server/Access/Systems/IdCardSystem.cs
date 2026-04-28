@@ -17,7 +17,6 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace Content.Server.Access.Systems;
 
@@ -48,23 +47,23 @@ public sealed class IdCardSystem : SharedIdCardSystem
         }
         else
         {
-            if(_crewMeta.MetaRecords != null && id.FullName != null)
+            if (_crewMeta.MetaRecords != null && id.FullName != null)
             {
                 if (_crewMeta.MetaRecords.TryGetRecord(id.FullName, out var record))
                 {
-                    if(record != null && id.CreatedTime < record.LatestIDTime)
+                    if (record != null && id.CreatedTime < record.LatestIDTime)
                     {
                         QueueDel(uid);
                     }
                 }
             }
         }
-        if(id.FullName != "*Expired*" && id.FullName != null && id.FullName != "")
+        if (id.FullName != "*Expired*" && id.FullName != null && id.FullName != "")
         {
             RebuildJob(uid, id);
             UpdateEntityName(uid, id);
         }
-        
+
     }
 
     private void OnMicrowaved(EntityUid uid, IdCardComponent component, BeingMicrowavedEvent args)
@@ -138,9 +137,9 @@ public sealed class IdCardSystem : SharedIdCardSystem
         var query = EntityQueryEnumerator<IdCardComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if(comp.FullName == name)
+            if (comp.FullName == name)
             {
-                if(comp.CreatedTime < DateTime.Now)
+                if (comp.CreatedTime < DateTime.Now)
                 {
                     QueueDel(uid);
                 }
@@ -184,12 +183,12 @@ public sealed class IdCardSystem : SharedIdCardSystem
 
     public void BuildID(EntityUid card, string name)
     {
-        if(TryComp<IdCardComponent>(card, out var comp))
+        if (TryComp<IdCardComponent>(card, out var comp))
         {
             comp.FullName = name;
             RebuildJob(card, comp);
             UpdateEntityName(card, comp);
-        } 
+        }
     }
 
     public void RebuildJob(EntityUid card, IdCardComponent comp)
@@ -221,7 +220,7 @@ public sealed class IdCardSystem : SharedIdCardSystem
                 }
             }
         }
-        if(!found)
+        if (!found)
         {
             comp.LocalizedJobTitle = "Off Duty";
             return;

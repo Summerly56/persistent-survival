@@ -1,6 +1,6 @@
-﻿using System.Numerics;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using System.Numerics;
 
 namespace Content.Server.Tabletop
 {

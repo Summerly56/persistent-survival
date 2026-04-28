@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Botany.Components;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Materials;
@@ -32,6 +31,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.Medical.BiomassReclaimer
 {
@@ -79,7 +79,7 @@ namespace Content.Server.Medical.BiomassReclaimer
                         var direction = new Vector2(_robustRandom.Next(-30, 30), _robustRandom.Next(-30, 30));
                         _throwing.TryThrow(thrown, direction, _robustRandom.Next(1, 10));
                     }
-                    reclaimer.RandomMessTimer += (float) reclaimer.RandomMessInterval.TotalSeconds;
+                    reclaimer.RandomMessTimer += (float)reclaimer.RandomMessInterval.TotalSeconds;
                 }
 
                 if (reclaimer.ProcessingTimer > 0)
@@ -87,7 +87,7 @@ namespace Content.Server.Medical.BiomassReclaimer
                     continue;
                 }
 
-                var actualYield = (int) (reclaimer.CurrentExpectedYield); // can only have integer biomass
+                var actualYield = (int)(reclaimer.CurrentExpectedYield); // can only have integer biomass
                 reclaimer.CurrentExpectedYield = reclaimer.CurrentExpectedYield - actualYield; // store non-integer leftovers
                 _material.SpawnMultipleFromMaterial(actualYield, BiomassPrototype, Transform(uid).Coordinates);
 
@@ -254,7 +254,7 @@ namespace Content.Server.Medical.BiomassReclaimer
 
             // Reject souled bodies in easy mode.
             if (_configManager.GetCVar(CCVars.BiomassEasyMode) &&
-                HasComp<HumanoidAppearanceComponent>(dragged) &&
+                HasComp<HumanoidProfileComponent>(dragged) &&
                 _minds.TryGetMind(dragged, out _, out var mind))
             {
                 if (mind.UserId != null && _playerManager.TryGetSessionById(mind.UserId.Value, out _))

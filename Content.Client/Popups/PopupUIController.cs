@@ -1,10 +1,10 @@
-using System.Numerics;
 using Content.Client.Gameplay;
 using Content.Shared.Popups;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using System.Numerics;
 
 namespace Content.Client.Popups;
 

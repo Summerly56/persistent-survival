@@ -7,7 +7,7 @@ namespace Content.Shared.StationRecords;
 public sealed partial class StationRecordsFilter
 {
     public StationRecordFilterType Type = StationRecordFilterType.Name;
-    public string Value  = "";
+    public string Value = "";
 
     public StationRecordsFilter(StationRecordFilterType filterType, string newValue = "")
     {

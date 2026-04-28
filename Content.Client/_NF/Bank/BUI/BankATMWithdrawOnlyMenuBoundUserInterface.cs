@@ -8,7 +8,7 @@ public sealed class BankATMWithdrawOnlyMenuBoundUserInterface : BoundUserInterfa
 {
     private WithdrawBankATMMenu? _menu;
 
-    public BankATMWithdrawOnlyMenuBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) {}
+    public BankATMWithdrawOnlyMenuBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {

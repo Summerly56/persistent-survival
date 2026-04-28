@@ -1,7 +1,6 @@
-using Content.Shared.Shuttles.Components;
+using Content.Shared.Dataset;
 using Content.Shared.Procedural;
 using Content.Shared.Salvage.Expeditions;
-using Content.Shared.Dataset;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Salvage;

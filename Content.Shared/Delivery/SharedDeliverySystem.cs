@@ -1,5 +1,3 @@
-using System.Linq;
-using Content.Shared.Shuttles.Components;
 using Content.Shared.Examine;
 using Content.Shared.FingerprintReader;
 using Content.Shared.Hands.EntitySystems;
@@ -8,12 +6,14 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Popups;
-using Content.Shared.Tools.Components;
+using Content.Shared.Shuttles.Components;
 using Content.Shared.Tag;
+using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Shared.Delivery;
 
@@ -145,7 +145,7 @@ public abstract class SharedDeliverySystem : EntitySystem
             {
                 _audio.PlayPredicted(ent.Comp.OpenSound, ent.Owner, user);
 
-                if(ent.Comp.ContainedDeliveryAmount == 0)
+                if (ent.Comp.ContainedDeliveryAmount == 0)
                 {
                     _popup.PopupPredicted(Loc.GetString("delivery-teleporter-empty", ("entity", ent)), null, ent, user);
                     return;

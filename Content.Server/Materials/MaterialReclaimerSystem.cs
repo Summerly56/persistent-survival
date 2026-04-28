@@ -4,13 +4,14 @@ using Content.Server.Ghost;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Server.Wires;
-using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.Emag.Components;
+using Content.Shared.Gibbing;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -25,7 +26,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.Humanoid;
 
 namespace Content.Server.Materials;
 
@@ -39,7 +39,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
     [Dependency] private readonly OpenableSystem _openable = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!; //bobby
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
@@ -112,7 +112,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             Filter.PvsExcept(victim, entityManager: EntityManager),
             true);
 
-        _body.GibBody(victim, true);
+        _gibbing.Gib(victim);
         _appearance.SetData(entity.Owner, RecyclerVisuals.Bloody, true);
         args.Handled = true;
     }
@@ -163,7 +163,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         Dirty(uid, component);
 
         // scales the output if the process was interrupted.
-        var completion = 1f - Math.Clamp((float) Math.Round((active.EndTime - Timing.CurTime) / active.Duration),
+        var completion = 1f - Math.Clamp((float)Math.Round((active.EndTime - Timing.CurTime) / active.Duration),
             0f,
             1f);
         Reclaim(uid, item, completion, component);
@@ -189,11 +189,11 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
 
         if (CanGib(uid, item, component))
         {
-            var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
+            var logImpact = HasComp<HumanoidProfileComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
             _adminLogger.Add(LogType.Gib, logImpact, $"{ToPrettyString(item):victim} was gibbed by {ToPrettyString(uid):entity} ");
             if (component.ReclaimSolutions)
                 SpawnChemicalsFromComposition(uid, item, completion, false, component, xform);
-            _body.GibBody(item, true);
+            _gibbing.Gib(item);
             _appearance.SetData(uid, RecyclerVisuals.Bloody, true);
         }
         else
@@ -223,7 +223,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
 
         foreach (var (material, amount) in composition.MaterialComposition)
         {
-            var outputAmount = (int) (amount * efficiency * modifier);
+            var outputAmount = (int)(amount * efficiency * modifier);
             _materialStorage.TryChangeMaterialAmount(reclaimer, material, outputAmount, storage);
         }
 

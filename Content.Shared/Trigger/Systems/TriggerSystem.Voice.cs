@@ -1,8 +1,8 @@
-using Content.Shared.Trigger.Components.Triggers;
-using Content.Shared.Speech;
-using Content.Shared.Speech.Components;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
+using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Verbs;
 
 namespace Content.Shared.Trigger.Systems;

@@ -2,9 +2,9 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Temperature.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Inventory;
+using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Temperature;
-using Content.Shared.Projectiles;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Temperature.Systems;
 

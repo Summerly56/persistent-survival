@@ -1,8 +1,8 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Mind;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Shared.Prototypes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Store.Systems;
 
@@ -169,7 +169,7 @@ public sealed partial class StoreSystem
 
     private bool TryGetListing(IReadOnlyCollection<ListingDataWithCostModifiers> collection, string listingId, [MaybeNullWhen(false)] out ListingDataWithCostModifiers found)
     {
-        foreach(var current in collection)
+        foreach (var current in collection)
         {
             if (current.ID == listingId)
             {

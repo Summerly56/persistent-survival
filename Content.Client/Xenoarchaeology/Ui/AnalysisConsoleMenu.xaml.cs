@@ -188,7 +188,7 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
 
         LockedValueLabel.SetMarkup(Loc.GetString("analysis-console-info-locked-value", ("state", lockedState)));
 
-        var percent = (float) node.Value.Comp.Durability / node.Value.Comp.MaxDurability;
+        var percent = (float)node.Value.Comp.Durability / node.Value.Comp.MaxDurability;
         var color = percent switch
         {
             >= 0.75f => Color.Lime,

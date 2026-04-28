@@ -1,22 +1,29 @@
 - type: entity
+  abstract: true
+  id: BaseFloorDecoration
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Sprite
+    drawdepth: FloorTiles
+
+- type: entity
   id: Stairs
+  parent: BaseFloorDecoration
   name: stairs
   suffix: Steel
   description: The greatest invention since rocket-propelled grenades.
-  placement:
-    mode: SnapgridCenter
   components:
   - type: Anchorable
     flags:
     - Anchorable
   - type: Rotatable
-  - type: Clickable
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_steel
-    drawdepth: FloorTiles
-  - type: Transform
-    anchored: true
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -39,6 +46,9 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Construction
+    graph: StairsSteel
+    node: done
 
 - type: entity
   id: StairStage
@@ -49,6 +59,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_steel
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairStage
+    node: done
 
 - type: entity
   id: StairWhite
@@ -59,6 +72,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_white
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsWhite
+    node: done
 
 - type: entity
   id: StairStageWhite
@@ -69,6 +85,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_white
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsWhiteStage
+    node: done
 
 - type: entity
   id: StairDark
@@ -79,6 +98,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_dark
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsDark
+    node: done
 
 - type: entity
   id: StairStageDark
@@ -89,6 +111,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_dark
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsDarkStage
+    node: done
 
 - type: entity
   id: StairWood
@@ -99,6 +124,9 @@
     sprite: Structures/stairs.rsi
     state: stairs_wood
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsWood
+    node: done
 
 - type: entity
   id: StairStageWood
@@ -109,3 +137,6 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_wood
     drawdepth: FloorTiles
+  - type: Construction
+    graph: StairsWoodStage
+    node: done

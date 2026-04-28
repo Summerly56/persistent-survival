@@ -1,51 +1,25 @@
 using Content.Server._NF.Bank;
 using Content.Server.Access.Systems;
-using Content.Server.Cargo.Components;
 using Content.Server.Chat.Systems;
-using Content.Server.Containers;
 using Content.Server.CrewRecords.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
-using Content.Server.StationRecords.Systems;
-using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
-using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
-using Content.Shared.Cargo.Events;
-using Content.Shared.Chat;
-using Content.Shared.Construction;
-using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates;
-using Content.Shared.CrewAssignments.Components;
-using Content.Shared.CrewMetaRecords;
-using Content.Shared.CrewRecords.Components;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Database;
-using Content.Shared.GridControl.Components;
-using Content.Shared.Hands.Components;
 using Content.Shared.Invoices.Components;
 using Content.Shared.Invoices.Systems;
-using Content.Shared.Roles;
 using Content.Shared.Station.Components;
-using Content.Shared.StationRecords;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
-using NetCord;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Physics;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Toolshed.TypeParsers;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using static Content.Shared.Access.Components.IdCardConsoleComponent;
 using static Content.Shared.Paper.PaperComponent;
 
 namespace Content.Server.Invoices.Systems;
@@ -54,16 +28,7 @@ namespace Content.Server.Invoices.Systems;
 public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSystem
 {
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly AccessSystem _access = default!;
-    [Dependency] private readonly IdCardSystem _idCard = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly CrewMetaRecordsSystem _crewMeta = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
@@ -118,7 +83,7 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
 
         if (component.StationMode)
         {
-            if(!component.InvoiceMode)
+            if (!component.InvoiceMode)
             {
                 payslipMode = true;
                 entityName = "payslip";
@@ -235,7 +200,7 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
                 _audio.PlayEntity(component.PrintSound, args.Actor, uid);
             }
         }
-        
+
         UpdateUserInterface(uid, component, args);
     }
 
@@ -273,13 +238,13 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
         var taxStation = _station.GetOwningStation(uid, null, true);
         int taxingStation = 0;
         string taxingName = "Unknown";
-        if(taxStation != null)
+        if (taxStation != null)
         {
-            if(TryComp<StationDataComponent>(taxStation, out var sD) && sD != null)
+            if (TryComp<StationDataComponent>(taxStation, out var sD) && sD != null)
             {
                 taxingStation = sD.UID;
                 taxRate = sD.SalesTax;
-                if(sD.StationName != null)
+                if (sD.StationName != null)
                 {
                     taxingName = sD.StationName;
                 }
@@ -313,7 +278,7 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
             {
                 if (TryComp<StationDataComponent>(selectedStation, out var selectedData) && selectedData != null)
                 {
-                    if(selectedData.StationName != null)
+                    if (selectedData.StationName != null)
                         selectedName = selectedData.StationName;
                 }
             }
@@ -329,11 +294,11 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
         var stations = _station.GetStations();
         var userName = Name(args.Actor);
         string paidTo = "";
-        if(component.TargetPerson != null)
+        if (component.TargetPerson != null)
         {
             paidTo = component.TargetPerson;
         }
-        if(!component.PayslipMode)
+        if (!component.PayslipMode)
         {
             foreach (var station in stations)
             {
@@ -496,7 +461,7 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
         var userName = Name(args.Actor);
         var taxAmount = 0;
         EntityUid? taxStation = null;
-        if(!component.PayslipMode)
+        if (!component.PayslipMode)
         {
             if (component.TaxOwner != 0)
             {
@@ -556,7 +521,7 @@ public sealed class InvoicePrinterConsoleSystem : SharedInvoicePrinterConsoleSys
         }
         else
         {
-            if(_bank.TryBankDeposit(args.Actor, cost))
+            if (_bank.TryBankDeposit(args.Actor, cost))
             {
                 component.Paid = true;
                 component.PaidBy = userName;

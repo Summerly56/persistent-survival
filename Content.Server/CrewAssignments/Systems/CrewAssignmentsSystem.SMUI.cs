@@ -1,36 +1,18 @@
-using Content.Server.Cargo.Components;
-using Content.Shared.Cargo;
+using Content.Shared.Access;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Events;
-using Content.Shared.Cargo.Prototypes;
-using Content.Shared.Database;
-using Content.Shared.Emag.Systems;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
-using Content.Shared.Labels.Components;
-using Content.Shared.Paper;
-using Content.Shared.Station;
-using Content.Shared.Station.Components;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Server.DeviceLinking.Systems;
-using Content.Server.Popups;
-using Content.Shared.CrewAssignments.Components;
-using Content.Shared.CrewAssignments.Systems;
 using Content.Shared.CrewAccesses.Components;
-using Content.Shared.Access;
+using Content.Shared.CrewAssignments.Components;
 using Content.Shared.CrewAssignments.Events;
+using Content.Shared.CrewAssignments.Systems;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.CrewAssignments.Systems;
 
 public sealed partial class CrewAssignmentSystem
 {
-    
+
     private void InitializeConsole()
     {
         SubscribeLocalEvent<StationModificationConsoleComponent, StationModificationPurchaseUpgrade>(OnPurchaseUpgrade);
@@ -208,7 +190,7 @@ public sealed partial class CrewAssignmentSystem
         }
         foreach (var pair in crewAssignments.CrewAssignments)
         {
-            if(pair.Value.Name == args.Owner)
+            if (pair.Value.Name == args.Owner)
             {
                 ConsolePopup(player, "An assignment with that name already exists!");
                 return;
@@ -359,7 +341,7 @@ public sealed partial class CrewAssignmentSystem
         }
         foreach (var accessLevel in _protoMan.EnumeratePrototypes<AccessLevelPrototype>())
         {
-            if(!accessLevel.CanAddToIdCard || crewAccesses.CrewAccesses.ContainsKey(accessLevel.ID))
+            if (!accessLevel.CanAddToIdCard || crewAccesses.CrewAccesses.ContainsKey(accessLevel.ID))
             {
                 continue;
             }
@@ -530,7 +512,7 @@ public sealed partial class CrewAssignmentSystem
             ConsolePopup(player, "Invalid Assignment!");
             return;
         }
-        if(args.ToggleState)
+        if (args.ToggleState)
         {
             if (crewAssignment.AccessIDs.Contains(args.Access))
             {
@@ -639,7 +621,7 @@ public sealed partial class CrewAssignmentSystem
         // No station to deduct from.
         if (!Validate(uid, component, player, out var stationData)) return;
         if (args.Owner == null || args.Owner == "") return;
-        if(args.Owner.Length > 24)
+        if (args.Owner.Length > 24)
         {
             ConsolePopup(player, "Exceeded Maximum Length of 24 Characters!");
             return;

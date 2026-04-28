@@ -1,6 +1,6 @@
 using Content.Shared.Chemistry.Components;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Audio;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Botany.Components;
 

@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
-using System.IO.Compression;
 using Robust.Packaging;
 using Robust.Packaging.AssetProcessing;
 using Robust.Packaging.AssetProcessing.Passes;
 using Robust.Packaging.Utility;
 using Robust.Shared.Timing;
+using System.Diagnostics;
+using System.IO.Compression;
 
 namespace Content.Packaging;
 
@@ -13,13 +13,13 @@ public static class ClientPackaging
     /// <summary>
     /// Be advised this can be called from server packaging during a HybridACZ build.
     /// </summary>
-    public static async Task PackageClient(bool skipBuild, string configuration, IPackageLogger logger)
+    public static async Task PackageClient(bool skipBuild, bool logBuild, string configuration, IPackageLogger logger)
     {
         logger.Info("Building client...");
 
         if (!skipBuild)
         {
-            await ProcessHelpers.RunCheck(new ProcessStartInfo
+            var startInfo = new ProcessStartInfo
             {
                 FileName = "dotnet",
                 ArgumentList =
@@ -33,7 +33,15 @@ public static class ClientPackaging
                     "/p:FullRelease=true",
                     "/m"
                 }
-            });
+            };
+
+            if (logBuild)
+            {
+                startInfo.ArgumentList.Add($"/bl:{Path.Combine("release", "client.binlog")}");
+                startInfo.ArgumentList.Add("/p:ReportAnalyzer=true");
+            }
+
+            await ProcessHelpers.RunCheck(startInfo);
         }
 
         logger.Info("Packaging client...");
@@ -67,7 +75,7 @@ public static class ClientPackaging
         };
         dropSvgPass.AddDependency(graph.Input).AddBefore(graph.PresetPasses);
 
-        AssetGraph.CalculateGraph([pass, dropSvgPass, ..graph.AllPasses], logger);
+        AssetGraph.CalculateGraph([pass, dropSvgPass, .. graph.AllPasses], logger);
 
         var inputPass = graph.Input;
 

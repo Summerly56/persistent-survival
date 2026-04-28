@@ -452,6 +452,7 @@
       Phoron: 100
   - type: Tag
     tags:
+    - Sheet
     - RawMaterial
     - Phoron
 
@@ -621,15 +622,12 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 11
+        maxVol: 10
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Honk
-          Quantity: 5
+        - ReagentId: Bananium
+          Quantity: 10
   - type: Extractable
+    grindableSolutionName: food
     juiceSolution:
       reagents:
       - ReagentId: JuiceBanana

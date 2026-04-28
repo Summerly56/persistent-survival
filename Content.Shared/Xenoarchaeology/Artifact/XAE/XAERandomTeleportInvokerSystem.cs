@@ -1,10 +1,8 @@
 using Content.Shared.Popups;
-using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact.XAE.Components;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared.Xenoarchaeology.Artifact.XAE;
 

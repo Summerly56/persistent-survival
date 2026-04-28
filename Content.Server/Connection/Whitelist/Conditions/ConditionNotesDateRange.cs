@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Content.Server.Database;
 using Content.Shared.Database;
-using Robust.Shared.Network;
 
 namespace Content.Server.Connection.Whitelist.Conditions;
 
@@ -15,7 +11,7 @@ public sealed partial class ConditionNotesDateRange : WhitelistCondition
     public bool IncludeExpired = false;
 
     [DataField]
-    public NoteSeverity MinimumSeverity  = NoteSeverity.Minor;
+    public NoteSeverity MinimumSeverity = NoteSeverity.Minor;
 
     /// <summary>
     /// The minimum number of notes required.

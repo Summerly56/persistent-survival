@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
 using Robust.Shared.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Content.Shared.Disposal.Components
 {

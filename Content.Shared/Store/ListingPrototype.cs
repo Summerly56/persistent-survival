@@ -1,10 +1,10 @@
-using System.Linq;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store.Components;
 using Content.Shared.StoreDiscount.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Shared.Store;
 

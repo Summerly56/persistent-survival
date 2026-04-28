@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.Salvage.Fulton;
 using JetBrains.Annotations;
 using Robust.Client.Animations;
@@ -6,6 +5,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
+using System.Numerics;
 using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
 
 namespace Content.Client.Salvage;

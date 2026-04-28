@@ -1,44 +1,31 @@
 using Content.Server.Cargo.Components;
-using Content.Server.Construction.Completions;
 using Content.Server.CrewRecords.Systems;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
-using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
-using Content.Shared.CCVar;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.CrewAccesses.Components;
 using Content.Shared.CrewAssignments.Components;
 using Content.Shared.CrewAssignments.Prototypes;
 using Content.Shared.CrewRecords.Components;
-using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.GridControl.Components;
 using Content.Shared.GridControl.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Station;
 using Content.Shared.Station.Components;
-using Content.Shared.Tools.Components;
 using JetBrains.Annotations;
-using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using System;
-using System.Globalization;
 using System.Linq;
-using static Content.Shared.Access.Components.AccessOverriderComponent;
 using static Content.Shared.GridControl.Components.GridConfigComponent;
 using static Content.Shared.GridControl.Components.GridControlConsoleComponent;
 using static Content.Shared.GridControl.Components.StationCreatorComponent;
-using static Content.Shared.GridControl.Components.StationTaggerComponent;
 
 namespace Content.Server.GridControl.Systems;
 
@@ -48,17 +35,14 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly CrewMetaRecordsSystem _crewMeta = default!;
     public override void Initialize()
@@ -121,7 +105,7 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         if (accessReaderEnt == null) return;
         if (TryComp<StationTrackerComponent>(accessReaderEnt.Value.Owner, out var comp) && comp != null)
         {
-            EntityManager.RemoveComponent(accessReaderEnt.Value.Owner, comp);
+            RemComp(accessReaderEnt.Value.Owner, comp);
         }
         UpdateUserInterface(uid, component, args);
     }
@@ -257,11 +241,11 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         bool idPresent = false;
 
         var targetGrid = _transform.GetGrid(uid);
-        bool tradeStationGrid = false;
-        if (TryComp<TradeStationComponent>(targetGrid, out var tradeStation))
-        {
-            tradeStationGrid = true;
-        }
+        //bool tradeStationGrid = false;
+        //if (TryComp<TradeStationComponent>(targetGrid, out var tradeStation))
+        //{
+        //    tradeStationGrid = true;
+        //}
         if (component.PrivilegedIdSlot.Item is { Valid: true } idCard)
         {
             idPresent = true;
@@ -366,7 +350,7 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
                 }
             }
         }
-        return isAuth;
+        return isOwner || isAuth;
     }
     private void OnChangeName(EntityUid uid, GridConfigComponent component, GridConfigChangeName args)
     {
@@ -384,21 +368,21 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
     {
         if (Validate(uid, component))
         {
-            if(component.PersonalMode)
+            if (component.PersonalMode)
             {
-                if(!ValidatePersonalClaim(uid, component, true))
+                if (!ValidatePersonalClaim(uid, component, true))
                 {
                     return;
                 }
             }
             else
             {
-                if(!ValidateFactionClaim(uid, component, true))
+                if (!ValidateFactionClaim(uid, component, true))
                 {
                     return;
                 }
             }
-                var grid = _transform.GetGrid(uid);
+            var grid = _transform.GetGrid(uid);
             if (TryComp<TradeStationComponent>(grid, out _))
             {
                 if (component.PersonalMode) return;
@@ -460,7 +444,7 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
             _popupSystem.PopupEntity($"The station {args.StationName} was created.", idCard.Value);
             _itemSlots.TryEjectToHands(idCard.Value, component.PrivilegedIdSlot, args.Actor);
         }
-        EntityManager.TryQueueDeleteEntity(uid);
+        TryQueueDel(uid);
     }
 
     private void OnDisconnect(EntityUid uid, GridConfigComponent component, GridConfigDisconnect args)
@@ -629,29 +613,29 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         Dictionary<int, string>? possibleStations = null;
 
         FactionLevelPrototype? factionLevel = null;
-        if (TryComp<StationDataComponent>(station, out var SD) && SD != null)
+        if (TryComp<StationDataComponent>(station, out var sD) && sD != null)
         {
-            targetName = SD.StationName;
-            targetStation = SD.UID;
-            _protoMan.Resolve(SD.Level, out var levelProto);
+            targetName = sD.StationName;
+            targetStation = sD.UID;
+            _protoMan.Resolve(sD.Level, out var levelProto);
             factionLevel = levelProto;
-            if(!component.PersonalMode)
+            if (!component.PersonalMode)
             {
                 tileLimit = factionLevel?.TileLimit ?? tileLimit;
             }
-            
+
         }
 
         if (component.PersonalMode)
         {
             targetName = privilegedName;
             currentTileCount = _station.GetPersonalTileCount(targetName);
-            if(_crewMeta.MetaRecords != null)
+            if (_crewMeta.MetaRecords != null)
             {
-                if(_crewMeta.MetaRecords.TryGetRecord(privilegedName, out var record) && record != null)
+                if (_crewMeta.MetaRecords.TryGetRecord(privilegedName, out var record) && record != null)
                 {
                     _protoMan.Resolve(record.Level, out var levelProto);
-                    if(levelProto != null)
+                    if (levelProto != null)
                         tileLimit = levelProto.TileLimit;
                 }
             }
@@ -703,7 +687,6 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         }
 
         GridConfigBoundUserInterfaceState newState;
-        bool allowed = true;
         string? errMsg = null;
         bool controlled = false;
         if (grid != null)
@@ -792,10 +775,10 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         int? targetStation = null;
         Dictionary<int, string>? possibleStations = null;
 
-        if (TryComp<StationDataComponent>(station, out var SD) && SD != null)
+        if (TryComp<StationDataComponent>(station, out var sD) && sD != null)
         {
-            targetName = SD.StationName;
-            targetStation = SD.UID;
+            targetName = sD.StationName;
+            targetStation = sD.UID;
         }
         var stations = _station.GetStations();
         possibleStations = new Dictionary<int, string>();
@@ -842,7 +825,6 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
 
         var targetLabel = Loc.GetString("access-overrider-window-no-target");
         var targetLabelColor = Color.Red;
-        Entity<AccessReaderComponent>? accessReaderEnt = null;
         bool allowed = false;
         string? taggedFaction = null;
         int taggedStationUID = 0;
@@ -864,7 +846,7 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
             targetLabel = Loc.GetString("access-overrider-window-target-label") + " " + Comp<MetaDataComponent>(component.TargetAccessReaderId).EntityName;
             targetLabelColor = Color.White;
             allowed = PrivilegedIdIsAuthorized(uid, accessReaderEnt2.Value.Owner, component);
-            
+
         }
         StationTaggerBoundUserInterfaceState newState;
 

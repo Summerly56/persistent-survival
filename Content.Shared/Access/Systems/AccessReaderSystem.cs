@@ -34,7 +34,6 @@ public sealed class AccessReaderSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedGameTicker _gameTicker = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -61,61 +60,60 @@ public sealed class AccessReaderSystem : EntitySystem
     private void OnExamined(Entity<AccessReaderComponent> ent, ref ExaminedEvent args)
     {
         return;
-        if (!GetMainAccessReader(ent, out var mainAccessReader))
-            return;
+        //if (!GetMainAccessReader(ent, out var mainAccessReader))
+        //    return;
 
-        mainAccessReader.Value.Comp.AccessListsOriginal ??= new(mainAccessReader.Value.Comp.AccessLists);
+        //mainAccessReader.Value.Comp.AccessListsOriginal ??= new(mainAccessReader.Value.Comp.AccessLists);
 
-        var accessHasBeenModified = mainAccessReader.Value.Comp.AccessLists.Count != mainAccessReader.Value.Comp.AccessListsOriginal.Count;
+        //var accessHasBeenModified = mainAccessReader.Value.Comp.AccessLists.Count != mainAccessReader.Value.Comp.AccessListsOriginal.Count;
 
-        if (!accessHasBeenModified)
-        {
-            foreach (var accessSubgroup in mainAccessReader.Value.Comp.AccessLists)
-            {
-                if (!mainAccessReader.Value.Comp.AccessListsOriginal.Any(y => y.SetEquals(accessSubgroup)))
-                {
-                    accessHasBeenModified = true;
-                    break;
-                }
-            }
-        }
+        //if (!accessHasBeenModified)
+        //{
+        //    foreach (var accessSubgroup in mainAccessReader.Value.Comp.AccessLists)
+        //    {
+        //        if (!mainAccessReader.Value.Comp.AccessListsOriginal.Any(y => y.SetEquals(accessSubgroup)))
+        //        {
+        //            accessHasBeenModified = true;
+        //            break;
+        //        }
+        //    }
+        //}
 
-        var examiner = args.Examiner;
-        var canSeeAccessModification = accessHasBeenModified &&
-                                       (HasComp<ShowAccessReaderSettingsComponent>(examiner) ||
-                                        _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(examiner, out _));
+        //var examiner = args.Examiner;
+        //var canSeeAccessModification = accessHasBeenModified &&
+        //                               (HasComp<ShowAccessReaderSettingsComponent>(examiner) ||
+        //                                _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(examiner, out _));
 
-        if (canSeeAccessModification)
-        {
-            var localizedCurrentNames = GetLocalizedAccessNames(mainAccessReader.Value.Comp.AccessLists);
-            var accessesFormatted = ContentLocalizationManager.FormatListToOr(localizedCurrentNames);
-            var currentSettingsMessage = localizedCurrentNames.Count > 0
-                ? Loc.GetString("access-reader-access-settings-modified-message", ("access", accessesFormatted))
-                : Loc.GetString("access-reader-access-settings-removed-message");
+        //if (canSeeAccessModification)
+        //{
+        //    var localizedCurrentNames = GetLocalizedAccessNames(mainAccessReader.Value.Comp.AccessLists);
+        //    var accessesFormatted = ContentLocalizationManager.FormatListToOr(localizedCurrentNames);
+        //    var currentSettingsMessage = localizedCurrentNames.Count > 0
+        //        ? Loc.GetString("access-reader-access-settings-modified-message", ("access", accessesFormatted))
+        //        : Loc.GetString("access-reader-access-settings-removed-message");
 
-            args.PushMarkup(currentSettingsMessage);
+        //    args.PushMarkup(currentSettingsMessage);
 
-            return;
-        }
+        //    return;
+        //}
 
-        var localizedOriginalNames = GetLocalizedAccessNames(mainAccessReader.Value.Comp.AccessListsOriginal);
+        //var localizedOriginalNames = GetLocalizedAccessNames(mainAccessReader.Value.Comp.AccessListsOriginal);
 
-        // If the string list is empty either there were no access restrictions or the localized names were invalid
-        if (localizedOriginalNames.Count == 0)
-            return;
+        //// If the string list is empty either there were no access restrictions or the localized names were invalid
+        //if (localizedOriginalNames.Count == 0)
+        //    return;
 
-        var originalAccessesFormatted = ContentLocalizationManager.FormatListToOr(localizedOriginalNames);
-        var originalSettingsMessage = Loc.GetString(mainAccessReader.Value.Comp.ExaminationText, ("access", originalAccessesFormatted));
-        args.PushMarkup(originalSettingsMessage);
+        //var originalAccessesFormatted = ContentLocalizationManager.FormatListToOr(localizedOriginalNames);
+        //var originalSettingsMessage = Loc.GetString(mainAccessReader.Value.Comp.ExaminationText, ("access", originalAccessesFormatted));
+        //args.PushMarkup(originalSettingsMessage);
     }
 
-    
     private void OnMapInit(EntityUid uid, AccessReaderComponent component, ref MapInitEvent args)
     {
         List<string> accesses = new();
         if (component.AccessNames.Count == 0)
         {
-            foreach (var thing in  component.AccessLists)
+            foreach (var thing in component.AccessLists)
             {
                 foreach (var access in thing)
                 {
@@ -276,7 +274,7 @@ public sealed class AccessReaderSystem : EntitySystem
         }
         if (!reader.Enabled)
             return true;
-        if(reader.PersonalAccessMode)
+        if (reader.PersonalAccessMode)
         {
             if (reader.PersonalAccessNames.Count < 1) return true;
             string? actorName = null;
@@ -339,7 +337,7 @@ public sealed class AccessReaderSystem : EntitySystem
             }
             if (actorName != null)
             {
-                
+
                 if (TryComp(station, out StationDataComponent? sD))
                 {
                     if (sD.Owners.Contains(actorName)) return true;
@@ -352,7 +350,7 @@ public sealed class AccessReaderSystem : EntitySystem
                 }
                 if (crewRecords == null) return true;
                 crewRecords.TryGetRecord(actorName, out var record);
-                
+
                 if (!TryComp(station, out CrewAssignmentsComponent? stationData))
                 {
                     return true;
@@ -379,7 +377,7 @@ public sealed class AccessReaderSystem : EntitySystem
                         }
                     }
                 }
-                
+
                 return false;
             }
         }
@@ -704,7 +702,7 @@ public sealed class AccessReaderSystem : EntitySystem
     {
         if (CanConfigureAccessReader(ent))
         {
-            if(ent.Comp.AccessNames.Contains(access))
+            if (ent.Comp.AccessNames.Contains(access))
             {
                 ent.Comp.AccessNames.Remove(access);
             }

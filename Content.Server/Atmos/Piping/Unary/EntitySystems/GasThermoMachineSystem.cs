@@ -1,20 +1,18 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Monitor.Systems;
-using Content.Server.Atmos.Piping.Components;
-using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
-using Content.Shared.Atmos;
-using Content.Shared.Atmos.Piping.Unary.Components;
-using JetBrains.Annotations;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Piping.Unary.Systems;
 using Content.Shared.DeviceNetwork;
-using Content.Shared.DeviceNetwork.Events;
-using Content.Shared.Examine;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Events;
+using JetBrains.Annotations;
 
 namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 {
@@ -70,9 +68,9 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
             float dQ = thermoMachine.HeatCapacity * thermoMachine.Cp * args.dt;
 
             // Clamps the heat transferred to not overshoot
-            float Cin = _atmosphereSystem.GetHeatCapacity(heatExchangeGasMixture, true);
+            float cin = _atmosphereSystem.GetHeatCapacity(heatExchangeGasMixture, true);
             float dT = targetTemp - temp;
-            float dQLim = dT * Cin;
+            float dQLim = dT * cin;
             float scale = 1f;
             if (Math.Abs(dQ) > Math.Abs(dQLim))
             {

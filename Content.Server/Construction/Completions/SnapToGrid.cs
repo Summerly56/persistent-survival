@@ -1,5 +1,5 @@
-using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Construction;
+using Content.Shared.Coordinates.Helpers;
 using JetBrains.Annotations;
 
 namespace Content.Server.Construction.Completions

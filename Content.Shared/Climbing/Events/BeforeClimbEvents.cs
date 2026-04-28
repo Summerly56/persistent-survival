@@ -1,5 +1,5 @@
-using Content.Shared.Inventory;
 using Content.Shared.Climbing.Components;
+using Content.Shared.Inventory;
 
 namespace Content.Shared.Climbing.Events;
 

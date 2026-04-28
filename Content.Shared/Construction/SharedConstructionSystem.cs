@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Shared.Construction.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using System.Linq;
 using static Content.Shared.Interaction.SharedInteractionSystem;
 
 namespace Content.Shared.Construction

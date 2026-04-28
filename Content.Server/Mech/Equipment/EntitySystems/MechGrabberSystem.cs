@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Interaction;
 using Content.Server.Mech.Equipment.Components;
 using Content.Server.Mech.Systems;
@@ -10,12 +9,12 @@ using Content.Shared.Mech.Equipment.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Wall;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using System.Linq;
 
 namespace Content.Server.Mech.Equipment.EntitySystems;
 

@@ -1,6 +1,4 @@
-using System.Linq;
 using Content.Client.CharacterInfo;
-using Content.Shared.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
@@ -20,6 +18,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Linq;
 using static Content.Client.CharacterInfo.CharacterInfoSystem;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 

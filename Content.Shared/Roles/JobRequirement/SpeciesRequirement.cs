@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace Content.Shared.Roles;
 

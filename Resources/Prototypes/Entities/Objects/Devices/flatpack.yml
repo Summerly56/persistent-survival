@@ -280,7 +280,7 @@
   components:
   - type: Flatpack
     entity: ComputerStationModification
-    
+
 - type: entity
   parent: BaseFlatpack
   id: ComputerGridControlFlatpack
@@ -341,7 +341,7 @@
   components:
   - type: Flatpack
     entity: ComputerCargoBounty
-    
+
 - type: entity
   parent: BaseFlatpack
   id: TinyFanFlatpack
@@ -365,3 +365,17 @@
   - type: Sprite
     layers:
     - state: fan
+
+- type: entity
+  parent: [ BaseFlatpack, BaseSyndicateContraband ]
+  id: SyndicateMicrowaveFlatpack
+  name: donk co. microwave flatpack
+  description: A flatpack used for constructing a microwave too hot for Nanotrasen to handle.
+  components:
+  - type: Item
+    size: Normal
+  - type: Flatpack
+    entity: SyndicateMicrowave
+  - type: GuideHelp
+    guides:
+    - FoodRecipes

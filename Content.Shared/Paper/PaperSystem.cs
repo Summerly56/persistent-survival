@@ -1,20 +1,20 @@
-using System.Linq;
 using Content.Shared.Administration.Logs;
-using Content.Shared.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
-using Content.Shared.Random.Helpers;
+using Content.Shared.Mind.Components;
 using Content.Shared.Popups;
+using Content.Shared.Random.Helpers;
+using Content.Shared.Roles.Jobs;
 using Content.Shared.Tag;
-using Robust.Shared.Player;
+using Content.Shared.UserInterface;
 using Robust.Shared.Audio.Systems;
-using static Content.Shared.Paper.PaperComponent;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Mind.Components;
-using Content.Shared.Roles.Jobs;
+using System.Linq;
+using static Content.Shared.Paper.PaperComponent;
 
 namespace Content.Shared.Paper;
 

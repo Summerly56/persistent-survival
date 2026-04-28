@@ -1,16 +1,13 @@
 using Content.Server.Gateway.Components;
 using Content.Server.Station.Systems;
-using Content.Shared.UserInterface;
 using Content.Shared.Access.Systems;
 using Content.Shared.Gateway;
 using Content.Shared.Popups;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Teleportation.Systems;
-using Content.Shared.Verbs;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -109,7 +106,7 @@ public sealed class GatewaySystem : EntitySystem
             {
                 Entity = GetNetEntity(destUid),
                 // Fallback to grid's ID if applicable.
-                Name = dest.Name.IsEmpty && destXform.GridUid != null ? FormattedMessage.FromUnformatted(MetaData(destXform.GridUid.Value).EntityName) : dest.Name ,
+                Name = dest.Name.IsEmpty && destXform.GridUid != null ? FormattedMessage.FromUnformatted(MetaData(destXform.GridUid.Value).EntityName) : dest.Name,
                 Portal = HasComp<PortalComponent>(destUid),
                 // If NextUnlock < CurTime it's unlocked, however
                 // we'll always send the client if it's locked

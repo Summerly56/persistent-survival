@@ -1,7 +1,7 @@
-using System.Linq;
 using Content.Shared.Interaction;
 using Content.Shared.Prying.Components;
 using Content.Shared.Tools.Components;
+using System.Linq;
 
 namespace Content.Shared.Tools.Systems;
 

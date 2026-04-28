@@ -1,4 +1,4 @@
-﻿using Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
+using Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 using Content.Shared.Silicons.Bots;
 using Robust.Shared.Timing;
 
@@ -22,7 +22,7 @@ public sealed class HugBotSystem : SharedHugBotSystem
     private void OnHtnRaisedEvent(Entity<HugBotComponent> entity, ref HTNRaisedEvent args)
     {
         if (args.Args is not HugBotDidHugEvent ||
-            args.Target is not {} target)
+            args.Target is not { } target)
             return;
 
         var ev = new HugBotHugEvent(GetNetEntity(entity));
