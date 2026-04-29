@@ -293,3 +293,11 @@
   category: cargoproduct-category-name-syndicate
   group: syndicatemarket
 
+- type: cargoProduct
+  id: PersonalCryoMachineCircuitboard
+  icon: { sprite: Objects/Misc/module.rsi, state: engineering }
+  product: PersonalCryoMachineCircuitboard
+  cost: 600
+  category: cargoproduct-category-name-syndicate
+  group: syndicatemarket
+

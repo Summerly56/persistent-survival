@@ -224,9 +224,9 @@
         Blunt: 12
   # - type: Produce
   #   seedId: steelcap
-  - type: Log
-    spawnedPrototype: SheetSteel1
-    spawnCount: 1
+  # - type: Log
+  #   spawnedPrototype: SheetSteel1
+  #   spawnCount: 1
 
 - type: entity
   name: nettle

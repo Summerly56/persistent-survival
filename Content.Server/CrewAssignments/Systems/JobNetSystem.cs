@@ -737,13 +737,13 @@ public sealed partial class JobNetSystem : SharedJobNetSystem
             {
                 var words = _codeword.GenerateCodewords("PersistenceCodewordGenerator");
                 comp.SecretPhrase = string.Join(" ", words);
-                comp.PrecursorResetTime = TimeSpan.FromMinutes(30);
+                comp.PrecursorResetTime = TimeSpan.FromMinutes(45);
                 TryAssignPrecursorObjective(uid, comp);
             }
             comp.RogueNetResetTime -= TimeSpan.FromSeconds(frameTime);
             if (comp.NetworkType != RogueNetworkType.None && comp.RogueNetResetTime <= TimeSpan.Zero)
             {
-                comp.RogueNetResetTime = TimeSpan.FromMinutes(120);
+                comp.RogueNetResetTime = TimeSpan.FromMinutes(180);
                 TryAssignRogueObjective(uid, comp);
             }
 
