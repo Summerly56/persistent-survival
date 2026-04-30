@@ -92,7 +92,6 @@
   - type: Anchorable
     flags:
     - Anchorable
-    - Unanchorable
   - type: Destructible
     thresholds:
     - trigger:

@@ -29,7 +29,7 @@ public sealed partial class InfrastructureLevelPrototype : IPrototype
     public Dictionary<ProtoId<CargoBountyGroupPrototype>, int> Groups = new() { { "StationBounty", 4 }, { "ServiceBounty", 2 } };
 
     [DataField]
-    public int Income = -5000;
+    public int Income = 0;
 
     [DataField]
     public int Level = 1;
