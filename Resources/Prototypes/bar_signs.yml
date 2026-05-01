@@ -208,6 +208,14 @@
   description: barsign-prototype-description-empbarsign
 
 - type: barSign
+  id: CheckEngine
+  name: barsign-prototype-name-checkengine
+  icon:
+    sprite: Structures/Wallmounts/barsign.rsi
+    state: checkengine
+  description: barsign-prototype-description-checkengine
+
+- type: barSign
   id: Default
   name: barsign-prototype-name-default
   icon:
