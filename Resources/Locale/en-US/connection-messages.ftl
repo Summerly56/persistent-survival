@@ -23,7 +23,7 @@ ban-banned-2 = The ban reason is: "{$reason}"
 ban-banned-3 = Attempts to circumvent this ban such as creating a new account will be logged.
 
 soft-player-cap-full = The server is full!
-panic-bunker-account-denied = The server is currently under maintenance.
+panic-bunker-account-denied = The server is currently under maintenance, or the server is closing soon. Check our discords for updates and uptimes.
 panic-bunker-account-denied-reason = Reason: "{$reason}"
 panic-bunker-account-reason-account = Your Space Station 14 account is too new. It must be older than {$minutes} minutes
 panic-bunker-account-reason-overall = Your overall playtime on the server must be greater than {$minutes} $minutes
