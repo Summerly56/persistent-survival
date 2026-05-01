@@ -86,6 +86,7 @@
   - RoboticsConsoleCircuitboard
   - ResearchComputerCircuitboard
   - ResearchAndDevelopmentServerMachineCircuitboard
+  - PersonalCryoMachineCircuitboard
 
 - type: latheRecipePack
   id: CameraBoards
