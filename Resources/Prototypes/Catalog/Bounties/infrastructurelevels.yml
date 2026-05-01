@@ -11,7 +11,7 @@
     ServiceBounty : 1
     GasBounty : 1
     ReagentBounty : 1
-  income: -5000
+  income: -500
 
 - type: infrastructureLevel
   id: ILevelGeneral2
@@ -156,7 +156,7 @@
     HunterBounty : 4
     ExplorationBounty : 1
     ScienceBounty : 1
-  income: -5000
+  income: -500
 
 - type: infrastructureLevel
   id: ILevelHunter2
@@ -216,7 +216,7 @@
   groups:
     ExplorationBounty : 1
     StationBounty : 1
-  income: -5000
+  income: -500
 
 - type: infrastructureLevel
   id: ILevelEngineer2
@@ -274,7 +274,7 @@
     ExplorationBounty : 4
     ScienceBounty : 1
     ServiceBounty : 1
-  income: -5000
+  income: -500
 
 - type: infrastructureLevel
   id: ILevelExploration2
