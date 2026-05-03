@@ -1,6 +1,7 @@
 - type: cargoBounty
   id: BountyOxygen
   reward: 0.55 # 9900
+  description: bounty-description-artifact
   gasId: Oxygen
   group: GasBounty
   bountyType: PayPerGas
@@ -11,6 +12,7 @@
 - type: cargoBounty
   id: BountyNitrogen
   reward: 0.5
+  description: bounty-description-artifact
   gasId: Nitrogen
   group: GasBounty
   bountyType: PayPerGas
@@ -21,6 +23,7 @@
 - type: cargoBounty
   id: BountyHydrogen
   reward: 0.75
+  description: bounty-description-artifact
   gasId: Hydrogen
   group: GasBounty
   bountyType: PayPerGas
@@ -31,6 +34,7 @@
 - type: cargoBounty
   id: BountyPlasmaGas
   reward: 0.75
+  description: bounty-description-artifact
   gasId: Plasma
   group: GasBounty
   bountyType: PayPerGas
@@ -41,6 +45,7 @@
 - type: cargoBounty
   id: BountyChlorine
   reward: 2.25
+  description: bounty-description-artifact
   gasId: Chlorine
   group: GasBounty
   bountyType: PayPerGas
@@ -51,6 +56,7 @@
 - type: cargoBounty
   id: BountyFluorine
   reward: 2.5
+  description: bounty-description-artifact
   gasId: Fluorine
   group: GasBounty
   bountyType: PayPerGas

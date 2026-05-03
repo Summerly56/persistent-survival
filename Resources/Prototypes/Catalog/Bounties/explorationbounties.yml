@@ -1,7 +1,7 @@
-
 - type: cargoBounty
   id: BountyTechDisk
   reward: 2500
+  description: bounty-description-tech-disk
   idPrefix: SS13-
   entries:
   - name: bounty-item-tech-disk
