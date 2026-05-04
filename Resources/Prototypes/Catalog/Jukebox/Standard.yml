@@ -77,7 +77,7 @@
     path: /Audio/Jukebox/dreaminginspace.ogg
 
 - type: jukebox
-  id: Welcome To The Threshold
+  id: welcometothethreshold
   name: mrjajkes - Welcome To The Threshold
   path:
     path: /Audio/Lobby/Welcome_To_The_Threshold.ogg

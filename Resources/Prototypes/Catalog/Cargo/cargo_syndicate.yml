@@ -249,9 +249,9 @@
   id: BriefcaseSyndieSniperBundleFilled
   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
   product: BriefcaseSyndieSniperBundleFilled
-  cost: 11000
+  cost: 30000
   category: cargoproduct-category-name-syndicate
-  group: syndicatemarket3
+  group: syndicatemarket5
 
 - type: cargoProduct
   id: ChemicalSynthesisKit
@@ -259,7 +259,7 @@
   product: ChemicalSynthesisKit
   cost: 700
   category: cargoproduct-category-name-syndicate
-  group: syndicatemarket
+  group: syndicatemarket3
 
 - type: cargoProduct
   id: SlipocalypseClusterSoap

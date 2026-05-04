@@ -393,7 +393,7 @@
   id: BulkPlantBGoneExTS
   icon:
     sprite: Objects/Specific/Chemistry/jug.rsi
-    state: jug
+    state: icon_empty
   product: CratePlantBGone
   cost: 2500
   category: cargoproduct-category-name-hydroponics

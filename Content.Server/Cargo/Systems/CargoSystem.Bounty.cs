@@ -779,6 +779,7 @@ public sealed partial class CargoSystem
         }
 
         var pool = filteredBounties.Count == 0 ? allBounties : filteredBounties;
+        if (pool.Count < 1) return false;
         var bounty = _random.Pick(pool);
         if (pool.Count <1) return false;
         return TryAddBounty(uid, bounty, component);

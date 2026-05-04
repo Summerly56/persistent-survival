@@ -33,7 +33,8 @@ public sealed partial class JobNetComponent : Component
     public TimeSpan WorkedTime = TimeSpan.Zero;
     [DataField]
     public int LastWorkedFor = 0;
-    [DataField]
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan PrecursorResetTime = TimeSpan.Zero;
     [DataField]
     public List<ProtoId<PrecursorObjectivePrototype>> PrecursorObjectives = new List<ProtoId<PrecursorObjectivePrototype>>();
@@ -47,7 +48,8 @@ public sealed partial class JobNetComponent : Component
     public RogueNetworkType NetworkType = RogueNetworkType.None;
     [DataField]
     public string? KillTarget = null;
-    [DataField]
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan RogueNetResetTime = TimeSpan.Zero;
 
     [DataField]
