@@ -409,6 +409,11 @@
   unlockUses: 2
 
 - type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]
+  id: GyroscopeFloorMachineCircuitboard
+  result: GyroscopeFloorMachineCircuitboard
+
+- type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]
   id: MiniGravityGeneratorCircuitboard
   result: MiniGravityGeneratorCircuitboard
