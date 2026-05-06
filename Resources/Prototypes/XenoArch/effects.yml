@@ -979,13 +979,13 @@
         rolls: !type:RangeNumberSelector
           range: 2, 4
         children:
-        - id: SpaceCash10
+        - id: TreasureCoinIron
           weight: 0.75
-        - id: SpaceCash100
+        - id: TreasueCoinSilver
           weight: 0.5
-        - id: SpaceCash500
+        - id: TreasureCoinGold
           weight: 0.25
-        - id: SpaceCash1000
+        - id: TreasureCoinDiamond
           weight: 0.1
 
 - type: entity
