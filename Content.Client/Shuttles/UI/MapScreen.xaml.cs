@@ -81,8 +81,11 @@ public sealed partial class MapScreen : BoxContainer
 
         OnVisibilityChanged += OnVisChange;
 
+        MapFTLButton.OnToggled += FtlPreviewToggled;
 
         _ftlStyle = new StyleBoxFlat(Color.LimeGreen);
+
+        FTLBar.ForegroundStyleBoxOverride = _ftlStyle;
 
         // Just pass it on up.
         MapRadar.RequestFTL += (coords, angle) =>
@@ -120,6 +123,7 @@ public sealed partial class MapScreen : BoxContainer
         _state = state.FTLState;
         _ftlTime = state.FTLTime;
         MapRadar.InFtl = true;
+        MapFTLState.Text = Loc.GetString($"shuttle-console-ftl-state-{_state.ToString()}");
         switch (_state)
         {
             case FTLState.Available:
@@ -170,10 +174,13 @@ public sealed partial class MapScreen : BoxContainer
     {
         if (value)
         {
-
+            MapFTLButton.Disabled = false;
         }
         else
         {
+            MapFTLButton.Pressed = false;
+            MapRadar.FtlMode = false;
+            MapFTLButton.Disabled = true;
         }
     }
 
@@ -526,6 +533,7 @@ public sealed partial class MapScreen : BoxContainer
         }
 
         var progress = _ftlTime.ProgressAt(curTime);
+        FTLBar.Value = float.IsFinite(progress) ? progress : 1;
     }
 
     protected override void Draw(DrawingHandleScreen handle)
