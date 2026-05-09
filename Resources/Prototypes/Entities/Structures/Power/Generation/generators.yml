@@ -228,7 +228,7 @@
     supplyRampRate: 500
     supplyRampTolerance: 500
 
-# RTG - very high efficiency
+# RTG
 
 - type: entity
   parent: BaseGenerator
@@ -240,32 +240,12 @@
   - type: PowerSupplier
     supplyRampRate: 1000
     supplyRampTolerance: 750
-  - type: UserInterface
-    interfaces:
-      enum.GeneratorComponentUiKey.Key:
-        type: PortableGeneratorBoundUserInterface
-  - type: ActivatableUI
-    key: enum.GeneratorComponentUiKey.Key
   - type: Sprite
     sprite: Structures/Power/Generation/rtg.rsi
     state: rtg
   - type: PowerMonitoringDevice
     sprite: Structures/Power/Generation/rtg.rsi
     state: rtg
-  - type: MaterialStorage
-    storageLimit: 5000
-    materialWhiteList: [Uranium]
-  - type: PortableGenerator
-  - type: FuelGenerator
-    minTargetPower: 5000
-    maxTargetPower: 15000
-    targetPower: 10000
-    optimalPower: 10000
-    optimalBurnRate: 0.003
-    fuelEfficiencyConstant: 0.1
-  - type: SolidFuelGeneratorAdapter
-    fuelMaterial: Uranium
-    multiplier: 0.01
   - type: AmbientSound
     range: 5
     sound:
