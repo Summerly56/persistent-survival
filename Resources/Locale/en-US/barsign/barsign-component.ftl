@@ -112,5 +112,9 @@ barsign-prototype-description-empbarsign = Something has gone very wrong.
 barsign-prototype-name-default = Factory New
 barsign-prototype-description-default = The default state of most bar signs. Requires the owner to select their design of choice.
 
+## The Check Engine Light
+barsign-prototype-name-checkengine = Check Engine
+barsign-prototype-description-checkengine = This station looks a little silly
+
 ## SignOff
 barsign-prototype-description-sign-off = This sign doesn't seem to be on.
