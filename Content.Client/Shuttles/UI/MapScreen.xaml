@@ -23,6 +23,10 @@
                                     VerticalExpand="True"
                                     HorizontalAlignment="Center"/>
                 </controls1:StripeBack>
+                <controls:BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <controls:Label Text="{controls:Loc 'shuttle-console-sort-label'}" HorizontalExpand="True"/>
+                    <controls:OptionButton HorizontalAlignment="Right" Name="SortModeButton" MinWidth="120"/>
+                </controls:BoxContainer>
                 <controls:Label Name="MapFTLState"
                                 Text="{controls:Loc 'shuttle-console-ftl-state-Available'}"
                                 VerticalAlignment="Stretch"
