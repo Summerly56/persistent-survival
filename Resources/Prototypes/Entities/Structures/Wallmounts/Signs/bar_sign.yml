@@ -322,3 +322,12 @@
   components:
   - type: BarSign
     current: EmpBarSign
+
+- type: entity
+  parent: BaseBarSign
+  id: BarSignCheckEngine
+  name: Check Engine
+  description: This station looks a little silly
+  components:
+  - type: BarSign
+    current: CheckEngine
