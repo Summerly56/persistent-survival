@@ -7,7 +7,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.CrewMetaRecords;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class CrewMetaRecordsComponent : Component
 {
     [DataField]
@@ -27,6 +27,7 @@ public sealed partial class CrewMetaRecordsComponent : Component
     [DataField]
     public List<CodexEntry> CodexEntries { get; set; } = new();
 
+    [DataField]
     public List<MessageBoardEntry> MessageBoardEntries { get; set; } = new();
     [DataField]
     public Dictionary<string, CrewMetaRecord> CrewMetaRecords { get; set; } = new();
