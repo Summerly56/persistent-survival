@@ -100,7 +100,7 @@
   parent: [ BaseElectronicsRecipe, BaseCircuitryRecipeCategory ]
   id: ThrusterWallmountCircuitboard
   result: ThrusterWallmountCircuitboard
-
+  unlockUses: 8
 # Mechs
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseMechRecipeCategory ]
