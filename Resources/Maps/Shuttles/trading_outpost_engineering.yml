@@ -12,6 +12,8 @@ grids:
 orphans:
 - 1
 nullspace: []
+  format: 6
+  postmapinit: false
 tilemap:
   0: Space
   31: FloorDark
@@ -7722,6 +7724,7 @@ entities:
       parent: 1
 - proto: ClothingBeltUtilityEngineering
   entities:
+<<<<<<< HEAD
   - uid: 653
     components:
     - type: Transform
@@ -7733,6 +7736,9 @@ entities:
         - invalid
     - type: ActiveUserInterface
   - uid: 654
+=======
+  - uid: 435
+>>>>>>> upstream_pull
     components:
     - type: Transform
       pos: 6.456278,-14.392105
