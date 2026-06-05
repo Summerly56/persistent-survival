@@ -55,3 +55,13 @@
   license: "CC-BY-SA-3.0"
   copyright: "Sanctuary by DM Dokuro. Mono OGG."
   source: "https://soundcloud.com/dm-dokuro/sanctuary-ingame-version"
+
+- files: ["AirportLounge.ogg", "LateNightRadio.ogg", "SpaceJazz.ogg", "VibingOverVenus.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "music by kevin macleod"
+  source: "https://incompetech.com/music/royalty-free/music.html"
+
+- files: ["WantYouGone.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Want you gone by Jonathan Coulton"
+  source: "https://www.youtube.com/watch?v=Pa-P7_XvP_4"
