@@ -31,7 +31,7 @@
   description: bounty-description-cpu
   entries:
   - name: bounty-item-cpu
-    amount: 7
+    amount: 5
     whitelist:
       tags:
       - TreasureOldCPU # Supercharged CPU
@@ -44,7 +44,7 @@
   description: bounty-description-old-computer
   entries:
   - name: bounty-item-old-computer
-    amount: 7
+    amount: 5
     whitelist:
       tags:
       - TreasureOldComputer # Hard drive, floppy drive, CD drive
@@ -57,7 +57,7 @@
   description: bounty-description-data-disk
   entries:
   - name: bounty-item-data-disk
-    amount: 7
+    amount: 6
     whitelist:
       tags:
       - TreasureDataDisk # Salvage data disk
@@ -70,7 +70,7 @@
   description: bounty-description-sample-tube
   entries:
   - name: bounty-item-sample-tube
-    amount: 7
+    amount: 5
     whitelist:
       tags:
       - TreasureSampleTube # Salvage sample tube
