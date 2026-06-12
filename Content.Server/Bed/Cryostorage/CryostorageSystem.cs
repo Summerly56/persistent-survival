@@ -177,7 +177,12 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
         if (userId != null)
         {
             var saveFilePath = new ResPath($"{userId}]{name}");
-            _loader.TrySaveGeneric(ent.Owner, saveFilePath, out var use);
+            // Create backup after successful save
+            var backupPath = new ResPath($"backups/{userId}]{name}");
+            if (_loader.TrySaveGeneric(ent.Owner, saveFilePath, out _))
+            {
+                _loader.TrySaveGeneric(ent.Owner, backupPath, out _);
+            }
             if (TryComp<ActorComponent>(ent.Owner, out var actor))
                 _ticker.PlayerJoinLobby(actor.PlayerSession);
             _transform.DetachEntity(ent, Transform(ent));
