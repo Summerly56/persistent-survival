@@ -112,7 +112,7 @@ public sealed partial class XenoArtifactComponent : Component
     /// The total number of nodes that make up this artifact.
     /// </summary>
     [DataField]
-    public MinMax NodeCount = new(12, 18);
+    public MinMax NodeCount = new(10, 16);
 
     /// <summary>
     /// The amount of nodes that go in each segment.
