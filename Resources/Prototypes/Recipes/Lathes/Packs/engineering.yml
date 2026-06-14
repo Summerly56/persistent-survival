@@ -58,6 +58,7 @@
   - MorgueElectronics
   - BarSignElectronics
   - ShredderMachineCircuitboard
+  - PersonalCryoMachineElectronics
 
 - type: latheRecipePack
   id: EngineeringBoardsStatic

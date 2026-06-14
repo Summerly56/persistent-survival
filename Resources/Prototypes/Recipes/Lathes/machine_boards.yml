@@ -331,11 +331,6 @@
   id: SmartFridgeCircuitboard
   result: SmartFridgeCircuitboard
 
-- type: latheRecipe
-  parent: [BaseCircuitboardRecipe]
-  id: PersonalCryoMachineCircuitboard
-  result: PersonalCryoMachineCircuitboard
-
 # Bar
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory ]

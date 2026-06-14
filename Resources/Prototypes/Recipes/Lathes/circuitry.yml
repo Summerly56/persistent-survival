@@ -41,6 +41,11 @@
   id: CrematoriumElectronics
   result: CrematoriumElectronics
 
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseCircuitryRecipeCategory ]
+  id: PersonalCryoMachineElectronics
+  result: PersonalCryoMachineCircuitboard
+
 # Airtight
 - type: latheRecipe
   parent: [ BaseCheapElectronicsRecipe, BaseCircuitryRecipeCategory ]
