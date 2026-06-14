@@ -64,6 +64,20 @@
   color: "#b48b57"
 
 - type: radioChannel
+  id: Faction
+  name: chat-radio-faction
+  keycode: 'q'
+  frequency: 1423
+  color: "#009C65"
+
+- type: radioChannel
+  id: STC
+  name: chat-radio-spacetraffic
+  keycode: 'a'
+  frequency: 1222
+  color: "#705B8C"
+
+- type: radioChannel
   id: Syndicate
   name: chat-radio-syndicate
   keycode: 't'

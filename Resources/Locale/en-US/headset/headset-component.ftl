@@ -15,6 +15,8 @@ chat-radio-service = Service
 chat-radio-supply = Supply
 chat-radio-syndicate = Syndicate
 chat-radio-freelance = Freelance
+chat-radio-spacetraffic = STC
+chat-radio-faction = Faction
 
 # not headset but whatever
 chat-radio-handheld = Handheld
