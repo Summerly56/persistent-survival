@@ -81,3 +81,57 @@
   name: mrjajkes - Welcome To The Threshold
   path:
     path: /Audio/Lobby/Welcome_To_The_Threshold.ogg
+
+- type: jukebox
+  id: airportlounge
+  name: Kevin Macleod - Airport Lounge
+  path:
+    path: /Audio/Lobby/AirPortLounge.ogg
+
+- type: jukebox
+  id: blackwinginterface
+  name: Black Wing Interface
+  path:
+    path: /Audio/Lobby/black_wing_interface.ogg
+
+- type: jukebox
+  id: monkeyriot
+  name: Monkey Riot
+  path:
+    path: /Audio/Lobby/monkey_riot.ogg
+
+- type: jukebox
+  id: waystations
+  name: Waystations
+  path:
+    path: /Audio/Lobby/waystations.ogg
+
+- type: jukebox
+  id: vibingovervenus
+  name: Kevin Macleod - Vibing Over Venus
+  path:
+    path: /Audio/Lobby/Welcome_To_The_Threshold.ogg
+
+- type: jukebox
+  id: chill1
+  name: Chill1
+  path:
+    path: /Audio/Lobby/chill_1.ogg
+
+- type: jukebox
+  id: chill2
+  name: Chill2
+  path:
+    path: /Audio/Lobby/chill_2.ogg
+
+- type: jukebox
+  id: chill3
+  name: Chill3
+  path:
+    path: /Audio/Lobby/chill_3.ogg
+
+- type: jukebox
+  id: chill4
+  name: Chill4
+  path:
+    path: /Audio/Lobby/chill_4.ogg
