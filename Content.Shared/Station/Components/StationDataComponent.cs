@@ -60,7 +60,9 @@ public sealed partial class StationDataComponent : Component
         { "Science", new FactionRadioData() },
         { "Security", new FactionRadioData() },
         { "Service", new FactionRadioData() },
-        { "Supply", new FactionRadioData() }
+        { "Supply", new FactionRadioData() },
+        { "Faction", new FactionRadioData() },
+        { "STC", new FactionRadioData() }
     };
 
     public bool IsOwner(string owner)
