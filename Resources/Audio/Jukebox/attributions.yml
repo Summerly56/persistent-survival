@@ -65,3 +65,8 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "Want you gone by Jonathan Coulton"
   source: "https://www.youtube.com/watch?v=Pa-P7_XvP_4"
+
+- files: ["black_wing_interface.ogg", "chill_1.ogg", "chill_2.ogg", "chill_3.ogg", "chill_4.ogg", "christmassong.ogg", "dance_on_a_space_volcano.ogg", "monkey_riot.ogg", "waystations.ogg"]
+  license: "CC-BY-SA-4.0"
+  copyright: "Taken from goonstation"
+  source: "https://github.com/goonstation/goonstation/tree/master/sound/radio_station/music"
