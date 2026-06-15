@@ -855,16 +855,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  id: RollingGate
-  graph: RollingGate
-  startNode: start
-  targetNode: RollingGate
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: true  
-
-- type: construction
   id: Shutters
   graph: Shutters
   startNode: start
@@ -2086,26 +2076,6 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: WarningSignO2
-  graph: WarningSign
-  startNode: start
-  targetNode: o2
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-
-- type: construction
-  id: WarningSignWaste
-  graph: WarningSign
-  startNode: start
-  targetNode: waste
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-
-- type: construction
   id: Bonfire
   graph: Bonfire
   startNode: start
@@ -2130,72 +2100,6 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
-
-- type: construction
-  id: WarningSignAir
-  graph: WarningSign
-  startNode: start
-  targetNode: air
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
-
-- type: construction
-  id: WarningSignN2O
-  graph: WarningSign
-  startNode: start
-  targetNode: n2o
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
-
-- type: construction
-  id: WarningSignN2
-  graph: WarningSign
-  startNode: start
-  targetNode: n2
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
-
-- type: construction
-  id: WarningSignCO2
-  graph: WarningSign
-  startNode: start
-  targetNode: co2
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
-
-- type: construction
-  id: WarningSignPlasma
-  graph: WarningSign
-  startNode: start
-  targetNode: plasma
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
-
-- type: construction
-  id: WarningSignTritium
-  graph: WarningSign
-  startNode: start
-  targetNode: tritium
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: true
 
 # Persistence14 stuff
 - type: construction
