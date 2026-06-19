@@ -75,7 +75,7 @@
   name: chat-radio-spacetraffic
   keycode: 'a'
   frequency: 1222
-  color: "#705B8C"
+  color: "#A580D9"
 
 - type: radioChannel
   id: Syndicate
