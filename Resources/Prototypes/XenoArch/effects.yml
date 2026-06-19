@@ -238,7 +238,7 @@
       qualities:
       - Prying
       speedModifier: 2 # Very powerful to balance out the desire to sell or scrap for points
-      useSound: /Audio/Items/crowbar_use.ogg
+      useSound: /Audio/Items/crowbar.ogg
     
 
 - type: entity
@@ -253,7 +253,7 @@
       qualities:
       - Screwing
       speedModifier: 2 # Very powerful to balance out the desire to sell or scrap for points
-      useSound: /Audio/Items/screwdriver_use.ogg
+      useSound: /Audio/Items/screwdriver.ogg
 
 - type: entity
   id: XenoArtifactToolWrench
@@ -267,7 +267,7 @@
       qualities:
       - Anchoring
       speedModifier: 2 # Very powerful to balance out the desire to sell or scrap for points
-      useSound: /Audio/Items/wrench_use.ogg
+      useSound: /Audio/Items/ratchet.ogg
 
 - type: entity
   id: XenoArtifactToolWirecutter
@@ -281,7 +281,7 @@
       qualities:
       - Cutting
       speedModifier: 2 # Very powerful to balance out the desire to sell or scrap for points
-      useSound: /Audio/Items/wrench_use.ogg
+      useSound: /Audio/Items/ratchet.ogg
 
 - type: entity
   id: XenoArtifactToolJaws
@@ -772,7 +772,7 @@
         children:
         - id: SilverOre1
           rolls: !type:RangeNumberSelector
-            range: 2, 6
+            range: 1, 4
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnSilverMore
@@ -790,7 +790,7 @@
         children:
         - id: SilverOre1
           rolls: !type:RangeNumberSelector
-            range: 7, 11
+            range: 5, 11
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnSilverMany
@@ -826,7 +826,7 @@
         children:
         - id: BananiumOre1
           rolls: !type:RangeNumberSelector
-            range: 2, 6
+            range: 1, 4
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnBananiumMore
@@ -844,7 +844,7 @@
         children:
         - id: BananiumOre1
           rolls: !type:RangeNumberSelector
-            range: 7, 11
+            range: 5, 11
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnBananiumMany
@@ -880,7 +880,7 @@
         children:
         - id: PlasmaOre1
           rolls: !type:RangeNumberSelector
-            range: 2, 6
+            range: 1, 4
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnPlasmaMore
@@ -898,7 +898,7 @@
         children:
         - id: PlasmaOre1
           rolls: !type:RangeNumberSelector
-            range: 7, 11
+            range: 5, 11
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnPlasmaMany
@@ -934,7 +934,7 @@
         children:
         - id: GoldOre1
           rolls: !type:RangeNumberSelector
-            range: 2, 6
+            range: 1, 4
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnGoldMore
@@ -952,7 +952,7 @@
         children:
         - id: GoldOre1
           rolls: !type:RangeNumberSelector
-            range: 7, 11
+            range: 5, 11
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnGoldMany
@@ -988,7 +988,7 @@
         children:
         - id: UraniumOre1
           rolls: !type:RangeNumberSelector
-            range: 2, 6
+            range: 1, 4
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnUraniumMore
@@ -1006,7 +1006,7 @@
         children:
         - id: UraniumOre1
           rolls: !type:RangeNumberSelector
-            range: 7, 11
+            range: 5, 11
 
 - type: entity
   id: XenoArtifactRawMaterialSpawnUraniumMany
@@ -1374,7 +1374,7 @@
       spawnDetached: true
       table: !type:GroupSelector
         rolls: !type:RangeNumberSelector
-          range: 2, 4
+          range: 3, 8
         children:
         - id: SheetGlass1
   
@@ -1390,11 +1390,14 @@
     - type: EntityTableSpawner
       deleteSpawnerAfterSpawn: false
       spawnDetached: true
-      table: !type:GroupSelector
-        rolls: !type:RangeNumberSelector
-          range: 1, 3
+      table: !type:AllSelector
         children:
         - id: SheetGlass10
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
+        - id: SheetGlass1
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
 
 - type: entity
   id: XenoArtifactMaterialSpawnGlassStack
@@ -1426,7 +1429,7 @@
       spawnDetached: true
       table: !type:GroupSelector
         rolls: !type:RangeNumberSelector
-          range: 2, 4
+          range: 3, 8
         children:
         - id: SheetSteel1
   
@@ -1442,11 +1445,14 @@
     - type: EntityTableSpawner
       deleteSpawnerAfterSpawn: false
       spawnDetached: true
-      table: !type:GroupSelector
-        rolls: !type:RangeNumberSelector
-          range: 1, 3
+      table: !type:AllSelector
         children:
         - id: SheetSteel10
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
+        - id: SheetSteel1
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
 
 - type: entity
   id: XenoArtifactMaterialSpawnSteelStack
@@ -1467,7 +1473,7 @@
 - type: entity
   id: XenoArtifactMaterialSpawnPlasticFew
   parent: BaseXenoArtifactEffect
-  description: Create a bit of platic
+  description: Create a bit of plastic
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1478,7 +1484,7 @@
       spawnDetached: true
       table: !type:GroupSelector
         rolls: !type:RangeNumberSelector
-          range: 2, 4
+          range: 3, 8
         children:
         - id: SheetPlastic1
   
@@ -1494,11 +1500,14 @@
     - type: EntityTableSpawner
       deleteSpawnerAfterSpawn: false
       spawnDetached: true
-      table: !type:GroupSelector
-        rolls: !type:RangeNumberSelector
-          range: 1, 3
+      table: !type:AllSelector
         children:
         - id: SheetPlastic10
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
+        - id: SheetPlastic1
+          rolls: !type:RangeNumberSelector
+            range: 1, 3
 
 - type: entity
   id: XenoArtifactMaterialSpawnPlasticStack
@@ -1605,12 +1614,12 @@
         Caustic: -50
         Poison: -50
         Radiation: -50
-        Genetic: -50
+        Cellular: -50
 
 - type: entity
   id: XenoArtifactHealAll
   parent: BaseXenoArtifactEffect
-  description: Miraclous healing
+  description: Miraculous healing
   components:
   - type: XAEDamageInArea
     damageChance: 1
@@ -1629,7 +1638,7 @@
         Caustic: -50
         Poison: -50
         Radiation: -50
-        Genetic: -50
+        Cellular: -50
 
 - type: entity
   id: XenoArtifactTesla
@@ -1645,7 +1654,7 @@
       spawnDetached: true
       table: !type:AllSelector
         children:
-        - id: Singularity
+        - id: TeslaEnergyBall
 
 - type: entity
   id: XenoArtifactSingularity
@@ -1661,7 +1670,7 @@
       spawnDetached: true
       table: !type:AllSelector
         children:
-        - id: TeslaEnergyBall
+        - id: Singularity
 
 - type: entity
   id: XenoArtifactExplosionScary
