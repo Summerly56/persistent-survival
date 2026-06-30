@@ -1,0 +1,23 @@
+- type: entity
+  id: AmbientPlayerBase
+  parent: MarkerBase
+  name: ambient sound player
+  components:
+  - type: AmbientSound
+    volume: 0
+    range: 3
+    sound:
+      path: /Audio/Ambience/Temporary/flies.ogg
+  - type: Sprite
+    layers:
+    - state: pink
+
+- type: entity
+  id: AmbientPlayerBackrooms
+  parent: AmbientPlayerBase
+  components:
+  - type: AmbientSound
+    volume: 0
+    range: 3
+    sound:
+      path: /Audio/Ambience/ambibackrooms.ogg
