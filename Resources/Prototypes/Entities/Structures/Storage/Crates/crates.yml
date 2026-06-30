@@ -326,9 +326,9 @@
   name: command crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/command.rsi
+    sprite: Structures/Storage/Crates/command_secure.rsi
   - type: Sprite
-    sprite: Structures/Storage/Crates/command.rsi
+    sprite: Structures/Storage/Crates/command_secure.rsi
   - type: AccessReader
     access: [["Command"]]
 
@@ -914,3 +914,32 @@
   - type: StealthOnMove
     passiveVisibilityRate: -0.10
     movementVisibilityRate: 0.10
+
+# _PSurvival
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSteelRed
+  components:
+  - type: Icon
+    sprite: _PSurvival/Structures/Storage/Crates/red.rsi
+  - type: Sprite
+    sprite: _PSurvival/Structures/Storage/Crates/red.rsi
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSteelGreen
+  components:
+  - type: Icon
+    sprite: _PSurvival/Structures/Storage/Crates/green.rsi
+  - type: Sprite
+    sprite: _PSurvival/Structures/Storage/Crates/green.rsi
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSteelBlue
+  components:
+  - type: Icon
+    sprite: _PSurvival/Structures/Storage/Crates/blue.rsi
+  - type: Sprite
+    sprite: _PSurvival/Structures/Storage/Crates/blue.rsi

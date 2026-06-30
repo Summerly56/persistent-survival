@@ -9,6 +9,9 @@
     radiation: CrateRadiation
     science: CrateScience
     surgery: CrateSurgery
+    red: CrateSteelRed
+    green: CrateSteelGreen
+    blue: CrateSteelBlue
 
 - type: paintableGroup
   id: CratePlastic
