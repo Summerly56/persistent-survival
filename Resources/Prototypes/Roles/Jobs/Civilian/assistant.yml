@@ -17,9 +17,11 @@
   equipment:
     id: PassengerPDA
     ears: ClothingHeadsetGrey
+    outerClothing: ClothingOuterHardsuitAncientEVA
   storage:
     back:
     - BookThresholdHandbook
+    - ClothingHeadHelmetAncient
 
 - type: chameleonOutfit
   id: PassengerChameleonOutfit
