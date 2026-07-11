@@ -1,4 +1,5 @@
 #nullable enable
+using System.Numerics;
 using Content.Client.Construction;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
@@ -26,7 +27,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Robust.UnitTesting;
-using System.Numerics;
+using Content.Shared._Starlight.Hands; // Starlight
 
 namespace Content.IntegrationTests.Tests.Interaction;
 
@@ -123,6 +124,7 @@ public abstract partial class InteractionTest
     protected SharedUserInterfaceSystem SUiSys = default!;
     protected SharedCombatModeSystem SCombatMode = default!;
     protected SharedGunSystem SGun = default!;
+    protected PredictedHandsSystem PredictedHandSys = default!; // Starlight
 
     // CLIENT dependencies
     protected IEntityManager CEntMan = default!;
@@ -274,8 +276,16 @@ public abstract partial class InteractionTest
     [TearDown]
     public async Task TearDownInternal()
     {
-        await Server.WaitPost(() => MapSystem.DeleteMap(MapId));
-        await Pair.CleanReturnAsync();
+        // Starlight edit Start
+        if (Pair != null!)
+        {
+            // Ensure the base Cleanup() handles map deletion properly inside CleanReturnAsync.
+            // LoadTestMap does not set Pair.TestMap, so we set it here for both code paths.
+            // Do NOT call MapSystem.DeleteMap before CleanReturnAsync — it corrupts game state.
+            Pair.TestMap ??= MapData;
+            await Pair.CleanReturnAsync();
+        }
+        // Starlight edit End
         await TearDown();
     }
 
