@@ -81,6 +81,8 @@ namespace Content.Client.VendingMachines.UI
             button.Disabled = !_enabled || _amounts[protoID] == 0;
         }
 
+        private Label? _outOfStockLabel;
+
         /// <summary>
         /// Populates the list of available items on the vending machine interface
         /// and sets icons based on their prototypes
@@ -96,7 +98,7 @@ namespace Content.Client.VendingMachines.UI
                 SearchBar.Visible = false;
                 VendingContents.Visible = false;
 
-                var outOfStockLabel = new Label()
+                _outOfStockLabel ??= new Label()
                 {
                     Text = Loc.GetString("vending-machine-component-try-eject-out-of-stock"),
                     Margin = new Thickness(4, 4),
@@ -105,12 +107,17 @@ namespace Content.Client.VendingMachines.UI
                     HorizontalAlignment = HAlignment.Center
                 };
 
-                MainContainer.AddChild(outOfStockLabel);
+                if (_outOfStockLabel.Parent is null)
+                    MainContainer.AddChild(_outOfStockLabel);
 
-                SetSizeAfterUpdate(outOfStockLabel.Text.Length, 0);
+                SetSizeAfterUpdate(_outOfStockLabel.Text?.Length ?? 0, 0);
 
                 return;
             }
+
+            SearchBar.Visible = true;
+            VendingContents.Visible = true;
+            _outOfStockLabel?.Orphan();
 
             var longestEntry = string.Empty;
             var listData = new List<VendorItemsListData>();

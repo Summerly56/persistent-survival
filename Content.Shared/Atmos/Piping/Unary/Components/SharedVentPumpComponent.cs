@@ -14,6 +14,7 @@ namespace Content.Shared.Atmos.Piping.Unary.Components
         public float ExternalPressureBound { get; set; } = Atmospherics.OneAtmosphere;
         public float InternalPressureBound { get; set; } = 0f;
         public bool PressureLockoutOverride { get; set; } = false;
+        public string Name { get; set; } = "";
 
         // Presets for 'dumb' air alarm modes
 

@@ -6,7 +6,7 @@ namespace Content.Shared.Atmos.Monitor;
 [Serializable, NetSerializable]
 public sealed class AtmosSensorData : IAtmosDeviceData
 {
-    public AtmosSensorData(float pressure, float temperature, float totalMoles, AtmosAlarmType alarmState, Dictionary<Gas, float> gases, AtmosAlarmThreshold pressureThreshold, AtmosAlarmThreshold temperatureThreshold, Dictionary<Gas, AtmosAlarmThreshold> gasThresholds)
+    public AtmosSensorData(float pressure, float temperature, float totalMoles, AtmosAlarmType alarmState, Dictionary<Gas, float> gases, AtmosAlarmThreshold pressureThreshold, AtmosAlarmThreshold temperatureThreshold, Dictionary<Gas, AtmosAlarmThreshold> gasThresholds, string name)
     {
         Pressure = pressure;
         Temperature = temperature;
@@ -16,6 +16,7 @@ public sealed class AtmosSensorData : IAtmosDeviceData
         PressureThreshold = pressureThreshold;
         TemperatureThreshold = temperatureThreshold;
         GasThresholds = gasThresholds;
+        Name = name;
     }
 
     public bool Enabled { get; set; }
@@ -48,4 +49,5 @@ public sealed class AtmosSensorData : IAtmosDeviceData
     public AtmosAlarmThreshold PressureThreshold { get; }
     public AtmosAlarmThreshold TemperatureThreshold { get; }
     public Dictionary<Gas, AtmosAlarmThreshold> GasThresholds { get; }
+    public string Name { get; set; } = "";
 }

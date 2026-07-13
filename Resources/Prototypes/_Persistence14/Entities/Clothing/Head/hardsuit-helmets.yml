@@ -116,7 +116,7 @@
     sprite: _Persistence14/Clothing/Head/Helmets/Hardsuits/rd.rsi
   - type: PointLight
     radius: 5
-    color: "#d6adff"
+    color: "#ffc065"
   - type: PressureProtection
     highPressureMultiplier: 0.60
     lowPressureMultiplier: 1000

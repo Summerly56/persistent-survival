@@ -29,6 +29,7 @@
     guides:
     - DeviceMonitoringAndControl
     - AtmosphericsSystems
+  - type: Label
 
 - type: entity
   id: AirSensor

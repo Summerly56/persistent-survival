@@ -23,7 +23,7 @@ public sealed partial class PumpControl : BoxContainer
     private FloatSpinBox _internalBound => CInternalBound;
     private Button _copySettings => CCopySettings;
 
-    public PumpControl(GasVentPumpData data, string address)
+    public PumpControl(GasVentPumpData data, string address, string name)
     {
         RobustXamlLoader.Load(this);
 
@@ -32,7 +32,9 @@ public sealed partial class PumpControl : BoxContainer
         _data = data;
         _address = address;
 
-        _addressLabel.Title = Loc.GetString("air-alarm-ui-atmos-net-device-label", ("address", $"{address}"));
+        var nameOrAddr = name == "" ? address : name;
+
+        _addressLabel.Title = Loc.GetString("air-alarm-ui-atmos-net-device-label", ("address", $"{nameOrAddr}"));
 
         _enabled.Pressed = data.Enabled;
         _enabled.OnToggled += _ =>
@@ -105,5 +107,7 @@ public sealed partial class PumpControl : BoxContainer
 
         _data.InternalPressureBound = data.InternalPressureBound;
         _internalBound.Value = _data.InternalPressureBound;
+
+        _data.Name = data.Name;
     }
 }

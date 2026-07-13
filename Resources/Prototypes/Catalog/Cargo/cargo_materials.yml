@@ -49,7 +49,7 @@
   container:
     entity: WrappedParcel
     containerId: contents
-  cost: 1600
+  cost: 1900
   category: cargoproduct-category-name-materials
   group: market
 

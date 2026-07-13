@@ -1084,7 +1084,7 @@
   conditions:
   - !type:WallmountCondition
 
-# SHUTTLECRAFT
+  # SHUTTLECRAFT
 - type: construction
   id: WallmountThrusterRecipe
   graph: WallmountThrusterGraph

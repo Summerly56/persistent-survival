@@ -68,7 +68,7 @@
   id: SolarTrackerElectronics
   result: SolarTrackerElectronics
   unlockUses: 4
-  
+
 # Wallmount power
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseCircuitryRecipeCategory ]
@@ -106,6 +106,7 @@
   id: ThrusterWallmountCircuitboard
   result: ThrusterWallmountCircuitboard
   unlockUses: 8
+
 # Mechs
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseMechRecipeCategory ]

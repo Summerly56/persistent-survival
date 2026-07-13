@@ -650,20 +650,20 @@ public sealed class AirAlarmSystem : EntitySystem
 
         var pressure = CalculatePressureAverage(alarm);
         var temperature = CalculateTemperatureAverage(alarm);
-        var dataToSend = new List<(string, IAtmosDeviceData)>();
+        var dataToSend = new List<(string, string, IAtmosDeviceData)>();
 
         foreach (var (addr, data) in alarm.VentData)
         {
-            dataToSend.Add((addr, data));
+            dataToSend.Add((addr, data.Name, data));
         }
         foreach (var (addr, data) in alarm.ScrubberData)
         {
             data.AirAlarmPanicWireCut = alarm.PanicWireCut;
-            dataToSend.Add((addr, data));
+            dataToSend.Add((addr, data.Name, data));
         }
         foreach (var (addr, data) in alarm.SensorData)
         {
-            dataToSend.Add((addr, data));
+            dataToSend.Add((addr, data.Name, data));
         }
 
         var deviceCount = alarm.KnownDevices.Count;

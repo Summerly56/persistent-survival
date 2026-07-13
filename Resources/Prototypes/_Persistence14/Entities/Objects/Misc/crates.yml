@@ -1,0 +1,25 @@
+- type: entity
+  id: BoxMedicalCannabisKit
+  parent: CrateMedicalSecure
+  name: medical cannibis kit
+  description: A fun time in a box. For medical use only.
+  components:
+  - type: StorageFill
+    contents:
+    - id: Blunt
+      amount: 4
+    - id: Joint
+      amount: 20
+
+- type: entity
+  id: BoxMedicalCannabisRainbowKit
+  parent: CrateMedicalSecure
+  name: medical rainbow cannibis kit
+  description: An extra fun time in a box. Definitely for medical use only.
+  components:
+  - type: StorageFill
+    contents:
+    - id: BluntRainbow
+      amount: 4
+    - id: JointRainbow
+      amount: 20

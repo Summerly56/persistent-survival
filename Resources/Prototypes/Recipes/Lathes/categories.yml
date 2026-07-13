@@ -199,3 +199,7 @@
 - type: latheCategory
   id: Masks
   name: lathe-category-masks
+
+- type: latheCategory
+  id: Bags
+  name: lathe-category-bags

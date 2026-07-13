@@ -28,6 +28,8 @@
           - StorageCounter
           - AirAlarm
           - Structure
+          - AirSensor
+          - BaseMech
     - type: PhysicalComposition
       materialComposition:
         Plastic: 50

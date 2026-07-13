@@ -2712,3 +2712,49 @@
   parent: BaseNeckClothingRecipe
   id: ClothingNeckCloakPan 
   result: ClothingNeckCloakPan 
+
+# Persi14 Head
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatHardhatBlueEmpty
+  result: ClothingHeadHatHardhatBlueEmpty
+  materials:
+    Steel: 100
+    Glass: 100
+    Plastic: 100 # Same as flashlight
+
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatHardhatOrangeEmpty
+  result: ClothingHeadHatHardhatOrangeEmpty
+  materials:
+    Steel: 100
+    Glass: 100
+    Plastic: 100
+
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatHardhatRedEmpty
+  result: ClothingHeadHatHardhatRedEmpty
+  materials:
+    Steel: 100
+    Glass: 100
+    Plastic: 100
+
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatHardhatWhiteEmpty
+  result: ClothingHeadHatHardhatWhiteEmpty
+  materials:
+    Steel: 100
+    Glass: 100
+    Plastic: 100
+
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatHardhatYellowEmpty
+  result: ClothingHeadHatHardhatYellowEmpty
+  materials:
+    Steel: 100
+    Glass: 100
+    Plastic: 100

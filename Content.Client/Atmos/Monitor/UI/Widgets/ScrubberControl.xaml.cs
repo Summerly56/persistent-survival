@@ -34,7 +34,7 @@ public sealed partial class ScrubberControl : BoxContainer
     private GridContainer _gases => CGasContainer;
     private Dictionary<Gas, Button> _gasControls = new();
 
-    public ScrubberControl(GasVentScrubberData data, string address)
+    public ScrubberControl(GasVentScrubberData data, string address, string name)
     {
 
         IoCManager.InjectDependencies(this);
@@ -47,7 +47,8 @@ public sealed partial class ScrubberControl : BoxContainer
         _data = data;
         _address = address;
 
-        _addressLabel.Title = Loc.GetString("air-alarm-ui-atmos-net-device-label", ("address", $"{address}"));
+        var nameOrAddr = name == "" ? address : name;
+        _addressLabel.Title = Loc.GetString("air-alarm-ui-atmos-net-device-label", ("address", $"{nameOrAddr}"));
 
         _enabled.Pressed = data.Enabled;
         _enabled.OnToggled += _ =>
@@ -146,6 +147,8 @@ public sealed partial class ScrubberControl : BoxContainer
         _data.WideNet = data.WideNet;
         _wideNet.Pressed = _data.WideNet;
         _data.FilterGases = data.FilterGases;
+
+        _data.Name = data.Name;
 
         foreach (var value in Enum.GetValues<Gas>())
         {

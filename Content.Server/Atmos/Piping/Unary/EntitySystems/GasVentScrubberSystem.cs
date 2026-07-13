@@ -17,6 +17,7 @@ using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.Labels.Components;
 using Content.Shared.Power;
 using Content.Shared.Tools.Systems;
 using JetBrains.Annotations;
@@ -158,7 +159,14 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
             {
                 case AtmosDeviceNetworkSystem.SyncData:
                     payload.Add(DeviceNetworkConstants.Command, AtmosDeviceNetworkSystem.SyncData);
-                    payload.Add(AtmosDeviceNetworkSystem.SyncData, component.ToAirAlarmData());
+
+                    var name = "";
+                    if (TryComp<LabelComponent>(uid, out var labelComponent))
+                        name = labelComponent.CurrentLabel ?? "";
+                    var alarmData = component.ToAirAlarmData();
+                    alarmData.Name = name;
+
+                    payload.Add(AtmosDeviceNetworkSystem.SyncData, alarmData);
 
                     _deviceNetSystem.QueuePacket(uid, args.SenderAddress, payload, device: netConn);
 

@@ -56,7 +56,7 @@
   name: materials-plastic
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plastic }
   color: "#d9d9d9"
-  price: 0.5 # $50 for 1 unit
+  price: 0.25 # $25 for 1 unit
 
 - type: material
   id: Wood

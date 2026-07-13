@@ -10,7 +10,7 @@
   result: SignalTrigger
   unlockUses: 4
 
-- type: latheRecipe
+- type: latheRecipe 
   parent: BasePartRecipe
   id: VoiceTrigger
   result: VoiceTrigger
@@ -197,6 +197,7 @@
     Steel: 700
     Glass: 100
     Uranium: 100
+  unlockUses: 2 # These are a pair so uh, two.
 
 - type: latheRecipe
   id: DeviceDesynchronizer

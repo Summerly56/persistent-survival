@@ -32,12 +32,13 @@ public interface IAtmosDeviceData
     public bool Enabled { get; set; }
     public bool Dirty { get; set; }
     public bool IgnoreAlarms { get; set; }
+    public string Name { get; set; }
 }
 
 [Serializable, NetSerializable]
 public sealed class AirAlarmUIState : BoundUserInterfaceState
 {
-    public AirAlarmUIState(string address, int deviceCount, float pressureAverage, float temperatureAverage, List<(string, IAtmosDeviceData)> deviceData, AirAlarmMode mode, AtmosAlarmType alarmType, bool autoMode, bool panicWireCut)
+    public AirAlarmUIState(string address, int deviceCount, float pressureAverage, float temperatureAverage, List<(string address, string name, IAtmosDeviceData)> deviceData, AirAlarmMode mode, AtmosAlarmType alarmType, bool autoMode, bool panicWireCut)
     {
         Address = address;
         DeviceCount = deviceCount;
@@ -61,7 +62,7 @@ public sealed class AirAlarmUIState : BoundUserInterfaceState
     ///     data. The same address may appear multiple times, if
     ///     that device provides multiple functions.
     /// </summary>
-    public List<(string, IAtmosDeviceData)> DeviceData { get; }
+    public List<(string address, string name, IAtmosDeviceData)> DeviceData { get; }
     public AirAlarmMode Mode { get; }
     public AtmosAlarmType AlarmType { get; }
     public bool AutoMode { get; }

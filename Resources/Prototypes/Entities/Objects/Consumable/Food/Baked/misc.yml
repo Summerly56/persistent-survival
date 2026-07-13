@@ -245,6 +245,15 @@
   - type: Sprite
     state: cookie-sugar
 
+- type: entity
+  name: nuke disk cookie
+  parent: FoodBakedBase
+  id: FoodBakedCookieNuke
+  description: A nuclear cookie disk, capable of being very tasty if used along with milk. Note from the baker reads "THIS IS YOUR MOST IMPORTANT POSESSION, SECURE DAT FUKKEN DISK!"
+  components:
+  - type: Sprite
+    state: cookie-nuke
+
 # Nuggets
 
 - type: entity

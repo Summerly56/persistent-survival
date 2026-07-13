@@ -228,6 +228,60 @@
     Pyrotton: 500
 
 - type: latheRecipe
+  id: PlushieLlewellyn
+  result: PlushieLlewellyn
+  completetime: 5
+  materials:
+    Cloth: 500
+    Cotton: 1000
+    Plastic: 50
+
+- type: latheRecipe
+  id: PlushieDawn
+  result: PlushieDawn
+  completetime: 5
+  materials:
+    Cloth: 300
+    Cotton: 1000
+    Pyrotton: 800
+
+- type: latheRecipe
+  id: PlushieAna
+  result: PlushieAna
+  completetime: 5
+  materials:
+    Cloth: 300
+    Cotton: 1000
+    Plasma: 50
+
+- type: latheRecipe
+  id: PlushieKamryn
+  result: PlushieKamryn
+  completetime: 5
+  materials:
+    Cloth: 300
+    Cotton: 1000
+    Steel: 100
+
+- type: latheRecipe
+  id: PlushieCade
+  result: PlushieCade
+  completetime: 5
+  materials:
+    Cloth: 300
+    Cotton: 1000
+    Biomass: 30
+
+- type: latheRecipe
+  id: PlushieDies
+  result: PlushieDies
+  completetime: 5
+  materials:
+    Cloth: 300
+    Cotton: 1000
+    PlasmaGlass: 50
+
+- type: latheRecipe
   parent: BasePlushieRecipe
   id: ToyIan
   result: ToyIan

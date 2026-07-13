@@ -27,6 +27,7 @@ namespace Content.Client.VendingMachines
             _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
             _menu.OnItemSelected += OnItemSelected;
             Refresh();
+            UpdateAmounts();
         }
 
         public void Refresh()

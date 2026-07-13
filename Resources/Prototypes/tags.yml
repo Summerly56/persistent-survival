@@ -814,12 +814,6 @@
   id: Ice # CreateEntityTileReaction whitelist on Fresium
 
 - type: Tag
-  id: IFFShip # IFF sort tag for ships.
-
-- type: Tag
-  id: IFFStation # IFF sort tag for stations.
-
-- type: Tag
   id: Igniter # ConstructionGraph: makeshiftstunprod, FireBomb. Common ingredient in machines (HyperConvection)
 
 - type: Tag
@@ -1150,6 +1144,9 @@
 
 - type: Tag
   id: PKAUpgrade # UpgradeableGun whitelist for WeaponProtoKineticAccelerator.
+
+- type: Tag
+  id: PlantAnalyzer # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
 
 - type: Tag
   id: PlantBGone # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
@@ -1757,6 +1754,6 @@
 
 - type: Tag
   id: XenoMeat
-  
+
 - type: Tag
   id: EggSpider

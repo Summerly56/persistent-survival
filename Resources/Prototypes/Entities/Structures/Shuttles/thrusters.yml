@@ -57,6 +57,17 @@
     - type: GuideHelp
       guides:
       - ShuttleCraft
+  # Frontier: linkable thrusters, pirate bounties
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 200
+    - type: DeviceLinkSink
+      ports:
+      - On
+      - Off
+      - Toggle
   placement:
     mode: SnapgridCenter
 
@@ -100,17 +111,6 @@
       shader: unshaded
       visible: false
       offset: 0, 1
-    # Frontier: linkable thrusters, pirate bounties
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
-    range: 200
-  - type: DeviceLinkSink
-    ports:
-    - On
-    - Off
-    - Toggle
 
 - type: entity
   parent: Thruster
@@ -402,16 +402,6 @@
     damageModifierSet: Electronic
   - type: StaticPrice
     price: 150
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
-    range: 200
-  - type: DeviceLinkSink
-    ports:
-    - On
-    - Off
-    - Toggle
 
 - type: entity
   id: GyroscopeUnanchored
@@ -502,6 +492,7 @@
       - !type:ChangeConstructionNodeBehavior
         node: machineFrame
   - type: Damageable
+    damageContainer: StructuralInorganic
     damageModifierSet: Electronic
   - type: SubFloorHide
   - type: CollideOnAnchor

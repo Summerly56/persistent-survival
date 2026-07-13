@@ -27,7 +27,7 @@ public sealed partial class SensorInfo : BoxContainer
     private Dictionary<Gas, RichTextLabel> _gasLabels = new();
     private Button _copySettings => CCopySettings;
 
-    public SensorInfo(AtmosSensorData data, string address)
+    public SensorInfo(AtmosSensorData data, string address, string name)
     {
         IoCManager.InjectDependencies(this);
         var atmosphereSystem = _entMan.System<SharedAtmosphereSystem>();
@@ -35,8 +35,8 @@ public sealed partial class SensorInfo : BoxContainer
         RobustXamlLoader.Load(this);
 
         _address = address;
-
-        SensorAddress.Title = Loc.GetString("air-alarm-ui-window-listing-title", ("address", _address), ("state", data.AlarmState));
+        var nameOrAddr = name == "" ? address : name;
+        SensorAddress.Title = Loc.GetString("air-alarm-ui-window-listing-title", ("address", nameOrAddr), ("state", data.AlarmState));
 
         AlarmStateLabel.SetMarkup(Loc.GetString("air-alarm-ui-window-alarm-state-indicator",
                     ("color", AirAlarmWindow.ColorForAlarm(data.AlarmState)),
@@ -111,7 +111,8 @@ public sealed partial class SensorInfo : BoxContainer
         IoCManager.InjectDependencies(this);
         var atmosphereSystem = _entMan.System<SharedAtmosphereSystem>();
 
-        SensorAddress.Title = Loc.GetString("air-alarm-ui-window-listing-title", ("address", _address), ("state", data.AlarmState));
+        var nameOrAddr = data.Name == "" ? _address : data.Name;
+        SensorAddress.Title = Loc.GetString("air-alarm-ui-window-listing-title", ("address", nameOrAddr), ("state", data.AlarmState));
 
         AlarmStateLabel.SetMarkup(Loc.GetString("air-alarm-ui-window-alarm-state-indicator",
                     ("color", AirAlarmWindow.ColorForAlarm(data.AlarmState)),

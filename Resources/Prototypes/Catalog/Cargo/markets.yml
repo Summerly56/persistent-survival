@@ -78,3 +78,15 @@
 
 - type: cargoMarket
   id: syndicatemarket4
+
+- type: cargoMarket
+  id: medicalmarket
+
+- type: cargoMarket
+  id: medicalmarket2
+
+- type: cargoMarket
+  id: medicalmarket3
+
+- type: cargoMarket
+  id: medicalmarket4
