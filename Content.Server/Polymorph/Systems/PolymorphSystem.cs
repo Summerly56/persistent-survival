@@ -32,6 +32,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared._Persistence14.EntityVoid;
+using Content.Shared._Persistence14.UserInterface;
 
 namespace Content.Server.Polymorph.Systems;
 
@@ -250,6 +251,14 @@ public sealed partial class PolymorphSystem : EntitySystem
             polymorphableComponent.LastPolymorphEnd != null &&
             _gameTiming.CurTime < polymorphableComponent.LastPolymorphEnd + configuration.Cooldown)
             return null;
+
+
+        // Close player client windows
+        if (TryComp<ActorComponent>(uid, out var actor))
+        {
+            RaiseNetworkEvent(new CloseAllWindowsEvent(), actor.PlayerSession);
+            if (RemComp<UserInterfaceUserComponent>(uid)) { }
+        }
 
         var pid = _pid.EnsureId(uid, out var pidEntity);
 
