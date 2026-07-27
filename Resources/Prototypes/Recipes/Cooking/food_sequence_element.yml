@@ -1622,6 +1622,17 @@
   - sprite: _Persistence14/Objects/Fun/Plushies/Dies.rsi
     state: icon
 
+#IsoldePlushie
+
+- type: foodSequenceElement
+  id: PlushieIsolde
+  scale: 0.8, 0.8
+  name: food-sequence-cotton-burger-content-plushie-isolde
+  sprites:
+  - sprite: _Persistence14/Objects/Fun/Plushies/Isolde.rsi
+    state: icon
+
+
 #Ian Toy
 
 - type: foodSequenceElement

@@ -234,7 +234,7 @@
       steps:
       - tag: PowerCellMedium
         store: powercell
-        name: construction-graph-component-power-cell
+        name: construction-graph-component-medium-power-cell
         icon:
           sprite: Objects/Power/power_cells.rsi
           state: medium
@@ -244,7 +244,7 @@
       steps:
       - tag: PowerCellHigh
         store: powercell
-        name: construction-graph-component-power-cell
+        name: construction-graph-component-high-power-cell
         icon:
           sprite: Objects/Power/power_cells.rsi
           state: high
@@ -465,7 +465,7 @@
       steps:
       - tag: PowerCellHyper
         store: powercell
-        name: construction-graph-component-power-cell
+        name: construction-graph-component-hyper-power-cell
         icon:
           sprite: Objects/Power/power_cells.rsi
           state: hyper

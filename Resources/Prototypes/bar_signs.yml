@@ -223,6 +223,14 @@
   description: barsign-prototype-description-checkengine
 
 - type: barSign
+  id: pregluxuries
+  name: barsign-prototype-name-pregluxuries
+  icon:
+    sprite: Structures/Wallmounts/barsign.rsi
+    state: pregluxuries
+  description: barsign-prototype-description-pregluxuries
+
+- type: barSign
   id: Default
   name: barsign-prototype-name-default
   icon:

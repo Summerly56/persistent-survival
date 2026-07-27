@@ -281,6 +281,23 @@
         Glass: 5
 
 - type: entity
+  id: ArtifactAnalyzerAdvancedMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: advanced artifact analyzer machine board
+  description: A machine printed circuit board for an advanced artifact analyzer.
+  components:
+    - type: Sprite
+      state: science
+    - type: MachineBoard
+      prototype: MachineArtifactAnalyzerAdvanced
+      stackRequirements:
+        Manipulator: 4
+        Steel: 5
+        Glass: 5
+        Uranium: 1
+        Plasma: 3
+
+- type: entity
   id: ArtifactCrusherMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: artifact crusher machine board

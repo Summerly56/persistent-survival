@@ -179,13 +179,15 @@
           apc-frame: { state: frame }
           apc-cable-lv: { state: frame-cable }
           apc-lv-board: { state: frame-board }
+
           apc-lv-cell-ready: { state: frame-finished }
           apc-standard-open: { state: apc-powercell }
           apc-standard: { state: apc-closed }
 
-          apc-cable-mv: { state: frame-cable }
+          apc-cable-mv: { state: frame-mvcable }
           apc-mv-board: { state: frame-board }
           apc-mv-cell-ready: { state: frame-finished }
+
           apc-medium-open: { state: apc-midpowercell }
           apc-medium: { state: apc-closed }
           apc-high-open: { state: apc-highpowercell }
@@ -193,9 +195,10 @@
           apc-high-plating-welded: { state: apc-highpowercell }
           apc-high: { state: apc-closed }
 
-          apc-cable-hv: { state: frame-cable }
+          apc-cable-hv: { state: frame-hvcable }
           apc-hv-board: { state: frame-board }
           apc-hv-cell-ready: { state: frame-finished }
+
           apc-hyper-open: { state: apc-hyperpowercell }
           apc-hyper-plating: { state: apc-hyperpowercell }
           apc-hyper-plating-welded: { state: apc-hyperpowercell }

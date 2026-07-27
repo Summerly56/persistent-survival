@@ -64,6 +64,14 @@
       "directions": 4
     },
     {
+      "name": "frame-mvcable",
+      "directions": 4
+    },
+    {
+      "name": "frame-hvcable",
+      "directions": 4
+    },
+    {
       "name": "frame-finished",
       "directions": 4
     },

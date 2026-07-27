@@ -704,6 +704,16 @@
   solids:
     FoodOnionSlice: 1
 
+- type: microwaveMealRecipe
+  id: RecipeOnionGoggles
+  name: onion_Goggles_recipe
+  result: ClothingEyesHudFriedOnion
+  time: 15
+  group: Savory
+  solids:
+    FoodOnionSlice: 2
+    ClothingEyesGlasses: 1
+
 #Pizzas TODO: contruction graph based pizza
 - type: microwaveMealRecipe
   id: RecipeMargheritaPizza
@@ -1612,6 +1622,32 @@
     Sugar: 5
   solids:
     FoodButterSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeBananaCookie
+  name: banana_cookie_recipe
+  result: FoodBakedCookieBanana
+  time: 5
+  group: BarsAndCookies
+  reagents:
+    Flour: 5
+    Sugar: 5
+  solids:
+    FoodButterSlice: 1
+    FoodBanana: 1
+
+- type: microwaveMealRecipe
+  id: RecipeCottonCookie
+  name: cotton_cookie_recipe
+  result: FoodBakedCookieCotton
+  time: 5
+  group: BarsAndCookies
+  reagents:
+    Flour: 5
+    Sugar: 5
+    Fiber: 5
+  solids:
+    CottonBol: 1
 
 - type: microwaveMealRecipe
   id: RecipeChocolateChipPancake

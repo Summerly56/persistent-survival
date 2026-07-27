@@ -1513,6 +1513,50 @@
 
 - type: entity
   parent: BasePlushie
+  id: PlushieIsolde
+  name: Isolde plushie
+  description: You no longer have to be a kidnapping cultist to have your very own Commander Isolde. The boogyman under your bed will fear this limited edition action plushie!
+  components:
+  - type: Sprite
+    sprite: _Persistence14/Objects/Fun/Plushies/Isolde.rsi
+    state: icon
+  - type: EmitSoundOnUse
+    sound: &PlushieIsoldeSound
+      path: /Audio/Voice/Human/womanlaugh.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnLand
+    sound: *PlushieIsoldeSound
+  - type: EmitSoundOnActivate
+    sound: *PlushieIsoldeSound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieIsoldeSound
+  - type: Edible
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Voice/Human/femalescream_3.ogg
+      params:
+        volume: -5
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/egloves.ogg
+      params:
+         volume: -5
+  - type: Clothing
+    quickEquip: false
+    sprite: _Persistence14/Objects/Fun/Plushies/Isolde.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.09"
+  - type: FoodSequenceElement
+    entries:
+      CottonBurger: PlushieIsolde
+
+- type: entity
+  parent: BasePlushie
   id: PlushieDies
   name: Dies plushie
   description: Just like the real life Medical Director, this Dies-In-Space also lacks a medical license. Advanced brute medication included!

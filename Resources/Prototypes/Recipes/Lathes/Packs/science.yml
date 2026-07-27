@@ -82,6 +82,7 @@
   - AnomalySynchronizerCircuitboard
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
+  - ArtifactAnalyzerAdvancedMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
   - RoboticsConsoleCircuitboard
   - ResearchComputerCircuitboard
