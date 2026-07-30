@@ -90,37 +90,37 @@
 # ERT Bags
 - type: latheRecipe
   id: BackpackERTLeader
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTLeader
 
 - type: latheRecipe
   id: BackpackERTSecurity
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTSecurity
 
 - type: latheRecipe
   id: BackpackERTMedical
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTMedical
 
 - type: latheRecipe
   id: BackpackERTEngineer
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTEngineer
 
 - type: latheRecipe
   id: BackpackERTJanitor
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTJanitor
 
 - type: latheRecipe
   id: BackpackERTClown
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTClown
 
 - type: latheRecipe
   id: BackpackERTChaplain
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackERTChaplain
 
 
@@ -132,12 +132,12 @@
 
 - type: latheRecipe
   id: BackpackDeathSquad
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackDeathSquad
 
 - type: latheRecipe
   id: BackpackSyndicate
-  parent: BaseToughBackpack
+  parent: BaseBackpack
   result: ClothingBackpackSyndicate
 
 - type: latheRecipe

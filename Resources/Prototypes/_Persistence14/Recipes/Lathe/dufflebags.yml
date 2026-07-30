@@ -85,20 +85,20 @@
 # Contraband Duffel Bags
 - type: latheRecipe
   id: DuffelSyndicate
-  parent: BaseToughDuffelBag
+  parent: BaseDuffelBag
   result: ClothingBackpackDuffelSyndicate
 
 - type: latheRecipe
   id: DuffelSyndicateAmmo
-  parent: BaseToughDuffelBag
+  parent: BaseDuffelBag
   result: ClothingBackpackDuffelSyndicateAmmo
 
 - type: latheRecipe
   id: DuffelSyndicateMedical
-  parent: BaseToughDuffelBag
+  parent: BaseDuffelBag
   result: ClothingBackpackDuffelSyndicateMedical
 
 - type: latheRecipe
   id: DuffelCBURN
-  parent: BaseToughDuffelBag
+  parent: BaseDuffelBag
   result: ClothingBackpackDuffelCBURN
