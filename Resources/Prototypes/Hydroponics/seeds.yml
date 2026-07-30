@@ -1322,7 +1322,7 @@
       #Min: 1
       #Max: 3
       #PotencyDivisor: 35
-    Nectar:
+    Nectar: # Persistence 14 Omnizine production rework
       Min: 1
       Max: 3
       PotencyDivisor: 35

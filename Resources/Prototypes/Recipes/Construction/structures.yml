@@ -2047,6 +2047,18 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: AltarEmbrace
+  graph: AltarGraph
+  startNode: start
+  targetNode: altarEmbrace
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: SolidSecretDoor
   name: recipes-secret-door-name
   description: recipes-secret-door-desc

@@ -37,10 +37,10 @@ public sealed class IdCardSystem : SharedIdCardSystem
         base.Initialize();
 
         SubscribeLocalEvent<IdCardComponent, BeingMicrowavedEvent>(OnMicrowaved);
-        SubscribeLocalEvent<IdCardComponent, ComponentInit>(OnCompInit);
+        SubscribeLocalEvent<IdCardComponent, ComponentStartup>(OnCompInit);
     }
 
-    private void OnCompInit(EntityUid uid, IdCardComponent id, ComponentInit args)
+    private void OnCompInit(EntityUid uid, IdCardComponent id, ComponentStartup args)
     {
         if (id.CreatedTime == null)
         {
