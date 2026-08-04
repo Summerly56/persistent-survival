@@ -342,7 +342,6 @@
     ReagentBounty : 3
     StationBounty : 3
     ExplorationBounty : 3
-    StationBounty : 3
   income: 15000
   level: 4
 
