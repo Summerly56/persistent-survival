@@ -16,7 +16,7 @@ RELEASE_DIR = "release"
 # Forks should change these to publish to their own infrastructure.
 #
 ROBUST_CDN_URL = "http://148.113.213.150:4000/"
-FORK_ID = "pss14"
+FORK_ID = "pssurvival"
 
 def main():
     parser = argparse.ArgumentParser()
