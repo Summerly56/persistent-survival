@@ -36,6 +36,7 @@
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
   - type: ActivatableUIRequiresPower
+  - type: ActivatableUiRequiresAccess
   - type: UserInterface
     interfaces:
       enum.LatheUiKey.Key:
@@ -54,6 +55,7 @@
   - type: PowerState
     idlePowerDraw: 150
     workingPowerDraw: 1000
+  - type: AccessReader
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
