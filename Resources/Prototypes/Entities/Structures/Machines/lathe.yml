@@ -560,6 +560,7 @@
     - CentralCommandBags
     - HandyFlags
     - Bandanas
+    - PouchesPack
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
