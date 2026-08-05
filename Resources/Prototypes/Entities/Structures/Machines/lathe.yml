@@ -36,7 +36,7 @@
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
   - type: ActivatableUIRequiresPower
-  - type: ActivatableUiRequiresAccess
+  - type: ActivatableUIRequiresAccess
   - type: UserInterface
     interfaces:
       enum.LatheUiKey.Key:
