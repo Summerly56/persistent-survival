@@ -595,6 +595,11 @@
 - type: Tag
   id: FirelockElectronics # ConstructionGraph: Firelock
 
+#Persistence 14
+
+- type: Tag
+  id: FlagHand # Handy flags for bounties
+
 - type: Tag
   id: Flare # Storage whitelist: BaseClothingBeltEngineering
 

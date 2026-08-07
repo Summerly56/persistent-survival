@@ -291,6 +291,8 @@
   - ClothingHeadHatParamedicsoft
   - ClothingBeltMedical
   - ClothingNeckStethoscope
+  - ClothingUniformJumpsuitParamedicNew
+  - ClothingUniformJumpskirtParamedicNew
   - ClothingUniformJumpsuitCoroner
 
 - type: latheRecipePack
@@ -660,6 +662,8 @@
   - RnDPDASOL
   - HoSPDASOL
   - CoSPDASOL
+  - ClothingNeckMilitiaCloak
+  - ClothingNeckMilitiaLeaderCloak
 
 #Handy Flags
 - type: latheRecipePack

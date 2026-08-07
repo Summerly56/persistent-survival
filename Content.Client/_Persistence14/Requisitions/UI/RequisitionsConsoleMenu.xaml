@@ -49,6 +49,11 @@
                         <BoxContainer Name="BreakdownContainer" Orientation="Vertical" HorizontalExpand="True"/>
                     </ScrollContainer>
                     <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
+                        <Label Text="{Loc 'requisitions-final-price'}" StyleClasses="LabelKeyText" VerticalAlignment="Center"/>
+                        <LineEdit Name="FinalPriceEdit" MinWidth="110" Margin="6 0 0 0" ToolTip="{Loc 'requisitions-final-price-tooltip'}"/>
+                        <Control HorizontalExpand="True"/>
+                    </BoxContainer>
+                    <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
                         <Button Name="CancelButton" Text="{Loc 'requisitions-cancel-button'}" StyleClasses="ButtonColorRed"/>
                         <Control HorizontalExpand="True"/>
                         <Button Name="CheckoutButton" Text="{Loc 'requisitions-checkout-button'}" StyleClasses="ButtonColorGreen" Disabled="True"/>

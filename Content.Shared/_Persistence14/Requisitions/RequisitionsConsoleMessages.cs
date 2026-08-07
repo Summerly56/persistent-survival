@@ -116,11 +116,18 @@ public sealed class RequisitionCheckoutMessage : BoundUserInterfaceMessage
     /// <summary>Title the customer typed for the invoice.</summary>
     public string InvoiceTitle;
 
-    public RequisitionCheckoutMessage(List<RequisitionCartItem> items, bool printInvoice, string invoiceTitle)
+    /// <summary>
+    /// A price the operator manually set for this order, or null to bill the calculated amount. Only sent when the
+    /// operator actually overrode it, so a normal checkout still bills exactly what printed.
+    /// </summary>
+    public int? OverridePrice;
+
+    public RequisitionCheckoutMessage(List<RequisitionCartItem> items, bool printInvoice, string invoiceTitle, int? overridePrice)
     {
         Items = items;
         PrintInvoice = printInvoice;
         InvoiceTitle = invoiceTitle;
+        OverridePrice = overridePrice;
     }
 }
 

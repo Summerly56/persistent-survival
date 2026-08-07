@@ -337,7 +337,7 @@
 - type: latheRecipe
   id: PlushieMadeline
   parent: BasePlushieRecipe
-  result: PlushieIsolde
+  result: PlushieMadeline
   completetime: 5
   materials:
     Cloth: 300

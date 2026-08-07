@@ -1,13 +1,12 @@
-# Machine board for the requisitions console. Print it on a circuit imprinter (unlocked by the
-# "Requisitions Logistics" T2 research), then insert it into a machine frame to build the console.
+# Computer board for the requisitions console. Print it on a circuit imprinter (unlocked by the
+# "Requisitions Logistics" T2 research), then build a computer with it like any other console.
 - type: entity
-  id: MachineRequisitionsConsoleCircuitboard
-  parent: BaseMachineCircuitboard
-  name: requisitions console machine board
-  description: A machine printed circuit board for a requisitions console.
+  id: RequisitionsConsoleCircuitboard
+  parent: BaseComputerCircuitboard
+  name: requisitions console computer board
+  description: A computer printed circuit board for a requisitions console.
   components:
-  - type: MachineBoard
+  - type: Sprite
+    state: cpu_supply
+  - type: ComputerBoard
     prototype: MachineRequisitionsConsole
-    stackRequirements:
-      Manipulator: 10
-      Glass: 2

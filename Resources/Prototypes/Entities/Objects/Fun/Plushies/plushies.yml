@@ -1562,7 +1562,7 @@
   parent: BasePlushie
   id: PlushieMadeline
   name: Madeline plushie
-  description: Madeline Foxworn, beloved executive secretary of Zenith station, carapace armor and security hardsuit sold separately.
+  description: Madeline Foxworn, beloved Hand of the Count of Zenith station, carapace armor and security hardsuit sold separately.
   components:
   - type: Sprite
     sprite: _Persistence14/Objects/Fun/Plushies/Madeline.rsi

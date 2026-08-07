@@ -235,8 +235,10 @@ public sealed class RequisitionsConsoleSystem : SharedRequisitionsConsoleSystem
         // A checkout without an invoice simply prints the items at no charge.
         if (invoiceMode)
         {
-            var body = BuildInvoiceBody(args.InvoiceTitle, itemsBody, invoiceMats, invoiceFees, invoiceMatBilled, invoiceMatWorth, runningCost, detailedInvoice);
-            SpawnInvoice(ent, args.Actor, args.InvoiceTitle, runningCost, body);
+            // The operator can set a manual final price; otherwise bill the computed cost of what actually printed.
+            var invoiceTotal = args.OverridePrice is { } ov ? Math.Max(0, ov) : runningCost;
+            var body = BuildInvoiceBody(args.InvoiceTitle, itemsBody, invoiceMats, invoiceFees, invoiceMatBilled, invoiceMatWorth, invoiceTotal, detailedInvoice);
+            SpawnInvoice(ent, args.Actor, args.InvoiceTitle, invoiceTotal, body);
         }
 
         _popup.PopupEntity(

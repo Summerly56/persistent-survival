@@ -1,17 +1,18 @@
-# Requisitions Console — a customer-facing ordering terminal that links to nearby printing machines
-# (lathes / flatpackers) and lets customers cart + pay for a batch print in one go. A second, access-gated
-# tab lets an operator set raw-material prices and fees. Built from a printed machine board (see
+# Requisitions Console — a staff-run ordering terminal that links to nearby printing machines
+# (lathes / flatpackers) and prints a whole cart in one go. A second, access-gated tab lets an operator set
+# raw-material prices and fees. It's a computer: built from a printed computer board (see
 # _Persistence14/Entities/Objects/Devices/Circuitboards/requisitions_console_board.yml), unlocked by the
-# Tier 2 "Requisitions Logistics" research.
+# Tier 2 "Requisitions Logistics" research. Being a computer, it rotates while unanchored for free.
 - type: entity
   id: MachineRequisitionsConsole
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: BaseComputer
   name: requisitions console
-  description: A customer-facing ordering terminal. Links to nearby fabricators and prints a whole cart of items at once, for a price.
+  description: A staff-run ordering terminal. Links to nearby fabricators and prints a whole cart of items at once, for a price.
   components:
-  # Built from a printed machine board via the shared Machine construction graph.
-  - type: Machine
-    board: MachineRequisitionsConsoleCircuitboard
+  # Built from a printed computer board via the shared Computer construction graph.
+  - type: Computer
+    board: RequisitionsConsoleCircuitboard
+  # Standard computer sprite; the "request" screen suits an ordering terminal.
   - type: Sprite
     sprite: Structures/Machines/computers.rsi
     layers:
@@ -20,19 +21,11 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: generic
+      state: request
     - map: ["computerLayerKeys"]
       state: generic_keys
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        computerLayerScreen:
-          True: { visible: true }
-          False: { visible: false }
-        computerLayerKeys:
-          True: { visible: true }
-          False: { visible: false }
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
   - type: RequisitionsConsole
     range: 10
     # Fallback price used for any linked material not listed below.
@@ -51,43 +44,22 @@
       Silver: 86      # per bar
       Plasma: 100
       Gold: 108       # ~107.5/bar
-  # Lets customers insert their own sheets to lower the bill at checkout.
+  # Lets customers hand over their own sheets to lower the bill at checkout.
   - type: MaterialStorage
     whitelist:
       tags:
       - Sheet
       - RawMaterial
       - Ingot
-  # Faction-aware gating for the config tab. Empty by default => open until configured with an Access Overrider.
+  # Faction-aware gating for the whole console. Empty by default => open until configured with an Access Overrider.
   - type: AccessReader
   - type: ActivatableUI
     key: enum.RequisitionsConsoleUiKey.Key
-  - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
       enum.RequisitionsConsoleUiKey.Key:
         type: RequisitionsConsoleBoundUserInterface
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        density: 190
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 300
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
   - type: StaticPrice
     price: 400

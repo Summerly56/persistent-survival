@@ -23,7 +23,7 @@ namespace Content.Client._Persistence14.Requisitions.UI;
 [GenerateTypedNameReferences]
 public sealed partial class RequisitionsConsoleMenu : FancyWindow
 {
-    public event Action<List<RequisitionCartItem>, bool, string>? OnCheckout;
+    public event Action<List<RequisitionCartItem>, bool, string, int?>? OnCheckout;
     public event Action? OnCancel;
     public event Action<NetEntity>? OnToggleLink;
     public event Action<string, int>? OnSetMaterialPrice;
@@ -41,6 +41,10 @@ public sealed partial class RequisitionsConsoleMenu : FancyWindow
     private readonly List<RequisitionCartItem> _cart = new();
     private readonly HashSet<int> _expanded = new();
     private readonly Dictionary<string, bool> _catalogueFlatpack = new();
+
+    // The last calculated order total. The final-price field tracks this and is reset back to it whenever the
+    // calculated total changes, discarding any manual edit. -1 forces the field to seed on the first build.
+    private int _calculatedTotal = -1;
 
     public RequisitionsConsoleMenu()
     {
@@ -411,6 +415,21 @@ public sealed partial class RequisitionsConsoleMenu : FancyWindow
 
         var total = materialTotal + feeTotal;
 
+        // Sync the editable final-price field to the calculated total, but ONLY when that total actually changed.
+        // RebuildTotals runs on every state refresh, including background ones that don't touch the price (ejecting
+        // stored boards, toggling the detailed-invoice flag, a second viewer opening the console). Comparing against
+        // the last total means those refreshes leave a manually-typed price alone, while anything that genuinely
+        // alters the price (cart edit, flatpack toggle, a contributed-material or fee/price change) snaps the field
+        // back to the fresh calculated figure — discarding the manual edit, as intended.
+        if (total != _calculatedTotal)
+        {
+            _calculatedTotal = total;
+            FinalPriceEdit.Text = total.ToString();
+        }
+
+        // Locked while a checkout is printing, matching the rest of the tab.
+        FinalPriceEdit.Editable = !_state.Processing;
+
         // Divider, then Material cost / Fees on the left and the Total on the right. Material cost turns red
         // while the silo can't cover the order.
         BreakdownContainer.AddChild(new PanelContainer { StyleClasses = { "LowDivider" }, Margin = new Thickness(0, 4, 0, 4) });
@@ -442,7 +461,12 @@ public sealed partial class RequisitionsConsoleMenu : FancyWindow
 
     private void Checkout()
     {
-        OnCheckout?.Invoke(new List<RequisitionCartItem>(_cart), PrintInvoiceCheck.Pressed, InvoiceTitle.Text);
+        // Only treat the field as an override when it's a valid price that differs from the calculated total.
+        int? overridePrice = null;
+        if (int.TryParse(FinalPriceEdit.Text, out var p) && p >= 0 && p != _calculatedTotal)
+            overridePrice = p;
+
+        OnCheckout?.Invoke(new List<RequisitionCartItem>(_cart), PrintInvoiceCheck.Pressed, InvoiceTitle.Text, overridePrice);
         _cart.Clear();
         _expanded.Clear();
         CartChanged();
