@@ -21,12 +21,16 @@ public sealed partial class AirlockCyclerSystem : EntitySystem
 
     private TimeSpan _nextUpdate;
 
+    private EntityQuery<AirlockControllerComponent> _controllerQuery;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<AirlockCyclerComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<AirlockCyclerComponent, ExaminedEvent>(OnExamine);
+
+        _controllerQuery = GetEntityQuery<AirlockControllerComponent>();
 
         Subs.BuiEvents<AirlockCyclerComponent>(AirlockControllerUiKey.Key,
             subs =>
@@ -83,7 +87,7 @@ public sealed partial class AirlockCyclerSystem : EntitySystem
 
     private void OnCycleMessage(Entity<AirlockCyclerComponent> ent, ref AirlockCyclerCycleMessage args)
     {
-        if (ent.Comp.Controller is { } controller && TryComp<AirlockControllerComponent>(controller, out var comp))
+        if (ent.Comp.Controller is { } controller && _controllerQuery.TryComp(controller, out var comp))
             _controller.TryRequestCycleFrom((controller, comp), ent.Owner, args.Actor);
 
         UpdateUi(ent);
