@@ -301,7 +301,7 @@
     - 0,0,7,3
     - 8,1,8,3
   - type: StaticPrice
-    price: 1000
+    price: 150
 
 #Special
 - type: entity
