@@ -76,6 +76,7 @@
   keycode: 'a'
   frequency: 1222
   color: "#A580D9"
+  encrypted: false
 
 - type: radioChannel
   id: Syndicate
