@@ -13,7 +13,7 @@ panic_bunker.custom_reason = "The server is not accepting new connections at thi
 tags = "lang:en,region:am_n_w,rp:high"
 
 [server]
-rules_file = "PersistRuleset"
+rules_file = "SurvivalRuleset"
 
 [ooc]
 enable_during_round = false

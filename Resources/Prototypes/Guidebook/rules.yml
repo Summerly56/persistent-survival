@@ -384,3 +384,10 @@
   ruleEntry: true
   priority: 10
   text: "/ServerInfo/Guidebook/ServerRules/PersistenceRules/Rules.xml"
+
+- type: guideEntry # Ruleset for Persistent Survival
+  id: SurvivalRuleset
+  name: guide-entry-rules
+  ruleEntry: true
+  priority: 10
+  text: "/ServerInfo/Guidebook/ServerRules/SurvivalRules.xml"
