@@ -346,9 +346,9 @@
         amount: -5
       - !type:HealthChange
         conditions:
-          # they gotta be in crit first
+          # they gotta be in soft or hard crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstate: SoftCritical
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -358,9 +358,32 @@
             Poison: -0.5 # 1/u
       - !type:EvenHealthChange
         conditions:
-          # they gotta be in crit first
+          # they gotta be in soft or hard crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstate: SoftCritical
+        - !type:ReagentCondition
+          reagent: Epinephrine
+          max: 20
+        damage:
+          Brute: -0.5
+          Burn: -0.5
+      - !type:HealthChange
+        conditions:
+          # they gotta be in soft or hard crit first
+        - !type:MobStateCondition
+          mobstate: HardCritical
+        - !type:ReagentCondition
+          reagent: Epinephrine
+          max: 20
+        damage:
+          types:
+            Asphyxiation: -3
+            Poison: -0.5
+      - !type:EvenHealthChange
+        conditions:
+          # they gotta be in soft or hard crit first
+        - !type:MobStateCondition
+          mobstate: HardCritical
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -478,9 +501,17 @@
       effects:
       - !type:HealthChange
         conditions:
-          # they gotta be in crit first
+          # they gotta be in soft or hard crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstate: SoftCritical
+        damage:
+          types:
+            Asphyxiation: -2
+      - !type:HealthChange
+        conditions:
+          # they gotta be in soft or hard crit first
+        - !type:MobStateCondition
+          mobstate: HardCritical
         damage:
           types:
             Asphyxiation: -2
@@ -1031,6 +1062,7 @@
   color: "#b0abaa"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.1 ###changed from 0.5 to make it last longer###
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
@@ -1040,7 +1072,7 @@
         conditions:
         - !type:ReagentCondition
           reagent: Diphenylmethylamine
-          min: 5
+          min: 1 ###lowered from 5 so a basic 5u pill with now grant 40 seconds of narcolepsy protection instead of you know 1 second####
       - !type:PopupMessage
         visualType: Medium
         messages: ["ethyloxyephedrine-effect-feeling-awake", "ethyloxyephedrine-effect-clear-mind"]
@@ -1296,7 +1328,7 @@
         amount: -2
       # makes you a little chilly when not oding
       - !type:AdjustTemperature
-        amount: -2500
+        amount: -420
       # od makes you freeze to death
       - !type:HealthChange
         conditions:
@@ -1311,7 +1343,7 @@
         - !type:ReagentCondition
           reagent: Insuzine
           min: 12
-        amount: -30000
+        amount: -5000
       - !type:Jitter
         conditions:
         - !type:ReagentCondition

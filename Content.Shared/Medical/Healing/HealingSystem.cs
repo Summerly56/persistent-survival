@@ -200,7 +200,7 @@ public sealed class HealingSystem : EntitySystem
         }
         if (!TryConditions(healing, target))
         {
-            _popupSystem.PopupClient(Loc.GetString("topical-isn't-appropriate", ("item", healing.Owner)), healing, user);
+            _popupSystem.PopupClient(Loc.GetString("topical-isnt-appropriate", ("item", healing.Owner)), healing, user);
             return false;
         }
 
@@ -231,7 +231,7 @@ public sealed class HealingSystem : EntitySystem
         _doAfter.TryStartDoAfter(doAfterEventArgs);
         return true;
     }
-/// New for Persistence
+    /// New for Persistence
 
     private bool TryConditions(Entity<HealingComponent> healing, EntityUid target)
     {
