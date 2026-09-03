@@ -30,7 +30,7 @@ public sealed partial class AirlockCyclerSystem : EntitySystem
 
         SubscribeLocalEvent<AirlockCyclerComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<AirlockCyclerComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<AirlockCyclerComponent, GetVerbsEvent<AlternativeVerb>(OnGetAltVerbs);
+        SubscribeLocalEvent<AirlockCyclerComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
 
         _controllerQuery = GetEntityQuery<AirlockControllerComponent>();
 

@@ -68,8 +68,6 @@
           False: { state: light_off }
   - type: Damageable
     damageModifierSet: Metallic
-  - type: Injurable
-    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

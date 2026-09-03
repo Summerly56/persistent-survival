@@ -21,6 +21,7 @@ public sealed partial class AirlockControllerSystem
     private void InitializeUi()
     {
         SubscribeLocalEvent<AirlockControllerComponent, ActivateInWorldEvent>(OnActivate);
+        SubscribeLocalEvent<AirlockControllerComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
 
         Subs.BuiEvents<AirlockControllerComponent>(AirlockControllerUiKey.Key,
             subs =>
@@ -150,7 +151,6 @@ public sealed partial class AirlockControllerSystem
     /// <summary>
     ///     Alt use starts a cycle when idle, otherwise cancels.
     /// </summary>
-    [SubscribeLocalEvent]
     private void OnGetAltVerbs(Entity<AirlockControllerComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         var comp = ent.Comp;
