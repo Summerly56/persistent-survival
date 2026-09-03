@@ -437,7 +437,7 @@ public sealed class GridConfigSystem : SharedGridConfigSystem
         if (realName == null || realName == "") return;
         if (args.StationName == null || args.StationName == "") return;
         StationConfig config = new();
-        config.StationPrototype = "StandardPersistStation";
+        config.StationPrototype = "StandardNanotrasenStation";
         _station.InitializeNewStation(config, null, args.StationName, realName);
         if (idCard != null)
         {
