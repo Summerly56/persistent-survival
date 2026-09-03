@@ -64,6 +64,15 @@
     solutions:
       tank:
         maxVol: 5000
+
+- type: entity
+  parent: CleanerDispenser
+  id: CleanerDispenserFilled
+  suffix: Filled
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      tank:
         reagents:
         - ReagentId: SpaceCleaner
           Quantity: 5000
@@ -87,9 +96,6 @@
     solutions:
       tank:
         maxVol: 1000
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 1000
   - type: ReagentTank
     tankType: Fuel
   - type: DamageOnToolInteract
@@ -101,3 +107,15 @@
   - type: Explosive
     explosionType: Default
     totalIntensity: 50
+
+- type: entity
+  parent: FuelDispenser
+  id: FuelDispenserFilled
+  suffix: Filled
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 1000
