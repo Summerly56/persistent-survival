@@ -12,6 +12,8 @@
   - Chiefengineersuit
   - Captainsuit
   - ClothingHandsGlovesCaptain
+  - ExtendedEmergencyOxygenTank
+  - ExtendedEmergencyNitrogenTank
 
 - type: latheRecipePack
   id: SecurityHardsuits

@@ -140,7 +140,7 @@
   name: guide-entry-writing
   text: "/ServerInfo/Guidebook/Writing.xml"
   children:
-    - Text Colors       # Persistence14 addition
+    - TextColors       # Persistence14 addition
 
 - type: guideEntry
   id: Lawsets

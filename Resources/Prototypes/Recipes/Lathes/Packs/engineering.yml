@@ -38,6 +38,14 @@
   recipes:
   - AirTank
   - GasAnalyzer
+# Persistence: make other gas tanks craftable
+  - OxygenTank
+  - NitrogenTank
+  - NitrousOxideTank
+  - PlasmaTank
+  - EmergencyOxygenTank
+  - EmergencyNitrogenTank
+  - EmergencyFunnyOxygenTank
 
 - type: latheRecipePack
   id: ElectronicsStatic

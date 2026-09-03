@@ -233,6 +233,8 @@
   - Engineeringsuit
   - Atmossuit
   - Miningsuit
+  - ExtendedEmergencyOxygenTank
+  - ExtendedEmergencyNitrogenTank
   technologyPrerequisites:
   - EVAManufacturing
 
