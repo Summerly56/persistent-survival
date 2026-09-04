@@ -63,7 +63,7 @@
   - type: SolutionContainerManager
     solutions:
       tank:
-        maxVol: 5000
+        maxVol: 1500
 
 - type: entity
   parent: CleanerDispenser
@@ -75,7 +75,7 @@
       tank:
         reagents:
         - ReagentId: SpaceCleaner
-          Quantity: 5000
+          Quantity: 1500
 
 - type: entity
   parent: BaseDispenser
