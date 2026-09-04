@@ -437,11 +437,12 @@
       guides:
       - GasCanisters
 
+# Survival: Airlock controller compatible dual-port
 - type: entity
   parent: GasVentPump
-  id: GasDualPortVentPump
-  name: dual-port air vent
-  description: Has a valve and a pump attached to it. There are two ports, one is an input for releasing air, the other is an output when siphoning.
+  id: GasDualPortVentPumpAuto
+  name: controllable dual-port air vent
+  description: Has a valve and a pump attached to it. There are two ports, one is an input for releasing air, the other is an output when siphoning. It can be linked to an airlock controller.
   placement:
     mode: SnapgridCenter
   components:
@@ -454,6 +455,8 @@
       layers:
         - sprite: Structures/Piping/Atmospherics/pipe.rsi
           state: pipeBinaryConnectors
+          map: [ "enum.PipeVisualLayers.Pipe" ]
+        - state: vent_direction
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: vent_off
           map: [ "enabled", "enum.SubfloorLayers.FirstLayer" ]
@@ -473,16 +476,6 @@
       pressureLockoutOverride: true
       inlet: inlet
       outlet: outlet
-      canLink: true
-    - type: DeviceNetwork
-      deviceNetId: Wireless
-      receiveFrequencyId: BasicDevice
-    - type: WirelessNetworkConnection
-      range: 200
-    - type: DeviceLinkSink
-      ports:
-        - Pressurize
-        - Depressurize
     - type: Construction
       graph: GasBinary
       node: dualportventpump
@@ -503,6 +496,29 @@
     - type: GuideHelp
       guides:
       - AirVent
+
+# Survival: Signal compatible dual-port (upstream id)
+- type: entity
+  parent: GasDualPortVentPumpAuto
+  id: GasDualPortVentPump
+  name: signal dual-port air vent
+  prefix: controllable
+  description: Has a valve and a pump attached to it. There are two ports, one is an input for releasing air, the other is an output when siphoning. It can be linked to logic gates and other signal generators.
+  components:
+  - type: GasVentPump
+    pressureLockoutOverride: true
+    inlet: inlet
+    outlet: outlet
+    canLink: true
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+    - Pressurize
+    - Depressurize
 
 - type: entity
   parent: [ BaseMachine, ConstructibleMachine ]

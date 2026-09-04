@@ -286,6 +286,7 @@
   startNode: start
   targetNode: airlock_controller
   category: construction-category-utilities
+  placementMode: SnapgridCenter
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition
@@ -297,6 +298,7 @@
   startNode: start
   targetNode: airlock_cycler
   category: construction-category-utilities
+  placementMode: SnapgridCenter
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition
