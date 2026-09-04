@@ -1,0 +1,60 @@
+- type: constructionGraph
+  id: WallDispenser
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: reagentdispenser
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+    - to: fueldispenser
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+    - to: cleanerdispenser
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+
+  - node: reagentdispenser
+    entity: ReagentDispenser
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 4
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:DeleteEntity {}
+
+  - node: fueldispenser
+    entity: FuelDispenser
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 4
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:DeleteEntity {}
+
+  - node: cleanerdispenser
+    entity: CleanerDispenser
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 4
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:DeleteEntity {}
