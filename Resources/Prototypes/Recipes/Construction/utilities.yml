@@ -1491,3 +1491,43 @@
   canBuildInImpassable: true
   conditions:
   - !type:ReverseWallmountCondition
+
+# _PSurvival
+- type: construction
+  id: ReagentDispenser
+  graph: WallDispenser
+  startNode: start
+  targetNode: reagentdispenser
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
+
+- type: construction
+  id: FuelDispenser
+  graph: WallDispenser
+  startNode: start
+  targetNode: fueldispenser
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
+
+- type: construction
+  id: CleanerDispenser
+  graph: WallDispenser
+  startNode: start
+  targetNode: cleanerdispenser
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
