@@ -1,0 +1,13 @@
+Entries:
+- author: Summerly57
+  category: Survival # if left out, falls under the main changelog
+  changes:
+    - type: Add # One of the following: Add, Remove, Tweak, Fix
+      message: Added fun!
+  time: '2025-09-10T01:43:00'
+- author: Summerly57
+  category: Survival # if left out, falls under the main changelog
+  changes:
+    - type: Remove # One of the following: Add, Remove, Tweak, Fix
+      message: Removed fun!
+  time: '2025-09-10T01:44:00'
