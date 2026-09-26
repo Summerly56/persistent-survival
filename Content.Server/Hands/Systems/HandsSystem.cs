@@ -65,33 +65,6 @@ namespace Content.Server.Hands.Systems
         }
 
         // Starlight: Moved OnDisarmed to shared for prediction.
-        // Starlight Start: Reverted NuBody
-        private void HandleBodyPartAdded(Entity<HandsComponent> ent, ref BodyPartAddedEvent args)
-        {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
-
-            // If this annoys you, which it should.
-            // Ping Smugleaf.
-            var location = args.Part.Comp.Symmetry switch
-            {
-                BodyPartSymmetry.None => HandLocation.Middle,
-                BodyPartSymmetry.Left => HandLocation.Left,
-                BodyPartSymmetry.Right => HandLocation.Right,
-                _ => throw new ArgumentOutOfRangeException(nameof(args.Part.Comp.Symmetry))
-            };
-
-            AddHand(ent.AsNullable(), args.Slot, location);
-        }
-
-        private void HandleBodyPartRemoved(EntityUid uid, HandsComponent component, ref BodyPartRemovedEvent args)
-        {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
-
-            RemoveHand(uid, args.Slot);
-        }
-        // Starlight End: Reverted NuBody
         #region interactions
 
         // Starlight: Moved HandleThrowItem, OnDropHandItems, and ThrowHeldItem to shared for prediction.

@@ -1,6 +1,5 @@
 using System.Numerics;
 using Content.Shared._Starlight.Abstract.Extensions;
-using Content.Shared._Starlight.Combat.Disarming;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
@@ -69,7 +68,6 @@ public sealed partial class PredictedHandsSystem : EntitySystem
         if (TryComp(uid, out PullerComponent? puller) && TryComp(puller.Pulling, out PullableComponent? pullable))
             _pulling.TryStopPull(puller.Pulling.Value, pullable);
 
-        if (HasComp<NoDisarmComponent>(_hands.GetActiveItem(args.Target))) return;
         var offset = _random.NextAnglePredicted(_timing)
             .RotateVec(new Vector2(_random.NextFloatPredicted(_timing, 1, 1.5f), 0));
         var offsetRandomCoordinates = _xform.GetMoverCoordinates(args.Target).Offset(offset);
