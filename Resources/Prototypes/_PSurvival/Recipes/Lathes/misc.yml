@@ -1,0 +1,8 @@
+- type: latheRecipe
+  id: RecipeOutdatedSpareParts
+  result: OutdatedSpareParts
+  completetime: 10
+  materials:
+    Durathread: 1000
+    Copper: 2000
+    Brass: 2000

@@ -1,0 +1,15 @@
+- type: entity
+  id: OutdatedSpareParts
+  name: outdated spare parts
+  parent: BaseItem
+  description: Very outdated parts. Maybe they can fix some old threshold tech.
+  components:
+    - type: Sprite
+      sprite: _Floof/Objects/Misc/parts.rsi
+      state: icon
+    - type: Item
+      size: Small
+    - type: Tag
+      tags:
+      - ConstructionMaterial
+      - OutdatedSpareParts

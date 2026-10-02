@@ -1,0 +1,124 @@
+- type: entity
+  parent: [ClothingOuterEVASuitBase, ClothingOuterStorageBase]
+  id: ClothingOuterSoftsuitFreelancerPilot
+  name: FL-02bt - "Pilot" Freelancer Softsuit
+  description: A armored soft suit. "Maximum speed for minimal protection."
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitpilot.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitpilot.rsi
+    equipDelay: 3
+    unequipDelay: 2
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.7
+        Heat: 0.8
+        Radiation: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: Construction
+    graph: CraftingSoftsuitPilot
+    node: suit
+    
+- type: entity
+  parent: [ClothingOuterEVASuitBase, ClothingOuterStorageBase]
+  id: ClothingOuterSoftsuitFreelancerLegion
+  name: FL-03a - "Legion" Freelancer Softsuit
+  description: A medium armored soft suit. "You ask if its reliable? We say a ton."
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitlegion.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitlegion.rsi
+    equipDelay: 3
+    unequipDelay: 2
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.8
+        Heat: 0.6
+        Radiation: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: StaminaResistance 
+    damageCoefficient: 0.5
+  - type: Construction
+    graph: CraftingSoftsuitLegion
+    node: suit
+
+- type: entity
+  parent: [ClothingOuterEVASuitBase, ClothingOuterStorageBase]
+  id: ClothingOuterSoftsuitFreelancerNorthstar
+  name: FL-04x - "Northstar" Freelancer Softsuit
+  description: A heavy armored soft suit with build and advanced non functioning cloaking system.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitnorthstar.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/softsuitnorthstar.rsi
+    equipDelay: 3
+    unequipDelay: 2
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.5
+        Piercing: 0.5
+        Radiation: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: Construction
+    graph: CraftingSoftsuitNorthstar
+    node: suit
+
+- type: entity
+  parent: [ClothingOuterEVASuitBase, ClothingOuterStorageBase]
+  id: ClothingOuterSoftsuitFreelancerDamagedNorthstar
+  name: Damaged Northstar Softsuit
+  description: A broken softsuit barley providing protection. But with some sapre parts it could become quite formidble.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/damagedsoftsuitnorthstar.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/OuterClothing/Hardsuits/damagedsoftsuitnorthstar.rsi
+    equipDelay: 3
+    unequipDelay: 2
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Heat: 0.8
+        Piercing: 0.8
+        Radiation: 0.99
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: PressureProtection
+    highPressureMultiplier: 1
+    lowPressureMultiplier: 1
+  - type: TemperatureProtection
+    heatingCoefficient: 0.8
+    coolingCoefficient: 0.8
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - RestorationSoftsuit1

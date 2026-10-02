@@ -1,0 +1,53 @@
+- type: construction
+  name: Pilot Helmet
+  id: HelmetPilot
+  graph: CraftingHeadHelmetPilot
+  startNode: start
+  targetNode: helmet
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  name: Ocular Helmet
+  id: HelmetOcular
+  graph: CraftingHeadHelmetOcular
+  startNode: start
+  targetNode: helmet
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  name: Star Helmet
+  id: HelmetStar
+  graph: CraftingHeadHelmetStar
+  startNode: start
+  targetNode: helmet
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  name: Pilot Softsuit
+  id: SoftsuitPilot
+  graph: CraftingSoftsuitPilot
+  startNode: start
+  targetNode: suit
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  name: Legion Softsuit
+  id: SoftsuitLegion
+  graph: CraftingSoftsuitLegion
+  startNode: start
+  targetNode: suit
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  name: Northstar Softsuit
+  id: SoftsuitNorthstar
+  graph: CraftingSoftsuitNorthstar
+  startNode: start
+  targetNode: suit
+  category: construction-category-clothing
+  objectType: Item
