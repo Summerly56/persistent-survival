@@ -17,6 +17,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Toolshed.Commands.Values;
 using Robust.Shared.Utility;
 using System.IO;
 using System.Linq;
@@ -32,6 +33,7 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
     [Dependency] private readonly PersistenceSystem _persistence = default!;
     [Dependency] private readonly IResourceManager _resMan = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _newMapManager = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
@@ -86,7 +88,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
                 Entity<BSPAnchorKeyComponent> ent = (comp.Source, key);
                 if (!CommitPark(ent, (uid, comp)))
                     CancelRoutine(ent, "Could not park.");
-
             }
 
         }
@@ -146,11 +147,12 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
 
         // Check if it can unpark here
         GetRecallSource(entity, position, rotation.Opposite(), out var mapId, out var origin, out var bounds, out var worldAngle);
-        if (!TryGetUnparkPlacementLocation(mapId, origin, bounds, worldAngle, out _, out _, spawnDistance: 2, maxIterations: 4))
+        //doesnt seem like it needs to check for unpark position when starting since grids could move during the timer, means players will have to wait after the timer finishes to find out but the check should make it more lenient, thus making this one rather much less impactfull
+        /*if (!TryGetUnparkPlacementLocation(mapId, origin, bounds, worldAngle, out _, out _, spawnDistance: 0, maxIterations: 1000))
         {
             _popup.PopupEntity($"Cannot unpark here! Go somewhere less crowded.", entity, Shared.Popups.PopupType.MediumCaution);
             return;
-        }
+        }*/
 
         entity.Comp.RoutineStartTime = _timing.CurTime;
         entity.Comp.State = BSPState.Unparking;
@@ -160,7 +162,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
 
         UpdateUserInterface(entity.Owner, entity.Comp);
         _adminLog.Add(LogType.BluespaceParking, LogImpact.Low, $"Started unparking for the grid '{entity.Comp.SavedGridName}'.");
-
     }
 
     private void CancelRoutine(Entity<BSPAnchorKeyComponent> entity, string motive, bool updateUI = true, bool popupNotification = true)
@@ -432,31 +433,47 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
         return true;
     }
 
-    private bool TryGetUnparkPlacementLocation(MapId mapId, Vector2 origin, Box2 bounds, Angle worldAngle, out MapCoordinates coords, out Angle angle, float spawnDistance = 20f, int maxIterations = 20)
+    private bool TryGetUnparkPlacementLocation(MapId mapId, Vector2 origin, Box2 bounds, Angle worldAngle, out MapCoordinates coords, out Angle angle, float spawnDistance = 0, int maxIterations = 1000)
     {
         var finalCoords = new MapCoordinates(origin, mapId);
         angle = worldAngle;
-
+        var angleCount = 0;
         for (var i = 0; i < maxIterations; i++)
         {
-            var box2 = Box2.CenteredAround(finalCoords.Position, bounds.Size);
-            var box2Rot = new Box2Rotated(box2, angle, finalCoords.Position).Enlarged(-0.5f);
+            //i should probabmy making it take a semi random approach by making it use a radius where it randomly spawns inside that gets bigger as spawndistance does (while kinda nudgin git further with a minimum spawndistance) but eh, this works fine for now, maybe sometime
+            var randomPos = origin + (angle + Math.PI / 2).ToVec() * spawnDistance;
+            finalCoords = new MapCoordinates(randomPos, mapId);
 
-            // This doesn't stop it from spawning on top of random things in space
-            if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
+            var radius = 5000; //dont like it being hardcoded in case its dynamic but itll have to do for now untill i find where i can get it
+            var xMapBound = Math.Abs(Math.Sqrt(Math.Pow(radius, 2) - Math.Pow(finalCoords.Y, 2)));
+            var yMapBound = Math.Abs(Math.Sqrt(Math.Pow(radius, 2) - Math.Pow(finalCoords.X, 2)));
+            //make it start from zero spawndistance but take a 90 degrees direction turn if border reached or it reaches a quarter of its max distance
+            if (Math.Abs(finalCoords.X) >= xMapBound || Math.Abs(finalCoords.Y) >= yMapBound || i >= 250)
             {
-                // Bump it further and further just in case.
-                var fraction = (float)(i + 1) / maxIterations;
-                var randomPos = origin +
-                    (worldAngle + Math.PI / 2).ToVec() * (DockingSystem.DockRange + (spawnDistance * fraction));
-                finalCoords = new MapCoordinates(randomPos, mapId);
+                if (angleCount >= 3)
+                {
+                    angle = Angle.Zero;
+                    coords = MapCoordinates.Nullspace;
+                    return false;
+                }
+                angle += Angle.FromDegrees(90);
+                spawnDistance = 0;
+                angleCount++;
+                maxIterations -= i;
+                i = 0;
                 continue;
             }
-            else if (i == 0)
+
+            var box2 = Box2.CenteredAround(finalCoords.Position + bounds.Center, bounds.Size);
+            var box2Rot = new Box2Rotated(box2, angle, finalCoords.Position);
+
+            if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
             {
-                var pos = origin + (worldAngle + Math.PI / 2).ToVec() * DockingSystem.DockRange;
-                finalCoords = new MapCoordinates(pos, mapId);
+                // Bump it further and further if something is in the way
+                spawnDistance += 10;
+                continue;
             }
+            angle = worldAngle;
             coords = finalCoords;
             return true;
         }
