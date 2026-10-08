@@ -1,5 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
+using Content.Server.Database;
+using Content.Server.Movement.Systems;
 using Content.Server.Persistence.Systems;
 using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
@@ -8,6 +10,7 @@ using Content.Shared.Coordinates;
 using Content.Shared.Database;
 using Content.Shared.GridControl.Components;
 using Content.Shared.GridControl.Systems;
+using Content.Shared.Movement.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -16,7 +19,9 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Toolshed.Commands.Values;
 using Robust.Shared.Utility;
 using System.IO;
 using System.Linq;
@@ -32,6 +37,7 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
     [Dependency] private readonly PersistenceSystem _persistence = default!;
     [Dependency] private readonly IResourceManager _resMan = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _newMapManager = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
@@ -86,7 +92,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
                 Entity<BSPAnchorKeyComponent> ent = (comp.Source, key);
                 if (!CommitPark(ent, (uid, comp)))
                     CancelRoutine(ent, "Could not park.");
-
             }
 
         }
@@ -146,11 +151,12 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
 
         // Check if it can unpark here
         GetRecallSource(entity, position, rotation.Opposite(), out var mapId, out var origin, out var bounds, out var worldAngle);
-        if (!TryGetUnparkPlacementLocation(mapId, origin, bounds, worldAngle, out _, out _, spawnDistance: 2, maxIterations: 4))
+        //doesnt seem like it needs to check for unpark position when starting since grids could move during the timer, means players will have to wait after the timer finishes to find out but the check should make it more lenient, thus making this one rather much less impactfull
+        /*if (!TryGetUnparkPlacementLocation(mapId, origin, bounds, worldAngle, out _, out _, spawnDistance: 0, maxIterations: 1000))
         {
             _popup.PopupEntity($"Cannot unpark here! Go somewhere less crowded.", entity, Shared.Popups.PopupType.MediumCaution);
             return;
-        }
+        }*/
 
         entity.Comp.RoutineStartTime = _timing.CurTime;
         entity.Comp.State = BSPState.Unparking;
@@ -160,7 +166,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
 
         UpdateUserInterface(entity.Owner, entity.Comp);
         _adminLog.Add(LogType.BluespaceParking, LogImpact.Low, $"Started unparking for the grid '{entity.Comp.SavedGridName}'.");
-
     }
 
     private void CancelRoutine(Entity<BSPAnchorKeyComponent> entity, string motive, bool updateUI = true, bool popupNotification = true)
@@ -432,33 +437,67 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
         return true;
     }
 
-    private bool TryGetUnparkPlacementLocation(MapId mapId, Vector2 origin, Box2 bounds, Angle worldAngle, out MapCoordinates coords, out Angle angle, float spawnDistance = 20f, int maxIterations = 20)
+    private bool TryGetUnparkPlacementLocation(MapId mapId, Vector2 origin, Box2 bounds, Angle worldAngle, out MapCoordinates coords, out Angle angle, float spawnDistance = 10, int maxIterations = 40)
     {
         var finalCoords = new MapCoordinates(origin, mapId);
         angle = worldAngle;
+        var angleCount = 8;
+        float[] angles = new float[angleCount];
+        var rampUprate = 1.1f;
+        var incrementRate = 10f;
+        var angleHalfRange = (360f / angles.Length) / 2f;
+
+        var radius = 0f;
+        var mapUid = _mapSystem.GetMap(mapId);
+        if (TryComp<MapBoundsComponent>(mapUid, out MapBoundsComponent? mapBoundaryComponent))
+        {
+            radius = mapBoundaryComponent.Radius;
+        } else
+        {
+            angle = Angle.Zero;
+            coords = MapCoordinates.Nullspace;
+            return false;
+        }
+
+        for (var i = 1; i < angles.Length; i++)
+        {
+            angles[i] = angles[i-1] + 360 / angles.Length;
+        }
 
         for (var i = 0; i < maxIterations; i++)
         {
-            var box2 = Box2.CenteredAround(finalCoords.Position, bounds.Size);
-            var box2Rot = new Box2Rotated(box2, angle, finalCoords.Position).Enlarged(-0.5f);
-
-            // This doesn't stop it from spawning on top of random things in space
-            if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
+            for (var j = 0; j < angles.Length; j++)
             {
-                // Bump it further and further just in case.
-                var fraction = (float)(i + 1) / maxIterations;
-                var randomPos = origin +
-                    (worldAngle + Math.PI / 2).ToVec() * (DockingSystem.DockRange + (spawnDistance * fraction));
+                //setting to int is going to make it a bit innacurate but should be fine for now aslong as some really larger anglecount isnt used, wich is very unlikely
+                var randomAngle = Random.Shared.Next((int)(angles[j] - angleHalfRange), (int)(angles[j] + angleHalfRange));
+                angle = Angle.FromDegrees(randomAngle);
+                var randomPos = origin + (angle + Math.PI / 2).ToVec() * spawnDistance;
                 finalCoords = new MapCoordinates(randomPos, mapId);
-                continue;
+
+                var distance = Math.Sqrt((finalCoords.X * finalCoords.X) + (finalCoords.Y * finalCoords.Y));
+
+                if (distance >= radius)
+                {
+                    //give opposite angle double the checks if one reaches border
+                    var oppositeAngleIndex = (j + 4) % 8;
+                    angles[j] = angles[oppositeAngleIndex];
+                    continue;
+                }
+
+                var box2 = Box2.CenteredAround(finalCoords.Position + bounds.Center, bounds.Size);
+                var box2Rot = new Box2Rotated(box2, worldAngle, finalCoords.Position);
+                if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
+                {
+                    continue;
+                }
+                angle = worldAngle;
+                coords = finalCoords;
+                return true;
+
             }
-            else if (i == 0)
-            {
-                var pos = origin + (worldAngle + Math.PI / 2).ToVec() * DockingSystem.DockRange;
-                finalCoords = new MapCoordinates(pos, mapId);
-            }
-            coords = finalCoords;
-            return true;
+            // Bump it further and further if all dorection checks are exhausted
+            spawnDistance += incrementRate;
+            incrementRate *= rampUprate;
         }
 
         angle = Angle.Zero;
