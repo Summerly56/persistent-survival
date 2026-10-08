@@ -101,3 +101,12 @@
   id: 13
   time: '2026-09-30T19:11:50.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/45
+- author: tishaak
+  changes:
+  - message: increase distance ships can unpark if a grid is in the way
+    type: Tweak
+  - message: Grids clipping
+    type: Fix
+  id: 14
+  time: '2026-10-08T21:16:55.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/51
