@@ -1,0 +1,124 @@
+- type: entity
+  parent: [ ClothingHeadEVAHelmetBase, ClothingEyesModularHudBase ]
+  id: ClothingHeadHelmetPilot
+  name: Freelancer "Pilot" Helmet
+  description: A robust helmet designed for extravehicular activites. This version has a issue with the visor flashing from time to time.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/pilothelmet.rsi
+  - type: Item
+    sprite: _Floof/Clothing/Head/pilothelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/pilothelmet.rsi
+    equipDelay: 2
+    unequipDelay: 1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Construction
+    graph: CraftingHeadHelmetPilot
+    node: helmet
+  - type: ModularHud
+    maximumContainedModules: 3
+    moduleRemovalDelay: 1s
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - HelmetEVA
+   # - FullEyeCovering -due the sprite breaking when added a anty flash module eye coverign has been removed, if anybody can figure out why and fix it reanable this
+
+- type: entity
+  parent: ClothingHeadHelmetPilot
+  id: ClothingHeadHelmetOcular
+  name: Freelancer "Ocular" Helmet
+  description: A tactical helmet striking a balance between visbility and protection. Label on the inside of the helmet states "Please do not stick googly eyes to the visors"
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/ocularhelmet.rsi
+  - type: Item
+    sprite: _Floof/Clothing/Head/ocularhelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/ocularhelmet.rsi
+  - type: Construction
+    graph: CraftingHeadHelmetOcular
+    node: helmet
+
+- type: entity
+  parent: ClothingHeadHelmetPilot
+  id: ClothingHeadHelmetStar
+  name: Freelancer "Star" Helmet
+  description: A remodeled version of an old highly specialized tactical helmet. Now 20% more specilized for space.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/starhelmet.rsi
+  - type: Item
+    sprite: _Floof/Clothing/Head/starhelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/starhelmet.rsi
+  - type: Construction
+    graph: CraftingHeadHelmetStar
+    node: helmet
+
+- type: entity
+  parent: ClothingHeadEVAHelmetBase
+  id: ClothingHeadHelmetDamagedPilot
+  name: Damaged Pilot helmet
+  description: A damaged eva helmet, looks really old. With some outdated spare parts it could be repaired.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/damagedpilothelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/damagedpilothelmet.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 1
+    lowPressureMultiplier: 1
+  - type: TemperatureProtection
+    heatingCoefficient: 0.8
+    coolingCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.92
+        Slash: 0.92
+        Piercing: 0.92
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - HelmetEVA
+    - RestorationHelmet1
+
+- type: entity
+  parent: ClothingHeadHelmetDamagedPilot
+  id: ClothingHeadHelmetDamagedOcular
+  name: Damaged Ocular helmet
+  description: A damaged eva helmet, looks really old. With some outdated spare parts it could be repaired.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/damagedocularhelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/damagedocularhelmet.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - HelmetEVA
+    - RestorationHelmet2
+
+- type: entity
+  parent: ClothingHeadHelmetDamagedPilot
+  id: ClothingHeadHelmetDamagedStar
+  name: Damaged Star helmet
+  description: A damaged eva helmet, looks really old. With some outdated spare parts it could be repaired.
+  components:
+  - type: Sprite
+    sprite: _Floof/Clothing/Head/damagedstarhelmet.rsi
+  - type: Clothing
+    sprite: _Floof/Clothing/Head/damagedstarhelmet.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - HelmetEVA
+    - RestorationHelmet3

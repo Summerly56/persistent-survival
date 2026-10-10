@@ -1,0 +1,143 @@
+- type: constructionGraph
+  id: CraftingHeadHelmetPilot
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: helmet
+      steps:
+      - tag: RestorationHelmet1
+        name: damaged pilot helmet
+        icon: 
+            sprite: _Floof/Clothing/Head/damagedpilothelmet.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 5
+        doAfter: 10
+  - node: helmet
+    entity: ClothingHeadHelmetPilot
+
+- type: constructionGraph
+  id: CraftingHeadHelmetOcular
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: helmet
+      steps:
+      - tag: RestorationHelmet2
+        name: damaged ocular helmet
+        icon: 
+            sprite: _Floof/Clothing/Head/damagedocularhelmet.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 5
+        doAfter: 10
+  - node: helmet
+    entity: ClothingHeadHelmetOcular
+
+- type: constructionGraph
+  id: CraftingHeadHelmetStar
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: helmet
+      steps:
+      - tag: RestorationHelmet3
+        name: damaged star helmet
+        icon: 
+            sprite: _Floof/Clothing/Head/damagedstarhelmet.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 5
+        doAfter: 10
+  - node: helmet
+    entity: ClothingHeadHelmetStar
+
+- type: constructionGraph
+  id: CraftingSoftsuitPilot
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: suit
+      steps:
+      - tag: CraftingTagSoftsuitPilot
+        name: NTSRA voidsuit
+        icon: 
+            sprite: Clothing/OuterClothing/Suits/ancient_voidsuit.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 5
+        doAfter: 10
+  - node: suit
+    entity: ClothingOuterSoftsuitFreelancerPilot
+
+- type: constructionGraph
+  id: CraftingSoftsuitLegion
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: suit
+      steps:
+      - tag: HardsuitSpatio
+        name: spationaut hardsuit
+        icon: 
+            sprite: Clothing/OuterClothing/Hardsuits/spatio.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 4
+        doAfter: 10
+  - node: suit
+    entity: ClothingOuterSoftsuitFreelancerLegion
+
+- type: constructionGraph
+  id: CraftingSoftsuitNorthstar
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: suit
+      steps:
+      - tag: RestorationSoftsuit1
+        name: damaged northstar softsuit
+        icon: 
+            sprite: _Floof/Clothing/OuterClothing/Hardsuits/damagedsoftsuitnorthstar.rsi
+            state: icon
+      - tag: OutdatedSpareParts
+        name: outdated spare parts
+        icon: 
+            sprite: _Floof/Objects/Misc/parts.rsi
+            state: icon
+      - material: Phoron
+        amount: 5
+        doAfter: 10
+  - node: suit
+    entity: ClothingOuterSoftsuitFreelancerNorthstar

@@ -1,0 +1,9 @@
+- type: entity
+  parent: BaseBlueprint
+  id: BlueprintOutdatedSpareParts
+  name: outdated spare parts blueprints
+  description: A blueprint with a schematic of outdated spare parts used to fix some old threshold tech. It can be inserted into an autolathe.
+  components:
+  - type: Blueprint
+    providedRecipes:
+    - RecipeOutdatedSpareParts
