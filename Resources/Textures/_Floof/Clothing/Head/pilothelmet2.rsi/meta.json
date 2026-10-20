@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Made by Dzordz https://github.com/ItsDzordz",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+        {"name":  "icon-accent"},
+        {"name":  "icon-frame"},
+        {"name":  "icon-lens-accent-minor"},
+        {"name":  "icon-lens-accent-major"},
+        {"name":  "icon-lens"},
+        {"name":  "icon-specular"},
+        {"name":  "equipped-EYES-lens", "directions": 4},
+    {
+      "name": "equipped-HELMET",
+      "directions": 4
+    }
+  ]
+}

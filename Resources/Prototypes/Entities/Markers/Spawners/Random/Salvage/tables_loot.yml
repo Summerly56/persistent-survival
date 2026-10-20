@@ -147,6 +147,11 @@
         range: 2, 5
     - !type:NestedSelector
       tableId: RingTableRare
+    - !type:GroupSelector
+      children:
+      - id: ClothingHeadHelmetDamagedPilot # Psurvival - Dzordz
+      - id: ClothingHeadHelmetDamagedOcular # Psurvival - Dzordz
+      - id: ClothingHeadHelmetDamagedStar # Psurvival - Dzordz
 
 - type: entityTable
   id: SalvageTreasureLegendary
@@ -164,6 +169,7 @@
       tableId: RingTableRare
       rolls: !type:RangeNumberSelector
         range: 2, 3
+    - id: BlueprintOutdatedSpareParts # Psurvival - Dzordz
 
 # Equipment: Tools and things used by salvagers. Quote unquote "Gamer Loot"
 
@@ -255,7 +261,7 @@
       - id: PKAUpgradeDamage
       - id: PKAUpgradeRange
       - id: PKAUpgradeFireRate
-
+    - id: ClothingOuterSoftsuitFreelancerDamagedNorthstar # Psurvival - Dzordz
 
 - type: entityTable
   id: RandomGeneratorTable

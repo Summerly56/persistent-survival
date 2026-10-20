@@ -1,0 +1,12 @@
+- type: Tag
+  id: OutdatedSpareParts # crafting Outaded sapre parts
+- type: Tag
+  id: RestorationHelmet1 # crafting Pilot helmet
+- type: Tag
+  id: RestorationHelmet2 # crafting Ocular helmet
+- type: Tag
+  id: RestorationHelmet3 # crafting Star helmet
+- type: Tag
+  id: RestorationSoftsuit1 # crafting Northstar softsuit
+- type: Tag
+  id: CraftingTagSoftsuitPilot  # crafting pilot softsuit

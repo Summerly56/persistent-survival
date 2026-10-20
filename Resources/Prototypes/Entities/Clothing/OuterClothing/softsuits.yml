@@ -105,6 +105,10 @@
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: HeldSpeedModifier
+  - type: Tag # Persistence14: Crafting pilot softsuit
+    tags:
+    - WhitelistChameleon
+    - CraftingTagSoftsuitPilot # Persistence14: Crafting pilot softsuit
 
 #Paramedic Voidsuit
 - type: entity

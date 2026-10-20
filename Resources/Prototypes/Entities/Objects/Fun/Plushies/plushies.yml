@@ -1868,3 +1868,33 @@
   - type: Edible
     useSound: /Audio/Animals/wawa_protest.ogg
 
+- type: entity
+  parent: BasePlushie
+  id: PlushieSlimeTider
+  name: Slime tider plushie
+  description: A generic tider, this one seems to be particularly slimey. The label reads 'Product not insulated'
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: slime
+  - type: UseDelay
+    delay: 3.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Human/female_sigh.ogg
+      params:
+        volume: 1
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Human/female_sigh.ogg
+      params:
+        volume: 1
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Voice/Human/female_sigh.ogg
+      params:
+        variation: 0.20
+        volume: 4
