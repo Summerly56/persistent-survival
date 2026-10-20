@@ -98,13 +98,6 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
         if (args.OtherFixtureId != particle.FixtureId)
             return;
 
-        if (anomaly.Comp.IgnoreParticleHitsAfterSupercritical &&
-            Appearance.TryGetData<bool>(anomaly, AnomalyVisuals.Supercritical, out var alreadyWent) &&
-            alreadyWent)
-        {
-            return;
-        }
-
         var behaviorMod = 1f;
         if (anomaly.Comp.CurrentBehavior != null)
         {
