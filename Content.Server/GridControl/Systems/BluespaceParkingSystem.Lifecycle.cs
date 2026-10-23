@@ -12,6 +12,7 @@ using Content.Shared.GridControl.Components;
 using Content.Shared.GridControl.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Station.Components;
+using Content.Shared.Movement.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
@@ -441,28 +442,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
     {
         var finalCoords = new MapCoordinates(origin, mapId);
         angle = worldAngle;
-        var angleCount = 8;
-        float[] angles = new float[angleCount];
-        var rampUprate = 1.1f;
-        var incrementRate = 10f;
-        var angleHalfRange = (360f / angles.Length) / 2f;
-
-        var radius = 0f;
-        var mapUid = _mapSystem.GetMap(mapId);
-        if (TryComp<MapBoundsComponent>(mapUid, out MapBoundsComponent? mapBoundaryComponent))
-        {
-            radius = mapBoundaryComponent.Radius;
-        } else
-        {
-            angle = Angle.Zero;
-            coords = MapCoordinates.Nullspace;
-            return false;
-        }
-
-        for (var i = 1; i < angles.Length; i++)
-        {
-            angles[i] = angles[i-1] + 360 / angles.Length;
-        }
 
         for (var i = 0; i < maxIterations; i++)
         {
@@ -499,7 +478,6 @@ public sealed partial class BluespaceParkingSystem : SharedBluespaceParkingSyste
             spawnDistance += incrementRate;
             incrementRate *= rampUprate;
         }
-
         angle = Angle.Zero;
         coords = MapCoordinates.Nullspace;
         return false;

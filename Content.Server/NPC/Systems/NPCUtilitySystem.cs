@@ -1,5 +1,3 @@
-using Content.Server.Anomaly.Effects.Components;
-using Content.Shared._Persistence14.PersistentIdentifier;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Hands.Systems;
 using Content.Server.NPC.Queries;
@@ -13,7 +11,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Fluids.Components;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -21,7 +18,6 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Storage.Components;
-using static Content.Shared.Interaction.SharedInteractionSystem;
 using Content.Shared.Stunnable;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Tools.Systems;
@@ -45,7 +41,6 @@ namespace Content.Server.NPC.Systems;
 public sealed class NPCUtilitySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PersistentIdentifierSystem _pid = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
@@ -169,23 +164,6 @@ public sealed class NPCUtilitySystem : EntitySystem
             default:
                 throw new NotImplementedException();
         }
-    }
-
-    /// <summary>
-    /// An Eye-possessed thrall's own anomaly anchor is a static, opaque fixture it constantly
-    /// stands near/fights around - exempt only that entity from a thrall's own LOS checks so its
-    /// tether anchor can't block its own targeting. Null (no exemption) for every other NPC.
-    /// </summary>
-    private Ignored? GetEyeAnomalyIgnorePredicate(EntityUid owner)
-    {
-        if (!TryComp<TetheredByEyeComponent>(owner, out var tether))
-            return null;
-
-        if (!_pid.TryResolveId(tether.Eye, out var eyeEnt))
-            return null;
-
-        var eyeAnomaly = eyeEnt.Owner;
-        return entity => entity == eyeAnomaly;
     }
 
     private float GetScore(NPCBlackboard blackboard, EntityUid targetUid, UtilityConsideration consideration)
@@ -340,7 +318,7 @@ public sealed class NPCUtilitySystem : EntitySystem
                 {
                     var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
 
-                    return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, GetEyeAnomalyIgnorePredicate(owner)) ? 1f : 0f;
+                    return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null) ? 1f : 0f;
                 }
             case TargetInLOSOrCurrentCon:
                 {
@@ -357,7 +335,7 @@ public sealed class NPCUtilitySystem : EntitySystem
                         return 1f;
                     }
 
-                    return _examine.InRangeUnOccluded(owner, targetUid, radius + bufferRange, GetEyeAnomalyIgnorePredicate(owner)) ? 1f : 0f;
+                    return _examine.InRangeUnOccluded(owner, targetUid, radius + bufferRange, null) ? 1f : 0f;
                 }
             case TargetIsAliveCon:
                 {
