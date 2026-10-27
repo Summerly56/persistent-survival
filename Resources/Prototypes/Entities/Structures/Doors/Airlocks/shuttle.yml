@@ -11,6 +11,10 @@
     ports:
       - DoorStatus
       - DockStatus
+  - type: DoorSignalControl # _PSurvival
+    openSink: null
+  - type: ApcPowerReceiver # _PSurvival
+    needsPower: false
   - type: Fixtures
     fixtures:
       fix1:
@@ -63,6 +67,10 @@
   - type: Door
     closeTimeTwo: 0.4
     openTimeTwo: 0.4
+    bumpOpen: false # _PSurvival
+    clickOpen: false # _PSurvival
+    canPry: false # _PSurvival
+    canCrush: false # _PSurvival
     crushDamage:
       types:
         Blunt: 15
@@ -92,6 +100,8 @@
   - type: StructureAligner
     alignerType:
     - DoNotAlign
+  - type: Airlock # _PSurvival
+    safety: false
 
 - type: entity
   id: AirlockGlassShuttle
