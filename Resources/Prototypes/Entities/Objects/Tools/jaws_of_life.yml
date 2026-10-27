@@ -28,7 +28,7 @@
         volume: -2
   - type: Prying
     speedModifier: 1.5
-    pryPowered: true
+    pryPowered: false # _PSurvival
     useSound: !type:SoundPathSpecifier
       path: /Audio/Items/jaws_pry.ogg
       params:
@@ -92,6 +92,7 @@
   - type: Prying
     force: true
     speedModifier: 3.0
+    pryPowered: true # _PSurvival
   - type: MultipleTool
     entries:
       - behavior: [ Prying ]
