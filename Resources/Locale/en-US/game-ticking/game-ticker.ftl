@@ -7,9 +7,9 @@ game-ticker-unknown-role = Unknown
 game-ticker-delay-start = Round start has been delayed for {$seconds} seconds.
 game-ticker-pause-start = Round start has been paused.
 game-ticker-pause-start-resumed = Round start countdown is now resumed.
-game-ticker-player-join-game-message = Persistence SS14: Report bugs on our Discord!
-game-ticker-get-info-text = Persistence SS14 ECLIPSE; See the Guidebook for more details
-game-ticker-get-info-preround-text = Persistence SS14: Testing Edition
+game-ticker-player-join-game-message = Survive.
+game-ticker-get-info-text = Persistence Survival
+game-ticker-get-info-preround-text = Persistence Survival
                             Join the discord to learn more!
                             The current player count is: [color=white]{$playerCount}[/color] ([color=white]{$readyCount}[/color] {$readyCount ->
                                 [one] is
