@@ -253,3 +253,15 @@
   canBuildInImpassable: true
   conditions:
   - !type:ReverseWallmountCondition
+
+# region _PSurvival Content
+- type: construction
+  parent: BaseUtilityWallmount
+  id: Screen
+  graph: ScreenGraph
+  startNode: start
+  targetNode: screen
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+# endregion _PSurvival Content

@@ -38,6 +38,9 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: ShuttleTimer
+  - type: Construction # _PSurvival
+    graph: ScreenGraph
+    node: screen
 
 # Dummy screen for comms console
 - type: entity
