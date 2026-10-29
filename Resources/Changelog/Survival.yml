@@ -1,2 +1,8 @@
 AdminOnly: false
 Entries:
+- author: Summerly57
+  changes:
+  - message: Tab created.
+    type: Add
+  id: 1
+  time: '2026-10-28'
