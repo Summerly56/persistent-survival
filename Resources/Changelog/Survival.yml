@@ -1,4 +1,4 @@
-AdminOnly: false
+﻿AdminOnly: false
 Entries:
 - author: Summerly57
   changes:
@@ -6,3 +6,17 @@ Entries:
     type: Add
   id: 1
   time: '2026-10-28'
+- author: Summerly56
+  changes:
+  - message: you can build the scrolling screens
+    type: Add
+  id: 2
+  time: '2026-10-29T01:24:13.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/56
+- author: tishaak
+  changes:
+  - message: (a)smes now send signals based on how much energy is stored!
+    type: Add
+  id: 3
+  time: '2026-10-29T01:22:38.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/57
