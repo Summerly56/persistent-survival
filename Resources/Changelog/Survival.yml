@@ -20,3 +20,10 @@ Entries:
   id: 3
   time: '2026-10-29T01:22:38.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/57
+- author: Summerly56
+  changes:
+  - message: you can link dual port vents with network
+    type: Tweak
+  id: 4
+  time: '2026-10-29T22:20:19.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/60
