@@ -1,0 +1,32 @@
+- type: constructionGraph
+  id: ScreenGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: screen
+      completed:
+      - !type:SnapToGrid
+      steps:
+      - material: Steel
+        amount: 4
+        doAfter: 3
+      - material: Cable
+        amount: 3
+        doAfter: 2
+
+  - node: screen
+    entity: Screen
+    edges:
+    - to: start
+      completed:
+      - !type:GivePrototype
+        prototype: SheetSteel1
+        amount: 4
+      - !type:GivePrototype
+        prototype: CableApcStack1
+        amount: 3
+      - !type:DeleteEntity {}
+      steps:
+      - tool: Screwing
+        doAfter: 4
