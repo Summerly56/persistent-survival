@@ -893,6 +893,10 @@ public sealed partial class RumorsSystem : EntitySystem
         var targetPos = rumor.TargetPosition;
         var currentPos = Transform(player).MapPosition;
         if (targetPos == null) return;
+        if (targetPos.Value.MapId == MapId.Nullspace)
+        {
+            targetPos = new MapCoordinates(targetPos.Value.X, targetPos.Value.Y, currentPos.MapId);
+        }
         var dist = Vector2.Distance(targetPos.Value.Position, currentPos.Position);
         if (currentPos.MapId == targetPos.Value.MapId && dist <= 800)
         {
@@ -1090,6 +1094,10 @@ public sealed partial class RumorsSystem : EntitySystem
             if (active.TargetStation == null) return rumor.Description;
             if (!_pid.TryResolveId(active.TargetStation, out var targetStation)) return rumor.Description;
             addon += $"\nRevive and heal the crew on the grids and bring them to {Name(targetStation)}.";
+        }
+        if (rumor.CompletionType == CompletionType.AnomalyStabilize)
+        {
+            addon += $"\nFind anomaly on the grids and bring it to 90% stability.";
         }
         if (rumor.CompletionType == CompletionType.ArtifactNodesUnlock)
         {

@@ -46,6 +46,18 @@
     guides:
     - ShuttleCraft
   - type: AccessReader
+  # Persi - START
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+    - On
+    - Off
+    - Toggle
+  # Persi - END
 
 - type: entity
   id: Thruster
