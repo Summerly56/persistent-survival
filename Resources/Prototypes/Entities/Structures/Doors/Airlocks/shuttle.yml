@@ -11,8 +11,6 @@
     ports:
       - DoorStatus
       - DockStatus
-  - type: DoorSignalControl # _PSurvival
-    openSink: null
   - type: ApcPowerReceiver # _PSurvival
     needsPower: false
   - type: Fixtures
