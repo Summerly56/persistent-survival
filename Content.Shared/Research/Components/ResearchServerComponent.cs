@@ -44,7 +44,7 @@ public sealed partial class ResearchServerComponent : Component
     public float[] BreadthDiversityImpactMultipliers = [0.0f, 0.05f, 0.25f, .7f];
 
     [DataField]
-    public float MaxDiversityPenalty = 4f;
+    public float MaxDiversityPenalty = 0.9f;
 
     /// <summary>
     /// When a server is made on a grid/faction with an existing server, this server gets parented to that one and that server gets a list of children.
