@@ -137,3 +137,15 @@
   cost: 12500
   category: cargoproduct-category-name-armory
   group: market3
+
+# region _PSurvival
+- type: cargoProduct
+  id: Turret
+  icon:
+    sprite: Objects/Weapons/Guns/Turrets/sentry_turret.rsi
+    state: cover_closed
+  product: WeaponEnergyTurretSecurityMachineCircuitboard
+  cost: 9000
+  category: cargoproduct-category-name-armory
+  group: market2
+# endRegion
