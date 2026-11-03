@@ -40,9 +40,9 @@
   description: Uniform for elite syndicate operatives performing tactical operations in deep space.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Special/operative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Special/operative.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Special/operative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Special/operative.rsi
   - type: StaticPrice
     price: 500
 
@@ -68,9 +68,9 @@
   description: Clothing for real mercenaries who have gone through fire, water and the jungle of planets flooded with dangerous monsters or targets for which a reward has been assigned.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Special/mercenary.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Special/mercenary.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Special/mercenary.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Special/mercenary.rsi
 
 - type: entity
   parent: UnsensoredClothingUniformBase

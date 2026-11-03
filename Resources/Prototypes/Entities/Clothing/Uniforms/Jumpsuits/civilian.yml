@@ -5,9 +5,9 @@
   description: A terribly ragged and frayed grey jumpsuit. It looks like it hasn't been washed in over a decade.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Civilian/ancient.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Civilian/ancient.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Civilian/ancient.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Civilian/ancient.rsi
 
 - type: entity
   parent: ClothingUniformBase

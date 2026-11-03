@@ -5,9 +5,9 @@
   description: Someone who wears this means business.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/detective.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/detective.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -16,9 +16,9 @@
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -27,7 +27,7 @@
   description: It's bright red and rather crisp, much like security's victims tend to be.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/hos.rsi
   - type: Item
     inhandVisuals:
       left:
@@ -43,7 +43,7 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/hos.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/hos.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -52,9 +52,9 @@
   description: It's a turtleneck worn by those strong and disciplined enough to achieve the position of Head of Security.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/hos_alt.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -125,7 +125,7 @@
   description: A jumpskirt made of strong material, providing robust protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/security.rsi
   - type: Item
     inhandVisuals:
       left:
@@ -141,7 +141,7 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/security.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/security.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -150,7 +150,7 @@
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/warden.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/warden.rsi
   - type: Item
     inhandVisuals:
       left:
@@ -166,7 +166,7 @@
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuits/Security/warden.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/warden.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/warden.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -186,9 +186,9 @@
   description: A sign of skill and prestige within the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -197,6 +197,6 @@
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpskirts/Security/security_grey.rsi

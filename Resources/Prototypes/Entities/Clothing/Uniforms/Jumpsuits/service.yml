@@ -5,7 +5,7 @@
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/bartender.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/bartender.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -51,9 +51,9 @@
   description: Can't cook without this.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/chef.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/chef.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/chef.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/chef.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -123,7 +123,7 @@
   description: The jumpsuit for the poor sop with a mop.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/janitor.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/janitor.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -132,9 +132,9 @@
   description: ...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/mime.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/mime.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/mime.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuits/Service/mime.rsi
 
 - type: entity
   parent: ClothingUniformBase
