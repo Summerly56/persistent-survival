@@ -13,13 +13,6 @@
   tileLimit: 5000
   tradestationClaim: false
   next: FactionLevel3
-  requiredModules:
-    Zenith: 1
-    Green: 1
-    Precursor: 1
-    Marine: 1
-    Shadow: 1
-    Luminal: 1
 
 
 - type: factionLevel
@@ -29,13 +22,6 @@
   tileLimit: 20000
   tradestationClaim: true
   next: FactionLevel4
-  requiredModules:
-    Zenith: 2
-    Green: 2
-    Precursor: 2
-    Marine: 2
-    Shadow: 2
-    Luminal: 2
 
 
 - type: factionLevel
@@ -44,10 +30,3 @@
   cost: 100000
   tileLimit: 100000
   tradestationClaim: true
-  requiredModules:
-    Zenith: 3
-    Green: 3
-    Precursor: 3
-    Marine: 3
-    Shadow: 3
-    Luminal: 3
