@@ -9,9 +9,9 @@
     - ReceiveMailFriendly
   color: Red
   levels:
-    Zenith2: 150
-    Zenith3: 500
-    Zenith4: 1000
+    Zenith2: 100
+    Zenith3: 350
+    Zenith4: 600
   order: 0
 
 - type: metaFactionLevel

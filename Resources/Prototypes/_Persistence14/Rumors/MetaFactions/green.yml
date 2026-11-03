@@ -9,9 +9,9 @@
     - ReceiveMailFriendly
   color: Green
   levels:
-    Green2: 150
-    Green3: 500
-    Green4: 1000
+    Green2: 100
+    Green3: 350
+    Green4: 600
   order: 1
 
 

@@ -9,9 +9,9 @@
     - ReceiveMailFriendly
   color: Olive
   levels:
-    Marines2: 150
-    Marines3: 500
-    Marines4: 1000
+    Marines2: 100
+    Marines3: 350
+    Marines4: 600
   order: 3
 
 - type: metaFactionLevel

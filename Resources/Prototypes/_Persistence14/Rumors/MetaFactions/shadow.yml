@@ -9,9 +9,9 @@
     - ReceiveMailEvil
   color: DarkGray
   levels:
-    Shadow2: 150
-    Shadow3: 500
-    Shadow4: 1000
+    Shadow2: 100
+    Shadow3: 350
+    Shadow4: 600
   order: 4
 
 - type: metaFactionLevel

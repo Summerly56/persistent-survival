@@ -8,9 +8,9 @@
     - ReceiveMailFriendly
   color: Yellow
   levels:
-    Luminals2: 150
-    Luminals3: 500
-    Luminals4: 1000
+    Luminals2: 100
+    Luminals3: 350
+    Luminals4: 600
   order: 5
 
 - type: metaFactionLevel
