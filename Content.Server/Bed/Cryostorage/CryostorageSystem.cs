@@ -190,7 +190,7 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
             if (_loader.TrySaveGeneric(ent.Owner, saveFilePath, out var use)) {
                 EntityManager.System<CharacterSnapshotSystem>().SaveSnapshot(ent.Owner, userId.Value, name); // PS14
                 // Save a backup as well
-                _loader.TrySaveGeneric(ent.Owner, backupPath, out _);
+                _loader.TrySaveGeneric(ent.Owner, backupFilePath, out _);
             }
             if (TryComp<ActorComponent>(ent.Owner, out var actor))
                 _ticker.PlayerJoinLobby(actor.PlayerSession);
