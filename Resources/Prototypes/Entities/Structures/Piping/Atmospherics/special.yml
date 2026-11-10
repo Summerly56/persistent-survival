@@ -10,7 +10,8 @@
     mode: SnapgridCenter
   components:
   - type: Transform
-    anchored: true # _PSurvival - Remove anchorable
+    anchored: true
+  - type: Anchorable
   - type: Pullable
   - type: Physics
     bodyType: Static
@@ -64,7 +65,8 @@
   - type: Transform
     anchored: true
     # Persistence: make atmos fans into machines
-    noRot: false # _PSurvival - Remove anchorable
+    noRot: false
+  - type: Anchorable
   - type: Pullable
   - type: Rotatable
   - type: Physics
