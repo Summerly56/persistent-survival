@@ -215,17 +215,17 @@
         gain: 2.0
   # Mobs
   # If you want exterior dungeon mobs add them under the prototype.
-  - !type:MobsDunGen
-    minCount: 25
-    maxCount: 35
-    contents: VGRoidSmallPathsMobs
+#  - !type:MobsDunGen
+#    minCount: 25
+#    maxCount: 35
+#    contents: VGRoidSmallPathsMobs
 
-- type: entityTable
-  id: VGRoidSmallPathsMobs
-  table: !type:GroupSelector
-    children:
-    - id: SalvageSpawnerMobMiningAsteroid
-      amount: 1
+#- type: entityTable
+#  id: VGRoidSmallPathsMobs
+#  table: !type:GroupSelector
+#    children:
+#   - id: SalvageSpawnerMobMiningAsteroid
+#      amount: 1
 
 #- type: dungeonConfig
 #  id: VGRoidOres
