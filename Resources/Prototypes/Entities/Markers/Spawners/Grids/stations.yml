@@ -203,7 +203,7 @@
     - sprite: Objects/Materials/Scrap/generic.rsi
       state: metal-1
   - type: GridSpawner
-    gridPath: /_Psurvival/TradeStations/explorer_trade_station.yml
+    gridPath: /Maps/_Psurvival/TradeStations/explorer_trade_station.yml
     stationGrid: True
     addComponents:
       - type: TradeStation
