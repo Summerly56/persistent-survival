@@ -92,7 +92,7 @@
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockGibtonite
-      count: 60 # you don't really hit it on purpose so it should be common
+      count: 45 # you don't really hit it on purpose so it should be common
       minGroupSize: 1
       maxGroupSize: 1
 
@@ -215,17 +215,17 @@
         gain: 2.0
   # Mobs
   # If you want exterior dungeon mobs add them under the prototype.
-  - !type:MobsDunGen
-    minCount: 25
-    maxCount: 35
-    contents: VGRoidSmallPathsMobs
+#  - !type:MobsDunGen
+#    minCount: 25
+#    maxCount: 35
+#    contents: VGRoidSmallPathsMobs
 
-- type: entityTable
-  id: VGRoidSmallPathsMobs
-  table: !type:GroupSelector
-    children:
-    - id: SalvageSpawnerMobMiningAsteroid
-      amount: 1
+#- type: entityTable
+#  id: VGRoidSmallPathsMobs
+#  table: !type:GroupSelector
+#    children:
+#   - id: SalvageSpawnerMobMiningAsteroid
+#      amount: 1
 
 #- type: dungeonConfig
 #  id: VGRoidOres
