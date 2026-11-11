@@ -189,3 +189,34 @@
           ExplorationBounty : 3
           ScienceBounty : 1
           ServiceBounty : 1
+
+# PSurvival
+- type: entity
+  parent: MarkerBase
+  id: PSurvivalTradeStationExplorationSpawnerMarker
+  name: Grid Spawner
+  suffix: Exploration Trade Station (PSurvival)
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+    - sprite: Objects/Materials/Scrap/generic.rsi
+      state: metal-1
+  - type: GridSpawner
+    gridPath: /_Psurvival/TradeStations/explorer_trade_station.yml
+    stationGrid: True
+    addComponents:
+      - type: TradeStation
+        levels:
+          - ILevelExploration1
+          - ILevelExploration2
+          - ILevelExploration3
+          - ILevelExploration4
+        markets:
+        - explorermarket
+      - type: StationCargoBountyDatabase
+        groups:
+          ExplorationBounty : 3
+          ScienceBounty : 1
+          ServiceBounty : 1
+# PSurvival end
