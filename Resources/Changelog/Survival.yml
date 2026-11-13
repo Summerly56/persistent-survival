@@ -41,3 +41,10 @@ Entries:
   id: 6
   time: '2026-11-12T04:19:58.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/63
+- author: slingbow
+  changes:
+  - message: Less VGRoid Mobs, less gibtonite
+    type: Tweak
+  id: 7
+  time: '2026-11-11T00:03:26.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/62
