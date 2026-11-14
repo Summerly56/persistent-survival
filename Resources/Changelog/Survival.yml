@@ -48,3 +48,10 @@ Entries:
   id: 7
   time: '2026-11-11T00:03:26.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/62
+- author: Summerly56
+  changes:
+  - message: Lowered new rumor cooldown
+    type: Tweak
+  id: 8
+  time: '2026-11-14T05:43:12.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/64
