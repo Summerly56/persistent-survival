@@ -55,3 +55,10 @@ Entries:
   id: 8
   time: '2026-11-14T05:43:12.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/64
+- author: Summerly56
+  changes:
+  - message: Changed max shuttle speed to 80
+    type: Tweak
+  id: 9
+  time: '2026-11-15T17:41:54.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/65
