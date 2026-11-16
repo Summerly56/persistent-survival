@@ -1,7 +1,7 @@
 
 - type: technology
-  id: PaperProtection
-  name: research-technology-paper-protection
+  id: PersonalCryopods
+  name: research-technology-personal-cryopods
   icon:
     sprite: Objects/Misc/folders.rsi
     state: folder-titanium
