@@ -1,0 +1,6 @@
+- type: guideEntry
+  id: PSurvivalRuleset
+  name: guide-entry-rules
+  ruleEntry: true
+  priority: 10 # After NewPlayer
+  text: "/ServerInfo/_PSurvival/Guidebook/ServerRules/Rules.xml"
