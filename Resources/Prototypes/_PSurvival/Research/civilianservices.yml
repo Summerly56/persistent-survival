@@ -1,0 +1,12 @@
+
+- type: technology
+  id: PaperProtection
+  name: research-technology-paper-protection
+  icon:
+    sprite: Objects/Misc/folders.rsi
+    state: folder-titanium
+  discipline: CivilianServices
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+    PersonalCryoMachineCircuitboard: 3
