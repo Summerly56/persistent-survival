@@ -62,3 +62,10 @@ Entries:
   id: 9
   time: '2026-11-15T17:41:54.0000000+00:00'
   url: https://github.com/Summerly56/persistent-survival/pull/65
+- author: Summerly56
+  changes:
+  - message: Added personal cryo pod machine boards to tier 2 research
+    type: Add
+  id: 10
+  time: '2026-11-16T22:44:16.0000000+00:00'
+  url: https://github.com/Summerly56/persistent-survival/pull/67
